@@ -1,0 +1,489 @@
+# depslib dependency file v1.0
+1535095312 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DensityFunctions/ExponentialDensity .cpp
+	"ExponentialDensity .h"
+
+1535095909 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DensityFunctions/ExponentialDensity .h
+	<math.h>
+
+1538991957 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/main.cpp
+	<iostream>
+	<math.h>
+	<vector>
+	"ExponentialDensity.h"
+	"LinearDensity.h"
+	"FunctionEvaluator.h"
+	<mlpack/core.hpp>
+	<mlpack/methods/neighbor_search/neighbor_search.hpp>
+	<mlpack/methods/emst/dtb.hpp>
+	"DensityComputator.h"
+	"GeneralConvertor.h"
+	"NaiveMethods.h"
+	"DensityEstimationRules.h"
+	"TreeExperements.h"
+	<mlpack/core/tree/statistic.hpp>
+	"AMSTComputator.h"
+	<ctime>
+	"TestPerformer.h"
+	<cstdlib>
+
+1535101221 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DensityFunctions/ExponentialDensity.h
+	<Includes.h>
+
+1535096271 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DensityFunctions/ExponentialDensity.cpp
+	"ExponentialDensity.h"
+
+1535096919 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DensityFunctions/LinearDensity.cpp
+	"LinearDensity.h"
+
+1535096315 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DensityFunctions/LinearDensity.h
+
+1535544449 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Includes.h
+	<math.h>
+	<unordered_map>
+	<deque>
+
+1535099552 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/TestClasses/FunctionEvaluator.cpp
+	"FunctionEvaluator.h"
+	<iostream>
+
+1535107470 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/TestClasses/FunctionEvaluator.h
+	"ExponentialDensity.h"
+
+1535096271 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DensityFunctions/ExponentialDensity.cpp
+	"ExponentialDensity.h"
+
+1536651975 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Rules/DensityComputator.h
+	<mlpack/prereqs.hpp>
+	<mlpack/core.hpp>
+	<mlpack/core/metrics/lmetric.hpp>
+	<mlpack/core/tree/binary_space_tree.hpp>
+	"DensityEstimationRules.h"
+	"ExponentialDensity.h"
+	"KDEStats.h"
+	"TreeCreator.h"
+	"AmstStat.h"
+
+1539088443 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Convertors/GeneralConvertor.cpp
+	"GeneralConvertor.h"
+	<fstream>
+	"Graph.h"
+
+1537354532 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Convertors/GeneralConvertor.h
+	<string>
+	<mlpack/core.hpp>
+	<vector>
+	"Graph.h"
+
+1535439849 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Methods/NaiveMethods.cpp
+	"NaiveMethods.h"
+
+1536218082 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Methods/NaiveMethods.h
+	<mlpack/core.hpp>
+	<mlpack/prereqs.hpp>
+
+1536582865 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Rules/DensityEstimationRules.h
+	<vector>
+	<mlpack/prereqs.hpp>
+
+1536065643 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/TestClasses/TreeExperements.h
+	<iostream>
+	<mlpack/core.hpp>
+	<mlpack/prereqs.hpp>
+	<mlpack/core/tree/cover_tree.hpp>
+
+1536144035 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Rules/KDEStats.h
+
+1536577946 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Methods/TreeCreator.h
+
+1536576532 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Amst/AmstStat.h
+	<mlpack/prereqs.hpp>
+	<mlpack/methods/emst/dtb_stat.hpp>
+
+1537346360 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Methods/AMSTComputator.h
+	"DualTreeAMST.h"
+	"DensityComputator.h"
+
+1537263800 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Amst/DualTreeAMST.h
+	"AmstStat.h"
+	"RulesAMST.h"
+	"RulesRangeAMST.h"
+	<mlpack/methods/emst/edge_pair.hpp>
+	<mlpack/methods/emst/union_find.hpp>
+	"RulesRAMSTM.h"
+
+1536738056 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Amst/RulesAMST.h
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/prereqs.hpp>
+
+1536741818 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Amst/RulesRangeAMST.h
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/prereqs.hpp>
+
+1537268983 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Amst/RulesRAMSTM.h
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/prereqs.hpp>
+
+1537344491 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DataGeneration/CloudGenerator.cpp
+	"CloudGenerator.h"
+	"Computation.h"
+	"Graph.h"
+	"GraphGeneration.h"
+
+1537345186 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DataGeneration/CloudGenerator.h
+	"Graph.h"
+	<string>
+	<mlpack/core.hpp>
+	<vector>
+
+1537274505 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Graph/Graph.h
+	"Definitions.h"
+
+1537274550 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Definitions/Definitions.h
+	<queue>
+	<list>
+	<CGAL/Exact_predicates_inexact_constructions_kernel.h>
+	<CGAL/grid_simplify_point_set.h>
+	<CGAL/IO/read_xyz_points.h>
+	<CGAL/Delaunay_triangulation_3.h>
+	<CGAL/Triangulation_data_structure_3.h>
+	<CGAL/Simple_cartesian.h>
+	<CGAL/squared_distance_3.h>
+	<CGAL/Alpha_shape_3.h>
+	<boost/graph/adjacency_list.hpp>
+	<boost/graph/properties.hpp>
+	<boost/property_map/property_map.hpp>
+	<boost/program_options.hpp>
+	<boost/graph/graphviz.hpp>
+	<utility>
+	<boost/graph/dijkstra_shortest_paths.hpp>
+	<boost/graph/depth_first_search.hpp>
+	<boost/graph/prim_minimum_spanning_tree.hpp>
+	<boost/graph/kruskal_min_spanning_tree.hpp>
+	<boost/graph/connected_components.hpp>
+	<unordered_map>
+	<CGAL/Simple_cartesian.h>
+	<CGAL/AABB_tree.h>
+	<CGAL/AABB_traits.h>
+	<CGAL/AABB_triangle_primitive.h>
+	<CGAL/AABB_segment_primitive.h>
+
+1537352371 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/GeneralComputation/Computation.h
+	<cstdlib>
+	"Definitions.h"
+	"Graph.h"
+	<mlpack/core.hpp>
+
+1537358350 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DataGeneration/GraphGeneration.cpp
+	"GraphGeneration.h"
+	"Computation.h"
+
+1537354048 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/DataGeneration/GraphGeneration.h
+	<Graph.h>
+
+1527852554 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Graph/Graph.cpp
+	"Graph.h"
+	"Definitions.h"
+	"Computation.h"
+
+1537358427 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Methods/TestPerformer.h
+	"AMSTComputator.h"
+	<mlpack/core.hpp>
+	"CloudGenerator.h"
+	"Computation.h"
+	"BranchDetection.h"
+	"GraphGeneration.h"
+
+1530191601 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Clustering/ClusterElement.cpp
+	"ClusterElement.h"
+	"Graph.h"
+
+1529929351 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Clustering/ClusterElement.h
+
+1531398481 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Clustering/ClusteringMethods.cpp
+	"ClusteringMethods.h"
+
+1530184075 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Clustering/ClusteringMethods.h
+	"ClusterSort.h"
+
+1529927778 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Clustering/ClusterSort.h
+	"Graph.h"
+	"ClusterElement.h"
+
+1530191407 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Clustering/ClusterSort.cpp
+	"ClusterSort.h"
+
+1529916415 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Clustering/DescriptorCluster.cpp
+	"DescriptorCluster.h"
+	"Graph.h"
+
+1529926676 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Clustering/DescriptorCluster.h
+	"Graph.h"
+	"ClusterElement.h"
+
+1530184849 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Methods/BranchDetection.cpp
+	"BranchDetection.h"
+	"PointTools.h"
+	"ClusterElement.h"
+	"ClusteringMethods.h"
+
+1530003929 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/Methods/BranchDetection.h
+	"Graph.h"
+	"Definitions.h"
+
+1527608297 /home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/GeneralComputation/PointTools.h
+	"Definitions.h"
+
+1529151194 source:/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/include/GeneralComputation/PointTools.cpp
+	"PointTools.h"
+	"Definitions.h"
+
+1530191601 source:/home/yury/Dropbox/Github/include/Clustering/ClusterElement.cpp
+	"ClusterElement.h"
+	"Graph.h"
+
+1529929351 /home/yury/Dropbox/Github/include/Clustering/ClusterElement.h
+
+1537274505 /home/yury/Dropbox/Github/include/Graph/Graph.h
+	"Definitions.h"
+
+1537274550 /home/yury/Dropbox/Github/include/Definitions/Definitions.h
+	<queue>
+	<list>
+	<CGAL/Exact_predicates_inexact_constructions_kernel.h>
+	<CGAL/grid_simplify_point_set.h>
+	<CGAL/IO/read_xyz_points.h>
+	<CGAL/Delaunay_triangulation_3.h>
+	<CGAL/Triangulation_data_structure_3.h>
+	<CGAL/Simple_cartesian.h>
+	<CGAL/squared_distance_3.h>
+	<CGAL/Alpha_shape_3.h>
+	<boost/graph/adjacency_list.hpp>
+	<boost/graph/properties.hpp>
+	<boost/property_map/property_map.hpp>
+	<boost/program_options.hpp>
+	<boost/graph/graphviz.hpp>
+	<utility>
+	<boost/graph/dijkstra_shortest_paths.hpp>
+	<boost/graph/depth_first_search.hpp>
+	<boost/graph/prim_minimum_spanning_tree.hpp>
+	<boost/graph/kruskal_min_spanning_tree.hpp>
+	<boost/graph/connected_components.hpp>
+	<unordered_map>
+	<CGAL/Simple_cartesian.h>
+	<CGAL/AABB_tree.h>
+	<CGAL/AABB_traits.h>
+	<CGAL/AABB_triangle_primitive.h>
+	<CGAL/AABB_segment_primitive.h>
+
+1531398481 source:/home/yury/Dropbox/Github/include/Clustering/ClusteringMethods.cpp
+	"ClusteringMethods.h"
+
+1530184075 /home/yury/Dropbox/Github/include/Clustering/ClusteringMethods.h
+	"ClusterSort.h"
+
+1529927778 /home/yury/Dropbox/Github/include/Clustering/ClusterSort.h
+	"Graph.h"
+	"ClusterElement.h"
+
+1530191407 source:/home/yury/Dropbox/Github/include/Clustering/ClusterSort.cpp
+	"ClusterSort.h"
+
+1529916415 source:/home/yury/Dropbox/Github/include/Clustering/DescriptorCluster.cpp
+	"DescriptorCluster.h"
+	"Graph.h"
+
+1529926676 /home/yury/Dropbox/Github/include/Clustering/DescriptorCluster.h
+	"Graph.h"
+	"ClusterElement.h"
+
+1539088443 source:/home/yury/Dropbox/Github/include/Convertors/GeneralConvertor.cpp
+	"GeneralConvertor.h"
+	<fstream>
+	"Graph.h"
+
+1537354532 /home/yury/Dropbox/Github/include/Convertors/GeneralConvertor.h
+	<string>
+	<mlpack/core.hpp>
+	<vector>
+	"Graph.h"
+
+1537344491 source:/home/yury/Dropbox/Github/include/DataGeneration/CloudGenerator.cpp
+	"CloudGenerator.h"
+	"Computation.h"
+	"Graph.h"
+	"GraphGeneration.h"
+
+1537345186 /home/yury/Dropbox/Github/include/DataGeneration/CloudGenerator.h
+	"Graph.h"
+	<string>
+	<mlpack/core.hpp>
+	<vector>
+
+1537352371 /home/yury/Dropbox/Github/include/GeneralComputation/Computation.h
+	<cstdlib>
+	"Definitions.h"
+	"Graph.h"
+	<mlpack/core.hpp>
+
+1537354048 /home/yury/Dropbox/Github/include/DataGeneration/GraphGeneration.h
+	<Graph.h>
+
+1537358350 source:/home/yury/Dropbox/Github/include/DataGeneration/GraphGeneration.cpp
+	"GraphGeneration.h"
+	"Computation.h"
+
+1535096271 source:/home/yury/Dropbox/Github/include/DensityFunctions/ExponentialDensity.cpp
+	"ExponentialDensity.h"
+
+1535101221 /home/yury/Dropbox/Github/include/DensityFunctions/ExponentialDensity.h
+	<Includes.h>
+
+1535544449 /home/yury/Dropbox/Github/include/Includes.h
+	<math.h>
+	<unordered_map>
+	<deque>
+
+1535096919 source:/home/yury/Dropbox/Github/include/DensityFunctions/LinearDensity.cpp
+	"LinearDensity.h"
+
+1535096315 /home/yury/Dropbox/Github/include/DensityFunctions/LinearDensity.h
+
+1529151194 source:/home/yury/Dropbox/Github/include/GeneralComputation/PointTools.cpp
+	"PointTools.h"
+	"Definitions.h"
+
+1527608297 /home/yury/Dropbox/Github/include/GeneralComputation/PointTools.h
+	"Definitions.h"
+
+1539088485 source:/home/yury/Dropbox/Github/include/GradientDescend/SingleEdgeOptimizer.cpp
+	"SingleEdgeOptimizer.h"
+	<mlpack/methods/neighbor_search/neighbor_search.hpp>
+	<mlpack/methods/emst/dtb.hpp>
+	<iostream>
+	<math.h>
+	<vector>
+	"ExponentialDensity.h"
+	"LinearDensity.h"
+	"FunctionEvaluator.h"
+	<mlpack/core.hpp>
+	"DensityComputator.h"
+	"GeneralConvertor.h"
+	"NaiveMethods.h"
+	"DensityEstimationRules.h"
+	"TreeExperements.h"
+	<mlpack/core/tree/statistic.hpp>
+	"AMSTComputator.h"
+	<ctime>
+	"TestPerformer.h"
+	<cstdlib>
+
+1539087262 /home/yury/Dropbox/Github/include/GradientDescend/SingleEdgeOptimizer.h
+	<mlpack/core.hpp>
+
+1535107470 /home/yury/Dropbox/Github/include/TestClasses/FunctionEvaluator.h
+	"ExponentialDensity.h"
+
+1536651975 /home/yury/Dropbox/Github/include/Rules/DensityComputator.h
+	<mlpack/prereqs.hpp>
+	<mlpack/core.hpp>
+	<mlpack/core/metrics/lmetric.hpp>
+	<mlpack/core/tree/binary_space_tree.hpp>
+	"DensityEstimationRules.h"
+	"ExponentialDensity.h"
+	"KDEStats.h"
+	"TreeCreator.h"
+	"AmstStat.h"
+
+1536582865 /home/yury/Dropbox/Github/include/Rules/DensityEstimationRules.h
+	<vector>
+	<mlpack/prereqs.hpp>
+
+1536144035 /home/yury/Dropbox/Github/include/Rules/KDEStats.h
+
+1536577946 /home/yury/Dropbox/Github/include/Methods/TreeCreator.h
+
+1536576532 /home/yury/Dropbox/Github/include/Amst/AmstStat.h
+	<mlpack/prereqs.hpp>
+	<mlpack/methods/emst/dtb_stat.hpp>
+
+1536218082 /home/yury/Dropbox/Github/include/Methods/NaiveMethods.h
+	<mlpack/core.hpp>
+	<mlpack/prereqs.hpp>
+
+1536065643 /home/yury/Dropbox/Github/include/TestClasses/TreeExperements.h
+	<iostream>
+	<mlpack/core.hpp>
+	<mlpack/prereqs.hpp>
+	<mlpack/core/tree/cover_tree.hpp>
+
+1537346360 /home/yury/Dropbox/Github/include/Methods/AMSTComputator.h
+	"DualTreeAMST.h"
+	"DensityComputator.h"
+
+1537263800 /home/yury/Dropbox/Github/include/Amst/DualTreeAMST.h
+	"AmstStat.h"
+	"RulesAMST.h"
+	"RulesRangeAMST.h"
+	<mlpack/methods/emst/edge_pair.hpp>
+	<mlpack/methods/emst/union_find.hpp>
+	"RulesRAMSTM.h"
+
+1536738056 /home/yury/Dropbox/Github/include/Amst/RulesAMST.h
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/prereqs.hpp>
+
+1536741818 /home/yury/Dropbox/Github/include/Amst/RulesRangeAMST.h
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/prereqs.hpp>
+
+1537268983 /home/yury/Dropbox/Github/include/Amst/RulesRAMSTM.h
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/prereqs.hpp>
+
+1537358427 /home/yury/Dropbox/Github/include/Methods/TestPerformer.h
+	"AMSTComputator.h"
+	<mlpack/core.hpp>
+	"CloudGenerator.h"
+	"Computation.h"
+	"BranchDetection.h"
+	"GraphGeneration.h"
+
+1530003929 /home/yury/Dropbox/Github/include/Methods/BranchDetection.h
+	"Graph.h"
+	"Definitions.h"
+
+1527852554 source:/home/yury/Dropbox/Github/include/Graph/Graph.cpp
+	"Graph.h"
+	"Definitions.h"
+	"Computation.h"
+
+1530184849 source:/home/yury/Dropbox/Github/include/Methods/BranchDetection.cpp
+	"BranchDetection.h"
+	"PointTools.h"
+	"ClusterElement.h"
+	"ClusteringMethods.h"
+
+1535439849 source:/home/yury/Dropbox/Github/include/Methods/NaiveMethods.cpp
+	"NaiveMethods.h"
+
+1538991957 source:/home/yury/Dropbox/Github/main.cpp
+	<iostream>
+	<math.h>
+	<vector>
+	"ExponentialDensity.h"
+	"LinearDensity.h"
+	"FunctionEvaluator.h"
+	<mlpack/core.hpp>
+	<mlpack/methods/neighbor_search/neighbor_search.hpp>
+	<mlpack/methods/emst/dtb.hpp>
+	"DensityComputator.h"
+	"GeneralConvertor.h"
+	"NaiveMethods.h"
+	"DensityEstimationRules.h"
+	"TreeExperements.h"
+	<mlpack/core/tree/statistic.hpp>
+	"AMSTComputator.h"
+	<ctime>
+	"TestPerformer.h"
+	<cstdlib>
+
