@@ -97,20 +97,16 @@ void SingleEdgeOptimizer::Gradient(arma::vec p, arma::vec u, arma::vec v, arma::
         for (int i = 0; i < 3; i++)
         {
             ww(0,i) = 2*(tvalue*u(i) - (tvalue -1)*v(i) -p(i))*tvalue;
-
         }
         // ww(0,i) = 2*(tvalue*u(i) - (tvalue - 1)*v(i) – p(i))*tvalue;
 
         for (int i = 3; i < 6; i++)
         {
-
             // ww(0,i) = -2*(tvalue*u(i-3) -(tvalue - 1)*v(i-3) - p(i-3))*(tvalue – 1),
             ww(0,i) = -2*(tvalue*u(i-3) -(tvalue - 1)*v(i-3) - p(i-3))*(tvalue - 1);
             // ww(0,i) = -2*(tvalue*u(i-3) -(tvalue - 1)*v(i-3) - p(i-3))*(tvalue - 1);
-
         }
         ww(0,7) = 2*(tvalue*u(0) - (tvalue - 1)*v(0) - p(0))*(u(0) - v(0)) + 2*(tvalue*u(1) - (tvalue - 1)*v(1) - p(1))*(u(1) - v(1)) + 2*(tvalue*u(2) - (tvalue - 1)*v(2) - p(2))*(u(2) -v(2));
-
         finale = ww*tm;
     }
 }
@@ -134,9 +130,53 @@ double EvaluateOnPointCloud( arma::vec & u, arma::vec & v, arma::mat & cloud )
     }
     return sum;
 }
+void EvaluateDifferentialOnPointCloud( arma::vec & u, arma::vec & v, arma::mat & cloud, arma::vec & ur, arma::vec & vr )
+{
+    arma::mat rur(6,1);
+    rur.zeros();
+
+    for (int i = 0; i < cloud.n_cols; i++)
+    {
+        arma::mat utmp(6,1);
+        utmp.zeros();
+        arma::vec p = cloud.col(i);
+        this->Gradient(p, u, v, utmp);
+        rur = rur + utmp;
+    }
+    for (int i = 0; i < 2; i++)
+    {
+    ur[i] = rur[i];
+    }
+    for (int i = 3; i < 6; i++)
+    {
+    vr[i-3] = rur[i];
+    }
+
+
+}
+
+double distanceBetweenConfigurations(arma::vec & u, arma::vec & v, arma::vec u2, arma::vec v2)
+{
+
+return std::max(mlpack::metric::EuclideanDistance::Evaluate(u,u2),mlpack::metric::EuclideanDistance::Evaluate(v,v2));
+
+}
+
 
 void SingleEdgeOptimizer::SimpleFunctionMinimizer(double gamma, int max_iter, double precision, arma::vec & u, arma::vec & v, arma::mat & cloud)
 {
+//! We implement this using constant linear search algorithm
+
+    int iter = 0;
+    double previousStepSize = 1.0;
+    while((iter < max_iter) && (previousStepSize > precision))
+    {
+        for ()
+
+
+        iter++;
+    }
+
 
 
 }

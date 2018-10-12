@@ -238,5 +238,4 @@ int main()
 //RunCyclicTests();
 std::cout << "Compilation succeful" << std::endl;
 std::cout << "Yes it is indeed " << std::endl;
-std::cout << "Test Test Test" << std::endl;
 }
