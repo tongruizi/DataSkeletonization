@@ -27,6 +27,7 @@
 					<Add directory="include/Definitions" />
 					<Add directory="include/Clustering" />
 					<Add directory="./" />
+					<Add directory="include/GradientDescend" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -53,6 +54,7 @@
 					<Add directory="include/Amst" />
 					<Add directory="include/GeneralComputation" />
 					<Add directory="./" />
+					<Add directory="include/GradientDescend" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -90,6 +92,7 @@
 		<Unit filename="include/GeneralComputation/Computation.h" />
 		<Unit filename="include/GeneralComputation/PointTools.cpp" />
 		<Unit filename="include/GeneralComputation/PointTools.h" />
+		<Unit filename="include/GradientDescend/GradientDescendTester.h" />
 		<Unit filename="include/GradientDescend/SingleEdgeOptimizer.cpp" />
 		<Unit filename="include/GradientDescend/SingleEdgeOptimizer.h" />
 		<Unit filename="include/Graph/Graph.cpp" />

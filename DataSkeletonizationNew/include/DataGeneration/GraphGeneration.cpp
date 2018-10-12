@@ -71,6 +71,15 @@ void GraphGeneration::RandomGraph1(int n, double minangle, double scale, MyGraph
     }
 }
 
+ void GraphGeneration::SimpleEdgeGraph(MyGraphType & G, double scale)
+ {
+         Point origin = Point(0,0,0);
+         Point secondPoint = Point(scale,0,0);
+         vertex_descriptor first = Graph::add_vertex(G, origin);
+         vertex_descriptor second = Graph::add_vertex(G, secondPoint);
+         Graph::add_edge(G, first, second);
+ }
+
 vertex_descriptor GraphGeneration::TemplateFunction(Point extra, double xshift, double yshift, double zshift, MyGraphType & G,
 int n, double minangle, double scale)
 {

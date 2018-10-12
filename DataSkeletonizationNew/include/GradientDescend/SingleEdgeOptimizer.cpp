@@ -93,20 +93,21 @@ void SingleEdgeOptimizer::Gradient(arma::vec p, arma::vec u, arma::vec v, arma::
 
             }
         }
-        arma::mat ww(1,6);
+        arma::mat ww(1,7);
         for (int i = 0; i < 3; i++)
         {
             ww(0,i) = 2*(tvalue*u(i) - (tvalue -1)*v(i) -p(i))*tvalue;
         }
         // ww(0,i) = 2*(tvalue*u(i) - (tvalue - 1)*v(i) – p(i))*tvalue;
-
         for (int i = 3; i < 6; i++)
         {
             // ww(0,i) = -2*(tvalue*u(i-3) -(tvalue - 1)*v(i-3) - p(i-3))*(tvalue – 1),
             ww(0,i) = -2*(tvalue*u(i-3) -(tvalue - 1)*v(i-3) - p(i-3))*(tvalue - 1);
             // ww(0,i) = -2*(tvalue*u(i-3) -(tvalue - 1)*v(i-3) - p(i-3))*(tvalue - 1);
         }
-        ww(0,7) = 2*(tvalue*u(0) - (tvalue - 1)*v(0) - p(0))*(u(0) - v(0)) + 2*(tvalue*u(1) - (tvalue - 1)*v(1) - p(1))*(u(1) - v(1)) + 2*(tvalue*u(2) - (tvalue - 1)*v(2) - p(2))*(u(2) -v(2));
+        ww(0,6) = 2*(tvalue*u(0) - (tvalue - 1)*v(0) - p(0))*(u(0) - v(0));
+        ww(0,6) = ww(0,6) + 2*(tvalue*u(1) - (tvalue - 1)*v(1) - p(1))*(u(1) - v(1));
+        ww(0,6) = ww(0,6 )+ 2*(tvalue*u(2) - (tvalue - 1)*v(2) - p(2))*(u(2) -v(2));
         finale = ww*tm;
     }
 }
@@ -130,26 +131,28 @@ double EvaluateOnPointCloud( arma::vec & u, arma::vec & v, arma::mat & cloud )
     }
     return sum;
 }
-void EvaluateDifferentialOnPointCloud( arma::vec & u, arma::vec & v, arma::mat & cloud, arma::vec & ur, arma::vec & vr )
+void SingleEdgeOptimizer::EvaluateDifferentialOnPointCloud( arma::vec & u, arma::vec & v, arma::mat & cloud, arma::vec & ur, arma::vec & vr )
 {
-    arma::mat rur(6,1);
+    arma::mat rur(1,6);
     rur.zeros();
 
     for (int i = 0; i < cloud.n_cols; i++)
     {
-        arma::mat utmp(6,1);
+        arma::mat utmp(1,6);
         utmp.zeros();
         arma::vec p = cloud.col(i);
-        this->Gradient(p, u, v, utmp);
+      //  std::cout << "Number: " << i << std::endl;
+        //std::cout << p << std::endl;
+        SingleEdgeOptimizer::Gradient(p, u, v, utmp);
         rur = rur + utmp;
     }
     for (int i = 0; i < 2; i++)
     {
-    ur[i] = rur[i];
+        ur(i) = rur(0,i);
     }
     for (int i = 3; i < 6; i++)
     {
-    vr[i-3] = rur[i];
+        vr(i-3) = rur(0,i);
     }
 
 
@@ -158,7 +161,7 @@ void EvaluateDifferentialOnPointCloud( arma::vec & u, arma::vec & v, arma::mat &
 double distanceBetweenConfigurations(arma::vec & u, arma::vec & v, arma::vec u2, arma::vec v2)
 {
 
-return std::max(mlpack::metric::EuclideanDistance::Evaluate(u,u2),mlpack::metric::EuclideanDistance::Evaluate(v,v2));
+    return std::max(mlpack::metric::EuclideanDistance::Evaluate(u,u2),mlpack::metric::EuclideanDistance::Evaluate(v,v2));
 
 }
 
@@ -167,13 +170,25 @@ void SingleEdgeOptimizer::SimpleFunctionMinimizer(double gamma, int max_iter, do
 {
 //! We implement this using constant linear search algorithm
 
+
     int iter = 0;
-    double previousStepSize = 1.0;
+    double previousStepSize = 100.0;
     while((iter < max_iter) && (previousStepSize > precision))
     {
-        for ()
+        arma::vec u1(3);
+        arma::vec v1(3);
+        arma::vec u2(3);
+        arma::vec v2(3);
+        std::cout << "Allright (before): " << iter << std::endl;
+        EvaluateDifferentialOnPointCloud(u, v, cloud, u2, v2);
+        std::cout << "Allright (after):" << iter << std::endl;
 
-
+        u1 =  u - gamma*u2;
+        v1 =  v - gamma*v2;
+        double dconfig = distanceBetweenConfigurations(u,v,u1,v1);
+        u = u1;
+        v = v1;
+        previousStepSize = dconfig;
         iter++;
     }
 

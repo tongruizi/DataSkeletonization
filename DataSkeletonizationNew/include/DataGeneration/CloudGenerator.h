@@ -12,6 +12,7 @@ class CloudGenerator
         CloudGenerator();
         static void generatePoints(int n, MyGraphType & G, double epsilon, std::list<Point> & points);
         static void generatePointsStandartInArmaMat(int gn, int n, double minangle, double scale, double epsilon, arma::mat & pointz);
+        static void generatePointsOnGraphInArmaMat(MyGraphType & G, int pointN, double epsilon, arma::mat & data);
     protected:
 
     private:

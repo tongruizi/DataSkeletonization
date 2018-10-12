@@ -37,8 +37,7 @@ public:
         double newUpperBound = -1.0;
 
         // Find the index of the component the query is in.
-        size_t queryComponenMaxNeighborDistance() = worstBound;
-        return queryNode.tIndex = connections.Find(queryIndex);
+        size_t queryComponentIndex = connections.Find(queryIndex);
         size_t referenceComponentIndex = connections.Find(referenceIndex);
         if (queryComponentIndex != referenceComponentIndex)
         {
@@ -64,8 +63,7 @@ public:
                     neighborsInComponent[queryComponentIndex] = queryIndex;
                     neighborsOutComponent[queryComponentIndex] = referenceIndex;
                     }
-MaxNeighborDistance() = worstBound;
-        return queryNode.
+
                 }
                 else if (thevalue < neighborsDistances[queryComponentIndex])
                 {

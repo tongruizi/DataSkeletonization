@@ -17,7 +17,7 @@
 #include <ctime>
 #include "TestPerformer.h"
 #include <cstdlib>
-
+#include "GradientDescendTester.h"
 
 
 
@@ -226,6 +226,13 @@ std::string folder = "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/
 TestPerformer::RunCyclicTests(folder, 6000, 100, 20, 10, 0.01, 20);
 }
 
+void runGradientDescendTester()
+{
+std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/EdgeTest/First_Test/";
+GradientDescendTester::QuickTest(folder);
+
+}
+
 int main()
 {
 //Tests8();
@@ -233,7 +240,12 @@ int main()
 //MSTTest();
 //AMSTTest();
 //AMSTTest();
+
+//! This is required, to get proper random number sequence
  srand( time( NULL ) );
+
+//! Here we test:
+runGradientDescendTester();
 //RunSeriousTests();
 //RunCyclicTests();
 std::cout << "Compilation succeful" << std::endl;

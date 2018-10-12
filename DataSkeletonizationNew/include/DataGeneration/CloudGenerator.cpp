@@ -73,14 +73,10 @@ void CloudGenerator::generatePoints(int n, MyGraphType & G, double epsilon, std:
     }
 }
 
-void CloudGenerator::generatePointsStandartInArmaMat(int gn, int n, double minangle, double scale, double epsilon, arma::mat & data)
+void CloudGenerator::generatePointsOnGraphInArmaMat(MyGraphType & G, int pointN, double epsilon, arma::mat & data)
 {
-//! Generation
     std::list<Point> points;
-    MyGraphType G;
-    GraphGeneration::RandomGraph1(gn,minangle,scale,G);
-    CloudGenerator::generatePoints(n,G,epsilon,points);
-//! Conversion
+    CloudGenerator::generatePoints(pointN,G,epsilon,points);
     int k = points.size();
     data.set_size(k,3);
     int j = 0;
@@ -91,6 +87,16 @@ void CloudGenerator::generatePointsStandartInArmaMat(int gn, int n, double minan
         data(j,2) = it->z();
         j++;
     }
+
+}
+
+void CloudGenerator::generatePointsStandartInArmaMat(int gn, int n, double minangle, double scale, double epsilon, arma::mat & data)
+{
+//! Generation
+    MyGraphType G;
+    GraphGeneration::RandomGraph1(gn,minangle,scale,G);
+//! Conversion
+    CloudGenerator::generatePointsOnGraphInArmaMat(G,n,epsilon,data);
 
 }
 
