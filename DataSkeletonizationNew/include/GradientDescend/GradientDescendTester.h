@@ -19,10 +19,10 @@ public:
         arma::mat data = datat.t();
         //! We set our first guess to be the diagonal
         arma::vec u{5,5,5};
-        arma::vec v{95,-5,-5};
-        double gamma = pow(10,-4);
+        arma::vec v{95,5,5};
+        double gamma = pow(10,-3);
         int maxitr = 1000;
-        double minError = 1.0;
+        double minError = 0.01;
 
         std::cout << "Still allright" << std::endl;
 

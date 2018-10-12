@@ -24,6 +24,7 @@ SingleEdgeOptimizer::SingleEdgeOptimizer()
     //ctor
 }
 
+//! This method is currently under debug-process
 
 void SingleEdgeOptimizer::Gradient(arma::vec p, arma::vec u, arma::vec v, arma::mat & finale, std::ofstream & mystream)
 {
@@ -34,6 +35,7 @@ void SingleEdgeOptimizer::Gradient(arma::vec p, arma::vec u, arma::vec v, arma::
     {
         d[i] = (u[i] - v[i])*(u[i]-v[i]);
     }
+//! Because of debugging we temporarily do modification to case1 and case2
 
     if (tvalue < 0)
     {
@@ -64,15 +66,20 @@ void SingleEdgeOptimizer::Gradient(arma::vec p, arma::vec u, arma::vec v, arma::
         }
         mystream << "Case 2 detected" << std::endl;
     }
+//    if((tvalue < 0)||(tvalue > 1))
+//    {
+//        finale = arma::mat(1,6);
+//        finale.zeros();
+//    }
     else
     {
         arma::vec t(6);
-        t(0) = -(p(0) - v(0))/( d[0] + d[1] + d[2]) - 2*((p(0) - u(0))*(p(0) - v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(0) - v(0))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
+        t(0) = -(p(0) - v(0))/(d[0] + d[1] + d[2]) - 2*((p(0) - u(0))*(p(0) - v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(0) - v(0))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
         t(1) = -(p(1) - v(1))/(d[0] + d[1] + d[2]) - 2*((p(0) - u(0))*(p(0)- v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(1) - v(1))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
         t(2) = -(p(2) - v(2))/(d[0] + d[1] + d[2]) - 2*((p(0) - u(0))*(p(0)- v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(2) - v(2))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
-        t(3) = -(p(0) - u(0))/( d[0] + d[1] + d[2]) + 2*((p(0)- u(0))*(p(0) - v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(0) - v(0))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
-        t(4) = -(p(1) - u(1))/( d[0] + d[1] + d[2]) + 2*((p(0)- u(0))*(p(0) - v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(1) - v(1))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
-        t(5) = -(p(2) - u(2))/( d[0] + d[1] + d[2]) + 2*((p(0)- u(0))*(p(0) - v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(2) - v(2))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
+        t(3) = -(p(0) - u(0))/(d[0] + d[1] + d[2]) + 2*((p(0)- u(0))*(p(0) - v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(0) - v(0))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
+        t(4) = -(p(1) - u(1))/(d[0] + d[1] + d[2]) + 2*((p(0)- u(0))*(p(0) - v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(1) - v(1))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
+        t(5) = -(p(2) - u(2))/(d[0] + d[1] + d[2]) + 2*((p(0)- u(0))*(p(0) - v(0)) + (p(1) - u(1))*(p(1) - v(1)) + (p(2) - u(2))*(p(2) - v(2)))*(u(2) - v(2))/((d[0] + d[1] + d[2])*(d[0] + d[1] + d[2]));
         arma::mat tm(7,6);
         for (int i = 0; i < 7; i++)
         {
