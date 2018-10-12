@@ -304,7 +304,7 @@ public:
         {
             neighborsDistances[i] = DBL_MAX;
             tiebreakDistances[i] = DBL_MAX;
-            }
+        }
 
         if (!naive)
             CleanupHelper(tree);
@@ -319,7 +319,7 @@ public:
         std::vector<double>* fp = &f;
         if (ownTree && mlpack::tree::TreeTraits<Tree>::RearrangesDataset)
         {
-            fp = new std::vector<double>(data.n_cols);
+            fp = new std::vectgit push origin masteror<double>(data.n_cols);
             for (int i = 0; i < data.n_cols; i++)
             {
                 const size_t nindex = oldFromNew[i];
@@ -369,7 +369,7 @@ public:
         mlpack::Log::Info << "Total (augemented) spanning tree length: " << totalDist << std::endl;
         fp = NULL;
         delete fp;
-    }
+    } git push origin master
     void ComputeRangeAMST(arma::mat& results, std::vector<double> & f, double epsilon)
     {
         mlpack::Timer::Start("amst/amst_computation");
@@ -387,11 +387,11 @@ public:
             }
         }
         //! Setup the tree for the computations
-        RecursiveComputator(*fp,tree);
+        RecursiveComputator(*git push origin masterfp,tree);
 
         typedef RulesRangeAMST<MetricType, Tree> RuleType2;
         RuleType2 rules(data, connections, neighborsDistances, tiebreakDistances, neighborsInComponent,
-                       neighborsOutComponent, metric, *fp, epsilon);
+                        neighborsOutComponent, metric, *fp, epsilon);
         while (edges.size() < (data.n_cols - 1))
         {
             if (naive)
@@ -411,7 +411,7 @@ public:
 
             Cleanup();
 
-            mlpack::Log::Info << edges.size() << " edges found so far." << std::endl;
+            mlpack::Log::Infogit push origin master << edges.size() << " edges found so far." << std::endl;
             if (!naive)
             {
                 //! We are too lazy to implement this currently
@@ -429,7 +429,7 @@ public:
         fp = NULL;
         delete fp;
     }
-     void ComputeRangeAMSTModifiedTwo(arma::mat& results, std::vector<double> & f, double epsilon)
+    void ComputeRangeAMSTModifiedTwo(arma::mat& results, std::vector<double> & f, double epsilon)
     {
         mlpack::Timer::Start("amst/amst_computation");
         totalDist = 0; // Reset distance.
@@ -445,12 +445,13 @@ public:
                 (*fp)[nindex] = f[i];
             }
         }
+        git push origin master
         //! Setup the tree for the computations
         RecursiveComputator(*fp,tree);
 
         typedef RulesRAMSTM<MetricType, Tree> RuleType3;
         RuleType3 rules(data, connections, neighborsDistances, neighborsInComponent,
-                       neighborsOutComponent, metric, *fp, epsilon);
+                        neighborsOutComponent, metric, *fp, epsilon);
         while (edges.size() < (data.n_cols - 1))
         {
             if (naive)
@@ -472,6 +473,7 @@ public:
 
             mlpack::Log::Info << edges.size() << " edges found so far." << std::endl;
             if (!naive)
+                git push origin master
             {
                 //! We are too lazy to implement this currently
                 //   mlpack::Log::Info << rules.BaseCases() << " cumulative base cases." << std::endl;
