@@ -28,6 +28,7 @@
 					<Add directory="include/Clustering" />
 					<Add directory="./" />
 					<Add directory="include/GradientDescend" />
+					<Add directory="include/Amst/EpsilonClusterMST" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -55,6 +56,7 @@
 					<Add directory="include/GeneralComputation" />
 					<Add directory="./" />
 					<Add directory="include/GradientDescend" />
+					<Add directory="include/Amst/EpsilonClusterMST" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -67,6 +69,8 @@
 		</Compiler>
 		<Unit filename="include/Amst/AmstStat.h" />
 		<Unit filename="include/Amst/DualTreeAMST.h" />
+		<Unit filename="include/Amst/EpsilonClusterMST/EngineClusterMST.h" />
+		<Unit filename="include/Amst/EpsilonClusterMST/EpsilonClusteringRules.h" />
 		<Unit filename="include/Amst/RulesAMST.h" />
 		<Unit filename="include/Amst/RulesRAMSTM.h" />
 		<Unit filename="include/Amst/RulesRangeAMST.h" />

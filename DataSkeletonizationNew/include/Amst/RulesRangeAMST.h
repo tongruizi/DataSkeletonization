@@ -3,6 +3,8 @@
 #include <mlpack/methods/emst/union_find.hpp>
 #include <mlpack/prereqs.hpp>
 
+
+
 template<typename MetricType, typename TreeType>
 class RulesRangeAMST
 {
@@ -57,11 +59,11 @@ public:
                 {
                     if (tiebreakvalue < tiebreakDistances[queryIndex])
                     {
-                    tiebreakDistances[queryIndex] = tiebreakvalue;
-                    neighborsDistances[queryComponentIndex] = thevalue;
-                    //! Just to make sure :D
-                    neighborsInComponent[queryComponentIndex] = queryIndex;
-                    neighborsOutComponent[queryComponentIndex] = referenceIndex;
+                        tiebreakDistances[queryIndex] = tiebreakvalue;
+                        neighborsDistances[queryComponentIndex] = thevalue;
+                        //! Just to make sure :D
+                        neighborsInComponent[queryComponentIndex] = queryIndex;
+                        neighborsOutComponent[queryComponentIndex] = referenceIndex;
                     }
 
                 }
@@ -175,12 +177,14 @@ public:
         // Now calculate the actual bounds.
         const double worstBound = std::max(worstPointBound, worstChildBound);
 
-        // Update the relevant quantities in the node.
+        // Update the relevant quantinamespace mlpack::tree
+{ties in the node.
         queryNode.Stat().MaxNeighborDistance() = worstBound;
         return queryNode.Stat().Bound();
     }
-    typedef typename mlpack::tree::TraversalInfo<TreeType> TraversalInfoType;
 
+
+    typedef typename mlpack::tree::TraversalInfo<TreeType> TraversalInfoType;
 
     const TraversalInfoType& TraversalInfo() const
     {
@@ -236,5 +240,6 @@ private:
 
 
 };
+
 
 #endif // RULESRANGEAMST_H

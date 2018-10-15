@@ -210,7 +210,7 @@ arma::mat results;
 AMSTComputator<metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
 comp.PerformAMSTComputation(cordata,results,epsilon,t);
 //comp.PerformRangeAMSTComputation(cordata,results,epsilon,t, epsilon2);
-GeneralConvertor::MSTToVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/outAMST2.vtk");
+GeneralConvertor::MSTTakeymonkeyoVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/outAMST2.vtk");
 
 }
 
@@ -242,12 +242,12 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
- srand( time( NULL ) );
+ //srand( time( NULL ) );
  //! We use this number sequence to debug the code:
  //srand(20);
-std::cout <<rand() << std::endl;
+//std::cout <<rand() << std::endl;
 //! Here we test:
-runGradientDescendTester();
+//runGradientDescendTester();
 //RunSeriousTests();
 //RunCyclicTests();
 std::cout << "Compilation succeful" << std::endl;

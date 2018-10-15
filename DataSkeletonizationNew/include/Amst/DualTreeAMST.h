@@ -6,7 +6,6 @@
 #include "RulesRangeAMST.h"
 #include <mlpack/methods/emst/edge_pair.hpp>
 #include <mlpack/methods/emst/union_find.hpp>
-#include "RulesRAMSTM.h"
 
 //! Call the tree constructor that does mapping.
 template<typename TreeType, typename MatType>

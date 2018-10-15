@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="KernelDensityEstimation" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/KernelDensityEstimation" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add directory="include/DensityFunctions" />
+					<Add directory="include" />
+					<Add directory="include/TestClasses" />
+					<Add directory="include/Rules" />
+					<Add directory="include/Convertors" />
+					<Add directory="include/Methods" />
+					<Add directory="include/Amst" />
+					<Add directory="include/GeneralComputation" />
+					<Add directory="include/DataGeneration" />
+					<Add directory="include/Graph" />
+					<Add directory="include/Definitions" />
+					<Add directory="include/Clustering" />
+					<Add directory="./" />
+					<Add directory="include/Amst/EpsilonClusterMST" />
+				</Compiler>
+				<Linker>
+					<Add library="boost_serialization" />
+					<Add library="armadillo" />
+					<Add library="mlpack" />
+					<Add library="CGAL" />
+					<Add library="boost_system" />
+					<Add library="gmp" />
+					<Add directory="include/DensityFunctions" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/KernelDensityEstimation" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include/DensityFunctions" />
+					<Add directory="include/TestClasses" />
+					<Add directory="include/Rules" />
+					<Add directory="include/Convertors" />
+					<Add directory="include/Methods" />
+					<Add directory="include/Amst" />
+					<Add directory="include/GeneralComputation" />
+					<Add directory="./" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/Amst/AmstStat.h" />
+		<Unit filename="include/Amst/DualTreeAMST.h" />
+		<Unit filename="include/Amst/EpsilonClusterMST/EngineClusterMST.h" />
+		<Unit filename="include/Amst/EpsilonClusterMST/EpsilonClusteringRules.h" />
+		<Unit filename="include/Amst/RulesAMST.h" />
+		<Unit filename="include/Amst/RulesRAMSTM.h" />
+		<Unit filename="include/Amst/RulesRangeAMST.h" />
+		<Unit filename="include/Clustering/ClusterElement.cpp" />
+		<Unit filename="include/Clustering/ClusterElement.h" />
+		<Unit filename="include/Clustering/ClusterSort.cpp" />
+		<Unit filename="include/Clustering/ClusterSort.h" />
+		<Unit filename="include/Clustering/ClusteringMethods.cpp" />
+		<Unit filename="include/Clustering/ClusteringMethods.h" />
+		<Unit filename="include/Clustering/DescriptorCluster.cpp" />
+		<Unit filename="include/Clustering/DescriptorCluster.h" />
+		<Unit filename="include/Convertors/GeneralConvertor.cpp" />
+		<Unit filename="include/Convertors/GeneralConvertor.h" />
+		<Unit filename="include/DataGeneration/CloudGenerator.cpp" />
+		<Unit filename="include/DataGeneration/CloudGenerator.h" />
+		<Unit filename="include/DataGeneration/GraphGeneration.cpp" />
+		<Unit filename="include/DataGeneration/GraphGeneration.h" />
+		<Unit filename="include/Definitions/Definitions.h" />
+		<Unit filename="include/DensityFunctions/ExponentialDensity.cpp" />
+		<Unit filename="include/DensityFunctions/ExponentialDensity.h" />
+		<Unit filename="include/DensityFunctions/LinearDensity.cpp" />
+		<Unit filename="include/DensityFunctions/LinearDensity.h" />
+		<Unit filename="include/GeneralComputation/Computation.h" />
+		<Unit filename="include/GeneralComputation/PointTools.cpp" />
+		<Unit filename="include/GeneralComputation/PointTools.h" />
+		<Unit filename="include/GradientDescend/SingleEdgeOptimizer.cpp" />
+		<Unit filename="include/GradientDescend/SingleEdgeOptimizer.h" />
+		<Unit filename="include/Graph/Graph.cpp" />
+		<Unit filename="include/Graph/Graph.h" />
+		<Unit filename="include/Includes.h" />
+		<Unit filename="include/Methods/AMSTComputator.h" />
+		<Unit filename="include/Methods/BranchDetection.cpp" />
+		<Unit filename="include/Methods/BranchDetection.h" />
+		<Unit filename="include/Methods/NaiveMethods.cpp" />
+		<Unit filename="include/Methods/NaiveMethods.h" />
+		<Unit filename="include/Methods/TestPerformer.h" />
+		<Unit filename="include/Methods/TreeCreator.h" />
+		<Unit filename="include/Rules/DensityComputator.h" />
+		<Unit filename="include/Rules/DensityEstimationRules.h" />
+		<Unit filename="include/Rules/KDEStats.h" />
+		<Unit filename="include/TestClasses/FunctionEvaluator.h" />
+		<Unit filename="include/TestClasses/TreeExperements.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

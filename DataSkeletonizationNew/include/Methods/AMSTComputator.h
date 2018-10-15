@@ -3,6 +3,7 @@
 
 #include "DualTreeAMST.h"
 #include "DensityComputator.h"
+#include "EngineClusterMST.h"
 
 
 template<
@@ -59,7 +60,7 @@ public:
         //! 1) We create tree
         std::vector<size_t> oldfromnew;
         Tree* kTree = new Tree(in, oldfromnew);
-       // Tree* kTree = TreeCreator::BuildTree<Tree>(std::move(in), oldfromnew);
+        // Tree* kTree = TreeCreator::BuildTree<Tree>(std::move(in), oldfromnew);
         std::cout << "Tree allocated succefully " << std::endl;
         //! 2a) We compute the KDE
         std::vector<double> f(in.n_cols);
@@ -87,7 +88,7 @@ public:
         std::cout << "Treestage" << std::endl;
         std::vector<size_t> oldfromnew;
         Tree* kTree = new Tree(in, oldfromnew);
-       // Tree* kTree = TreeCreator::BuildTree<Tree>(std::move(in), oldfromnew);
+        // Tree* kTree = TreeCreator::BuildTree<Tree>(std::move(in), oldfromnew);
         //! 2a) We compute the KDE
         std::cout << "KDEstage" << std::endl;
         std::vector<double> f(in.n_cols);
@@ -106,6 +107,28 @@ public:
         kTree = NULL;
         delete kTree;
         std::cout << "Completed" << std::endl;
+    }
+
+    void ClusterAMSTComputation(arma::mat & in, arma::mat & out, double epsilon, double t, double epsilon2)
+    {
+        //! 1) We create tree
+        std::cout << "Treestage" << std::endl;
+        std::vector<size_t> oldfromnew;
+        Tree* kTree = new Tree(in, oldfromnew);
+        //! 2a) We compute the KDE
+        std::cout << "KDEstage" << std::endl;
+        std::vector<double> f(in.n_cols);
+        std::vector<int> vn(in.n_cols);
+        DensityComputator<MetricType, MatType, DensityType, TreeType> calcf(kTree);
+        calcf.ComputeDensity(f, vn, epsilon);
+        arma::mat dg = in.t();
+        //! 2b) Rescaling
+        Rescale(f, t);
+        //! 3) We compute new MST
+        EngineClusterMST<MetricType, MatType, TreeType> finalCalc(kTree,oldfromnew, false);
+        finalCalc.ComputeAMST(out,f,epsilon2);
+
+
     }
 
     virtual ~AMSTComputator() {}
