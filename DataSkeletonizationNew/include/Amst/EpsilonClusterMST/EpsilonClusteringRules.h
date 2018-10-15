@@ -1,14 +1,14 @@
-#ifndef RULESRANGEAMST_H
-#define RULESRANGEAMST_H
+#ifndef EPSILONCLUSTERINGRULES_H
+#define EPSILONCLUSTERINGRULES_H
 #include <mlpack/methods/emst/union_find.hpp>
 #include <mlpack/prereqs.hpp>
 #include <mlpack/core/tree/traversal_info.hpp>
 
 template<typename MetricType, typename TreeType>
-class RulesRangeAMST
+class EpsilonClusteringRules
 {
 public:
-    RulesRangeAMST(const arma::mat& dataSet,
+    EpsilonClusteringRules(const arma::mat& dataSet,
                    mlpack::emst::UnionFind& connections,
                    arma::vec& neighborsDistances,
                    arma::vec& tiebreakDistances,

@@ -6,6 +6,7 @@
 #include <mlpack/methods/emst/union_find.hpp>
 #include <mlpack/methods/emst/dtb.hpp>
 #include <mlpack/methods/emst/dtb_rules.hpp>
+#include "EpsilonClusterMST/EpsilonClusteringRules.h"
 
 //! The idea is to build mst on clusters
 //! In first step we map every element to the largest value in the epsilon neighborhood its located
@@ -31,7 +32,7 @@ private:
     const MatType& data;
     //! Indicates whether or not we "own" the tree.
     bool ownTree;
-    //! Indicates whether or not O(n^2) naive mode will be used.
+    //! IndicatesEpsilonClusterMST/ whether or not O(n^2) naive mode will be used.
     bool naive;
     //! Edges.
     std::vector<mlpack::emst::EdgePair> edges; // We must use vector with non-numerical types.
@@ -79,7 +80,7 @@ public:
 
     {
         edges.reserve(data.n_cols - 1); // Fill with EdgePairs.
-        clusterCorrespondance.set_size(data.n_cols);
+        clusterCorrespondance.reserve(data.n_cols);
         neighborsInComponent.set_size(data.n_cols);
         neighborsOutComponent.set_size(data.n_cols);
         neighborsDistances.set_size(data.n_cols);
@@ -247,8 +248,9 @@ public:
         }
         //! Setup the tree for the computations
         RecursiveComputator(*fp,tree);
+//        typedef RulesRangeAMST<MetricType, Tree> RuleType2;
 
-        typedef EpsilonClusteringRule<MetricType, Tree> RuleType;
+        typedef EpsilonClusteringRules<MetricType, Tree> RuleType;
         RuleType rules(data, neighborsDistances, metric, *fp, epsilon, clusterCorrespondance);
 
         //! Perform the clustering and remember to connect the clusters in the unionfind data-structure
@@ -258,7 +260,7 @@ public:
 
         //! Update the unionfind datastructure:
         int componentsFormed = 0;
-        for (int i = 0; i < clusterCorrespondance.size(), i++)
+        for (int i = 0; i < clusterCorrespondance.size(); i++)
         {
             if(i != clusterCorrespondance[i])
             {
@@ -270,8 +272,9 @@ public:
         //! CleanUp:
         Cleanup();
         //! Compute MST (in a bit different way):
+        //  typedef DTBRules<MetricType, Tree> RuleType;
 
-        typedef DTBRules<MetricType, Tree> RuleTypeMST;
+        typedef mlpack::emst::DTBRules<MetricType, Tree> RuleTypeMST;
         RuleTypeMST rulesMST(data, connections, neighborsDistances, neighborsInComponent,
                              neighborsOutComponent, metric);
 

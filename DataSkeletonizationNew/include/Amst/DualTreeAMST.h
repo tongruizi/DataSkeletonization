@@ -6,6 +6,7 @@
 #include "RulesRangeAMST.h"
 #include <mlpack/methods/emst/edge_pair.hpp>
 #include <mlpack/methods/emst/union_find.hpp>
+#include "RulesRAMSTM.h"
 
 //! Call the tree constructor that does mapping.
 template<typename TreeType, typename MatType>
@@ -303,7 +304,7 @@ public:
         {
             neighborsDistances[i] = DBL_MAX;
             tiebreakDistances[i] = DBL_MAX;
-        }
+            }
 
         if (!naive)
             CleanupHelper(tree);
@@ -390,7 +391,7 @@ public:
 
         typedef RulesRangeAMST<MetricType, Tree> RuleType2;
         RuleType2 rules(data, connections, neighborsDistances, tiebreakDistances, neighborsInComponent,
-                        neighborsOutComponent, metric, *fp, epsilon);
+                       neighborsOutComponent, metric, *fp, epsilon);
         while (edges.size() < (data.n_cols - 1))
         {
             if (naive)
@@ -428,7 +429,7 @@ public:
         fp = NULL;
         delete fp;
     }
-    void ComputeRangeAMSTModifiedTwo(arma::mat& results, std::vector<double> & f, double epsilon)
+     void ComputeRangeAMSTModifiedTwo(arma::mat& results, std::vector<double> & f, double epsilon)
     {
         mlpack::Timer::Start("amst/amst_computation");
         totalDist = 0; // Reset distance.
@@ -449,7 +450,7 @@ public:
 
         typedef RulesRAMSTM<MetricType, Tree> RuleType3;
         RuleType3 rules(data, connections, neighborsDistances, neighborsInComponent,
-                        neighborsOutComponent, metric, *fp, epsilon);
+                       neighborsOutComponent, metric, *fp, epsilon);
         while (edges.size() < (data.n_cols - 1))
         {
             if (naive)

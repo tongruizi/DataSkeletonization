@@ -3,8 +3,7 @@
 
 #include "DualTreeAMST.h"
 #include "DensityComputator.h"
-#include "EngineClusterMST.h"
-
+#include "EpsilonClusterMST/EngineClusterMST.h"
 
 template<
     typename MetricType,
@@ -108,7 +107,6 @@ public:
         delete kTree;
         std::cout << "Completed" << std::endl;
     }
-
     void ClusterAMSTComputation(arma::mat & in, arma::mat & out, double epsilon, double t, double epsilon2)
     {
         //! 1) We create tree
@@ -125,7 +123,7 @@ public:
         //! 2b) Rescaling
         Rescale(f, t);
         //! 3) We compute new MST
-        EngineClusterMST<MetricType, MatType, TreeType> finalCalc(kTree,oldfromnew, false);
+        EngineCluster<MetricType, MatType, TreeType> finalCalc(kTree,oldfromnew, false);
         finalCalc.ComputeAMST(out,f,epsilon2);
 
 

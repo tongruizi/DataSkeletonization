@@ -210,7 +210,7 @@ arma::mat results;
 AMSTComputator<metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
 comp.PerformAMSTComputation(cordata,results,epsilon,t);
 //comp.PerformRangeAMSTComputation(cordata,results,epsilon,t, epsilon2);
-GeneralConvertor::MSTTakeymonkeyoVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/outAMST2.vtk");
+//GeneralConvertor::MSTTakeymonkeyoVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/outAMST2.vtk");
 
 }
 
@@ -251,5 +251,5 @@ int main()
 //RunSeriousTests();
 //RunCyclicTests();
 std::cout << "Compilation succeful" << std::endl;
-std::cout << "Yes it is indeed " << std::endl;
+std::cout << "Bug fixed" << std::endl;
 }

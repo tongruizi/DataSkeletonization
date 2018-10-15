@@ -166,7 +166,6 @@ public:
         queryNode.Stat().MaxNeighborDistance() = worstBound;
         return queryNode.Stat().Bound();
     }
-
     typedef typename mlpack::tree::TraversalInfo<TreeType> TraversalInfoType;
 
 

@@ -605,7 +605,7 @@
 1527608297 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/PointTools.h
 	"Definitions.h"
 
-1539357601 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GradientDescend/SingleEdgeOptimizer.cpp
+1539358149 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GradientDescend/SingleEdgeOptimizer.cpp
 	"SingleEdgeOptimizer.h"
 	<mlpack/methods/neighbor_search/neighbor_search.hpp>
 	<mlpack/methods/emst/dtb.hpp>
@@ -666,11 +666,12 @@
 	<mlpack/prereqs.hpp>
 	<mlpack/core/tree/cover_tree.hpp>
 
-1537346360 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AMSTComputator.h
+1539596582 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AMSTComputator.h
 	"DualTreeAMST.h"
 	"DensityComputator.h"
+	"EpsilonClusterMST/EngineClusterMST.h"
 
-1539336458 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/DualTreeAMST.h
+1539590757 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/DualTreeAMST.h
 	"AmstStat.h"
 	"RulesAMST.h"
 	"RulesRangeAMST.h"
@@ -682,7 +683,7 @@
 	<mlpack/methods/emst/union_find.hpp>
 	<mlpack/prereqs.hpp>
 
-1539336286 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/RulesRangeAMST.h
+1536741818 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/RulesRangeAMST.h
 	<mlpack/methods/emst/union_find.hpp>
 	<mlpack/prereqs.hpp>
 
@@ -742,4 +743,17 @@
 	"SingleEdgeOptimizer.h"
 	"CloudGenerator.h"
 	"SingleEdgeOptimizer.h"
+
+1539592196 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EngineClusterMST.h
+	"AmstStat.h"
+	<mlpack/methods/emst/edge_pair.hpp>
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/methods/emst/dtb.hpp>
+	<mlpack/methods/emst/dtb_rules.hpp>
+	"EpsilonClusterMST/EpsilonClusteringRules.h"
+
+1539590934 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EpsilonClusteringRules.h
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/prereqs.hpp>
+	<mlpack/core/tree/traversal_info.hpp>
 
