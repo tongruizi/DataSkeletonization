@@ -7,6 +7,7 @@
 #include <mlpack/methods/emst/dtb.hpp>
 #include <mlpack/methods/emst/dtb_rules.hpp>
 #include "EpsilonClusterMST/EpsilonClusteringRules.h"
+#include "unordered_map"
 
 //! The idea is to build mst on clusters
 //! In first step we map every element to the largest value in the epsilon neighborhood its located
@@ -90,9 +91,9 @@ public:
     }
     void AddEdge(
 
-                 const size_t e1,
-                 const size_t e2,
-                 const double distance)
+        const size_t e1,
+        const size_t e2,
+        const double distance)
     {
         mlpack::Log::Assert((distance >= 0.0),
                             "DualTreeAMST::AddEdge(): distance cannot be negative.");
@@ -230,7 +231,7 @@ public:
     }
 
 
-    void ComputeAMST(arma::mat& results, std::vector<double> & f, double epsilon)
+    void ComputeAMST(arma::mat& results, std::vector<double> & f, double epsilon, std::unordered_map<int, std::vector<int>> & clusters)
     {
         mlpack::Timer::Start("amst/amst_computation");
         totalDist = 0; // Reset distance.
@@ -251,7 +252,8 @@ public:
 //        typedef RulesRangeAMST<MetricType, Tree> RuleType2;
 
         typedef EpsilonClusteringRules<MetricType, Tree> RuleType;
-        RuleType rules(data, neighborsDistances, metric, *fp, epsilon, clusterCorrespondance);
+        RuleType rules(data, neighborsDistances, metric, *fp, clusterCorrespondance, epsilon);
+
 
         //! Perform the clustering and remember to connect the clusters in the unionfind data-structure
 
@@ -262,10 +264,19 @@ public:
         int componentsFormed = 0;
         for (int i = 0; i < clusterCorrespondance.size(); i++)
         {
-            if(i != clusterCorrespondance[i])
+            int j = clusterCorrespondance[i];
+            if(i != j)
             {
-                connections.Union(i,clusterCorrespondance[i]);
+                connections.Union(i,j);
                 componentsFormed++;
+                if (clusters.find(j) != clusters.end())
+                {
+                    clusters[oldFromNew[j]].push_back(oldFromNew[i]);
+                }
+                else
+                {
+                    clusters[oldFromNew[j]] = std::vector<int>();
+                }
             }
         }
 

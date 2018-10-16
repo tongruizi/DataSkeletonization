@@ -107,14 +107,13 @@ public:
         delete kTree;
         std::cout << "Completed" << std::endl;
     }
-    void ClusterAMSTComputation(arma::mat & in, arma::mat & out, double epsilon, double t, double epsilon2)
+    void ClusterAMSTComputation(arma::mat & in, arma::mat & out, double epsilon, double t, double epsilon2, std::unordered_map<int, std::vector<int>> & clusters)
     {
         //! 1) We create tree
         std::cout << "Treestage" << std::endl;
         std::vector<size_t> oldfromnew;
         Tree* kTree = new Tree(in, oldfromnew);
         //! 2a) We compute the KDE
-        std::cout << "KDEstage" << std::endl;
         std::vector<double> f(in.n_cols);
         std::vector<int> vn(in.n_cols);
         DensityComputator<MetricType, MatType, DensityType, TreeType> calcf(kTree);
@@ -124,8 +123,9 @@ public:
         Rescale(f, t);
         //! 3) We compute new MST
         EngineCluster<MetricType, MatType, TreeType> finalCalc(kTree,oldfromnew, false);
-        finalCalc.ComputeAMST(out,f,epsilon2);
-
+        finalCalc.ComputeAMST(out,f,epsilon2,clusters);
+        kTree = NULL;
+        delete kTree;
 
     }
 

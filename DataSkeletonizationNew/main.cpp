@@ -230,6 +230,12 @@ void runGradientDescendTester()
 {
 std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/EdgeTest/First_Test/";
 GradientDescendTester::QuickTest(folder);
+}
+
+void TestNewAMSTTreeType()
+{
+std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/FirstTest/";
+TestPerformer::RunTestsQuick(folder, 8, 4000, 100, M_PI/3,1,2,0.01,10);
 
 }
 
@@ -250,6 +256,7 @@ int main()
 //runGradientDescendTester();
 //RunSeriousTests();
 //RunCyclicTests();
+//TestNewAMSTTreeType();
 std::cout << "Compilation succeful" << std::endl;
 std::cout << "Bug fixed" << std::endl;
 }

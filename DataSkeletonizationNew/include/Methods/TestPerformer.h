@@ -14,6 +14,53 @@ class TestPerformer
 public:
     TestPerformer() {}
 
+    static void RunTestsQuick(std::string & outFolder, int gn, int n, double scale, double minangle, int k, double epc, double epd, double epmst)
+    {
+
+        double t = 2;
+        double timesumm = 0;
+        AMSTComputator<mlpack::metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
+        for (int i = 0; i < k; i++)
+        {
+            std::unordered_map<int, std::vector<int>> clusterz;
+            std::string numberI =  std::to_string(i);
+            std::string outputName = "outputAMST" + numberI + ".vtk";
+            std::string outputPath = outFolder + outputName;
+
+            arma::mat cloud;
+            arma::mat outputGraph;
+            CloudGenerator::generatePointsStandartInArmaMat(gn, n,minangle,scale,epc,cloud);
+            arma::mat trcloud = cloud.t();
+
+            // ClusterAMSTComputation(arma::mat & in, arma::mat & out, double epsilon, double t, double epsilon2)
+            comp.ClusterAMSTComputation(trcloud,outputGraph,epd,t,epmst,clusterz);
+            GeneralConvertor::MSTToVTK(trcloud,outputGraph, outputPath);
+
+            //! Print out the clusters:
+
+            int numfirst = 0;
+
+            for (auto it = clusterz.begin(); it != clusterz.end(); it++)
+            {
+                std::string debugpath = outFolder + "debug" + std::to_string(numfirst) + ".csv";
+                std::vector<double> simpleFunction(cloud.n_rows);
+                int elemnumber = (it->second).size();
+                arma::mat theCloud(elemnumber,3);
+                for (int j = 0; j < elemnumber; j++)
+                {
+                    for (int p = 0; p < elemnumber; p++)
+                    {
+                    theCloud(j,p) = cloud(j,p);
+                    }
+                }
+                simpleFunction[it->first] = 1;
+                GeneralConvertor::MatInfoToFile(debugpath, theCloud, simpleFunction);
+                numfirst++;
+            }
+
+        }
+    }
+
     static void RunTests(std::string & outFolder, int gn, int n, double scale, double minangle, int k, double epc, double epd, double epmst)
     {
         double t = 2;
@@ -54,7 +101,7 @@ public:
     {
         double t = 2;
         double timesumm = 0;
-                AMSTComputator<mlpack::metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
+        AMSTComputator<mlpack::metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
 
         for (int i = 0; i < k; i++)
         {
