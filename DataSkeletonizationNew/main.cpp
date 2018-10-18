@@ -73,53 +73,53 @@ void Tests3()
 
 void Tests4()
 {
-arma::mat data;
-data.set_size(2,3);
-data(0,0) = 1;
-data(0,1) = 2;
-data(0,2) = 3;
-data(1,0) = 4;
-data(1,1) = 5;
-data(1,2) = 6;
-std::cout << data << std::endl;
+    arma::mat data;
+    data.set_size(2,3);
+    data(0,0) = 1;
+    data(0,1) = 2;
+    data(0,2) = 3;
+    data(1,0) = 4;
+    data(1,1) = 5;
+    data(1,2) = 6;
+    std::cout << data << std::endl;
 
 }
 void Tests5()
 {
-arma::mat data;
-GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/worm.xyz",data);
-data.save("Output.csv",arma::csv_ascii);
+    arma::mat data;
+    GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/worm.xyz",data);
+    data.save("Output.csv",arma::csv_ascii);
 //std::cout << data << std::endl;
 
 }
 
 void Tests6()
 {
-arma::mat data;
-GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
-std::vector<double> results;
-NaiveMethods::ComputeDensityNaiveRow<ExponentialDensity>(results,data);
-GeneralConvertor::MatInfoToFile("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/branchedColoring.csv", data, results);
+    arma::mat data;
+    GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
+    std::vector<double> results;
+    NaiveMethods::ComputeDensityNaiveRow<ExponentialDensity>(results,data);
+    GeneralConvertor::MatInfoToFile("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/branchedColoring.csv", data, results);
 }
 
 //typedef tree::KDTree<metric::EuclideanDistance> superTreeType;
 
 void Tests7()
 {
-std::vector<double> ww{0,1};
+    std::vector<double> ww{0,1};
 // DensityEstimationRules< metric::EuclideanDistance, arma::mat, ExponentialDensity , superTreeType > rulePackage(ww);
 // rulePackage.TestMethodAdditionToResults(0, 1337);
-std::cout << ww[0] << std::endl;
-std::cout << "Compiled Succefully" << std::endl;
+    std::cout << ww[0] << std::endl;
+    std::cout << "Compiled Succefully" << std::endl;
 }
 
 void Tests8()
 {
-arma::mat data;
-TreeExperements exper;
-GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
-arma::mat cordata = data.t();
-exper.Test_Cover_Tree(cordata);
+    arma::mat data;
+    TreeExperements exper;
+    GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
+    arma::mat cordata = data.t();
+    exper.Test_Cover_Tree(cordata);
 }
 // template<typename MetricType,
 //         typename MatType,
@@ -136,79 +136,79 @@ typedef mlpack::tree::KDTree<metric::EuclideanDistance, mlpack::tree::EmptyStati
 
 void Test9()
 {
-std::cout << "Computing the result both ways:" << std::endl;
+    std::cout << "Computing the result both ways:" << std::endl;
 //! Here we test the method:
-arma::mat data;
-TreeExperements exper;
-GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
-arma::mat cordata = data.t();
+    arma::mat data;
+    TreeExperements exper;
+    GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
+    arma::mat cordata = data.t();
 //! Testing method bruteforce way:
 
-mlpack::Timer::Start("Debug1");
-std::vector<double> results;
-NaiveMethods::ComputeDensityNaiveRow<ExponentialDensity>(results,data);
-GeneralConvertor::MatInfoToFile("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/debug/brute.csv", data, results);
-mlpack::Timer::Stop("Debug1");
+    mlpack::Timer::Start("Debug1");
+    std::vector<double> results;
+    NaiveMethods::ComputeDensityNaiveRow<ExponentialDensity>(results,data);
+    GeneralConvertor::MatInfoToFile("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/debug/brute.csv", data, results);
+    mlpack::Timer::Stop("Debug1");
 
 
 //! Testing method harder way:
-DensityComputator< metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> DC(cordata);
-std::vector<double> SumVector(data.n_cols);
-std::vector<int> visitNumber(data.n_cols);
-double epsilon = 0.001;
-DC.ComputeDensity(SumVector, visitNumber, epsilon);
-GeneralConvertor::MatInfoToFile("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/debug/cover.csv", data, SumVector);
-GeneralConvertor::VectorToFile("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/debug/coverDebug.csv", visitNumber );
+    DensityComputator< metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> DC(cordata);
+    std::vector<double> SumVector(data.n_cols);
+    std::vector<int> visitNumber(data.n_cols);
+    double epsilon = 0.001;
+    DC.ComputeDensity(SumVector, visitNumber, epsilon);
+    GeneralConvertor::MatInfoToFile("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/debug/cover.csv", data, SumVector);
+    GeneralConvertor::VectorToFile("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/debug/coverDebug.csv", visitNumber );
 
-auto tt =  mlpack::Timer::Get("Debug1");
-std::cout << "Time for brute: " << tt.count() << std::endl;
-std::cout << "Time for effective computation: " << mlpack::Timer::Get("KDE/Computation").count() << std::endl;
+    auto tt =  mlpack::Timer::Get("Debug1");
+    std::cout << "Time for brute: " << tt.count() << std::endl;
+    std::cout << "Time for effective computation: " << mlpack::Timer::Get("KDE/Computation").count() << std::endl;
 
 }
 
 void MSTTest()
 {
-arma::mat data;
-GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
-arma::mat cordata = data.t();
-mlpack::emst::DualTreeBoruvka<> MSTOP(cordata);
-arma::mat results;
-MSTOP.ComputeMST(results);
-GeneralConvertor::MSTToVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/emst/out.vtk");
+    arma::mat data;
+    GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
+    arma::mat cordata = data.t();
+    mlpack::emst::DualTreeBoruvka<> MSTOP(cordata);
+    arma::mat results;
+    MSTOP.ComputeMST(results);
+    GeneralConvertor::MSTToVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/emst/out.vtk");
 
 }
 
 void AMSTTest()
 {
-arma::mat data;
-GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/Projects/BranchPointFind/Data/branched.xyz",data);
-arma::mat cordata = data.t();
-double epsilon = 0.01;
-double t = 2;
-double epsilon2 = 4;
-arma::mat results;
+    arma::mat data;
+    GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/Projects/BranchPointFind/Data/branched.xyz",data);
+    arma::mat cordata = data.t();
+    double epsilon = 0.01;
+    double t = 2;
+    double epsilon2 = 4;
+    arma::mat results;
 
 //! The method:
-AMSTComputator<metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
+    AMSTComputator<metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
 //comp.PerformAMSTComputation(cordata,results,epsilon,t);
-comp.PerformRangeAMSTComputation(cordata,results,epsilon,t, epsilon2);
-GeneralConvertor::MSTToVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/ComplicatedData/BranchedAMSTl4Fast.vtk");
+    comp.PerformRangeAMSTComputation(cordata,results,epsilon,t, epsilon2);
+    GeneralConvertor::MSTToVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/ComplicatedData/BranchedAMSTl4Fast.vtk");
 
 }
 
 void AMSTTest2()
 {
-arma::mat data;
-GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
-arma::mat cordata = data.t();
-double epsilon = 0.01;
-double t = 100;
-double epsilon2 = 2;
-arma::mat results;
+    arma::mat data;
+    GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
+    arma::mat cordata = data.t();
+    double epsilon = 0.01;
+    double t = 100;
+    double epsilon2 = 2;
+    arma::mat results;
 
 //! The method:
-AMSTComputator<metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
-comp.PerformAMSTComputation(cordata,results,epsilon,t);
+    AMSTComputator<metric::EuclideanDistance, arma::mat, ExponentialDensity,mlpack::tree::KDTree> comp;
+    comp.PerformAMSTComputation(cordata,results,epsilon,t);
 //comp.PerformRangeAMSTComputation(cordata,results,epsilon,t, epsilon2);
 //GeneralConvertor::MSTTakeymonkeyoVTK(cordata,results, "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/outAMST2.vtk");
 
@@ -216,26 +216,45 @@ comp.PerformAMSTComputation(cordata,results,epsilon,t);
 
 void RunSeriousTests()
 {
-std::string folder = "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/Tests3/";
-TestPerformer::RunTests(folder, 8, 4000, 100, M_PI/3,20,5,0.01,10);
+    std::string folder =  "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/SecondTest/";
+    TestPerformer::RunTests(folder, 8, 50000, 100, M_PI/3,20,10,0.01,10);
 }
 
 void RunCyclicTests()
 {
-std::string folder = "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/Cyclic3/";
-TestPerformer::RunCyclicTests(folder, 6000, 100, 20, 10, 0.01, 20);
+    std::string folder = "/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/outputs/amst/Cyclic3/";
+    TestPerformer::RunCyclicTests(folder, 6000, 100, 20, 10, 0.01, 20);
 }
 
 void runGradientDescendTester()
 {
-std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/EdgeTest/First_Test/";
-GradientDescendTester::QuickTest(folder);
+    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/EdgeTest/First_Test/";
+    GradientDescendTester::QuickTest(folder);
 }
 
 void TestNewAMSTTreeType()
 {
-std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/FirstTest/";
-TestPerformer::RunTestsQuick(folder, 8, 4000, 100, M_PI/3,1,2,0.01,10);
+    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/ThirdTest/";
+    TestPerformer::RunTestsQuick(folder, 8, 4000, 100, M_PI/3,10,7,0.01,10);
+
+}
+
+void MassiveConvertion()
+{
+    for (int i = 0; i <= 106; i++ )
+    {
+        std::string infolder = "/home/yury/Downloads/Cluster/";
+        std::string outfolder = "/home/yury/Downloads/ClusterVTK/";
+        infolder = infolder + "Cluster_Frame0000000.xyz;
+        outfolder = outfolder + "out1.vtk";
+        arma::mat data;
+        GeneralConvertor::XYZtoMAT(infolder,data);
+        arma::mat cordata = data.t();
+        mlpack::emst::DualTreeBoruvka<> MSTOP(cordata);
+        arma::mat results;
+        MSTOP.ComputeMST(results);
+        GeneralConvertor::MSTToVTK(cordata,results, outfolder);
+    }
 
 }
 
@@ -248,15 +267,16 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
- //srand( time( NULL ) );
- //! We use this number sequence to debug the code:
- //srand(20);
+    srand( time( NULL ) );
+//! We use this number sequence to debug the code:
+//srand(20);
 //std::cout <<rand() << std::endl;
 //! Here we test:
 //runGradientDescendTester();
 //RunSeriousTests();
 //RunCyclicTests();
 //TestNewAMSTTreeType();
-std::cout << "Compilation succeful" << std::endl;
-std::cout << "Bug fixed" << std::endl;
+    MassiveConvertion();
+    std::cout << "Compilation succeful" << std::endl;
+    std::cout << "Bug fixed" << std::endl;
 }

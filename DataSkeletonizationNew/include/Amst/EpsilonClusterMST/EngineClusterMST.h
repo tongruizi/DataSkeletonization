@@ -8,6 +8,7 @@
 #include <mlpack/methods/emst/dtb_rules.hpp>
 #include "EpsilonClusterMST/EpsilonClusteringRules.h"
 #include "unordered_map"
+#include "GeneralConvertor.h"
 
 //! The idea is to build mst on clusters
 //! In first step we map every element to the largest value in the epsilon neighborhood its located
@@ -81,7 +82,7 @@ public:
 
     {
         edges.reserve(data.n_cols - 1); // Fill with EdgePairs.
-        clusterCorrespondance.reserve(data.n_cols);
+        clusterCorrespondance.resize(data.n_cols);
         neighborsInComponent.set_size(data.n_cols);
         neighborsOutComponent.set_size(data.n_cols);
         neighborsDistances.set_size(data.n_cols);
@@ -146,14 +147,17 @@ public:
     {
         // Sort the edges.
         std::sort(edges.begin(), edges.end(), SortFun);
-
+        std::cout << "Before asserting" << std::endl;
         mlpack::Log::Assert(edges.size() == data.n_cols - 1);
+        std::cout << "After asserting" << std::endl;
+        std::cout << "The edges size is currently: " << edges.size() << std::endl;
         results.set_size(3, edges.size());
 
         // Need to unpermute the point labels.
         if ((!naive && ownTree && mlpack::tree::TreeTraits<Tree>::RearrangesDataset)||(specialmode == true))
         {
-            for (size_t i = 0; i < (data.n_cols - 1); i++)
+            std::cout << "Entering the green zone" << std::endl;
+            for (size_t i = 0; i < (edges.size()); i++)
             {
                 // Make sure the edge list stores the smaller index first to
                 // make checking correctness easier
@@ -175,6 +179,7 @@ public:
                 results(1, i) = edges[i].Greater();
                 results(2, i) = edges[i].Distance();
             }
+            std::cout << "Succesfully leaving the green zone" << std::endl;
         }
         else
         {
@@ -251,6 +256,9 @@ public:
         RecursiveComputator(*fp,tree);
 //        typedef RulesRangeAMST<MetricType, Tree> RuleType2;
 
+
+        std::cout << "Cluster correspondance size: (precheck) " << clusterCorrespondance.size()  <<std::endl;
+
         typedef EpsilonClusteringRules<MetricType, Tree> RuleType;
         RuleType rules(data, neighborsDistances, metric, *fp, clusterCorrespondance, epsilon);
 
@@ -261,24 +269,47 @@ public:
         traverser.Traverse(*tree, *tree);
 
         //! Update the unionfind datastructure:
+        std::vector<int> endPointDetector(data.n_cols);
         int componentsFormed = 0;
+        std::cout << "Cluster correspondance size: " << clusterCorrespondance.size()  <<std::endl;
+        std::ofstream mystream;
+        mystream.open("/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/FirstTest/bigdebug.txt");
+        int endpoints =0;
         for (int i = 0; i < clusterCorrespondance.size(); i++)
         {
             int j = clusterCorrespondance[i];
-            if(i != j)
+            if(i == j)
             {
-                connections.Union(i,j);
-                componentsFormed++;
-                if (clusters.find(j) != clusters.end())
-                {
-                    clusters[oldFromNew[j]].push_back(oldFromNew[i]);
-                }
-                else
-                {
-                    clusters[oldFromNew[j]] = std::vector<int>();
-                }
+                endPointDetector[j] = 1;
+                endpoints++;
             }
         }
+        mystream << "Number of endpoints: " << endpoints << std::endl;
+        for (int i = 0; i < clusterCorrespondance.size(); i++)
+        {
+            int j = i;
+            //  std::cout << i << " - " << j << std::endl;
+            while(endPointDetector[j] != 1)
+            {
+                j = clusterCorrespondance[j];
+            }
+            clusterCorrespondance[i] = j;
+            if (i != j)
+            {
+                //! This is the acutal implementation:
+                mystream << "Pair " << i << " - " << j << std::endl;
+                connections.Union(i,j);
+                componentsFormed++;
+
+
+                //! This is debugging:
+
+                clusters[oldFromNew[j]].push_back(oldFromNew[i]);
+                mystream << "Has now elements: " << clusters[oldFromNew[j]].size() << std::endl;
+            }
+        }
+        mystream.close();
+        std::cout << "first debugging subtask finnished " << std::endl;
 
         //! CleanUp:
         Cleanup();
@@ -292,6 +323,7 @@ public:
 
         while (edges.size() < (data.n_cols - 1)-componentsFormed)
         {
+            std::cout << "Lap finnished" << std::endl;
             if (naive)
             {
                 // Full O(N^2) traversal.
@@ -321,7 +353,9 @@ public:
 
         mlpack::Timer::Stop("amst/amst_computation");
 
+        std::cout << "Before emitting results" << std::endl;
         EmitResults(results);
+        std::cout << "After emitting results" << std::endl;
 
         mlpack::Log::Info << "Total (augemented) spanning tree length: " << totalDist << std::endl;
         fp = NULL;
