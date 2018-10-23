@@ -234,8 +234,8 @@ void runGradientDescendTester()
 
 void TestNewAMSTTreeType()
 {
-    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/ThirdTest/";
-    TestPerformer::RunTestsQuick(folder, 8, 4000, 100, M_PI/3,10,7,0.01,10);
+    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/FourthTest/";
+    TestPerformer::RunTestsQuick(folder, 8, 20000, 100, M_PI/10,10,7,0.01,10);
 
 }
 
@@ -245,7 +245,7 @@ void MassiveConvertion()
     {
         std::string infolder = "/home/yury/Downloads/Cluster/";
         std::string outfolder = "/home/yury/Downloads/ClusterVTK/";
-        infolder = infolder + "Cluster_Frame0000000.xyz;
+                infolder = infolder + "Cluster_Frame0000000.xyz";
         outfolder = outfolder + "out1.vtk";
         arma::mat data;
         GeneralConvertor::XYZtoMAT(infolder,data);
@@ -255,7 +255,6 @@ void MassiveConvertion()
         MSTOP.ComputeMST(results);
         GeneralConvertor::MSTToVTK(cordata,results, outfolder);
     }
-
 }
 
 int main()
@@ -276,7 +275,8 @@ int main()
 //RunSeriousTests();
 //RunCyclicTests();
 //TestNewAMSTTreeType();
-    MassiveConvertion();
+ //  MassiveConvertion();
+ TestNewAMSTTreeType();
     std::cout << "Compilation succeful" << std::endl;
     std::cout << "Bug fixed" << std::endl;
 }
