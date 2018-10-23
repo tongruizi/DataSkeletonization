@@ -57,6 +57,7 @@
 					<Add directory="./" />
 					<Add directory="include/GradientDescend" />
 					<Add directory="include/Amst/EpsilonClusterMST" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -114,7 +115,9 @@
 		<Unit filename="include/Rules/KDEStats.h" />
 		<Unit filename="include/TestClasses/FunctionEvaluator.h" />
 		<Unit filename="include/TestClasses/TreeExperements.h" />
+		<Unit filename="include/task2.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/task2.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
