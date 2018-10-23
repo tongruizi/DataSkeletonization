@@ -101,9 +101,9 @@ public:
         //    }
         mlpack::Timer::Stop("KDE/Computation");
         valuesPtr = NULL;
-       delete valuesPtr;
-       visitNumberPtr = NULL;
-       delete visitNumberPtr;
+        delete valuesPtr;
+        visitNumberPtr = NULL;
+        delete visitNumberPtr;
     }
 
 

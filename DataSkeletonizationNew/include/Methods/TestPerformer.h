@@ -37,26 +37,38 @@ public:
             GeneralConvertor::MSTToVTK(trcloud,outputGraph, outputPath);
 
             //! Print out the clusters:
+            //! We wont print clusters for a while, mostly because we are too lazy to fix dimensionality issues
 
-            int numfirst = 0;
-
-            for (auto it = clusterz.begin(); it != clusterz.end(); it++)
-            {
-                std::string debugpath = outFolder + "debug" + std::to_string(numfirst) + ".csv";
-                std::vector<double> simpleFunction(cloud.n_rows);
-                int elemnumber = (it->second).size();
-                arma::mat theCloud(elemnumber,3);
-                for (int j = 0; j < elemnumber; j++)
-                {
-                    for (int p = 0; p < elemnumber; p++)
-                    {
-                    theCloud(j,p) = cloud(j,p);
-                    }
-                }
-                simpleFunction[it->first] = 1;
-                GeneralConvertor::MatInfoToFile(debugpath, theCloud, simpleFunction);
-                numfirst++;
-            }
+//            int numfirst = 0;
+//            std::cout << "Just before cluster number thing" << std::endl;
+//            for (auto it = clusterz.begin(); it != clusterz.end(); it++)
+//            {
+//            std::cout << "Number of element in: " << it->first << " is: " << (it->second).size() << std::endl;
+//
+//            }
+//            for (auto it = clusterz.begin(); it != clusterz.end(); it++)
+//            {
+//                std::cout << "Here we are " << std::endl;
+//                std::string debugpath = outFolder + "debug" + std::to_string(numfirst) + ".csv";
+//                std::vector<double> simpleFunction(cloud.n_rows);
+//                int elemnumber = (it->second).size();
+//                std::cout << "Before theCloud" << std::endl;
+//                arma::mat theCloud(elemnumber,3);
+//               // theCloud = theCloud.()
+//                for (int j = 0; j < elemnumber; j++)
+//                {
+//                    for (int p = 0; p < 3; p++)
+//                    {
+//                    theCloud(j,p) = cloud(j,p);
+//                    }
+//                }
+//                std::cout << "After theCloud" << std::endl;
+//                simpleFunction[it->first] = 1;
+//                //arma::mat newcloud =  theCloud.t();
+//                std::cout << theCloud << std::endl;
+//                GeneralConvertor::MatInfoToFile(debugpath, theCloud, simpleFunction);
+//                numfirst++;
+//            }
 
         }
     }

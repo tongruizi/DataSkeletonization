@@ -20,6 +20,10 @@ public:
         return sqrt(CGAL::squared_distance(G[v1].p,G[v2].p));
     }
 
+
+    //! This method should be moved to convertor instead I think
+
+
     static void ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData)
     {
         int vSize = originalData.n_cols;
@@ -34,13 +38,12 @@ public:
         for (int i = 0; i < edgeSize; i++)
         {
             int one = (int) edges(0,i);
-            int two = (int)edges(1,i);
+            int two = (int) edges(1,i);
             Graph::add_edge(G,one,two);
 
         }
 
     }
-
 
 protected:
 
