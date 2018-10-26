@@ -18,4 +18,4 @@ class PointTools
     private:
 };
 
-#endif POINTTOOLS_H
+#endif //POINTTOOLS_H

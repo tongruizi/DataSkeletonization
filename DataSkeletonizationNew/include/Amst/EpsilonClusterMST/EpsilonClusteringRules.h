@@ -88,12 +88,27 @@ public:
         //! In case max distance is under epsilon, we can go directly to the lowest level.
         //! We are however too lazy to implement it
 
+
+
+
         const double distance = queryNode.MinDistance(referenceNode);
+
         //const double valuev = queryNode.Stat().minF()/2 + referenceNode.Stat().minF()/2;
+
+        //! Case when we can do rapid descend:
+
+        //const double maxDistanceToMinNode = queryNode.MaxDistance();
+
+        //! Case when the distance is too big
+
         if (distance > epsilon)
         {
             return DBL_MAX;
         }
+
+        //! Other cases
+
+
         double fvalue = referenceNode.Stat().minF();
         // const double bound = CalculateBound(queryNode);
         // If all the points in the reference node are farther than the candidate
