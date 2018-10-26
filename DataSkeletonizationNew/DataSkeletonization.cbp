@@ -29,6 +29,7 @@
 					<Add directory="./" />
 					<Add directory="include/GradientDescend" />
 					<Add directory="include/Amst/EpsilonClusterMST" />
+					<Add directory="include/TestModule" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -58,6 +59,7 @@
 					<Add directory="include/GradientDescend" />
 					<Add directory="include/Amst/EpsilonClusterMST" />
 					<Add directory="include" />
+					<Add directory="include/TestModule" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -102,7 +104,6 @@
 		<Unit filename="include/GradientDescend/SingleEdgeOptimizer.h" />
 		<Unit filename="include/Graph/Graph.cpp" />
 		<Unit filename="include/Graph/Graph.h" />
-		<Unit filename="include/Includes.h" />
 		<Unit filename="include/Methods/AMSTComputator.h" />
 		<Unit filename="include/Methods/BranchDetection.cpp" />
 		<Unit filename="include/Methods/BranchDetection.h" />
@@ -115,9 +116,10 @@
 		<Unit filename="include/Rules/KDEStats.h" />
 		<Unit filename="include/TestClasses/FunctionEvaluator.h" />
 		<Unit filename="include/TestClasses/TreeExperements.h" />
-		<Unit filename="include/task2.h" />
+		<Unit filename="include/TestModule/StatisticInfo.cpp" />
+		<Unit filename="include/TestModule/StatisticInfo.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/task2.cpp" />
+		<Unit filename="stars.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
