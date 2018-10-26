@@ -18,7 +18,9 @@
 #include "TestPerformer.h"
 #include <cstdlib>
 #include "GradientDescendTester.h"
-
+//! Mapper and alphareeb includes:
+#include "AlphaReeb_Launcher.h"
+#include "Mapper_Launcher.h"
 
 
 // Convenience.
@@ -234,11 +236,11 @@ void runGradientDescendTester()
 
 void TestNewAMSTTreeType()
 {
-    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/FourthTest/";
-    TestPerformer::RunTestsQuick(folder, 8, 20000, 100, M_PI/10,10,7,0.01,10);
+    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/TestNumberFive/";
+    TestPerformer::RunTestsQuick(folder, 8, 100000, 100, M_PI/10,10,7,0.01,10);
 
 }
-
+//!
 void MassiveConvertion()
 {
     for (int i = 0; i <= 106; i++ )
@@ -257,6 +259,20 @@ void MassiveConvertion()
     }
 }
 
+void TestAlphaReebAndMapperOnceAgain()
+{
+//GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
+Mapper_Parameters param(15, 0.5, "Distance", 3.0,3.0);
+AlphaReeb_Parameters AlphaParam(20, 1);
+
+//! we are too lazy to actually test this at the moment, what could possibly go wrong?
+
+
+}
+
+
+//void Run(std::list<Point> & p, MyGraphType & G)
+
 int main()
 {
 //Tests8();
@@ -266,10 +282,10 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-    srand( time( NULL ) );
+ //   srand( time( NULL ) );
 //! We use this number sequence to debug the code:
 //srand(20);
-//std::cout <<rand() << std::endl;
+//std::cout <<rand() << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
 //! Here we test:
 //runGradientDescendTester();
 //RunSeriousTests();
@@ -278,5 +294,5 @@ int main()
  //  MassiveConvertion();
  TestNewAMSTTreeType();
     std::cout << "Compilation succeful" << std::endl;
-    std::cout << "Bug fixed" << std::endl;
+    std::cout << "Bug fixed, actually" << std::endl;
 }

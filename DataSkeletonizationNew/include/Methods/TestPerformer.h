@@ -29,7 +29,17 @@ public:
 
             arma::mat cloud;
             arma::mat outputGraph;
-            CloudGenerator::generatePointsStandartInArmaMat(gn, n,minangle,scale,epc,cloud);
+
+            //! Use this for standart testing:
+              CloudGenerator::generatePointsStandartInArmaMat(gn, n,minangle,scale,epc,cloud);
+            //! Use this for stupid triangle testing:
+//            MyGraphType A;
+//            std::list<Point> pointList;
+//            GraphGeneration::TriangleGraph(A, scale);
+//            CloudGenerator::generatePoints(n,A,epc,pointList);
+//            GeneralConvertor::ListToMat(pointList, cloud);
+
+            //! Continue from here
             arma::mat trcloud = cloud.t();
 
             // ClusterAMSTComputation(arma::mat & in, arma::mat & out, double epsilon, double t, double epsilon2)

@@ -10,6 +10,7 @@ class AmstStat : public mlpack::emst::DTBStat
 private:
     double minFf;
     double maxFf;
+    int minFIndex;
 public:
     AmstStat():
         minFf(DBL_MAX),
@@ -22,6 +23,14 @@ public:
         DTBStat(node)
     {
 
+    }
+    void setMinFIndex(int indx)
+    {
+        minFIndex = indx;
+    }
+    int returnMinFIndex()
+    {
+        return minFIndex;
     }
 
     double minF() const
