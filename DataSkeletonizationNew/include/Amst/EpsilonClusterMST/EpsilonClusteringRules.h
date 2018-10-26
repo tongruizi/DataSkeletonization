@@ -97,7 +97,7 @@ public:
 
         //! Case when we can do rapid descend:
 
-        const double maxDistanceToMinNode = queryNode.MaxDistance();
+        //const double maxDistanceToMinNode = queryNode.MaxDistance();
 
         //! Case when the distance is too big
 
