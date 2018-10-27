@@ -14,4 +14,6 @@ class StatisticInfo
     private:
 };
 
+
+
 #endif // STATISTICINFO_H

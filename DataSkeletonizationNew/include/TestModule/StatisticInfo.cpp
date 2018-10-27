@@ -10,15 +10,6 @@ StatisticInfo::StatisticInfo()
 
     }
 
-    void Ask(){
-
-
-
-    }
-    void
-
-
-
 
 
 

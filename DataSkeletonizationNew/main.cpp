@@ -240,12 +240,14 @@ void runGradientDescendTester()
 
 void TestNewAMSTTreeType()
 {
-<<<<<<< HEAD
     std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/ThirdTest/";
     TestPerformer::RunTestsQuick(folder, 8, 4000, 100, M_PI/3,10,7,0.01,10);
 
-}
 
+    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/TestNumberFive/";
+    TestPerformer::RunTestsQuick(folder, 8, 100000, 100, M_PI/10,10,7,0.01,10);
+
+}
 void MassiveConvertion()
 {
 
@@ -265,21 +267,6 @@ void MassiveConvertion()
 
 }
         outfolder = outfolder + "out"+to_string(i)+".vtk";
-=======
-    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/TestNumberFive/";
-    TestPerformer::RunTestsQuick(folder, 8, 100000, 100, M_PI/10,10,7,0.01,10);
-
-}
-//!
-void MassiveConvertion()
-{
-    for (int i = 0; i <= 106; i++ )
-    {
-        std::string infolder = "/home/yury/Downloads/Cluster/";
-        std::string outfolder = "/home/yury/Downloads/ClusterVTK/";
-                infolder = infolder + "Cluster_Frame0000000.xyz";
-        outfolder = outfolder + "out1.vtk";
->>>>>>> c6960961f8d21423675b630c898c8eb474da6616
         arma::mat data;
         GeneralConvertor::XYZtoMAT(infolder,data);
         arma::mat cordata = data.t();
@@ -288,8 +275,7 @@ void MassiveConvertion()
         MSTOP.ComputeMST(results);
         GeneralConvertor::MSTToVTK(cordata,results, outfolder);
     }
-<<<<<<< HEAD
-=======
+
 }
 
 void TestAlphaReebAndMapperOnceAgain()
@@ -299,17 +285,12 @@ Mapper_Parameters param(15, 0.5, "Distance", 3.0,3.0);
 AlphaReeb_Parameters AlphaParam(20, 1);
 
 //! we are too lazy to actually test this at the moment, what could possibly go wrong?
->>>>>>> c6960961f8d21423675b630c898c8eb474da6616
+
 
 
 }
 
-<<<<<<< HEAD
-=======
 
-//void Run(std::list<Point> & p, MyGraphType & G)
-
->>>>>>> c6960961f8d21423675b630c898c8eb474da6616
 int main()
 {
 //Tests8();
@@ -319,30 +300,26 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-<<<<<<< HEAD
+
     srand( time( NULL ) );
 //! We use this number sequence to debug the code:
 //srand(20);
 //std::cout <<rand() << std::endl;
-=======
+
  //   srand( time( NULL ) );
 //! We use this number sequence to debug the code:
 //srand(20);
 //std::cout <<rand() << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
->>>>>>> c6960961f8d21423675b630c898c8eb474da6616
+
 //! Here we test:
 //runGradientDescendTester();
 //RunSeriousTests();
 //RunCyclicTests();
 //TestNewAMSTTreeType();
-<<<<<<< HEAD
-    MassiveConvertion();
-    std::cout << "Compilation succeful" << std::endl;
-    std::cout << "Bug fixed" << std::endl;
-=======
+
  //  MassiveConvertion();
  TestNewAMSTTreeType();
     std::cout << "Compilation succeful" << std::endl;
     std::cout << "Bug fixed, actually" << std::endl;
->>>>>>> c6960961f8d21423675b630c898c8eb474da6616
+
 }

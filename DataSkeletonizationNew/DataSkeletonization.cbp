@@ -29,13 +29,9 @@
 					<Add directory="./" />
 					<Add directory="include/GradientDescend" />
 					<Add directory="include/Amst/EpsilonClusterMST" />
-<<<<<<< HEAD
-					<Add directory="include/TestModule" />
-=======
 					<Add directory="include/OldSchoolAlgorithms/AlphaReeb" />
 					<Add directory="include/OldSchoolAlgorithms/Mapper" />
 					<Add directory="include/OldSchoolAlgorithms" />
->>>>>>> c6960961f8d21423675b630c898c8eb474da6616
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -65,11 +61,7 @@
 					<Add directory="include/GradientDescend" />
 					<Add directory="include/Amst/EpsilonClusterMST" />
 					<Add directory="include" />
-<<<<<<< HEAD
-					<Add directory="include/TestModule" />
-=======
 					<Add directory="include/OldSchoolAlgorithms" />
->>>>>>> c6960961f8d21423675b630c898c8eb474da6616
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -159,11 +151,10 @@
 		<Unit filename="include/TestClasses/TreeExperements.h" />
 		<Unit filename="include/TestModule/StatisticInfo.cpp" />
 		<Unit filename="include/TestModule/StatisticInfo.h" />
+		<Unit filename="include/TestModule/controller.cpp" />
+		<Unit filename="include/TestModule/controller.h" />
+		<Unit filename="include/TestModule/stars.h" />
 		<Unit filename="main.cpp" />
-<<<<<<< HEAD
-		<Unit filename="stars.h" />
-=======
->>>>>>> c6960961f8d21423675b630c898c8eb474da6616
 		<Extensions>
 			<code_completion />
 			<debugger />
