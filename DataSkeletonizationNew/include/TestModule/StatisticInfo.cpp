@@ -7,6 +7,7 @@ StatisticInfo::StatisticInfo()
     AlphaReeb_Parameters const parameters;
     MyGraphType alphaReeb_graph;
     MyGraphType InterMediate;
+    std::string type;
     int n_i;
     double o_r;
     std::string const f_f;
