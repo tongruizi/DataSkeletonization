@@ -1,5 +1,6 @@
 #include "controller.h"
 #include "stars.h"
+#include <thread>
 controller::controller()
 {
 
@@ -10,7 +11,7 @@ void runing(std::list<Point> & cloud){
 int runing_time;
 vector<stars*> MyList;
 vector<int>number_of_edges;
-static const int threads=8;
+static const int threads=7;
 
 //a method to judge types, return true if it is star, return false if it is doublestar
 Boolean isStar=typeJudge(std::list<Point> & cloud);
@@ -42,6 +43,7 @@ for(int i=0;i<threads;++i){
    for (int i=0;i<threads;++i){
    t[i].join();
    }
+   delete [] t;
 }
 
 void computing(stars star){
