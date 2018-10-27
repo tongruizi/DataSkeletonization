@@ -4,14 +4,22 @@
 
 class StatisticInfo
 {
-    public:
-        StatisticInfo();
-   //     virtual ~StatisticInfo();
+public:
+    StatisticInfo();
+    static void run( MyGraphType & G, std::list<Point> & points)=0;
+    static void seleAlgorithm(std::string type);
+protected:
 
-        static void run( MyGraphType & G, std::list<Point> & points)=0;
-    protected:
-
-    private:
+private:
+    int number_of_cloudpoints;
+    double epsilon;
+    int number_of_runs;
+    double angle;
+    int number_of_branches;
+    double scale;
+    std::string type;
+    MyGraphType graph;
+    std::list<Point> clouds;
 };
 
 

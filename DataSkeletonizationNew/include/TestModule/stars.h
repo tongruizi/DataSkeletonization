@@ -6,52 +6,45 @@
 class stars
 {
 public:
-    virtual void printMe() =0;
+
+
+    virtual void GenerateClouud(std::list<Point> & p) =0;
+
+
+protected:
+
+private:
+    std::list<Point> & cloud;
     int getNumEdge()=0;
     int running_times;
     int number_of_cloudpoints;
     double epsilon;
     int number_of_runs;
-
     double angle;
     int number_of_branches;
     double scale;
-    std::vector<Generalablbe> k;
-
-    void setEpsilon(double t)
-    {
-        epsilon=t;
-    }
-    double getepsilon()
-    {
-        return epsilon;
-    }
-protected:
-
-private:
 }
 
 class star:stars
 {
 public:
 
-    //get the cloud's number of edges
-    int getNumEdge()
+    virtual void GenerateClouud(std::list<Point> & p)
     {
-        int edgeN;
-        return edgeN;
+
     }
-    virtual void printMe(){
-    }
-//star parameters
+
 }
 class doubleStar:stars
 {
 public:
-//doublestar parameter
-virtual void printMe(){
 
-}
+    int branch_centers;
+    virtual void GenerateClouud(std::list<Point> & p)
+    {
+
+    }
+
 
 }
 
