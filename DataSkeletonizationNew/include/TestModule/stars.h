@@ -7,7 +7,7 @@ class stars
 {
 public:
     stars() {}
-
+    int getNumEdge()=0;
         int running_times;
         int number_of_cloudpoints;
         double epsilon;
@@ -17,6 +17,17 @@ public:
         int number_of_branches;
         double scale;
         std::vector<Generalablbe> k;
+
+     void setEpsilon(double t){
+     epsilon=t;
+
+     }
+     double getepsilon(){
+     return epsilon;
+
+     }
+
+
 
 protected:
 
