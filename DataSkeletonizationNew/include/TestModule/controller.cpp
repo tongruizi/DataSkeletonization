@@ -47,6 +47,7 @@ for(int i=0;i<threads;++i){
 }
 
 void computing(stars star){
+try{
    for(int i=0;i<star.running_times;i++){
    edgeN=star.getNumEdge();
    //paralel programming part
@@ -55,7 +56,11 @@ void computing(stars star){
    int maxedgeN=maxEdgeN(number_of_edges);
    int mindegeN=minEdgeN(number_of_edges);
    int avgedgeN=avgEdgeN(number_of_edges );
-   cout<<"maximum number of edges:"<<maxedgeN<<"minimum number of edges:"<<mindegeN<<"average number of edges:"<<avgedgeN<<"/n";
+   cout<<"maximum number of edges:"<<maxedgeN<<"minimum number of edges:"<<mindegeN<<"average number of edges:"<<avgedgeN<<endl;
+}catch(std::exception& e){
+cout<<e.what()<<endl;
+}
+
 }
 
 void addedge(int edgeN){
