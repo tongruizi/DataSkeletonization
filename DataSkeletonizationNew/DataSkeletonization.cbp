@@ -32,6 +32,7 @@
 					<Add directory="include/OldSchoolAlgorithms/AlphaReeb" />
 					<Add directory="include/OldSchoolAlgorithms/Mapper" />
 					<Add directory="include/OldSchoolAlgorithms" />
+					<Add directory="include/TestModule" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -62,6 +63,7 @@
 					<Add directory="include/Amst/EpsilonClusterMST" />
 					<Add directory="include" />
 					<Add directory="include/OldSchoolAlgorithms" />
+					<Add directory="include/TestModule" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -107,7 +109,6 @@
 		<Unit filename="include/GradientDescend/SingleEdgeOptimizer.h" />
 		<Unit filename="include/Graph/Graph.cpp" />
 		<Unit filename="include/Graph/Graph.h" />
-		<Unit filename="include/Includes.h" />
 		<Unit filename="include/Methods/AMSTComputator.h" />
 		<Unit filename="include/Methods/BranchDetection.cpp" />
 		<Unit filename="include/Methods/BranchDetection.h" />
@@ -150,7 +151,13 @@
 		<Unit filename="include/Rules/KDEStats.h" />
 		<Unit filename="include/TestClasses/FunctionEvaluator.h" />
 		<Unit filename="include/TestClasses/TreeExperements.h" />
-		<Unit filename="include/task2.h" />
+		<Unit filename="include/TestModule/StatisticInfo.cpp" />
+		<Unit filename="include/TestModule/StatisticInfo.h" />
+		<Unit filename="include/TestModule/controller.cpp" />
+		<Unit filename="include/TestModule/controller.h" />
+		<Unit filename="include/TestModule/seperate_static_class.cpp" />
+		<Unit filename="include/TestModule/seperate_static_class.h" />
+		<Unit filename="include/TestModule/stars.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
