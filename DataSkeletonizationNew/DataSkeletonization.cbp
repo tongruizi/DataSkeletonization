@@ -152,13 +152,11 @@
 		<Unit filename="include/TestClasses/FunctionEvaluator.h" />
 		<Unit filename="include/TestClasses/TreeExperements.h" />
 		<Unit filename="include/TestModule/AbstractAlgorithm.h" />
-		<Unit filename="include/TestModule/StatisticInfo.cpp" />
+		<Unit filename="include/TestModule/AbstractMeasurer.h" />
 		<Unit filename="include/TestModule/StatisticInfo.h" />
 		<Unit filename="include/TestModule/controller.cpp" />
 		<Unit filename="include/TestModule/controller.h" />
-		<Unit filename="include/TestModule/seperate_static_class.cpp" />
-		<Unit filename="include/TestModule/seperate_static_class.h" />
-		<Unit filename="include/TestModule/stars.h" />
+		<Unit filename="include/TestModule/generatable.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -16,40 +16,43 @@ public:
     //! INSTEAD:
     unit returnSum()
     {
-    return sum;
+        return sum;
     }
     double returnAvg()
     {
-    return sum/number;
+        return sum/number;
     }
-    void addMeasurment()
+    unit returnMax()
     {
-    //! Implement this method
+        return maxValue;
+    }
+    unit returnMin()
+    {
+        return minValue;
+    }
+    void  CompleteMeasurments(MyGraphType & G){
+
 
     }
+
+
 protected:
 
 private:
 
 //! This is number of measurments: For now its always double, so we dont get stupid errors when dividing stuff
-double number;
+    double number;
 //! sum is unit
-unit sum;
+    unit sum;
 //! but average is always double!!!!
-double avg;
+    double avg;
 
+    unit maxValue;
+    unit minValue;
 
-//! No need for this
-//    int number_of_cloudpoints;
-//    double epsilon;
-//    int number_of_runs;
-//    double angle;
-//    int number_of_branches;
-//    double scale;
-//    std::string type;
-//    MyGraphType graph;
-//    std::list<Point> clouds;
 };
+
+
 
 
 
