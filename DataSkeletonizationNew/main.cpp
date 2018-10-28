@@ -236,8 +236,8 @@ void runGradientDescendTester()
 
 void TestNewAMSTTreeType()
 {
-    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/TestNumberFive/";
-    TestPerformer::RunTestsQuick(folder, 8, 100000, 100, M_PI/10,10,7,0.01,10);
+    std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/TestNumberSix/";
+    TestPerformer::RunTestsQuick(folder, 8, 20000, 100, M_PI/3,10,7,0.01,10);
 
 }
 //!
@@ -282,7 +282,7 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
- //   srand( time( NULL ) );
+    srand( time( NULL ) );
 //! We use this number sequence to debug the code:
 //srand(20);
 //std::cout <<rand() << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
