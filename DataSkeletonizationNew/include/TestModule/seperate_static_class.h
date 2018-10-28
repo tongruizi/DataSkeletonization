@@ -1,6 +1,7 @@
 #ifndef SEPERATE_STATIC_CLASS_H
 #define SEPERATE_STATIC_CLASS_H
 
+//! This is completely useless class and should be deleted
 
 class seperate_static_class
 {

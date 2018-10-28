@@ -151,6 +151,7 @@
 		<Unit filename="include/Rules/KDEStats.h" />
 		<Unit filename="include/TestClasses/FunctionEvaluator.h" />
 		<Unit filename="include/TestClasses/TreeExperements.h" />
+		<Unit filename="include/TestModule/AbstractAlgorithm.h" />
 		<Unit filename="include/TestModule/StatisticInfo.cpp" />
 		<Unit filename="include/TestModule/StatisticInfo.h" />
 		<Unit filename="include/TestModule/controller.cpp" />
