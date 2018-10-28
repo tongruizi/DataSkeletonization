@@ -652,7 +652,7 @@
 
 1536577946 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/TreeCreator.h
 
-1536576532 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/AmstStat.h
+1540545188 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/AmstStat.h
 	<mlpack/prereqs.hpp>
 	<mlpack/methods/emst/dtb_stat.hpp>
 
@@ -746,7 +746,7 @@
 	"CloudGenerator.h"
 	"SingleEdgeOptimizer.h"
 
-1540473707 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EngineClusterMST.h
+1540545735 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EngineClusterMST.h
 	"AmstStat.h"
 	<mlpack/methods/emst/edge_pair.hpp>
 	<mlpack/methods/emst/union_find.hpp>
@@ -757,7 +757,7 @@
 	"GeneralConvertor.h"
 	"Graph.h"
 
-1539614932 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EpsilonClusteringRules.h
+1540551839 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EpsilonClusteringRules.h
 	<mlpack/methods/emst/union_find.hpp>
 	<mlpack/prereqs.hpp>
 	<mlpack/core/tree/traversal_info.hpp>
