@@ -30,10 +30,16 @@ public:
     {
         return minValue;
     }
-    void  CompleteMeasurments(MyGraphType & G){
+    void reset(){
+     number=0;
+     sum=0;
+     avg=0;
+     maxValue=0;
+     minValue=0;
 
 
     }
+
 
 
 protected:

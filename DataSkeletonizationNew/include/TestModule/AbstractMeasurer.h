@@ -5,10 +5,11 @@ template <class T>
 class AbstractMeasurer
 {
   public:
-  virtual void CompleteMeasurments(MyGraphType & G) =0;
-
+  virtual T CompleteMeasurments(MyGraphType & G) =0;
+  virtual void Append(MyGraphType & G)=0;
   private:
 
+  StatisticInfo <unit> mystatistic;
 };
 
 

@@ -64,11 +64,7 @@ public:
     {
 
     }
-    /*or doubleStar(double angle, int number_of_branches,int number_of_branches2, int number_of_cloudpoints, double epsilon, double scale):
-     generatable(number_of_cloudpoints,epsilon),angle(angle), number_of_branches(number_of_branches), number_of_branches(number_of_branches2),scale(scale)
-    {
 
-    }*/
     void GenerateGraph(MyGraphType & G)
     {
         GraphGeneration::RandomGraph2(number_of_branches, number_of_branches2, angle, scale, G);
