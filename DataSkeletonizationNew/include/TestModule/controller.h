@@ -23,7 +23,7 @@ private:
     std::vector<AbstractMeasurer> measurers ;
     StatisticInfo<int> correctRecognition;
     StatisticInfo<double> MinMaxError;
-
+    std::vector<Measurer> measures;
 };
 
 #endif // CONTROLLER_H

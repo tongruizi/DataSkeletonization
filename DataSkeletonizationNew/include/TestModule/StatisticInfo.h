@@ -30,12 +30,13 @@ public:
     {
         return minValue;
     }
-    void reset(){
-     number=0;
-     sum=0;
-     avg=0;
-     maxValue=0;
-     minValue=0;
+    void reset()
+    {
+        number=0;
+        sum=0;
+        avg=0;
+        maxValue=0;
+        minValue=0;
 
 
     }
