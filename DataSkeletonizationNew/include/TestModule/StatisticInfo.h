@@ -1,6 +1,7 @@
 #ifndef STATISTICINFO_H
 #define STATISTICINFO_H
 
+#include <limits>
 //! This will be template file, so please code everything into header and completely DESTROY the implementation file
 
 //! unit here can be either double, size_t, int or what ever. WE DONT CARE XD (but we still want stuff to work smoothly)
@@ -35,8 +36,8 @@ public:
         number=0;
         sum=0;
         avg=0;
-        maxValue=0;
-        minValue=0;
+        maxValue=std::numeric_limit<unit>::min();
+        minValue=std::numeric_limit<unit>::max();
 
 
     }

@@ -7,6 +7,20 @@ controller::controller()
 {
 }
 
+void letsmesure(MyGraphType & G)
+{
+    for (auto MR = measurers.begin(); MR != measurers.end(); MR++)
+    {
+
+        <unit>statistic.MR();
+
+
+    }
+
+
+
+}
+
 //! THIS IS HOW IT IS SUPPOSED TO LOOK LIKE. NOW IMPLEMENT STEP 1 AND STEP 2
 void BeginTestRun()
 {
@@ -45,19 +59,7 @@ void runing(std::list<Point> & cloud)
 
 
 }
-void letsmesure(MyGraphType & G)
-{
-  for (auto MR = measurers.begin(); MR != measurers.end(); MR++)
-   {
 
-   <unit>statistic.MR();
-
-
-   }
-
-
-
-}
 
 
 
