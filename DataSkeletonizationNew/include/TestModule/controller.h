@@ -12,7 +12,7 @@ public:
 
     void addAlgorithm(AbstractAlgorithm & k);
     void addCloud(generatable & k);
-
+    void letsmesure(MyGraphType & G);
 protected:
 
 private:
@@ -20,7 +20,9 @@ private:
     std::vector<generatable> ACT;
     //! Vector for algorithmtypes:
     std::vector<AbstractAlgorithm> algorithms;
+
     std::vector<AbstractMeasurer> measurers ;
+
     StatisticInfo<int> correctRecognition;
     StatisticInfo<double> MinMaxError;
     std::vector<Measurer> measures;

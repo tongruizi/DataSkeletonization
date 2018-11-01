@@ -20,7 +20,7 @@ void BeginTestRun()
             //! Step 2: Run Algorithm
             Algorithmit->run(std::list<Point> & cloudlist, MyGraphType & out);
             //! Step 3: Do measurments: (I will add this later)
-
+            letsmesure(MyGraphType & out);
         }
 
     }
@@ -42,6 +42,19 @@ void runing(std::list<Point> & cloud)
 
 //! We dont add threads before this $^&$ is running without them and when we add it,
 //! Then THREADS WILL BE A VARIABLE DECLARED IN THE CLASS HEADER !!!!!!! !!!!!!! !!!!!!!!!
+
+
+}
+void letsmesure(MyGraphType & G)
+{
+  for (auto MR = measurers.begin(); MR != measurers.end(); MR++)
+   {
+
+   <unit>statistic.MR();
+
+
+   }
+
 
 
 }
