@@ -8,13 +8,11 @@ public:
     controller();
 
     void BeginTestRun();
-     //! This method was such a mess that I replaced it by the method above
-   // void runing(std::vector<AbstractCloudType> ACT);
 
-    //! implement those:
+
     void addAlgorithm(AbstractAlgorithm & k);
     void addCloud(generatable & k);
-
+    void letsmesure(MyGraphType & G);
 protected:
 
 private:
@@ -22,18 +20,12 @@ private:
     std::vector<generatable> ACT;
     //! Vector for algorithmtypes:
     std::vector<AbstractAlgorithm> algorithms;
-//! NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-//    int running_times;
-//    int number_of_cloudpoints;
-//    double epsilon;
-//    int number_of_runs;
-//    double angle;
-//    int number_of_branches;
-//    double scale;
-//! Instead, for example:
+
+    std::vector<AbstractMeasurer> measurers ;
+
     StatisticInfo<int> correctRecognition;
     StatisticInfo<double> MinMaxError;
-
+    std::vector<Measurer> measures;
 };
 
 #endif // CONTROLLER_H
