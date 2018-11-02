@@ -9,8 +9,7 @@ class generatable
 {
 public:
 
-
-    public generatable(number_of_cloudpoints, epsilon):
+    generatable(int number_of_cloudpoints, double epsilon):
         number_of_cloudpoints(number_of_cloudpoints), epsilon(epsilon)
     {
 
@@ -33,28 +32,28 @@ private:
     int number_of_cloudpoints;
     double epsilon;
 
-}
+};
 
 
 class SingleStar:public generatable
 {
 public:
-
-    SingleStar(double angle, int number_of_branches, double scale, int number_of_cloudpoints, double epsilon, double scale):
-    generatable(number_of_cloudpoints,epsilon),angle(angle), number_of_branches(number_of_branches),scale(scale)
+    SingleStar(double angle, int number_of_branches, double scaler, int number_of_cloudpoints, double epsilon, double scale):
+    generatable(number_of_cloudpoints,epsilon),angle(angle), number_of_branches(number_of_branches),scale(scaler)
     {
 
     }
     void GenerateGraph(MyGraphType & G)
     {
-        GraphGeneration::RandomGraph1(number_of_branches,angle,scale,G)
+        GraphGeneration::RandomGraph1(number_of_branches,angle,scale,G);
     }
 
 private:
     double angle;
     int number_of_branches;
     double scale;
-}
+};
+
 class doubleStar:public generatable
 {
 public:
@@ -76,6 +75,6 @@ private:
     int number_of_branches2;
     double scale;
 
-}
+};
 
 #endif // STARS_H
