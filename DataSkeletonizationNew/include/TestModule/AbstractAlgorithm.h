@@ -3,6 +3,7 @@
 
 #include "Definitions.h"
 #include "Graph.h"
+
 //! THIS IS WHAT WAS ASKED FOR !!!!!!
 
 class AbstractAlgorithm
