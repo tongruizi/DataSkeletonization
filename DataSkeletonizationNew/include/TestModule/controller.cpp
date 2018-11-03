@@ -1,5 +1,4 @@
 #include "controller.h"
-#include "stars.h"
 #include <thread>
 #define THREADS 7;
 

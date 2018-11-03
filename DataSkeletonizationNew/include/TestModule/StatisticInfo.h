@@ -36,10 +36,14 @@ public:
         number=0;
         sum=0;
         avg=0;
-        maxValue=std::numeric_limit<unit>::min();
-        minValue=std::numeric_limit<unit>::max();
-
-
+        maxValue=std::numeric_limits<unit>::min();
+        minValue=std::numeric_limits<unit>::max();
+    }
+    std::string returnInfo()
+    {
+    //! This will be implemented later
+    std::string info = "";
+    return info;
     }
 
 

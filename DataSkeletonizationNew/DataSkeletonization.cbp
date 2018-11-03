@@ -153,6 +153,7 @@
 		<Unit filename="include/TestClasses/TreeExperements.h" />
 		<Unit filename="include/TestModule/AbstractAlgorithm.h" />
 		<Unit filename="include/TestModule/AbstractMeasurer.h" />
+		<Unit filename="include/TestModule/ExplicitMeasurer.h" />
 		<Unit filename="include/TestModule/StatisticInfo.h" />
 		<Unit filename="include/TestModule/controller.cpp" />
 		<Unit filename="include/TestModule/controller.h" />
