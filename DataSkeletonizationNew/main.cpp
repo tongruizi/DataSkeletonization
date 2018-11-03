@@ -285,14 +285,14 @@ int main()
     srand( time( NULL ) );
 //! We use this number sequence to debug the code:
 //srand(20);
-//std::cout <<rand() << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
+//std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
 //! Here we test:
 //runGradientDescendTester();
 //RunSeriousTests();
 //RunCyclicTests();
 //TestNewAMSTTreeType();
  //  MassiveConvertion();
- TestNewAMSTTreeType();
+// TestNewAMSTTreeType();
     std::cout << "Compilation succeful" << std::endl;
-    std::cout << "Bug fixed, actually" << std::endl;
+  //  std::cout << "Bug fixed, actually" << std::endl;
 }
