@@ -1,5 +1,4 @@
 #include "controller.h"
-#include "generatable.h"
 #include <thread>
 #define THREADS 7;
 
