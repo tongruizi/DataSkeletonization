@@ -17,7 +17,7 @@ public:
     void addAlgorithm(AbstractAlgorithm & k);
     void addCloud(generatable & k);
    // void addMeasurer()
-    void letsmesure(MyGraphType & G);
+    void letsmesure(MyGraphType & G );
 protected:
 
 private:

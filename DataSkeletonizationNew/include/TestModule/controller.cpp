@@ -1,4 +1,5 @@
 #include "controller.h"
+#include "generatable.h"
 #include <thread>
 #define THREADS 7;
 
@@ -6,12 +7,13 @@ controller::controller()
 {
 }
 
-void letsmesure(MyGraphType & G)
+void letsmesure(MyGraphType & G,std::vector<ExplicitMeasurer*> measurers )
 {
+
     for (auto MR = measurers.begin(); MR != measurers.end(); MR++)
     {
 
-        <unit>statistic.MR();
+        std::string returnStatisticData();
 
 
     }
@@ -21,32 +23,41 @@ void letsmesure(MyGraphType & G)
 }
 
 //! THIS IS HOW IT IS SUPPOSED TO LOOK LIKE. NOW IMPLEMENT STEP 1 AND STEP 2
-void BeginTestRun()
+void BeginTestRun(std::vector<AbstractAlgorithm> algorithms,std::vector<generatable> ACT)
 {
-    for (auto Algorithmit = algorithms.begin(); Algoritmit != algorithms.end(); Algorithmit++)
+    for (auto Algo = algorithms.begin(); Algo!= algorithms.end(); Algo++)
     {
-        for (auto Cloudit = ATC.begin(); Cloudit != ATC.end(); Cloudit++)
+        for (auto Cloudit = ACT.begin(); Cloudit != ACT.end(); Cloudit++)
         {
+
             //! Step 1: Generate cloud
             //i presume this method can be used here
-            Cloudit->GenerateCloud(std::list<Point> & p);
+            std::list<Point> & points;
+            Cloudit->GenerateCloud(points);
+
             //! Step 2: Run Algorithm
-            Algorithmit->run(std::list<Point> & cloudlist, MyGraphType & out);
+            MyGraphType out;
+            Algo->Run(points, out);
+
             //! Step 3: Do measurments: (I will add this later)
-            letsmesure(MyGraphType & out);
+            std::vector<ExplicitMeasurer*> measurers;
+
+
+
+            letsmesure(out, measurers);
         }
 
     }
 
 }
 
-void addAlgorithm(AbstractAlgorithm & k)
+void addAlgorithm(AbstractAlgorithm & k,std::vector<AbstractAlgorithm> algorithms)
 {
     algorithms.push_back(k);
 }
-void addCloud(generatable & k)
+void addCloud(generatable & k,std::vector<generatable> ACT)
 {
-    ATC.push_back(k);
+    ACT.push_back(k);
 }
 
 

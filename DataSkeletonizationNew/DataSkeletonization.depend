@@ -977,7 +977,7 @@
 	"GeneralConvertor.h"
 	"Graph.h"
 
-1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EpsilonClusteringRules.h
+1540721908 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EpsilonClusteringRules.h
 	<mlpack/methods/emst/union_find.hpp>
 	<mlpack/prereqs.hpp>
 	<mlpack/core/tree/traversal_info.hpp>
@@ -1008,7 +1008,7 @@
 1539874526 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Methods/NaiveMethods.cpp
 	"NaiveMethods.h"
 
-1539888558 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/main.cpp
+1541247042 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<math.h>
 	<vector>
@@ -1029,7 +1029,8 @@
 	"TestPerformer.h"
 	<cstdlib>
 	"GradientDescendTester.h"
-	<string>
+	"AlphaReeb_Launcher.h"
+	"Mapper_Launcher.h"
 
 1539874526 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/GradientDescend/GradientDescendTester.h
 	"SingleEdgeOptimizer.h"
@@ -1227,4 +1228,42 @@
 
 1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/Mapper_Parameters.h
 	<string>
+
+1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb_Launcher.h
+	"Graph.h"
+	"Definitions.h"
+	"AlphaReeb_Parameters.h"
+	"AlphaReebComputation.h"
+	"Computation.h"
+
+1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper_Launcher.h
+	"Graph.h"
+	"Definitions.h"
+	"Mapper.h"
+	"Mapper_Parameters.h"
+
+1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/Mapper.h
+	"Mapper_Parameters.h"
+	"Gauss_Density_Filter.h"
+	"Distance_Filter.h"
+	"Generate_Subclouds.h"
+	"Computation.h"
+	"ComponentAllocator.h"
+	"GraphUpgrade.h"
+
+1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/Gauss_Density_Filter.h
+	"Definitions.h"
+
+1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/Distance_Filter.h
+	<map>
+	"Definitions.h"
+
+1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/Generate_Subclouds.h
+	"Definitions.h"
+
+1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/ComponentAllocator.h
+	"Definitions.h"
+	<boost/graph/connected_components.hpp>
+	"ClusterElement.h"
+	"ClusteringMethods.h"
 
