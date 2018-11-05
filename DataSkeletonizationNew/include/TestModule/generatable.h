@@ -15,6 +15,7 @@ public:
 
     }
     virtual void GenerateGraph(MyGraphType & G) =0;
+
     void GenerateCloud(std::list<Point> & p)
     {
         MyGraphType G;

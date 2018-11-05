@@ -1,29 +1,26 @@
 #include "controller.h"
 #include "generatable.h"
 #include <thread>
+#include "Definitions.h"
 #define THREADS 7;
 
 controller::controller()
 {
 }
 
-void letsmesure(MyGraphType & G,std::vector<ExplicitMeasurer*> measurers )
+void controller::LoopOverMeasurments(MyGraphType & G)
 {
 
     for (auto MR = measurers.begin(); MR != measurers.end(); MR++)
     {
-
-        std::string returnStatisticData();
-
-
+    //    std::string returnStatisticData();
     }
 
 
 
 }
 
-//! THIS IS HOW IT IS SUPPOSED TO LOOK LIKE. NOW IMPLEMENT STEP 1 AND STEP 2
-void BeginTestRun(std::vector<AbstractAlgorithm> algorithms,std::vector<generatable> ACT)
+void controller::BeginTestRun()
 {
     for (auto Algo = algorithms.begin(); Algo!= algorithms.end(); Algo++)
     {
@@ -32,43 +29,39 @@ void BeginTestRun(std::vector<AbstractAlgorithm> algorithms,std::vector<generata
 
             //! Step 1: Generate cloud
             //i presume this method can be used here
-            std::list<Point> & points;
-            Cloudit->GenerateCloud(points);
+            std::list<Point> points;
+            (*Cloudit)->GenerateCloud(points);
+
 
             //! Step 2: Run Algorithm
             MyGraphType out;
-            Algo->Run(points, out);
+            (*Algo)->Run(points, out);
 
             //! Step 3: Do measurments: (I will add this later)
-            std::vector<ExplicitMeasurer*> measurers;
 
-
-
-            letsmesure(out, measurers);
+            this->LoopOverMeasurments(out);
         }
 
     }
 
 }
 
-void addAlgorithm(AbstractAlgorithm & k,std::vector<AbstractAlgorithm> algorithms)
+void controller::addAlgorithm(AbstractAlgorithm* k)
 {
     algorithms.push_back(k);
 }
-void addCloud(generatable & k,std::vector<generatable> ACT)
+void controller::addCloud(generatable* k)
 {
     ACT.push_back(k);
 }
 
-
-void runing(std::list<Point> & cloud)
+//! For now does nothing...
+void controller::WriteDownAndClear()
 {
 
-//! We dont add threads before this $^&$ is running without them and when we add it,
-//! Then THREADS WILL BE A VARIABLE DECLARED IN THE CLASS HEADER !!!!!!! !!!!!!! !!!!!!!!!
-
-
 }
+
+
 
 
 

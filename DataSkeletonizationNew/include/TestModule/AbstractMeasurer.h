@@ -15,9 +15,7 @@ public:
     }
     T getStatistic_instance()
     {
-
         return mystatistic;
-
     }
     std::string returnStatisticData()
     {

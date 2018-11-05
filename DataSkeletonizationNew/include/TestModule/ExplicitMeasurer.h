@@ -7,8 +7,9 @@ class ExplicitMeasurer
 {
     public:
         ExplicitMeasurer() {}
-        virtual std::string returnStatisticData() = 0;
-        virtual void letrun( MyGraphType & G )=0;
+        virtual std::string returnStatisticString() = 0;
+        virtual void run( MyGraphType & G )=0;
+        virtual void resetStatistic() = 0;
     protected:
 
     private:

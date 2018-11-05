@@ -14,17 +14,19 @@ public:
     void BeginTestRun();
 
 
-    void addAlgorithm(AbstractAlgorithm & k);
-    void addCloud(generatable & k);
-   // void addMeasurer()
-    void letsmesure(MyGraphType & G );
+    void addAlgorithm(AbstractAlgorithm* k);
+    void addCloud(generatable* k);
+    //void addMeasurer()
+    void LoopOverMeasurments(MyGraphType & G);
+    void WriteDownAndClear();
 protected:
 
 private:
     //! Vector for cloudtypes:
-    std::vector<generatable> ACT;
+    std::vector<generatable*> ACT;
     //! Vector for algorithmtypes:
-    std::vector<AbstractAlgorithm> algorithms;
+    std::vector<AbstractAlgorithm*> algorithms;
+    //! Vector for measurers:
     std::vector<ExplicitMeasurer*> measurers ;
 
    // StatisticInfo<int> correctRecognition;
