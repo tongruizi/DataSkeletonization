@@ -5,11 +5,12 @@
 #include "Definitions.h"
 #include "Mapper.h"
 #include "Mapper_Parameters.h"
+#include "AbstractAlgorithm.h"
 
-class Mapper_Launcher
+class Mapper_Launcher : public AbstractAlgorithm
 {
 public:
-    Mapper_Launcher(Mapper_Parameters & k):mp(k)
+    Mapper_Launcher(Mapper_Parameters & k):mp(k),AbstractAlgorithm("Mapper")
     {}
     void Run(std::list<Point> & cloud, MyGraphType & G)
     {

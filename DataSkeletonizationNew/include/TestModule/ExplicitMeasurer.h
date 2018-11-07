@@ -1,18 +1,36 @@
 #ifndef EXPLICITMEASURER_H
 #define EXPLICITMEASURER_H
 
+#include "Graph.h"
+#include "generatable.h"
 
 //! this is the true interface class
 class ExplicitMeasurer
 {
-    public:
-        ExplicitMeasurer() {}
-        virtual std::string returnStatisticString() = 0;
-        virtual void run( MyGraphType & G )=0;
-        virtual void resetStatistic() = 0;
-    protected:
+public:
+    ExplicitMeasurer(std::string name,int precision):
+    name(name),precision(precision) {}
+    virtual std::string returnStatisticString() = 0;
+    virtual void run(MyGraphType & G, generatable* cloud, std::list<Point>* generatedCloud)=0;
+    virtual void resetStatistic() = 0;
+//    void setCloud(generatable* cloudt)
+//    {
+//    cloudt = cloud;
+//    }
+//    void setGeneratedCloud(std::list<Point>*  cloudt)
+//    {
+//    generatedCloud = cloudt;
+//    }
+    std::string returnName()
+    {
+        return name;
+    }
+    //  virtual double SimplifiedOutput() = 0;
+protected:
+  std::string name;
+  int precision;
+private:
 
-    private:
 };
 
 #endif // EXPLICITMEASURER_H

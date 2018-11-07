@@ -300,17 +300,17 @@
 	<boost/pool/pool.hpp>
 	<utility>
 
-1522761355 /usr/include/boost/utility
+1534924032 /usr/include/boost/utility
 
-1522761355 /usr/include/boost/tuple
+1534924032 /usr/include/boost/tuple
 
-1522761355 /usr/include/boost/functional
+1534924031 /usr/include/boost/functional
 
-1522761354 /usr/include/boost/algorithm
+1534924031 /usr/include/boost/algorithm
 
-1522761355 /usr/include/boost/iterator
+1534924032 /usr/include/boost/iterator
 
-1522761355 /usr/include/boost/chrono
+1534924031 /usr/include/boost/chrono
 
 1525955165 source:/home/yury/Dropbox/MicelleProject/Micelle/src/Logic/Homology/HomologyComputator.cpp
 	"HomologyComputator.h"
@@ -19585,4 +19585,446 @@
 
 1530013412 /home/yury/Dropbox/MicelleProject/Micelle/include/Logic/ClassicalMethods/GraphSimplification.h
 	"Graph.h"
+
+1531424855 source:/home/yury/Dropbox/Github/Micelle/main.cpp
+	<iostream>
+	"Filereader.h"
+	<string>
+	<list>
+	<Definitions.h>
+	<Graph.h>
+	<Computation.h>
+	<Write.h>
+	"UIHandler.h"
+	<gudhi/Simplex_tree.h>
+	"AbstractComplex.h"
+	<boost/math/special_functions/binomial.hpp>
+	<chrono>
+	<queue>
+	<functional>
+	"HomologyComputator.h"
+	"binomial_coeff_table.h"
+	"HashForSimplex.h"
+	"ClassicUIHandle.h"
+	"DescriptorCluster.h"
+	"ClusterSort.h"
+
+1522844402 /home/yury/Dropbox/Github/Micelle/include/Filereader.h
+	<list>
+	<string>
+	<Definitions.h>
+
+1527840156 /home/yury/Dropbox/Github/Micelle/include/Definitions.h
+	<queue>
+	<list>
+	<CGAL/Exact_predicates_inexact_constructions_kernel.h>
+	<CGAL/grid_simplify_point_set.h>
+	<CGAL/IO/read_xyz_points.h>
+	<CGAL/Delaunay_triangulation_3.h>
+	<CGAL/Triangulation_data_structure_3.h>
+	<CGAL/Simple_cartesian.h>
+	<CGAL/squared_distance_3.h>
+	<CGAL/Alpha_shape_3.h>
+	<boost/graph/adjacency_list.hpp>
+	<boost/graph/properties.hpp>
+	<boost/property_map/property_map.hpp>
+	<boost/program_options.hpp>
+	<boost/graph/graphviz.hpp>
+	<utility>
+	<boost/graph/dijkstra_shortest_paths.hpp>
+	<boost/graph/depth_first_search.hpp>
+	<boost/graph/prim_minimum_spanning_tree.hpp>
+	<boost/graph/kruskal_min_spanning_tree.hpp>
+	<boost/graph/connected_components.hpp>
+	<unordered_map>
+	<gudhi/Simplex_tree.h>
+	<gudhi/Persistent_cohomology.h>
+	<gudhi/graph_simplicial_complex.h>
+	<CGAL/Simple_cartesian.h>
+	<CGAL/AABB_tree.h>
+	<CGAL/AABB_traits.h>
+	<CGAL/AABB_triangle_primitive.h>
+	<CGAL/AABB_segment_primitive.h>
+
+1528962771 /home/yury/Dropbox/Github/Micelle/include/Graph.h
+	"Definitions.h"
+
+1530173930 /home/yury/Dropbox/Github/Micelle/include/Computation.h
+	<Definitions.h>
+	<Graph.h>
+	"AbstractComplex.h"
+
+1525511813 /home/yury/Dropbox/Github/Micelle/include/AbstractComplex.h
+	<Definitions.h>
+	<unordered_map>
+	"SimplexHash.h"
+	"SimplexComparator.h"
+	"SimplexSort.h"
+	"CellInfo.h"
+
+1525423646 /home/yury/Dropbox/Github/Micelle/include/SimplexHash.h
+	"Definitions.h"
+	"SimplexDefinitions.h"
+
+1524732947 /home/yury/Dropbox/Github/Micelle/include/SimplexDefinitions.h
+
+1525423646 /home/yury/Dropbox/Github/Micelle/include/SimplexComparator.h
+	"Definitions.h"
+	"SimplexDefinitions.h"
+
+1525436387 /home/yury/Dropbox/Github/Micelle/include/SimplexSort.h
+	"Definitions.h"
+	"CellInfo.h"
+	"SimplexComparator.h"
+	"SimplexHash.h"
+
+1525424875 /home/yury/Dropbox/Github/Micelle/include/CellInfo.h
+	"Definitions.h"
+
+1527078688 /home/yury/Dropbox/Github/Micelle/include/Write.h
+	<Graph.h>
+	<Definitions.h>
+	<PointInfo.h>
+
+1525956026 /home/yury/Dropbox/Github/Micelle/include/PointInfo.h
+	"Definitions.h"
+
+1531389462 /home/yury/Dropbox/Github/Micelle/include/UIHandler.h
+	"Definitions.h"
+	"Mapper_Parameters.h"
+	"AlphaReeb_Parameters.h"
+	"Graph.h"
+
+1529240575 /home/yury/Dropbox/Github/Micelle/include/Logic/Mapper/Mapper_Parameters.h
+	<string>
+
+1527846981 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/AlphaReeb_Parameters.h
+
+1525956461 /home/yury/Dropbox/Github/Micelle/include/HomologyComputator.h
+	<gudhi/graph_simplicial_complex.h>
+	<gudhi/Simplex_tree.h>
+	<gudhi/Persistent_cohomology.h>
+	<iostream>
+	<ctime>
+	<utility>
+	<vector>
+
+1526371887 /home/yury/Dropbox/Github/Micelle/include/binomial_coeff_table.h
+	"Definitions.h"
+
+1526644783 /home/yury/Dropbox/Github/Micelle/include/Logic/CustomComplex/HashForSimplex.h
+	"Definitions.h"
+	"binomial_coeff_table.h"
+
+1529926676 /home/yury/Dropbox/Github/Micelle/include/Logic/Clustering/DescriptorCluster.h
+	"Graph.h"
+	"ClusterElement.h"
+
+1529929351 /home/yury/Dropbox/Github/Micelle/include/Logic/Clustering/ClusterElement.h
+
+1529927778 /home/yury/Dropbox/Github/Micelle/include/Logic/Clustering/ClusterSort.h
+	"Graph.h"
+	"ClusterElement.h"
+
+1525762774 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaMethods/AbstractComplex.cpp
+	"AbstractComplex.h"
+	"Definitions.h"
+	"Computation.h"
+	"PointTools.h"
+	<queue>
+	<functional>
+	<utility>
+	<limits>
+	"Write.h"
+
+1527608297 /home/yury/Dropbox/Github/Micelle/include/PointTools.h
+	"Definitions.h"
+
+1529493290 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaMethods/FlexibleComplex.cpp
+	"FlexibleComplex.h"
+	"AABBMethods.h"
+	"Write.h"
+	"HomologyComputator.h"
+	"PointInfo.h"
+	"Computation.h"
+
+1526298636 /home/yury/Dropbox/Github/Micelle/include/FlexibleComplex.h
+	<Definitions.h>
+	<PointInfo.h>
+	<Graph.h>
+
+1526984913 /home/yury/Dropbox/Github/Micelle/include/AABBMethods.h
+	"Definitions.h"
+	"PointInfo.h"
+
+1525423646 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaMethods/SimplexComparator.cpp
+	"SimplexComparator.h"
+
+1525423489 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaMethods/SimplexHash.cpp
+	"SimplexHash.h"
+	"Definitions.h"
+	"Computation.h"
+	"AbstractComplex.h"
+
+1525435482 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaMethods/SimplexSort.cpp
+	"SimplexSort.h"
+
+1527857394 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaReeb/AlphaReeb_Parameters.cpp
+	"AlphaReeb_Parameters.h"
+
+1529593849 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaReeb/AlphaReebComputation.cpp
+	"AlphaReebComputation.h"
+	"Dijkstra.h"
+	"Data_Pt.h"
+	"Split_Into_Conn_Comps.h"
+	"GraphUpgrade.h"
+	<map>
+	"Generate_AlphaReeb_Graph.h"
+	"Combine_Comps.h"
+	"Write.h"
+	"Graph.h"
+
+1528977942 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/AlphaReebComputation.h
+	"AlphaReeb_Parameters.h"
+	"Graph.h"
+
+1529762871 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/Dijkstra.h
+	<boost/graph/dijkstra_shortest_paths.hpp>
+	<iostream>
+	<map>
+	"Graph.h"
+
+1527857511 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/Data_Pt.h
+	"Graph.h"
+
+1529593894 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/Split_Into_Conn_Comps.h
+	<boost/graph/connected_components.hpp>
+	"Recover_Components.h"
+
+1528972890 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/Recover_Components.h
+	"Data_Pt.h"
+	"Graph.h"
+
+1529413251 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/GraphUpgrade.h
+	"PointTools.h"
+	"Graph.h"
+	<unordered_map>
+
+1530697831 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/Generate_AlphaReeb_Graph.h
+	"Graph.h"
+	"PointTools.h"
+
+1528970414 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/Combine_Comps.h
+	"Graph.h"
+
+1527857975 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaReeb/Cluster.cpp
+	"Cluster.h"
+
+1527857634 /home/yury/Dropbox/Github/Micelle/include/Logic/AlphaReeb/Cluster.h
+	"Definitions.h"
+	"Data_Pt.h"
+
+1527842061 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaReeb/Data_Pt.cpp
+	"Data_Pt.h"
+
+1529413276 source:/home/yury/Dropbox/Github/Micelle/src/Logic/AlphaReeb/GraphUpgrade.cpp
+	"GraphUpgrade.h"
+	"PointTools.h"
+	"Graph.h"
+	<unordered_map>
+
+1526372661 source:/home/yury/Dropbox/Github/Micelle/src/Logic/binomial_coeff_table.cpp
+	"binomial_coeff_table.h"
+
+1530184849 source:/home/yury/Dropbox/Github/Micelle/src/Logic/BranchDetection.cpp
+	"BranchDetection.h"
+	"PointTools.h"
+	"ClusterElement.h"
+	"ClusteringMethods.h"
+
+1530003929 /home/yury/Dropbox/Github/Micelle/include/BranchDetection.h
+	"Graph.h"
+	"Definitions.h"
+
+1530184075 /home/yury/Dropbox/Github/Micelle/include/Logic/Clustering/ClusteringMethods.h
+	"ClusterSort.h"
+
+1531413345 source:/home/yury/Dropbox/Github/Micelle/src/Logic/ClassicalMethods/BranchSimplification.cpp
+	"BranchSimplification.h"
+	"StraighteningMethods.h"
+	"PointTools.h"
+
+1531413163 /home/yury/Dropbox/Github/Micelle/include/Logic/ClassicalMethods/BranchSimplification.h
+	"Graph.h"
+	"BranchDetection.h"
+
+1527234704 /home/yury/Dropbox/Github/Micelle/include/Logic/ClassicalMethods/StraighteningMethods.h
+	"Definitions.h"
+	"Graph.h"
+
+1530172316 source:/home/yury/Dropbox/Github/Micelle/src/Logic/ClassicalMethods/GraphSimplification.cpp
+	"GraphSimplification.h"
+
+1530013412 /home/yury/Dropbox/Github/Micelle/include/Logic/ClassicalMethods/GraphSimplification.h
+	"Graph.h"
+
+1531390809 source:/home/yury/Dropbox/Github/Micelle/src/Logic/ClassicalMethods/StraighteningMethods.cpp
+	"StraighteningMethods.h"
+	"Computation.h"
+
+1530191601 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Clustering/ClusterElement.cpp
+	"ClusterElement.h"
+	"Graph.h"
+
+1531398481 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Clustering/ClusteringMethods.cpp
+	"ClusteringMethods.h"
+
+1530191407 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Clustering/ClusterSort.cpp
+	"ClusterSort.h"
+
+1529916415 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Clustering/DescriptorCluster.cpp
+	"DescriptorCluster.h"
+	"Graph.h"
+
+1530174701 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Computation.cpp
+	"Computation.h"
+	"Definitions.h"
+	"Graph.h"
+	"AbstractComplex.h"
+	<list>
+	<boost/math/special_functions/binomial.hpp>
+	"Write.h"
+
+1526648513 source:/home/yury/Dropbox/Github/Micelle/src/Logic/CustomComplex/ComplexAlgorithms.cpp
+	"ComplexAlgorithms.h"
+
+1526634987 /home/yury/Dropbox/Github/Micelle/include/Logic/CustomComplex/ComplexAlgorithms.h
+	"HashComplex.h"
+
+1526648227 /home/yury/Dropbox/Github/Micelle/include/HashComplex.h
+	"Definitions.h"
+	"HashForSimplex.h"
+	"EqualsComplex.h"
+
+1526548586 /home/yury/Dropbox/Github/Micelle/include/Logic/CustomComplex/EqualsComplex.h
+	"Definitions.h"
+
+1526547806 source:/home/yury/Dropbox/Github/Micelle/src/Logic/CustomComplex/EqualsComplex.cpp
+	"EqualsComplex.h"
+
+1529068404 source:/home/yury/Dropbox/Github/Micelle/src/Logic/CustomComplex/HashComplex.cpp
+	"HashComplex.h"
+	<iostream>
+	<chrono>
+	<ctime>
+
+1526644783 source:/home/yury/Dropbox/Github/Micelle/src/Logic/CustomComplex/HashForSimplex.cpp
+	"HashForSimplex.h"
+
+1524052740 source:/home/yury/Dropbox/Github/Micelle/src/Logic/DataGeneration/CloudGenerator.cpp
+	"CloudGenerator.h"
+	"Computation.h"
+	"Graph.h"
+
+1524041765 /home/yury/Dropbox/Github/Micelle/include/CloudGenerator.h
+	"Definitions.h"
+	"Graph.h"
+
+1528214565 source:/home/yury/Dropbox/Github/Micelle/src/Logic/DataGeneration/GraphGeneration.cpp
+	"GraphGeneration.h"
+	"Computation.h"
+
+1527592012 /home/yury/Dropbox/Github/Micelle/include/GraphGeneration.h
+	<Graph.h>
+	<Definitions.h>
+
+1530173096 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Geometrical Methods/AABBMethods.cpp
+	"AABBMethods.h"
+	"Definitions.h"
+
+1527852554 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Graph.cpp
+	"Graph.h"
+	"Definitions.h"
+	"Computation.h"
+
+1525955165 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Homology/HomologyComputator.cpp
+	"HomologyComputator.h"
+
+1531424950 source:/home/yury/Dropbox/Github/Micelle/src/Logic/InterfaceHandles/ClassicUIHandle.cpp
+	"ClassicUIHandle.h"
+	"Filereader.h"
+	"Computation.h"
+	"FlexibleComplex.h"
+	"BranchDetection.h"
+	"StraighteningMethods.h"
+	"BranchSimplification.h"
+	"GraphGeneration.h"
+	"CloudGenerator.h"
+
+1527237829 source:/home/yury/Dropbox/Github/Micelle/src/Logic/InterfaceHandles/TestHandle.cpp
+	"TestHandle.h"
+
+1529410942 source:/home/yury/Dropbox/Github/Micelle/src/Logic/Mapper/Mapper_Parameters.cpp
+	"Mapper_Parameters.h"
+
+1529151194 source:/home/yury/Dropbox/Github/Micelle/src/Logic/PointTools.cpp
+	"PointTools.h"
+	"Definitions.h"
+
+1531424762 source:/home/yury/Dropbox/Github/Micelle/src/Logic/UIHandler.cpp
+	"UIHandler.h"
+	"CloudGenerator.h"
+	"GraphGeneration.h"
+	"Definitions.h"
+	"Computation.h"
+	"Write.h"
+	"FlexibleComplex.h"
+	"BranchDetection.h"
+	"HashComplex.h"
+	"ComplexAlgorithms.h"
+	"AlphaReebComputation.h"
+	<iostream>
+	<chrono>
+	<ctime>
+	"Mapper.h"
+	"Filereader.h"
+	"ClassicUIHandle.h"
+	"GraphSimplification.h"
+
+1529651532 /home/yury/Dropbox/Github/Micelle/include/Logic/Mapper/Mapper.h
+	"Mapper_Parameters.h"
+	"Gauss_Density_Filter.h"
+	"Distance_Filter.h"
+	"Generate_Subclouds.h"
+	"Computation.h"
+	"ComponentAllocator.h"
+	"GraphUpgrade.h"
+	"Write.h"
+
+1529411075 /home/yury/Dropbox/Github/Micelle/include/Logic/Mapper/Gauss_Density_Filter.h
+	"Definitions.h"
+
+1529411188 /home/yury/Dropbox/Github/Micelle/include/Logic/Mapper/Distance_Filter.h
+	<map>
+	"Definitions.h"
+
+1529411629 /home/yury/Dropbox/Github/Micelle/include/Logic/Mapper/Generate_Subclouds.h
+	"Definitions.h"
+
+1530793326 /home/yury/Dropbox/Github/Micelle/include/Logic/Mapper/ComponentAllocator.h
+	"Definitions.h"
+	<boost/graph/connected_components.hpp>
+	"ClusterElement.h"
+	"ClusteringMethods.h"
+
+1522844340 source:/home/yury/Dropbox/Github/Micelle/src/ReadWrite/Filereader.cpp
+	"Filereader.h"
+	"Definitions.h"
+	<fstream>
+	<iostream>
+
+1530191545 source:/home/yury/Dropbox/Github/Micelle/src/ReadWrite/Write.cpp
+	"Write.h"
+	"Graph.h"
+	"Definitions.h"
 

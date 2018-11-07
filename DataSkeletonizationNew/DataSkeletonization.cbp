@@ -33,6 +33,9 @@
 					<Add directory="include/OldSchoolAlgorithms/Mapper" />
 					<Add directory="include/OldSchoolAlgorithms" />
 					<Add directory="include/TestModule" />
+					<Add directory="include/TestModule/Measurers" />
+					<Add directory="include/TestModule/Statistics" />
+					<Add directory="include/TestModule/CloudTypes" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -64,6 +67,9 @@
 					<Add directory="include" />
 					<Add directory="include/OldSchoolAlgorithms" />
 					<Add directory="include/TestModule" />
+					<Add directory="include/TestModule/Measurers" />
+					<Add directory="include/TestModule/CloudTypes" />
+					<Add directory="include/TestModule/Statistics" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -110,6 +116,7 @@
 		<Unit filename="include/Graph/Graph.cpp" />
 		<Unit filename="include/Graph/Graph.h" />
 		<Unit filename="include/Methods/AMSTComputator.h" />
+		<Unit filename="include/Methods/AmstAlgorithm.h" />
 		<Unit filename="include/Methods/BranchDetection.cpp" />
 		<Unit filename="include/Methods/BranchDetection.h" />
 		<Unit filename="include/Methods/NaiveMethods.cpp" />
@@ -153,8 +160,18 @@
 		<Unit filename="include/TestClasses/TreeExperements.h" />
 		<Unit filename="include/TestModule/AbstractAlgorithm.h" />
 		<Unit filename="include/TestModule/AbstractMeasurer.h" />
+		<Unit filename="include/TestModule/CloudTypes/DoubleStar.cpp" />
+		<Unit filename="include/TestModule/CloudTypes/DoubleStar.h" />
+		<Unit filename="include/TestModule/CloudTypes/SingleStar.cpp" />
+		<Unit filename="include/TestModule/CloudTypes/SingleStar.h" />
 		<Unit filename="include/TestModule/ExplicitMeasurer.h" />
-		<Unit filename="include/TestModule/StatisticInfo.h" />
+		<Unit filename="include/TestModule/Measurers/ClassicDistanceMeasure.cpp" />
+		<Unit filename="include/TestModule/Measurers/ClassicDistanceMeasure.h" />
+		<Unit filename="include/TestModule/Measurers/CorrectEndTypeMeasure.cpp" />
+		<Unit filename="include/TestModule/Measurers/CorrectEndTypeMeasure.h" />
+		<Unit filename="include/TestModule/SimpleMeasurerCore.h" />
+		<Unit filename="include/TestModule/Statistics/SimpleStatistic.h" />
+		<Unit filename="include/TestModule/Statistics/StatisticInfo.h" />
 		<Unit filename="include/TestModule/controller.cpp" />
 		<Unit filename="include/TestModule/controller.h" />
 		<Unit filename="include/TestModule/generatable.h" />

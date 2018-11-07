@@ -250,26 +250,26 @@ void Computation::MSTSpecialCompute(std::map<Point, MyGraphType::vertex_descript
 //    return maxx;
 //}
 //
-//double Computation::AABBError(MyGraphType & G, std::list<Point> cloud)
-//{
-//    std::list<Segment> segments;
-//    for (auto eit = boost::edges(G).first; eit != boost::edges(G).second; eit++)
-//    {
-//    Point p1 = G[boost::source(*eit,G)].p;
-//    Point p2 = G[boost::target(*eit,G)].p;
-//    segments.push_back(Segment(p1,p2));
-//    }
-//    double maxdistance = 0;
-//    SegmentTree AABB(segments.begin(), segments.end());
-//    AABB.accelerate_distance_queries();
-//    for (auto it = cloud.begin(); it != cloud.end(); it++)
-//    {
-//    Point qq = AABB.closest_point(*it);
-//    maxdistance = std::max(maxdistance, sqrt(CGAL::squared_distance(*it,qq)));
-//    }
-//    return maxdistance;
-//
-//}
+double Computation::AABBError(MyGraphType & G, std::list<Point> & cloud)
+{
+ std::list<Segment> segments;
+   for (auto eit = boost::edges(G).first; eit != boost::edges(G).second; eit++)
+   {
+   Point p1 = G[boost::source(*eit,G)].p;
+   Point p2 = G[boost::target(*eit,G)].p;
+   segments.push_back(Segment(p1,p2));
+     }
+    double maxdistance = 0;
+    SegmentTree AABB(segments.begin(), segments.end());
+    AABB.accelerate_distance_queries();
+    for (auto it = cloud.begin(); it != cloud.end(); it++)
+    {
+    Point qq = AABB.closest_point(*it);
+    maxdistance = std::max(maxdistance, sqrt(CGAL::squared_distance(*it,qq)));
+    }
+    return maxdistance;
+
+}
 //
 //void Computation::BruteNeighborhoodGraph(MyGraphType & G, std::list<Point> pointlist, double epsilon )
 //{

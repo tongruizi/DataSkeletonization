@@ -9,12 +9,35 @@ class generatable
 {
 public:
 
-    generatable(int number_of_cloudpoints, double epsilon):
-        number_of_cloudpoints(number_of_cloudpoints), epsilon(epsilon)
+    generatable(int number_of_cloudpoints, double epsilon, int number_of_runs):
+        number_of_cloudpoints(number_of_cloudpoints), epsilon(epsilon),number_of_runs(number_of_runs)
     {
 
     }
+
+    bool CorrectNumberOfEndPoints(MyGraphType & G, int nob)
+    {
+
+        int endcount = 0;
+
+        for (auto it = boost::vertices(G).first; it != boost::vertices(G).second; it++)
+        {
+            int degree = boost::degree(*it,G);
+            if (degree == 1)
+            {
+                endcount++;
+            }
+        }
+        return (endcount == nob);
+
+
+    }
+
     virtual void GenerateGraph(MyGraphType & G) =0;
+
+    virtual bool IsGraphCorrect(MyGraphType & G) =0;
+
+    virtual bool DoesGraphHaveCorrectForm(MyGraphType & G) =0;
 
     void GenerateCloud(std::list<Point> & p)
     {
@@ -23,59 +46,23 @@ public:
         CloudGenerator::generatePoints(number_of_cloudpoints, G, epsilon,p);
     }
 
+    int returnNumberOfRuns()
+    {
+        return number_of_runs;
+    }
+
+
+
 
 protected:
 
 private:
-    //! And here we go again. I told you, no extra $%^$ here ! :D
-    //! Only those 3 variables are required here
 
+    int number_of_runs;
     int number_of_cloudpoints;
     double epsilon;
 
 };
 
-
-class SingleStar:public generatable
-{
-public:
-    SingleStar(double angle, int number_of_branches, double scaler, int number_of_cloudpoints, double epsilon, double scale):
-    generatable(number_of_cloudpoints,epsilon),angle(angle), number_of_branches(number_of_branches),scale(scaler)
-    {
-
-    }
-    void GenerateGraph(MyGraphType & G)
-    {
-        GraphGeneration::RandomGraph1(number_of_branches,angle,scale,G);
-    }
-
-private:
-    double angle;
-    int number_of_branches;
-    double scale;
-};
-
-class doubleStar:public generatable
-{
-public:
-    //! Implement this, as in single star. Note that we have an extra parameter...
-    doubleStar(double angle, int number_of_branches,int number_of_branches2, int number_of_cloudpoints, double epsilon, double scale):
-     generatable(number_of_cloudpoints,epsilon),angle(angle), number_of_branches(number_of_branches), number_of_branches2(number_of_branches2),scale(scale)
-    {
-
-    }
-
-    void GenerateGraph(MyGraphType & G)
-    {
-        GraphGeneration::RandomGraph2(number_of_branches, number_of_branches2, angle, scale, G);
-    }
-private:
-//! Variables here:
-    double angle;
-    int number_of_branches;
-    int number_of_branches2;
-    double scale;
-
-};
 
 #endif // STARS_H

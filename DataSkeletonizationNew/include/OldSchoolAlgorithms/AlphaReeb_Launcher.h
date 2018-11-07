@@ -6,12 +6,13 @@
 #include "AlphaReeb_Parameters.h"
 #include "AlphaReebComputation.h"
 #include "Computation.h"
+#include "AbstractAlgorithm.h"
 
-class AlphaReeb_Launcher
+class AlphaReeb_Launcher:public AbstractAlgorithm
 {
 public:
     AlphaReeb_Launcher(AlphaReeb_Parameters & param,double epsilon):
-    param(param),epsilon(epsilon) {}
+    param(param),epsilon(epsilon),AbstractAlgorithm("\alpha-Reeb") {}
     void Run(std::list<Point> & cloudlist, MyGraphType & out)
     {
 
