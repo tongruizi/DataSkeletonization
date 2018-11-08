@@ -5,6 +5,7 @@
 		<Option title="DataSkeletonization" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="include/TestModule/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/KernelDensityEstimation" prefix_auto="1" extension_auto="1" />
@@ -36,6 +37,7 @@
 					<Add directory="include/TestModule/Measurers" />
 					<Add directory="include/TestModule/Statistics" />
 					<Add directory="include/TestModule/CloudTypes" />
+					<Add directory="include/TestModule/PostRunners" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -70,6 +72,7 @@
 					<Add directory="include/TestModule/Measurers" />
 					<Add directory="include/TestModule/CloudTypes" />
 					<Add directory="include/TestModule/Statistics" />
+					<Add directory="include/TestModule/PostRunners" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -95,6 +98,7 @@
 		<Unit filename="include/Clustering/ClusteringMethods.h" />
 		<Unit filename="include/Clustering/DescriptorCluster.cpp" />
 		<Unit filename="include/Clustering/DescriptorCluster.h" />
+		<Unit filename="include/Convertors/ComplicatedConvertor.h" />
 		<Unit filename="include/Convertors/GeneralConvertor.cpp" />
 		<Unit filename="include/Convertors/GeneralConvertor.h" />
 		<Unit filename="include/DataGeneration/CloudGenerator.cpp" />
@@ -169,6 +173,12 @@
 		<Unit filename="include/TestModule/Measurers/ClassicDistanceMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/CorrectEndTypeMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/CorrectEndTypeMeasure.h" />
+		<Unit filename="include/TestModule/Measurers/ManualMeasure.h" />
+		<Unit filename="include/TestModule/Measurers/TimerCountMeasure.h" />
+		<Unit filename="include/TestModule/PostRunners/PostRunInterface.h">
+			<Option virtualFolder="include/TestModule/" />
+		</Unit>
+		<Unit filename="include/TestModule/PostRunners/PrintToFile.h" />
 		<Unit filename="include/TestModule/SimpleMeasurerCore.h" />
 		<Unit filename="include/TestModule/Statistics/SimpleStatistic.h" />
 		<Unit filename="include/TestModule/Statistics/StatisticInfo.h" />

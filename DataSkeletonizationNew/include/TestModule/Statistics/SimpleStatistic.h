@@ -39,6 +39,10 @@ public:
     success = 0;
     failure = 0;
     }
+    double returnAvg()
+    {
+    return success/caseNumber;
+    }
 
 
 

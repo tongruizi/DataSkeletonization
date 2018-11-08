@@ -8,14 +8,16 @@ class SimpleMeasurerCore : public ExplicitMeasurer
 {
 public:
     SimpleMeasurerCore(std::string name, int precision):
-    ExplicitMeasurer(name,precision) {}
+        ExplicitMeasurer(name,precision) {}
 
 
-    virtual std::string returnStatisticString()
+    std::string returnStatisticString()
     {
-        //! This will be implemented here
-
-        return "";
+        double avg = statistic.returnAvg();
+        std::stringstream stream;
+        stream << std::fixed << std::setprecision(precision) << avg;
+        std::string s = stream.str();
+        return s;
     }
     virtual bool CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud) =0;
 
@@ -30,6 +32,8 @@ public:
     {
         statistic.reset();
     }
+    virtual SimpleMeasurerCore* Clone() = 0;
+
 protected:
     SimpleStatistic statistic;
 

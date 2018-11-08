@@ -4,21 +4,46 @@
 #include "Definitions.h"
 #include "Graph.h"
 #include "ExplicitMeasurer.h"
-
+#include <chrono>
+#include "PostRunInterface.h"
+#include "ManualMeasure.h"
 
 class AbstractAlgorithm
 {
 public:
-    AbstractAlgorithm(std::string name):name(name) {}
+    //! Constructor:
+    AbstractAlgorithm(std::string name):name(name),TimeMeasure("Time",1),RunNumber(0) {}
+    //! Destructor:
+    ~AbstractAlgorithm()
+    {
+        for (int i = 0; i < measurers.size(); i++)
+        {
+            delete measurers[i];
+        }
+    }
 
     virtual void Run(std::list<Point> & cloudlist, MyGraphType & out) = 0;
 
-    double ExplicitRun()
+    void ExplicitRun(std::list<Point> & cloudlist, MyGraphType & out, generatable* gen)
     {
-    //! Something will be add here soon.
+        //! Something will be add here soon.
+        auto start = std::chrono::system_clock::now();
+        //! Algorithm itself:
+        Run(cloudlist, out);
+        //! Time counting methods:
+        auto endd = std::chrono::system_clock::now();
+        std::chrono::duration<double> diff = endd-start;
+        TimeMeasure.CustomAppend(diff.count());
+        //! PostRuners:
+        for (int j = 0; j < postRunners.size(); j++)
+        {
+            //run(MyGraphType & G, generatable* gen, int RunNumber, std::string AlgorithmName);
+            postRunners[j] -> run(out,gen,RunNumber,name);
+        }
+        //! Update Run number:
+        RunNumber++;
 
-    //! This method will return the run time of the algorithm
-    return 0;
+
     }
 
     std::string returnName()
@@ -51,6 +76,12 @@ public:
         {
             measurers[k] ->resetStatistic();
         }
+        TimeMeasure.resetStatistic();
+    }
+
+    void setRunNumber(int k)
+    {
+        RunNumber = k;
     }
 
     void WriteResults(std::vector<std::string> & rvector)
@@ -60,14 +91,27 @@ public:
         {
             rvector[k] = measurers[k] ->returnStatisticString() ;
         }
-
     }
+    std::string returnTimeMeasureString()
+    {
+        return TimeMeasure.returnStatisticString();
+    }
+
+    void addPostRunner(PostRunInterface* postRunner)
+    {
+        postRunners.push_back(postRunner);
+    }
+
+
 
 protected:
     std::vector<ExplicitMeasurer*> measurers;
-    //! We will create also method for post processing
+    ManualMeasure<double> TimeMeasure;
+    //! We will create also method for post processing, such as printing
+    std::vector<PostRunInterface*> postRunners;
 private:
     std::string name;
+    int RunNumber;
 };
 
 #endif // ABSTRACTALGORITHM_H

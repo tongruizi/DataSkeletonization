@@ -35,6 +35,12 @@ public:
     {
         mystatistic.reset();
     }
+    StatisticInfo<T>* provideAccessToMyStatistic()
+    {
+    return &mystatistic;
+    }
+
+    virtual AbstractMeasurer<T>* Clone() = 0;
 
 protected:
     StatisticInfo<T> mystatistic;

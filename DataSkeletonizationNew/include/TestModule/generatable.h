@@ -9,8 +9,8 @@ class generatable
 {
 public:
 
-    generatable(int number_of_cloudpoints, double epsilon, int number_of_runs):
-        number_of_cloudpoints(number_of_cloudpoints), epsilon(epsilon),number_of_runs(number_of_runs)
+    generatable(int number_of_cloudpoints, double epsilon, int number_of_runs,std::string name):
+        number_of_cloudpoints(number_of_cloudpoints), epsilon(epsilon),number_of_runs(number_of_runs), name(name)
     {
 
     }
@@ -39,6 +39,7 @@ public:
 
     virtual bool DoesGraphHaveCorrectForm(MyGraphType & G) =0;
 
+
     void GenerateCloud(std::list<Point> & p)
     {
         MyGraphType G;
@@ -49,6 +50,10 @@ public:
     int returnNumberOfRuns()
     {
         return number_of_runs;
+    }
+    std::string returnName()
+    {
+        return name;
     }
 
 
@@ -61,6 +66,7 @@ private:
     int number_of_runs;
     int number_of_cloudpoints;
     double epsilon;
+    std::string name;
 
 };
 

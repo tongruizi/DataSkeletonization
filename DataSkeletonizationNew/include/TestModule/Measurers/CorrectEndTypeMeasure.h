@@ -11,6 +11,10 @@ class CorrectEndTypeMeasure : public SimpleMeasurerCore
     public:
         CorrectEndTypeMeasure(int precision);
         bool CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud);
+        CorrectEndTypeMeasure* Clone() override
+        {
+        return new CorrectEndTypeMeasure(*this);
+        }
     protected:
 
     private:

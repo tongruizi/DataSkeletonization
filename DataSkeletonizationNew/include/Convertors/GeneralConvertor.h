@@ -18,6 +18,11 @@ public:
     static void GraphToVtk(std::string path, MyGraphType &G);
     static void ListToMat(std::list<Point> & lp, arma::mat & mtx);
     static void ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData);
+    //! Method to print data from measurers directly into latex table.
+    static void DataToLatex(std::vector<std::vector<std::vector<std::string>>> & measurers,
+    std::vector<std::vector<std::string>> & timeMeasures,
+    std::vector<std::string> & GraphNames, std::vector<std::string> & AlgorithmNames,
+    std::vector<std::string> & MeasurerNames, std::string filename);
 
 protected:
 

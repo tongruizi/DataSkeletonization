@@ -10,8 +10,10 @@ class DoubleStar:public generatable
 {
 public:
     //! Implement this, as in single star. Note that we have an extra parameter...
-    DoubleStar(double angle, int number_of_branches,int number_of_branches2, int number_of_cloudpoints, double epsilon, double scale,int number_of_runs):
-        generatable(number_of_cloudpoints,epsilon,number_of_runs),angle(angle), number_of_branches(number_of_branches), number_of_branches2(number_of_branches2),scale(scale)
+    DoubleStar(double angle, int number_of_branches,int number_of_branches2, int number_of_cloudpoints, double epsilon, double scale,int number_of_runs,
+    std::string name = "DoubleStar"):
+        generatable(number_of_cloudpoints,epsilon,number_of_runs,name),angle(angle), number_of_branches(number_of_branches),
+         number_of_branches2(number_of_branches2),scale(scale)
     {
 
     }

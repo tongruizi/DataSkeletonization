@@ -13,6 +13,7 @@ public:
     virtual std::string returnStatisticString() = 0;
     virtual void run(MyGraphType & G, generatable* cloud, std::list<Point>* generatedCloud)=0;
     virtual void resetStatistic() = 0;
+    virtual ExplicitMeasurer* Clone() = 0;
 //    void setCloud(generatable* cloudt)
 //    {
 //    cloudt = cloud;
@@ -25,7 +26,8 @@ public:
     {
         return name;
     }
-    //  virtual double SimplifiedOutput() = 0;
+
+    // virtual double SimplifiedOutput() = 0;
 protected:
   std::string name;
   int precision;

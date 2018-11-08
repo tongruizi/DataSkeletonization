@@ -8,8 +8,9 @@
 class SingleStar:public generatable
 {
 public:
-    SingleStar(double angle, int number_of_branches, double scaler, int number_of_cloudpoints, double epsilon, double scale,int number_of_runs):
-        generatable(number_of_cloudpoints,epsilon,number_of_runs),angle(angle), number_of_branches(number_of_branches),scale(scaler)
+    SingleStar(double angle, int number_of_branches, double scaler, int number_of_cloudpoints, double epsilon, double scale,int number_of_runs,
+    std::string name = "SingleStar"):
+        generatable(number_of_cloudpoints,epsilon,number_of_runs,name),angle(angle), number_of_branches(number_of_branches),scale(scaler)
     {
 
     }
