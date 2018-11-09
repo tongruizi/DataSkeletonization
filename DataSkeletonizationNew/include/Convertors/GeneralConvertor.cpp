@@ -117,6 +117,7 @@ void GeneralConvertor::GraphToVtk(std::string path, MyGraphType &G)
     {
         mystream  << "2 " << source(*iter, G) << " " << target(*iter, G) <<std::endl;
     }
+    mystream.close();
 }
 
 void GeneralConvertor::ListToMat(std::list<Point> & points, arma::mat & data)
@@ -133,5 +134,88 @@ void GeneralConvertor::ListToMat(std::list<Point> & points, arma::mat & data)
     }
 
 }
+void GeneralConvertor::ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData)
+{
+    int vSize = originalData.n_cols;
+    for (int i = 0; i < vSize; i++)
+    {
+        Point p(originalData(0,i),originalData(1,i),originalData(2,i));
+        Graph::add_vertex(G,p);
+    }
+
+    int edgeSize = edges.n_cols;
+
+    for (int i = 0; i < edgeSize; i++)
+    {
+        int one = (int) edges(0,i);
+        int two = (int) edges(1,i);
+        Graph::add_edge(G,one,two);
+
+    }
+
+}
+
+void GeneralConvertor::DataToLatex(std::vector<std::vector<std::vector<std::string>>> & measurers,
+                                   std::vector<std::vector<std::string>> & timeMeasures,
+                                   std::vector<std::string> & GraphNames, std::vector<std::string> & AlgorithmNames,
+                                   std::vector<std::string> & MeasureNames, std::string filename)
+{
+    std::ofstream mystream;
+    mystream.open(filename);
+//    mystream << '\';
+    mystream << "begin{tabular}{";
+    int sum = 3 + MeasureNames.size();
+    for (int i = 0; i < sum ; i++)
+    {
+        if (i < sum - 1)
+        {
+            mystream << "c|";
+        }
+        else
+        {
+            mystream << "c";
+        }
+    }
+    mystream << "}" << std::endl;
+  //  mystream << '\';
+    mystream << "toprule" << std::endl;
+
+    // graph \, & \, algorithm \, & \, endpoints \, & \, homeo type \, & \, time, ms \, & \, error \,
+    mystream << "graph \, & \, algorithm \, & \, time \, ";
+    for (int i = 0; i < MeasureNames.size(); i++)
+    {
+        mystream << "& \, " << MeasureNames[i] << " \,";
+    }
+    mystream << std::endl;
+    mystream << "\\" << std::endl;
+    for (int i = 0; i < GraphNames.size(); i++)
+    {
+        mystream << "\midrule" << std::endl;
+        for (int j = 0; j < AlgorithmNames.size(); j++)
+        {
+            // 3-star & Mapper & 75\% & 75\% & 611 & 18.9\% \\ %& 18.2 \\
+
+            mystream << GraphNames[i] ;
+            mystream << " & " ;
+            mystream << AlgorithmNames[j] ;
+            mystream << " & ";
+            mystream << timeMeasures[i][j];
+            for (int k = 0; k < MeasureNames.size(); k++)
+            {
+                mystream << " & ";
+                mystream << measurers[i][j][k];
+
+            }
+            mystream << "\\" << std::endl;
+
+        }
+
+    }
+    mystream << "\bottomrule" << std::endl;
+    mystream << "\end{tabular}";
+             mystream.close();
+
+}
+
 
 

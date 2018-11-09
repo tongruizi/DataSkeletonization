@@ -3,18 +3,115 @@
 
 #include "Definitions.h"
 #include "Graph.h"
-
+#include "ExplicitMeasurer.h"
+#include <chrono>
+#include "PostRunInterface.h"
+#include "ManualMeasure.h"
 
 class AbstractAlgorithm
 {
-    public:
-        AbstractAlgorithm() {}
+public:
+    //! Constructor:
+    AbstractAlgorithm(std::string name):name(name),TimeMeasure("Time",1),RunNumber(0) {}
+    //! Destructor:
+    ~AbstractAlgorithm()
+    {
+        for (int i = 0; i < measurers.size(); i++)
+        {
+            delete measurers[i];
+        }
+    }
 
-        virtual void Run(std::list<Point> & cloudlist, MyGraphType & out) = 0;
+    virtual void Run(std::list<Point> & cloudlist, MyGraphType & out) = 0;
 
-    protected:
+    void ExplicitRun(std::list<Point> & cloudlist, MyGraphType & out, generatable* gen)
+    {
+        //! Something will be add here soon.
+        auto start = std::chrono::system_clock::now();
+        //! Algorithm itself:
+        Run(cloudlist, out);
+        //! Time counting methods:
+        auto endd = std::chrono::system_clock::now();
+        std::chrono::duration<double> diff = endd-start;
+        TimeMeasure.CustomAppend(diff.count());
+        //! PostRuners:
+        for (int j = 0; j < postRunners.size(); j++)
+        {
+            //run(MyGraphType & G, generatable* gen, int RunNumber, std::string AlgorithmName);
+            postRunners[j] -> run(out,gen,RunNumber,name);
+        }
+        //! Update Run number:
+        RunNumber++;
 
-    private:
+
+    }
+
+    std::string returnName()
+    {
+        return name;
+    }
+    int returnMeasurerSize()
+    {
+        return measurers.size();
+    }
+    void addMeasurer(ExplicitMeasurer* m)
+    {
+        measurers.push_back(m);
+    }
+    ExplicitMeasurer* returnMeasurer(int k)
+    {
+        return measurers[k];
+    }
+    void CycleOverMeasurers(MyGraphType & G, generatable* cloud, std::list<Point>* generatedCloud)
+    {
+        for (int k = 0; k < measurers.size(); k++)
+        {
+            (*measurers[k]).run(G,cloud,generatedCloud);
+
+        }
+    }
+    void ResetAllMeasurers()
+    {
+        for (int k = 0; k < measurers.size(); k++)
+        {
+            measurers[k] ->resetStatistic();
+        }
+        TimeMeasure.resetStatistic();
+    }
+
+    void setRunNumber(int k)
+    {
+        RunNumber = k;
+    }
+
+    void WriteResults(std::vector<std::string> & rvector)
+    {
+        rvector.resize(measurers.size());
+        for (int k = 0; k < measurers.size(); k++)
+        {
+            rvector[k] = measurers[k] ->returnStatisticString() ;
+        }
+    }
+    std::string returnTimeMeasureString()
+    {
+        return TimeMeasure.returnStatisticString();
+    }
+
+    void addPostRunner(PostRunInterface* postRunner)
+    {
+        postRunners.push_back(postRunner);
+    }
+
+
+
+protected:
+    std::vector<ExplicitMeasurer*> measurers;
+    ManualMeasure<double> TimeMeasure;
+    //! We will create also method for post processing, such as printing
+    std::vector<PostRunInterface*> postRunners;
+private:
+    std::string name;
+    int RunNumber;
 };
 
 #endif // ABSTRACTALGORITHM_H

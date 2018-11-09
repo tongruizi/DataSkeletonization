@@ -108,7 +108,7 @@ public:
             timesumm = timesumm + tmtm;
             MyGraphType G;
             MyGraphType K;
-            Computation::ArmaMatToGraph(G,outputGraph,trcloud);
+            GeneralConvertor::ArmaMatToGraph(G,outputGraph,trcloud);
             BranchDetection::SimplifyIt(G,K,50.0,"","pure");
 
             std::string ww = outFolder + "finaloutput" + numberI + ".vtk";
@@ -150,7 +150,7 @@ public:
             timesumm = timesumm + tmtm;
             MyGraphType G;
             MyGraphType K;
-            Computation::ArmaMatToGraph(G,outputGraph,trcloud);
+            GeneralConvertor::ArmaMatToGraph(G,outputGraph,trcloud);
             BranchDetection::SimplifyIt(G,K,50.0,"","pure");
             GeneralConvertor::GraphToVtk(outputPath2,K);
 

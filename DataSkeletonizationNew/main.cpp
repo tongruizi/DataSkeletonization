@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <math.h>
 #include <vector>
 #include "ExponentialDensity.h"
@@ -21,7 +22,15 @@
 //! Mapper and alphareeb includes:
 #include "AlphaReeb_Launcher.h"
 #include "Mapper_Launcher.h"
+#include "CorrectEndTypeMeasure.h"
+#include "ExplicitMeasurer.h"
+#include "AbstractMeasurer.h"
+#include "Mapper_Launcher.h"
 
+#include "SingleStar.h"
+#include "ClassicDistanceMeasure.h"
+#include "controller.h"
+#include "PrintToFile.h"
 
 // Convenience.
 using namespace mlpack;
@@ -36,6 +45,7 @@ void Tests1()
 {
 
 }
+
 
 void Tests2()
 {
@@ -247,7 +257,7 @@ void MassiveConvertion()
     {
         std::string infolder = "/home/yury/Downloads/Cluster/";
         std::string outfolder = "/home/yury/Downloads/ClusterVTK/";
-                infolder = infolder + "Cluster_Frame0000000.xyz";
+        infolder = infolder + "Cluster_Frame0000000.xyz";
         outfolder = outfolder + "out1.vtk";
         arma::mat data;
         GeneralConvertor::XYZtoMAT(infolder,data);
@@ -262,11 +272,110 @@ void MassiveConvertion()
 void TestAlphaReebAndMapperOnceAgain()
 {
 //GeneralConvertor::XYZtoMAT("/home/yury/Dropbox/MlPackTraining/KernelDensityEstimation/branched.xyz",data);
-Mapper_Parameters param(15, 0.5, "Distance", 3.0,3.0);
-AlphaReeb_Parameters AlphaParam(20, 1);
+    Mapper_Parameters param(15, 0.5, "Distance", 3.0,3.0);
+    AlphaReeb_Parameters AlphaParam(20, 1);
 
 //! we are too lazy to actually test this at the moment, what could possibly go wrong?
 
+
+}
+
+void TestAbstractThings()
+{
+//    MyGraphType G;
+//    CorrectEndTypeMeasure A(2);
+//    std::cout << A.returnStatisticString() << std::endl;
+//    std::vector<ExplicitMeasurer*> m1;
+//    m1.push_back(&A);
+//    std::cout << "The string is: " << m1[0] -> returnStatisticString() << std::endl;
+
+
+}
+
+void MapperWorkingTest()
+{
+//    int k = 3;
+//    int minangle = M_PI/3;
+//    int scale = 100;
+//    int n = 1500;
+//    double epsilon = 5;
+//    std::list<Point> cloud;
+//    MyGraphType G;
+//    GraphGeneration::RandomGraph1(k,minangle,scale,G);
+//    CloudGenerator::generatePoints(n, G, epsilon, cloud);
+//    double mappercluster = 1.75;
+//    Mapper_Parameters param(15, 0.5, "Distance", mappercluster,mappercluster);
+//    Mapper_Launcher thelaunch(param);
+//    MyGraphType out;
+//    thelaunch.Run(cloud,out);
+//    std::string filepath = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/SyntheticalSkeletonization/MapperTest/out.vtk";
+//    GeneralConvertor::GraphToVtk(filepath,out);
+//
+//    ClassicDistanceMeasure p(3);
+//    p.resetStatistic(1);
+//    std::cout << "Before run" << std::endl;
+//
+//    std::cout << "After run" << std::endl;
+//    std::cout << "Error: " << p.returnStatisticString(0) << std::endl;
+
+}
+
+
+void PrecisionTest()
+{
+    double pi = 3.14159265359;
+    stringstream stream;
+    stream << fixed << setprecision(2) << pi;
+    string s = stream.str();
+    std::cout << s << std::endl;
+}
+void MlPackTimerTest()
+{
+    mlpack::Timer::Start("Debug1");
+    std::vector<int> w;
+    for (int i = 0; i < 100000; i++)
+    {
+        w.push_back(i);
+    }
+    mlpack::Timer::Stop("Debug1");
+    mlpack::Timer::Start("Debug2");
+    for (int i = 0; i < 100000; i++)
+    {
+        w.push_back(i);
+    }
+    mlpack::Timer::Stop("Debug2");
+    auto sum = mlpack::Timer::Get("Debug1") + mlpack::Timer::Get("Debug2");
+    long duration = sum.count();
+    std::cout << duration << std::endl;
+
+}
+
+void ControllerTest()
+{
+std::string qq = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/ModuleTest/table.txt";
+std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/ModuleTest/outputs/";
+double mappercluster = 1.75;
+//! We initilize a star:
+SingleStar star1(M_PI/3,3,100,1500,5,100,10,"Star3");
+//SingleStar star2(M_PI/3,4,100,1500,5,100,10,"Star4");
+//! We initilize filewriter:
+PrintToFile printer(folder);
+//! We initilize mapper:
+Mapper_Parameters param(15, 0.5, "Distance", mappercluster,mappercluster);
+Mapper_Launcher thelaunch(param);
+thelaunch.addPostRunner(&printer);
+//! We initilize controller:
+controller control(qq);
+//! We add algorithm, star to controller
+//   void addAlgorithm(AbstractAlgorithm* k);
+ //   void addCloud(generatable* k);
+control.addAlgorithm(&thelaunch);
+control.addCloud(&star1);
+//control.addCloud(&star2);
+//! Initilize distance error measure:
+ClassicDistanceMeasure distanceMeasure(1);
+control.addMeasurer(distanceMeasure);
+control.BeginTestRun();
 
 }
 
@@ -291,8 +400,13 @@ int main()
 //RunSeriousTests();
 //RunCyclicTests();
 //TestNewAMSTTreeType();
- //  MassiveConvertion();
+//  MassiveConvertion();
 // TestNewAMSTTreeType();
+//    TestAbstractThings();
+//MapperWorkingTest();
+//PrecisionTest();
+ //   MlPackTimerTest();
+ ControllerTest();
     std::cout << "Compilation succeful" << std::endl;
-  //  std::cout << "Bug fixed, actually" << std::endl;
+    //  std::cout << "Bug fixed, actually" << std::endl;
 }
