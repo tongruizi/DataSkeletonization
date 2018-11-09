@@ -830,12 +830,12 @@
 	"Graph.h"
 	"ClusterElement.h"
 
-1539874526 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
+1541759393 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
 	"GeneralConvertor.h"
 	<fstream>
 	"Graph.h"
 
-1539874526 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Convertors/GeneralConvertor.h
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Convertors/GeneralConvertor.h
 	<string>
 	<mlpack/core.hpp>
 	<vector>
@@ -853,7 +853,7 @@
 	<mlpack/core.hpp>
 	<vector>
 
-1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/GeneralComputation/Computation.h
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/GeneralComputation/Computation.h
 	<cstdlib>
 	"Definitions.h"
 	"Graph.h"
@@ -991,7 +991,7 @@
 	<mlpack/prereqs.hpp>
 	<mlpack/core/tree/traversal_info.hpp>
 
-1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Methods/TestPerformer.h
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Methods/TestPerformer.h
 	"AMSTComputator.h"
 	<mlpack/core.hpp>
 	"CloudGenerator.h"
@@ -1017,8 +1017,9 @@
 1539874526 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/Methods/NaiveMethods.cpp
 	"NaiveMethods.h"
 
-1541247042 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/main.cpp
+1541760022 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/main.cpp
 	<iostream>
+	<iomanip>
 	<math.h>
 	<vector>
 	"ExponentialDensity.h"
@@ -1040,6 +1041,14 @@
 	"GradientDescendTester.h"
 	"AlphaReeb_Launcher.h"
 	"Mapper_Launcher.h"
+	"CorrectEndTypeMeasure.h"
+	"ExplicitMeasurer.h"
+	"AbstractMeasurer.h"
+	"Mapper_Launcher.h"
+	"SingleStar.h"
+	"ClassicDistanceMeasure.h"
+	"controller.h"
+	"PrintToFile.h"
 
 1539874526 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/GradientDescend/GradientDescendTester.h
 	"SingleEdgeOptimizer.h"
@@ -1163,7 +1172,7 @@
 	"ClusterElement.h"
 	"ClusteringMethods.h"
 
-1540547225 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/GeneralComputation/Computation.cpp
+1541758956 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/GeneralComputation/Computation.cpp
 	"Computation.h"
 	"Definitions.h"
 	"Graph.h"
@@ -1240,18 +1249,20 @@
 1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/Mapper_Parameters.h
 	<string>
 
-1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb_Launcher.h
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb_Launcher.h
 	"Graph.h"
 	"Definitions.h"
 	"AlphaReeb_Parameters.h"
 	"AlphaReebComputation.h"
 	"Computation.h"
+	"AbstractAlgorithm.h"
 
-1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper_Launcher.h
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper_Launcher.h
 	"Graph.h"
 	"Definitions.h"
 	"Mapper.h"
 	"Mapper_Parameters.h"
+	"AbstractAlgorithm.h"
 
 1540547225 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/Mapper.h
 	"Mapper_Parameters.h"
@@ -1369,6 +1380,96 @@
 	"AbstractMeasurer.h"
 
 1541693343 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/PostRunners/PrintToFile.h
+	"PostRunInterface.h"
+	"GeneralConvertor.h"
+
+1541758956 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/CloudTypes/DoubleStar.cpp
+	"DoubleStar.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/CloudTypes/DoubleStar.h
+	"CloudGenerator.h"
+	"GraphGeneration.h"
+	"generatable.h"
+	<set>
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/generatable.h
+	"CloudGenerator.h"
+	"GraphGeneration.h"
+
+1541758956 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/CloudTypes/SingleStar.cpp
+	"SingleStar.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/CloudTypes/SingleStar.h
+	"CloudGenerator.h"
+	"GraphGeneration.h"
+	"generatable.h"
+
+1541758956 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/controller.cpp
+	"controller.h"
+	"generatable.h"
+	<thread>
+	"Definitions.h"
+	"GeneralConvertor.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/controller.h
+	"AbstractAlgorithm.h"
+	"generatable.h"
+	"AbstractMeasurer.h"
+	"ExplicitMeasurer.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/AbstractAlgorithm.h
+	"Definitions.h"
+	"Graph.h"
+	"ExplicitMeasurer.h"
+	<chrono>
+	"PostRunInterface.h"
+	"ManualMeasure.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/ExplicitMeasurer.h
+	"Graph.h"
+	"generatable.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/PostRunners/PostRunInterface.h
+	"Graph.h"
+	"Definitions.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/Measurers/ManualMeasure.h
+	"AbstractMeasurer.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/AbstractMeasurer.h
+	"StatisticInfo.h"
+	"ExplicitMeasurer.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/Statistics/StatisticInfo.h
+	<string>
+	<limits>
+	"AbstractMeasurer.h"
+
+1541758956 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/Measurers/ClassicDistanceMeasure.cpp
+	"ClassicDistanceMeasure.h"
+	"Computation.h"
+	<iostream>
+	<iomanip>
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/Measurers/ClassicDistanceMeasure.h
+	"AbstractMeasurer.h"
+
+1541758956 source:/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/Measurers/CorrectEndTypeMeasure.cpp
+	"CorrectEndTypeMeasure.h"
+	"Graph.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/Measurers/CorrectEndTypeMeasure.h
+	"Graph.h"
+	"ExplicitMeasurer.h"
+	"SimpleStatistic.h"
+	"SimpleMeasurerCore.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/Statistics/SimpleStatistic.h
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/SimpleMeasurerCore.h
+	"SimpleStatistic.h"
+
+1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/PostRunners/PrintToFile.h
 	"PostRunInterface.h"
 	"GeneralConvertor.h"
 

@@ -352,8 +352,8 @@ void MlPackTimerTest()
 
 void ControllerTest()
 {
-std::string qq = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/ModuleTest/table.txt";
-std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/ModuleTest/outputs/";
+std::string qq = "/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/outputs/ModuleTest/table.txt";
+std::string folder = "/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/outputs/ModuleTest/outputs/";
 double mappercluster = 1.75;
 //! We initilize a star:
 SingleStar star1(M_PI/3,3,100,1500,5,100,10,"Star3");

@@ -181,16 +181,16 @@ void GeneralConvertor::DataToLatex(std::vector<std::vector<std::vector<std::stri
     mystream << "toprule" << std::endl;
 
     // graph \, & \, algorithm \, & \, endpoints \, & \, homeo type \, & \, time, ms \, & \, error \,
-    mystream << "graph \, & \, algorithm \, & \, time \, ";
+    mystream << "graph \\, & \\, algorithm \\, & \\, time \\, ";
     for (int i = 0; i < MeasureNames.size(); i++)
     {
-        mystream << "& \, " << MeasureNames[i] << " \,";
+        mystream << "& \\, " << MeasureNames[i] << " \\,";
     }
     mystream << std::endl;
-    mystream << "\\" << std::endl;
+    mystream << "\\\\" << std::endl;
     for (int i = 0; i < GraphNames.size(); i++)
     {
-        mystream << "\midrule" << std::endl;
+        mystream << "\\midrule" << std::endl;
         for (int j = 0; j < AlgorithmNames.size(); j++)
         {
             // 3-star & Mapper & 75\% & 75\% & 611 & 18.9\% \\ %& 18.2 \\
@@ -200,19 +200,21 @@ void GeneralConvertor::DataToLatex(std::vector<std::vector<std::vector<std::stri
             mystream << AlgorithmNames[j] ;
             mystream << " & ";
             mystream << timeMeasures[i][j];
+            mystream << "%";
             for (int k = 0; k < MeasureNames.size(); k++)
             {
                 mystream << " & ";
                 mystream << measurers[i][j][k];
+                mystream << "%";
 
             }
-            mystream << "\\" << std::endl;
+            mystream << "\\\\" << std::endl;
 
         }
 
     }
-    mystream << "\bottomrule" << std::endl;
-    mystream << "\end{tabular}";
+    mystream << "\\bottomrule" << std::endl;
+    mystream << "\\end{tabular}";
              mystream.close();
 
 }
