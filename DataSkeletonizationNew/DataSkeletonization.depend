@@ -493,7 +493,7 @@
 
 1529929351 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Clustering/ClusterElement.h
 
-1537274505 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.h
+1541759322 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.h
 	"Definitions.h"
 
 1537274550 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Definitions/Definitions.h
@@ -546,7 +546,7 @@
 	"Graph.h"
 	"ClusterElement.h"
 
-1541694165 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
+1541694705 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
 	"GeneralConvertor.h"
 	<fstream>
 	"Graph.h"
@@ -703,7 +703,7 @@
 	"Graph.h"
 	"Definitions.h"
 
-1527852554 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.cpp
+1541759474 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.cpp
 	"Graph.h"
 	"Definitions.h"
 	"Computation.h"
@@ -717,7 +717,7 @@
 1535439849 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/NaiveMethods.cpp
 	"NaiveMethods.h"
 
-1541694021 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
+1541759373 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<iomanip>
 	<math.h>
@@ -755,7 +755,7 @@
 	"CloudGenerator.h"
 	"SingleEdgeOptimizer.h"
 
-1540545735 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EngineClusterMST.h
+1541759675 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EngineClusterMST.h
 	"AmstStat.h"
 	<mlpack/methods/emst/edge_pair.hpp>
 	<mlpack/methods/emst/union_find.hpp>

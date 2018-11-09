@@ -406,7 +406,7 @@ int main()
 //MapperWorkingTest();
 //PrecisionTest();
  //   MlPackTimerTest();
- ControllerTest();
+ //ControllerTest();
     std::cout << "Compilation succeful" << std::endl;
     //  std::cout << "Bug fixed, actually" << std::endl;
 }
