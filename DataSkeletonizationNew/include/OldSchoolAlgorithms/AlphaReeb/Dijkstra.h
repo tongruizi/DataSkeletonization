@@ -37,12 +37,20 @@ void Dijkstra ( MyGraphType const& g, std::multimap<double, int>& filter_multima
     std::vector<vertex_descriptor> parents(boost::num_vertices( g ));
     std::vector<double> distances(boost::num_vertices( g ));
     //std::pair<vertex_iter, vertex_iter> VertexPair = boost::vertices( g );
-    vertex_descriptor beginning = FindTheCore(g);
+    vertex_descriptor beginning;
+    if (boost::num_vertices(g) < 5)
+    {
+        beginning = 0;
+    }
+    else
+    {
+        beginning = FindTheCore(g);
+    }
+
     boost::dijkstra_shortest_paths( g, beginning,
                                     boost::weight_map( boost::get( boost::edge_weight, g ) )
                                     .distance_map( boost::make_iterator_property_map( distances.begin(), boost::get( boost::vertex_index, g ) ) )
                                     .predecessor_map( boost::make_iterator_property_map( parents.begin(), boost::get( boost::vertex_index, g ) ) ) );
-
     size_t num_vertices = boost::num_vertices( g );
 
     for (int counter = 0; counter < num_vertices; ++counter)

@@ -12,9 +12,10 @@ template<typename unit>
 class StatisticInfo
 {
 public:
-    StatisticInfo()
+    StatisticInfo():number(0),sum(0)
     {
-
+        maxValue=std::numeric_limits<unit>::min();
+        minValue=std::numeric_limits<unit>::max();
     }
     //! wrong, we are not running anything here, this is only statistic file!
     //static void run( MyGraphType & G, std::list<Point> & points)=0;
@@ -27,7 +28,7 @@ public:
     }
     double returnAvg()
     {
-        return sum/number;
+        return (double)sum / (double) number;
     }
     unit returnMax()
     {
@@ -52,11 +53,15 @@ public:
     }
     void add(unit t)
     {
-    number = number + 1;
-    sum = sum + t;
-    maxValue = std::max(t, maxValue);
-    minValue = std::min(t, minValue);
+        number = number + 1;
+        sum = sum + t;
+        maxValue = std::max(t, maxValue);
+        minValue = std::min(t, minValue);
 
+    }
+    double returnNumber()
+    {
+        return number;
     }
 
 

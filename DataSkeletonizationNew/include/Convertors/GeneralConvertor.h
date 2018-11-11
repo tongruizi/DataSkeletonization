@@ -20,9 +20,13 @@ public:
     static void ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData);
     //! Method to print data from measurers directly into latex table.
     static void DataToLatex(std::vector<std::vector<std::vector<std::string>>> & measurers,
-    std::vector<std::vector<std::string>> & timeMeasures,
-    std::vector<std::string> & GraphNames, std::vector<std::string> & AlgorithmNames,
-    std::vector<std::string> & MeasurerNames, std::string filename);
+                            std::vector<std::vector<std::string>> & timeMeasures,
+                            std::vector<std::string> & GraphNames, std::vector<std::string> & AlgorithmNames,
+                            std::vector<std::string> & MeasurerNames, std::string filename);
+    static void DataToCSV(std::vector<std::vector<std::vector<std::string>>> & measurers,
+                                     std::vector<std::vector<std::string>> & timeMeasures,
+                                     std::vector<std::string> & GraphNames, std::vector<std::string> & AlgorithmNames,
+                                     std::vector<std::string> & MeasureNames, std::string filename);
 
 protected:
 

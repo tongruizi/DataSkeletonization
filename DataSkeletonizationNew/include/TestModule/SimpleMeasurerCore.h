@@ -2,7 +2,7 @@
 #define SIMPLEMEASURERCORE_H
 
 #include "SimpleStatistic.h"
-
+#include "ExplicitMeasurer.h"
 
 class SimpleMeasurerCore : public ExplicitMeasurer
 {
@@ -11,24 +11,27 @@ public:
         ExplicitMeasurer(name,precision) {}
 
 
-    std::string returnStatisticString()
+    std::string returnStatisticString() override
     {
+
         double avg = statistic.returnAvg();
+        avg = 100 * avg;
         std::stringstream stream;
         stream << std::fixed << std::setprecision(precision) << avg;
-        std::string s = stream.str();
+        std::string s = stream.str() + "%";
         return s;
     }
+
     virtual bool CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud) =0;
 
-    virtual void run(MyGraphType & G, generatable* cloud, std::list<Point>* generatedCloud)
+    void run(MyGraphType & G, generatable* cloud, std::list<Point>* generatedCloud) override
     {
         bool ww = this->CompleteMeasurments(G,cloud,generatedCloud);
         statistic.append(ww);
     }
 
 
-    virtual void resetStatistic()
+    void resetStatistic() override
     {
         statistic.reset();
     }

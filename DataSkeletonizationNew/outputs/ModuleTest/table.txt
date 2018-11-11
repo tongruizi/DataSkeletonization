@@ -1,8 +1,0 @@
-begin{tabular}{c|c|c|c}
-toprule
-graph \, & \, algorithm \, & \, time \, & \, Distance \,
-\\
-\midrule
-Star3 & Mapper & 0.5% & 18.7%\\
-\bottomrule
-\end{tabular}

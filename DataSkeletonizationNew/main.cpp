@@ -21,7 +21,6 @@
 #include "GradientDescendTester.h"
 //! Mapper and alphareeb includes:
 #include "AlphaReeb_Launcher.h"
-#include "Mapper_Launcher.h"
 #include "CorrectEndTypeMeasure.h"
 #include "ExplicitMeasurer.h"
 #include "AbstractMeasurer.h"
@@ -31,6 +30,8 @@
 #include "ClassicDistanceMeasure.h"
 #include "controller.h"
 #include "PrintToFile.h"
+#include "NumberOfVertexMeasure.h"
+#include "CorrectTypeMeasure.h"
 
 // Convenience.
 using namespace mlpack;
@@ -352,29 +353,47 @@ void MlPackTimerTest()
 
 void ControllerTest()
 {
-std::string qq = "/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/outputs/ModuleTest/table.txt";
-std::string folder = "/home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/outputs/ModuleTest/outputs/";
+std::string qq = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/ModuleTest/data.csv";
+std::string folder = "/home/yury/Dropbox/Github/DataSkeletonizationNew/outputs/ModuleTest/outputs/";
 double mappercluster = 1.75;
+double alpha = 20;
 //! We initilize a star:
-SingleStar star1(M_PI/3,3,100,1500,5,100,10,"Star3");
+SingleStar star1(M_PI/3,3,100,1500,5,100,5,"Star3");
+SingleStar star2(M_PI/3,4,100,2000,5,100,5,"Star4");
 //SingleStar star2(M_PI/3,4,100,1500,5,100,10,"Star4");
 //! We initilize filewriter:
 PrintToFile printer(folder);
 //! We initilize mapper:
 Mapper_Parameters param(15, 0.5, "Distance", mappercluster,mappercluster);
 Mapper_Launcher thelaunch(param);
-thelaunch.addPostRunner(&printer);
+AlphaReeb_Parameters AlphaParam(alpha, 1);
+AlphaReeb_Launcher alphaLaunch(AlphaParam,10);
+thelaunch.setTimePrecision(2);
+alphaLaunch.setTimePrecision(2);
+
+//thelaunch.addPostRunner(&printer);
+//alphaLaunch.addPostRunner(&printer);
+
 //! We initilize controller:
 controller control(qq);
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
  //   void addCloud(generatable* k);
 control.addAlgorithm(&thelaunch);
+control.addAlgorithm(&alphaLaunch);
 control.addCloud(&star1);
+control.addCloud(&star2);
 //control.addCloud(&star2);
 //! Initilize distance error measure:
-ClassicDistanceMeasure distanceMeasure(1);
+ClassicDistanceMeasure distanceMeasure(2);
+CorrectEndTypeMeasure endTypeMeasure(2);
+NumberOfVertexMeasure vertexMeasure(2);
+CorrectTypeMeasure TypeMeasure(2);
+
 control.addMeasurer(distanceMeasure);
+control.addMeasurer(endTypeMeasure);
+control.addMeasurer(vertexMeasure);
+control.addMeasurer(TypeMeasure);
 control.BeginTestRun();
 
 }
@@ -391,7 +410,7 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-    srand( time( NULL ) );
+srand( time( NULL ) );
 //! We use this number sequence to debug the code:
 //srand(20);
 //std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
@@ -407,6 +426,8 @@ int main()
 //PrecisionTest();
  //   MlPackTimerTest();
  //ControllerTest();
+ ControllerTest();
     std::cout << "Compilation succeful" << std::endl;
+    std::cout << "one more thing" << std::endl;
     //  std::cout << "Bug fixed, actually" << std::endl;
 }

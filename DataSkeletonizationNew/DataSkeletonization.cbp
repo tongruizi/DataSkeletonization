@@ -5,7 +5,6 @@
 		<Option title="DataSkeletonization" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="include/TestModule/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/KernelDensityEstimation" prefix_auto="1" extension_auto="1" />
@@ -38,6 +37,7 @@
 					<Add directory="include/TestModule/Statistics" />
 					<Add directory="include/TestModule/CloudTypes" />
 					<Add directory="include/TestModule/PostRunners" />
+					<Add directory="include/Methods/AsK" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -173,11 +173,13 @@
 		<Unit filename="include/TestModule/Measurers/ClassicDistanceMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/CorrectEndTypeMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/CorrectEndTypeMeasure.h" />
+		<Unit filename="include/TestModule/Measurers/CorrectTypeMeasure.cpp" />
+		<Unit filename="include/TestModule/Measurers/CorrectTypeMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/ManualMeasure.h" />
+		<Unit filename="include/TestModule/Measurers/NumberOfVertexMeasure.cpp" />
+		<Unit filename="include/TestModule/Measurers/NumberOfVertexMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/TimerCountMeasure.h" />
-		<Unit filename="include/TestModule/PostRunners/PostRunInterface.h">
-			<Option virtualFolder="include/TestModule/" />
-		</Unit>
+		<Unit filename="include/TestModule/PostRunners/PostRunInterface.h" />
 		<Unit filename="include/TestModule/PostRunners/PrintToFile.h" />
 		<Unit filename="include/TestModule/SimpleMeasurerCore.h" />
 		<Unit filename="include/TestModule/Statistics/SimpleStatistic.h" />

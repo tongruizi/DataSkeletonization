@@ -10,7 +10,9 @@ CorrectEndTypeMeasure::CorrectEndTypeMeasure(int precision):SimpleMeasurerCore("
 
 bool CorrectEndTypeMeasure::CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud)
 {
-    return cloud->DoesGraphHaveCorrectForm(G);
+    bool theVariable = cloud->DoesGraphHaveCorrectForm(G);
+   // std::cout << "The descision (does graph have the correct form? " << theVariable << std::endl;
+    return theVariable;
 }
 
 

@@ -177,7 +177,7 @@ void GeneralConvertor::DataToLatex(std::vector<std::vector<std::vector<std::stri
         }
     }
     mystream << "}" << std::endl;
-  //  mystream << '\';
+    //  mystream << '\';
     mystream << "toprule" << std::endl;
 
     // graph \, & \, algorithm \, & \, endpoints \, & \, homeo type \, & \, time, ms \, & \, error \,
@@ -215,9 +215,51 @@ void GeneralConvertor::DataToLatex(std::vector<std::vector<std::vector<std::stri
     }
     mystream << "\\bottomrule" << std::endl;
     mystream << "\\end{tabular}";
-             mystream.close();
+    mystream.close();
 
 }
+
+void GeneralConvertor::DataToCSV(std::vector<std::vector<std::vector<std::string>>> & measurers,
+                                 std::vector<std::vector<std::string>> & timeMeasures,
+                                 std::vector<std::string> & GraphNames, std::vector<std::string> & AlgorithmNames,
+                                 std::vector<std::string> & MeasureNames, std::string filename)
+{
+    std::ofstream mystream;
+    mystream.open(filename);
+    mystream << "Graph, Algorithm, Time (s), ";
+    for (int i = 0; i < MeasureNames.size(); i++)
+    {
+        mystream << MeasureNames[i];
+
+        if (i < MeasureNames.size() - 1)
+        {
+            mystream << ", ";
+        }
+    }
+    mystream << std::endl;
+    for (int i = 0; i < GraphNames.size(); i++)
+    {
+        for (int j = 0; j < AlgorithmNames.size(); j++)
+        {
+            // 3-star & Mapper & 75\% & 75\% & 611 & 18.9\% \\ %& 18.2 \\
+
+            mystream << GraphNames[i] ;
+            mystream << ", " ;
+            mystream << AlgorithmNames[j] ;
+            mystream << ", ";
+            mystream << timeMeasures[i][j];
+            for (int k = 0; k < MeasureNames.size(); k++)
+            {
+                mystream << ", ";
+                mystream << measurers[i][j][k];
+            }
+            mystream << std::endl;
+        }
+    }
+    mystream.close();
+}
+
+
 
 
 

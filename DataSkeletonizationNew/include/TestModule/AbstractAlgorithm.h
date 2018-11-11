@@ -102,6 +102,11 @@ public:
         postRunners.push_back(postRunner);
     }
 
+    void setTimePrecision(int p)
+    {
+    TimeMeasure.setPrecision(p);
+    }
+
 
 
 protected:

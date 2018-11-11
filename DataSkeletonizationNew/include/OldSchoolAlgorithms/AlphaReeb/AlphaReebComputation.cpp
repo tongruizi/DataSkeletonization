@@ -40,12 +40,10 @@ void AlphaReebComputation::Compute( MyGraphType const& input_graph, AlphaReeb_Pa
     int num_comps;
     std::vector<MyGraphType> conn_comp;
     Split_Into_Conn_Comps( input_graph, num_comps, conn_comp );
-
     std::vector<MyGraphType> alphaReeb_comp( num_comps );
     double min_comp_size = boost::num_vertices( input_graph ) * parameters.mcsf;
     for (int counter = 0; counter < num_comps; ++counter)
     {
-
         MyGraphType intermediate_graph;
         std::vector<int> intervalAllocation;
         int numberofvertices = boost::num_vertices(conn_comp[counter]);
@@ -57,8 +55,10 @@ void AlphaReebComputation::Compute( MyGraphType const& input_graph, AlphaReeb_Pa
 
         Generate_Subclouds_Correctly (conn_comp[counter], dijkstra_multimap, parameters.alpha, intermediate_graph, debugPointCloud);
         std::string debugfolder = "/home/yury/Dropbox/MicelleProject/Micelle/output/AlphaReeb/debug/";
+
      //   writeDebug(debugfolder, debugPointCloud);
         Generate_AlphaReeb_Graph( intermediate_graph, parameters.alpha, alphaReeb_comp[counter]);
+
         InterMediate = intermediate_graph;
 
     }

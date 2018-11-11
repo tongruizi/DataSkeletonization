@@ -313,7 +313,6 @@ void Computation::EpsilonSimplification(MyGraphType & G, double epsilon)
     {
         boost::remove_edge(*it,G);
     }
-    std::cout << "Succeful" << std::endl;
 }
 
 
