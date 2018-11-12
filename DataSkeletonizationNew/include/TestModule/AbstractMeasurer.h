@@ -3,6 +3,7 @@
 
 #include "StatisticInfo.h"
 #include "ExplicitMeasurer.h"
+#include "AbstractCloudType.h"
 
 template <class T>
 class AbstractMeasurer : public ExplicitMeasurer
@@ -13,10 +14,10 @@ public:
 
     }
 
-    virtual T CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud) =0;
+    virtual T CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud) =0;
     virtual std::string returnStatisticString() = 0;
 
-    void run(MyGraphType & G, generatable* cloud,  std::list<Point>* generatedCloud) override
+    void run(MyGraphType & G, AbstractCloudType* cloud,  std::list<Point>* generatedCloud) override
     {
         T InMeasure=CompleteMeasurments(G,cloud,generatedCloud);
         mystatistic.add(InMeasure);

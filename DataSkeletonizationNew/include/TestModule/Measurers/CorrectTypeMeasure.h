@@ -3,12 +3,13 @@
 
 #include "Graph.h"
 #include "SimpleMeasurerCore.h"
+#include "AbstractCloudType.h"
 
 class CorrectTypeMeasure : public SimpleMeasurerCore
 {
 public:
     CorrectTypeMeasure(int precision);
-    bool CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud);
+    bool CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud);
     CorrectTypeMeasure* Clone() override
     {
         return new CorrectTypeMeasure(*this);

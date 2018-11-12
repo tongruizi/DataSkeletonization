@@ -32,6 +32,10 @@
 #include "PrintToFile.h"
 #include "NumberOfVertexMeasure.h"
 #include "CorrectTypeMeasure.h"
+#include "AsKLauncher.h"
+#include "DoubleStar.h"
+
+#include <boost/filesystem.hpp>
 
 // Convenience.
 using namespace mlpack;
@@ -360,6 +364,8 @@ double alpha = 20;
 //! We initilize a star:
 SingleStar star1(M_PI/3,3,100,1500,5,100,5,"Star3");
 SingleStar star2(M_PI/3,4,100,2000,5,100,5,"Star4");
+SingleStar star8(M_PI/3,8,100,4000,5,100,10,"Star8");
+DoubleStar dstar(M_PI/3,4,4,4000,5,100,10,"DoubleStar");
 //SingleStar star2(M_PI/3,4,100,1500,5,100,10,"Star4");
 //! We initilize filewriter:
 PrintToFile printer(folder);
@@ -370,6 +376,10 @@ AlphaReeb_Parameters AlphaParam(alpha, 1);
 AlphaReeb_Launcher alphaLaunch(AlphaParam,10);
 thelaunch.setTimePrecision(2);
 alphaLaunch.setTimePrecision(2);
+std::string setting = "pure";
+AsKLauncher AskAlgorithm(50.12,1.05,1.5,setting,"AsK");
+AskAlgorithm.setTimePrecision(2);
+AskAlgorithm.addPostRunner(&printer);
 
 //thelaunch.addPostRunner(&printer);
 //alphaLaunch.addPostRunner(&printer);
@@ -379,10 +389,13 @@ controller control(qq);
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
  //   void addCloud(generatable* k);
-control.addAlgorithm(&thelaunch);
-control.addAlgorithm(&alphaLaunch);
-control.addCloud(&star1);
-control.addCloud(&star2);
+//control.addAlgorithm(&thelaunch);
+//control.addAlgorithm(&alphaLaunch);
+control.addAlgorithm(&AskAlgorithm);
+//control.addCloud(&star1);
+//control.addCloud(&star2);
+//control.addCloud(&star8);
+control.addCloud(&dstar);
 //control.addCloud(&star2);
 //! Initilize distance error measure:
 ClassicDistanceMeasure distanceMeasure(2);
@@ -398,6 +411,25 @@ control.BeginTestRun();
 
 }
 
+void FileSystemTest()
+{
+//std::string p = "/home/yury/Dropbox/UnileverData/VTK_First_Files/";
+boost::filesystem::path p("/home/yury/Dropbox/UnileverData/VTK_First_Files/");
+std::vector<boost::filesystem::directory_entry> v; // To save the file names in a vector.
+
+    if(boost::filesystem::is_directory(p))
+    {
+        copy(boost::filesystem::directory_iterator(p), boost::filesystem::directory_iterator(), back_inserter(v));
+        std::cout << p << " is a directory containing:\n";
+
+        for ( std::vector<boost::filesystem::directory_entry>::const_iterator it = v.begin(); it != v.end();  ++ it )
+        {
+            std::cout<< (*it).path().string()<<endl;
+        }
+    }
+
+}
+
 
 //void Run(std::list<Point> & p, MyGraphType & G)
 
@@ -410,9 +442,9 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-srand( time( NULL ) );
-//! We use this number sequence to debug the code:
-//srand(20);
+//srand( time( NULL ) );
+///! We use this number sequence to debug the code:
+srand(20);
 //std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
 //! Here we test:
 //runGradientDescendTester();
@@ -426,8 +458,10 @@ srand( time( NULL ) );
 //PrecisionTest();
  //   MlPackTimerTest();
  //ControllerTest();
- ControllerTest();
-    std::cout << "Compilation succeful" << std::endl;
-    std::cout << "one more thing" << std::endl;
+ //ControllerTest();
+   // std::cout << "Compilation succeful" << std::endl;
+   // std::cout << "one more thing" << std::endl;
     //  std::cout << "Bug fixed, actually" << std::endl;
+    FileSystemTest();
+
 }

@@ -42,7 +42,7 @@ void controller::WriteDownToLatexTable()
 void controller::InsideCloudListLoop(int i, int clit)
 {
     std::list<Point> points;
-    ACT[i]->GenerateCloud(points);
+    ACT[i]->GenerateCloud(points,clit);
 
     for (int j = 0; j < algorithms.size(); j++)
     {
@@ -111,7 +111,7 @@ void controller::addAlgorithm(AbstractAlgorithm* k)
 {
     algorithms.push_back(k);
 }
-void controller::addCloud(generatable* k)
+void controller::addCloud(AbstractCloudType* k)
 {
     ACT.push_back(k);
 }

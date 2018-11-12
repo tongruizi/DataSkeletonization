@@ -6,7 +6,7 @@ NumberOfVertexMeasure::NumberOfVertexMeasure(int precision):
     //ctor
 }
 
-int NumberOfVertexMeasure::CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud)
+int NumberOfVertexMeasure::CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud)
 {
     return boost::num_vertices(G);
 }

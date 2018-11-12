@@ -2,6 +2,7 @@
 #define MANUALMEASURE_H
 
 #include "AbstractMeasurer.h"
+#include "AbstractCloudType.h"
 
 template <class T>
 class ManualMeasure : public AbstractMeasurer<T>
@@ -9,7 +10,7 @@ class ManualMeasure : public AbstractMeasurer<T>
 public:
     ManualMeasure(std::string name, int precision):
         AbstractMeasurer<T>(name,precision) {}
-    virtual T CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud)
+    virtual T CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud)
     {
         //! We do nothing
         return 0;

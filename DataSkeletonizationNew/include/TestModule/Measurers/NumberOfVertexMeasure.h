@@ -3,12 +3,13 @@
 
 #include "Graph.h"
 #include "AbstractMeasurer.h"
+#include "AbstractCloudType.h"
 
 class NumberOfVertexMeasure : public AbstractMeasurer<int>
 {
 public:
     NumberOfVertexMeasure(int precision);
-    int CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud) override;
+    int CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud) override;
     std::string returnStatisticString() override;
     NumberOfVertexMeasure* Clone() override
     {

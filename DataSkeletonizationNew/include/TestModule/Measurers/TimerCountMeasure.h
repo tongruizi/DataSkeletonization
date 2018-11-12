@@ -3,6 +3,7 @@
 
 #include "Definitions.h"
 #include "ManualMeasure.h"
+#include "AbstractCloudType.h"
 
 class TimerCountMeasure
 {

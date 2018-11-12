@@ -83,16 +83,14 @@ void Computation::ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point>
 
 }
 
-//MyGraphType Computation::computeMST( std::list<Point> & Vector)
-//{
-//    MyGraphType G;
-//    Computation::ComputeDeluanayTriangulation(G,Vector);
-//    std::list<boost::graph_traits<MyGraphType>::edge_descriptor> mst_kruskal;
-//    boost::kruskal_minimum_spanning_tree(G, std::back_inserter(mst_kruskal));
-//    MyGraphType savedtree;
-//    Computation::treeGraph(G, mst_kruskal, savedtree);
-//    return savedtree;
-//}
+void Computation::computeMST( std::list<Point> & Vector, MyGraphType & savedtree)
+{
+    MyGraphType G;
+    Computation::ComputeDeluanayTriangulation(G,Vector);
+    std::list<boost::graph_traits<MyGraphType>::edge_descriptor> mst_kruskal;
+    boost::kruskal_minimum_spanning_tree(G, std::back_inserter(mst_kruskal));
+    Computation::treeGraph(G, mst_kruskal, savedtree);
+}
 //
 void Computation::MSTSpecialCompute(std::map<Point, MyGraphType::vertex_descriptor> & vertex_map, MyGraphType & savedtree, std::vector<Point> & Vector)
 {
@@ -215,41 +213,41 @@ void Computation::MSTSpecialCompute(std::map<Point, MyGraphType::vertex_descript
 //
 //
 //
-//double Computation::AABBDistance(std::list<std::list<Point>> & paths, std::list<Point> & cloud)
-//{
-//
-//    std::list<Segment> segments;
-//    for (auto at = paths.begin(); at != paths.end(); at++)
-//    {
-//        Point* prev;
-//        prev = NULL;
-//        for (auto ut = (*at).begin(); ut != (*at).end(); ut++)
-//        {
-//            if (prev != NULL)
-//            {
-//                Segment l = Segment((*ut),(*prev));
-//                segments.push_back(l);
-//            }
-//            prev = &*ut;
-//        }
-//        prev = NULL;
-//
-//    }
-//    SegmentTree AABB(segments.begin(), segments.end());
-//    AABB.accelerate_distance_queries();
-//    double maxx = 0;
-//    for (auto it = cloud.begin(); it != cloud.end(); it++)
-//    {
-//
-//        Point closest = AABB.closest_point(*it);
-//        double distance = sqrt(CGAL::squared_distance(closest, *it));
-//        maxx = std::max(distance,maxx);
-//
-//
-//    }
-//    return maxx;
-//}
-//
+double Computation::AABBDistance(std::list<std::list<Point>> & paths, std::list<Point> & cloud)
+{
+
+    std::list<Segment> segments;
+    for (auto at = paths.begin(); at != paths.end(); at++)
+    {
+        Point* prev;
+        prev = NULL;
+        for (auto ut = (*at).begin(); ut != (*at).end(); ut++)
+        {
+            if (prev != NULL)
+            {
+                Segment l = Segment((*ut),(*prev));
+                segments.push_back(l);
+            }
+            prev = &*ut;
+        }
+        prev = NULL;
+
+    }
+    SegmentTree AABB(segments.begin(), segments.end());
+    AABB.accelerate_distance_queries();
+    double maxx = 0;
+    for (auto it = cloud.begin(); it != cloud.end(); it++)
+    {
+
+        Point closest = AABB.closest_point(*it);
+        double distance = sqrt(CGAL::squared_distance(closest, *it));
+        maxx = std::max(distance,maxx);
+
+
+    }
+    return maxx;
+}
+
 double Computation::AABBError(MyGraphType & G, std::list<Point> & cloud)
 {
  std::list<Segment> segments;
@@ -294,7 +292,8 @@ double Computation::AABBError(MyGraphType & G, std::list<Point> & cloud)
 //        }
 //    }
 //}
-//
+//double Computation::AABBError(MyGraphType & G, std::list<Point> & cloud)
+
 void Computation::EpsilonSimplification(MyGraphType & G, double epsilon)
 {
     boost::property_map<MyGraphType, boost::edge_weight_t>::type weightmap = get(boost::edge_weight, G);

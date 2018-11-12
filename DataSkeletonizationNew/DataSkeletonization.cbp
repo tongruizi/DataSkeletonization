@@ -46,6 +46,7 @@
 					<Add library="CGAL" />
 					<Add library="boost_system" />
 					<Add library="gmp" />
+					<Add library="libboost_filesystem" />
 					<Add directory="include/DensityFunctions" />
 				</Linker>
 			</Target>
@@ -73,6 +74,7 @@
 					<Add directory="include/TestModule/CloudTypes" />
 					<Add directory="include/TestModule/Statistics" />
 					<Add directory="include/TestModule/PostRunners" />
+					<Add directory="include/Methods/AsK" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -121,6 +123,14 @@
 		<Unit filename="include/Graph/Graph.h" />
 		<Unit filename="include/Methods/AMSTComputator.h" />
 		<Unit filename="include/Methods/AmstAlgorithm.h" />
+		<Unit filename="include/Methods/AsK/AsKLauncher.cpp" />
+		<Unit filename="include/Methods/AsK/AsKLauncher.h" />
+		<Unit filename="include/Methods/AsK/BranchSimplification.cpp" />
+		<Unit filename="include/Methods/AsK/BranchSimplification.h" />
+		<Unit filename="include/Methods/AsK/GraphSimplification.cpp" />
+		<Unit filename="include/Methods/AsK/GraphSimplification.h" />
+		<Unit filename="include/Methods/AsK/StraighteningMethods.cpp" />
+		<Unit filename="include/Methods/AsK/StraighteningMethods.h" />
 		<Unit filename="include/Methods/BranchDetection.cpp" />
 		<Unit filename="include/Methods/BranchDetection.h" />
 		<Unit filename="include/Methods/NaiveMethods.cpp" />
@@ -163,9 +173,12 @@
 		<Unit filename="include/TestClasses/FunctionEvaluator.h" />
 		<Unit filename="include/TestClasses/TreeExperements.h" />
 		<Unit filename="include/TestModule/AbstractAlgorithm.h" />
+		<Unit filename="include/TestModule/AbstractCloudType.h" />
 		<Unit filename="include/TestModule/AbstractMeasurer.h" />
 		<Unit filename="include/TestModule/CloudTypes/DoubleStar.cpp" />
 		<Unit filename="include/TestModule/CloudTypes/DoubleStar.h" />
+		<Unit filename="include/TestModule/CloudTypes/RealCloudCollection.cpp" />
+		<Unit filename="include/TestModule/CloudTypes/RealCloudCollection.h" />
 		<Unit filename="include/TestModule/CloudTypes/SingleStar.cpp" />
 		<Unit filename="include/TestModule/CloudTypes/SingleStar.h" />
 		<Unit filename="include/TestModule/ExplicitMeasurer.h" />

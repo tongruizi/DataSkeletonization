@@ -21,9 +21,12 @@ public:
     }
     static void treeGraph(MyGraphType &G,std::list<boost::graph_traits<MyGraphType>::edge_descriptor> & edges, MyGraphType & Tree);
     static void ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector);
+    static void computeMST( std::list<Point> & Vector, MyGraphType & savedtree);
     static void MSTSpecialCompute(std::map<Point, MyGraphType::vertex_descriptor> & vertex_map, MyGraphType & savedtree, std::vector<Point> & Vector);
     static void EpsilonSimplification(MyGraphType & G, double epsilon);
     static double AABBError(MyGraphType & G, std::list<Point> & cloud);
+    static double AABBDistance(std::list<std::list<Point>> & paths, std::list<Point> & cloud);
+
 
 
 

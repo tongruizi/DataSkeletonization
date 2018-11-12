@@ -3,12 +3,13 @@
 
 #include "Graph.h"
 #include "Definitions.h"
+#include "AbstractCloudType.h"
 
 class PostRunInterface
 {
     public:
         PostRunInterface() {}
-        virtual void run(MyGraphType & G, generatable* gen, int RunNumber, std::string AlgorithmName) = 0;
+        virtual void run(MyGraphType & G, AbstractCloudType* gen, int RunNumber, std::string AlgorithmName) = 0;
 
     protected:
 

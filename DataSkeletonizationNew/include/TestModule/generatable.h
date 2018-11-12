@@ -3,21 +3,21 @@
 
 #include "CloudGenerator.h"
 #include "GraphGeneration.h"
+#include "AbstractCloudType.h"
 
 
-class generatable
+class generatable : public AbstractCloudType
 {
 public:
 
     generatable(int number_of_cloudpoints, double epsilon, int number_of_runs,std::string name):
-        number_of_cloudpoints(number_of_cloudpoints), epsilon(epsilon),number_of_runs(number_of_runs), name(name)
+        number_of_cloudpoints(number_of_cloudpoints), epsilon(epsilon),AbstractCloudType(number_of_runs, name)
     {
 
     }
 
     bool CorrectNumberOfEndPoints(MyGraphType & G, int nob)
     {
-
         int endcount = 0;
 
         for (auto it = boost::vertices(G).first; it != boost::vertices(G).second; it++)
@@ -29,8 +29,6 @@ public:
             }
         }
         return (endcount == nob);
-
-
     }
 
     virtual void GenerateGraph(MyGraphType & G) =0;
@@ -40,21 +38,14 @@ public:
     virtual bool DoesGraphHaveCorrectForm(MyGraphType & G) =0;
 
 
-    void GenerateCloud(std::list<Point> & p)
+    void GenerateCloud(std::list<Point> & p, int iterationnumber)
     {
         MyGraphType G;
         GenerateGraph(G);
         CloudGenerator::generatePoints(number_of_cloudpoints, G, epsilon,p);
     }
 
-    int returnNumberOfRuns()
-    {
-        return number_of_runs;
-    }
-    std::string returnName()
-    {
-        return name;
-    }
+
 
 
 
@@ -63,10 +54,8 @@ protected:
 
 private:
 
-    int number_of_runs;
     int number_of_cloudpoints;
     double epsilon;
-    std::string name;
 
 };
 

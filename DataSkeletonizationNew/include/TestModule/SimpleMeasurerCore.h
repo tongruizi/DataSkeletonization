@@ -22,9 +22,9 @@ public:
         return s;
     }
 
-    virtual bool CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud) =0;
+    virtual bool CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud) =0;
 
-    void run(MyGraphType & G, generatable* cloud, std::list<Point>* generatedCloud) override
+    void run(MyGraphType & G, AbstractCloudType* cloud, std::list<Point>* generatedCloud) override
     {
         bool ww = this->CompleteMeasurments(G,cloud,generatedCloud);
         statistic.append(ww);
