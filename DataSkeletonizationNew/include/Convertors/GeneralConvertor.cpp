@@ -54,6 +54,8 @@ void GeneralConvertor::XYZtoPoint(std::string fl, std::list<Point> & points)
 
 }
 
+
+
 void GeneralConvertor::MatInfoToFile(std::string out, arma::mat & data, std::vector<double> scalar)
 {
     std::ofstream mystream;
@@ -87,6 +89,21 @@ void GeneralConvertor::VectorToFile(std::string out, std::vector<int> & s)
         mystream << i << ", " << s[i] << std::endl;
     }
     mystream.close();
+
+}
+
+void GeneralConvertor::MatToMyGraphType(arma::mat & originalData, arma::mat & edges, MyGraphType & G)
+{
+    int vSize = originalData.n_cols;
+    for (int i = 0; i < vSize; i++)
+    {
+        Graph::add_vertex(G,Point(originalData(0,i),originalData(1,i),originalData(2,i)));
+    }
+    int edgeSize = edges.n_cols;
+    for (int i = 0; i < edgeSize; i++)
+    {
+        Graph::add_edge(G,edges(0,i),edges(1,i));
+    }
 
 }
 
@@ -141,6 +158,8 @@ void GeneralConvertor::GraphToVtk(std::string path, MyGraphType &G)
     mystream.close();
 }
 
+
+
 void GeneralConvertor::ListToMat(std::list<Point> & points, arma::mat & data)
 {
     int k = points.size();
@@ -151,6 +170,19 @@ void GeneralConvertor::ListToMat(std::list<Point> & points, arma::mat & data)
         data(j,0) = it->x();
         data(j,1) = it->y();
         data(j,2) = it->z();
+        j++;
+    }
+}
+void GeneralConvertor::ListToMatTransposed(std::list<Point> & points, arma::mat & data)
+{
+    int k = points.size();
+    data.set_size(3,k);
+    int j = 0;
+    for (auto it = points.begin(); it != points.end(); it++)
+    {
+        data(0,j) = it->x();
+        data(1,j) = it->y();
+        data(2,j) = it->z();
         j++;
     }
 
@@ -174,6 +206,36 @@ void GeneralConvertor::ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::
 
     }
 
+}
+
+void GeneralConvertor::RetriveGraphInformation(std::string filename, std::vector<int> & iterationanumber,
+        std::vector<std::string> & graphType, std::vector<std::vector<int>> & parameters)
+{
+    std::cout << "Opened file: " << filename << std::endl;
+    int NumberOfLines;
+    std::ifstream infile(filename);
+    std::string line;
+    std::string graphnamme;
+    int number;
+//   infile >> NumberOfLines;
+//   ititerationanumber[j];erationanumber.resize(NumberOfLines);
+//   graphType.resize(NumberOfLines);
+    //  parameters.resize(NumberOfLines);
+    int j = 0;
+    while (std::getline(infile, line))
+    {
+        std::istringstream iss(line);
+        iss >> number;
+        iss >> graphnamme;
+        graphType[j] = graphnamme;
+        iterationanumber[j] = number;
+        int i;
+        while(iss >> i)
+        {
+            parameters[j].push_back(i);
+        }
+        j++;
+    }
 }
 
 void GeneralConvertor::DataToLatex(std::vector<std::vector<std::vector<std::string>>> & measurers,
@@ -279,6 +341,8 @@ void GeneralConvertor::DataToCSV(std::vector<std::vector<std::vector<std::string
     }
     mystream.close();
 }
+
+
 
 
 

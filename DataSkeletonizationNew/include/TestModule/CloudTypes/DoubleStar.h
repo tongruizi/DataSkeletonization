@@ -23,7 +23,7 @@ public:
         GraphGeneration::RandomGraph2(number_of_branches, number_of_branches2, angle, scale, G);
     }
 
-    bool IsGraphCorrect(MyGraphType & G)
+    bool IsGraphCorrect(MyGraphType & G, int iterationnumber)
     {
         std::set<int> setInt;
         int n2 = number_of_branches + 1;
@@ -51,14 +51,12 @@ public:
             else if (tmpD == 1)
             {
                 onev++;
-
             }
-
         }
         return (setInt.size() == 0) && (onev == number_of_branches + number_of_branches2);
     }
 
-    bool DoesGraphHaveCorrectForm(MyGraphType & G)
+    bool DoesGraphHaveCorrectForm(MyGraphType & G, int iterationnumber)
     {
         return this->CorrectNumberOfEndPoints(G,number_of_branches+number_of_branches2);
     }

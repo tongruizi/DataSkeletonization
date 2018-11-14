@@ -114,6 +114,8 @@
 		<Unit filename="include/DensityFunctions/LinearDensity.h" />
 		<Unit filename="include/GeneralComputation/Computation.cpp" />
 		<Unit filename="include/GeneralComputation/Computation.h" />
+		<Unit filename="include/GeneralComputation/DualTreeComputation.cpp" />
+		<Unit filename="include/GeneralComputation/DualTreeComputation.h" />
 		<Unit filename="include/GeneralComputation/PointTools.cpp" />
 		<Unit filename="include/GeneralComputation/PointTools.h" />
 		<Unit filename="include/GradientDescend/GradientDescendTester.h" />
@@ -127,6 +129,8 @@
 		<Unit filename="include/Methods/AsK/AsKLauncher.h" />
 		<Unit filename="include/Methods/AsK/BranchSimplification.cpp" />
 		<Unit filename="include/Methods/AsK/BranchSimplification.h" />
+		<Unit filename="include/Methods/AsK/FastMSTLauncher.cpp" />
+		<Unit filename="include/Methods/AsK/FastMSTLauncher.h" />
 		<Unit filename="include/Methods/AsK/GraphSimplification.cpp" />
 		<Unit filename="include/Methods/AsK/GraphSimplification.h" />
 		<Unit filename="include/Methods/AsK/StraighteningMethods.cpp" />

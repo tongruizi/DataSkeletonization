@@ -19,7 +19,12 @@ public:
     static void MSTToVTK(arma::mat & originalData, arma::mat & edges, std::string out);
     static void GraphToVtk(std::string path, MyGraphType &G);
     static void ListToMat(std::list<Point> & lp, arma::mat & mtx);
+    static void ListToMatTransposed(std::list<Point> & points, arma::mat & data);
     static void ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData);
+    static void MatToMyGraphType(arma::mat & originalData, arma::mat & edges, MyGraphType & G);
+
+
+
     //! Method to print data from measurers directly into latex table.
     static void DataToLatex(std::vector<std::vector<std::vector<std::string>>> & measurers,
                             std::vector<std::vector<std::string>> & timeMeasures,
@@ -29,6 +34,11 @@ public:
                                      std::vector<std::vector<std::string>> & timeMeasures,
                                      std::vector<std::string> & GraphNames, std::vector<std::string> & AlgorithmNames,
                                      std::vector<std::string> & MeasureNames, std::string filename);
+    static void RetriveGraphInformation(std::string filename, std::vector<int> & iterationanumber,
+   std::vector<std::string> & graphType, std::vector<std::vector<int>> & parameters);
+
+
+
 
 protected:
 

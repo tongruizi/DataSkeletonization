@@ -62,12 +62,11 @@ public:
     {
         return measurers[k];
     }
-    void CycleOverMeasurers(MyGraphType & G, AbstractCloudType* cloud, std::list<Point>* generatedCloud)
+    void CycleOverMeasurers(MyGraphType & G, AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit)
     {
         for (int k = 0; k < measurers.size(); k++)
         {
-            (*measurers[k]).run(G,cloud,generatedCloud);
-
+            (*measurers[k]).run(G,cloud,generatedCloud,cloudit);
         }
     }
     void ResetAllMeasurers()

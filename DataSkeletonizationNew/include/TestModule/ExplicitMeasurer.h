@@ -12,7 +12,7 @@ public:
     ExplicitMeasurer(std::string name,int precision):
         name(name),precision(precision) {}
     virtual std::string returnStatisticString() = 0;
-    virtual void run(MyGraphType & G, AbstractCloudType* cloud, std::list<Point>* generatedCloud)=0;
+    virtual void run(MyGraphType & G, AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit)=0;
     virtual void resetStatistic() = 0;
     virtual ExplicitMeasurer* Clone() = 0;
 //    void setCloud(generatable* cloudt)

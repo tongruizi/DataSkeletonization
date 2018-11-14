@@ -6,8 +6,8 @@ SimpleMeasurerCore("Correct type",precision)
     //ctor
 }
 
-bool CorrectTypeMeasure::CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud)
+bool CorrectTypeMeasure::CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit)
 {
-return cloud->DoesGraphHaveCorrectForm(G);
+return cloud->DoesGraphHaveCorrectForm(G,cloudit);
 }
 

@@ -10,7 +10,7 @@ class ManualMeasure : public AbstractMeasurer<T>
 public:
     ManualMeasure(std::string name, int precision):
         AbstractMeasurer<T>(name,precision) {}
-    virtual T CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud)
+    virtual T CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit)
     {
         //! We do nothing
         return 0;

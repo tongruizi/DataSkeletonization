@@ -33,9 +33,9 @@ public:
 
     virtual void GenerateGraph(MyGraphType & G) =0;
 
-    virtual bool IsGraphCorrect(MyGraphType & G) =0;
+    virtual bool IsGraphCorrect(MyGraphType & G, int iterationnumber) =0;
 
-    virtual bool DoesGraphHaveCorrectForm(MyGraphType & G) =0;
+    virtual bool DoesGraphHaveCorrectForm(MyGraphType & G, int iterationnumber) =0;
 
 
     void GenerateCloud(std::list<Point> & p, int iterationnumber)

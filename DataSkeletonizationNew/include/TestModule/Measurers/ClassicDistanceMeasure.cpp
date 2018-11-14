@@ -9,7 +9,7 @@ ClassicDistanceMeasure::ClassicDistanceMeasure(int precision):
     //ctor
 }
 
-double ClassicDistanceMeasure::CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud)
+double ClassicDistanceMeasure::CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit)
 {
     double Error = Computation::AABBError(G,*generatedCloud);
     std::cout << "Computed error: " << Error << std::endl;

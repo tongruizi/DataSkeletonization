@@ -10,9 +10,10 @@ public:
     AbstractCloudType(int number_of_runs, std::string name):
         number_of_runs(number_of_runs), name(name)
     {}
-    virtual bool IsGraphCorrect(MyGraphType & G) =0;
-    virtual bool DoesGraphHaveCorrectForm(MyGraphType & G) =0;
+    virtual bool IsGraphCorrect(MyGraphType & G, int iterationNumber) = 0;
+    virtual bool DoesGraphHaveCorrectForm(MyGraphType & G, int iterationNumber) =0;
     virtual void GenerateCloud(std::list<Point> & p, int iterationNumber) = 0;
+
     int returnNumberOfRuns()
     {
         return number_of_runs;

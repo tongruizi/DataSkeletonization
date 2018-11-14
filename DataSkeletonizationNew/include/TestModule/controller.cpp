@@ -57,7 +57,7 @@ void controller::InsideCloudListLoop(int i, int clit)
 
         //! Step 3: Do measurments:
 
-        algorithms[j]->CycleOverMeasurers(out,ACT[i], &points);
+        algorithms[j]->CycleOverMeasurers(out,ACT[i], &points,clit);
     }
 
 }

@@ -9,7 +9,7 @@ class NumberOfVertexMeasure : public AbstractMeasurer<int>
 {
 public:
     NumberOfVertexMeasure(int precision);
-    int CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud) override;
+    int CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit) override;
     std::string returnStatisticString() override;
     NumberOfVertexMeasure* Clone() override
     {

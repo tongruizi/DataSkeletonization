@@ -3,26 +3,25 @@
 
 #include <boost/filesystem.hpp>
 #include "AbstractCloudType.h"
+#include "generatable.h"
 
 class RealCloudCollection : public AbstractCloudType
 {
-    public:
-        RealCloudCollection(std::string nameOfInstance, std::string pathName);
-        bool IsGraphCorrect(MyGraphType & G)
-        {
-        return true;
-        }
-        bool DoesGraphHaveCorrectForm(MyGraphType & G)
-        {
-        return true;
-        }
-        void GenerateCloud(std::list<Point> & p, int iterationNumber);
+public:
+    RealCloudCollection(std::string nameOfInstance, std::string pathName);
+    ~RealCloudCollection();
+    bool IsGraphCorrect(MyGraphType & G, int iterationNumber);
+    bool DoesGraphHaveCorrectForm(MyGraphType & G, int iterationNumber);
+    void GenerateCloud(std::list<Point> & p, int iterationNumber);
+    void SetCorrectnessOfGraphs(std::string filepath);
 
 
-    protected:
 
-    private:
+protected:
+
+private:
     std::vector<boost::filesystem::directory_entry> directories;
+    std::vector<generatable*> correctGraphType;
 };
 
 #endif // REALCLOUDCOLLECTION_H
