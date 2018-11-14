@@ -359,8 +359,8 @@ void MlPackTimerTest()
 
 void ControllerTest()
 {
-std::string qq = "/home/yury/Dropbox/UnileverData/Mapper_Outputs_Random_Order/data.csv";
-std::string folder = "/home/yury/Dropbox/UnileverData/Mapper_Outputs_Random_Order/";
+std::string qq = "/home/yury/LocalTests/FirstTest/data2.csv";
+std::string folder = "/home/yury/LocalTests/FirstTest/Outputs2/";
 double mappercluster = 1.75;
 double alpha = 20;
 //! We initilize a star:
@@ -368,7 +368,7 @@ SingleStar star1(M_PI/3,3,1500,5,100,5,"Star3");
 SingleStar star2(M_PI/3,4,2000,5,100,5,"Star4");
 SingleStar star8(M_PI/3,8,4000,5,100,10,"Star8");
 DoubleStar dstar(M_PI/3,4,4,4000,5,100,10,"DoubleStar");
-RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
+//RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
 //SingleStar star2(M_PI/3,4,100,1500,5,100,10,"Star4");
 //! We initilize filewriter:
 PrintToFile printer(folder);
@@ -382,8 +382,8 @@ alphaLaunch.setTimePrecision(2);
 std::string setting = "pure";
 AsKLauncher AskAlgorithm(50.12,1.05,1.5,setting,"AsK");
 AskAlgorithm.setTimePrecision(2);
-AskAlgorithm.addPostRunner(&printer);
 
+AskAlgorithm.addPostRunner(&printer);
 thelaunch.addPostRunner(&printer);
 alphaLaunch.addPostRunner(&printer);
 
@@ -394,13 +394,13 @@ controller control(qq);
  //   void addCloud(generatable* k);
 control.addAlgorithm(&thelaunch);
 //control.addAlgorithm(&alphaLaunch);
-//control.addAlgorithm(&AskAlgorithm);
+control.addAlgorithm(&AskAlgorithm);
 //control.addCloud(&star1);
 //control.addCloud(&star2);
-//control.addCloud(&star8);
+control.addCloud(&star8);
 //control.addCloud(&dstar);
 //control.addCloud(&star2);
-control.addCloud(&theRealClouds);
+//control.addCloud(&theRealClouds);
 //! Initilize distance error measure:
 ClassicDistanceMeasure distanceMeasure(2);
 CorrectEndTypeMeasure endTypeMeasure(2);
@@ -512,7 +512,7 @@ srand( time( NULL ) );
 ///! We use this number sequence to debug the code:
 //srand(20);
 //std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
-//! Here we test:
+//! Here we test:ControllerTest()
 //runGradientDescendTester();
 //RunSeriousTests();
 //RunCyclicTests();
@@ -532,5 +532,6 @@ srand( time( NULL ) );
  // ControllerTestRealDataSimple();
 //  ControllerTest();
 std::cout << "Succeful compilation xD" << std::endl;
-ControllerTestRealDataSimple();
+//ControllerTestRealDataSimple();
+ControllerTest();
 }

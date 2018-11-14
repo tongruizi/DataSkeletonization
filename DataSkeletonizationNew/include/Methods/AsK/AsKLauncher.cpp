@@ -2,6 +2,7 @@
 #include "Computation.h"
 #include "BranchSimplification.h"
 #include "StraighteningMethods.h"
+#include "DualTreeComputation.h"
 
 AsKLauncher::AsKLauncher(double a, double b, double c, std::string settings, std::string name = "AsK"):
     AbstractAlgorithm(name),branch_detection(a),approxError(b),simplificationError(c),settings(settings)
@@ -11,7 +12,8 @@ void AsKLauncher::Run(std::list<Point> & cloudlist, MyGraphType & out)
 {
     MyGraphType mst;
     MyGraphType optiout;
-    Computation::computeMST(cloudlist,mst);
+   // Computation::computeMST(cloudlist,mst);
+    DualTreeComputation::ComputeMST(cloudlist,mst);
     BranchDetection::SimplifyIt(mst,optiout,this->branch_detection,"",this->settings);
     std::list<std::list<Point>> optipath;
     std::list<std::list<Point>> branchsimplified;

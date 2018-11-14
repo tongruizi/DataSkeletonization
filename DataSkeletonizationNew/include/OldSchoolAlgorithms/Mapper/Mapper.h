@@ -8,6 +8,7 @@
 #include "Computation.h"
 #include "ComponentAllocator.h"
 #include "GraphUpgrade.h"
+#include "DualTreeComputation.h"
 
 double ComputeValue(std::vector<MyGraphType> trees, double scale)
 {
@@ -111,11 +112,22 @@ void Mapper ( std::vector<Point>const& cloud, Mapper_Parameters const& parameter
 
     // Creating the MST for each subcloud.
 
-    std::vector<MyGraphType> mst;
-    GenerateMST(subcloud,mst,vertex_map);
+    std::vector<MyGraphType> mst(parameters.num_intervals, MyGraphType());
+    for (int i = 0; i < parameters.num_intervals; i++)
+    {
+    std::list<Point> listOfPoints;
+    std::copy( subcloud[i].begin(),subcloud[i].end(), std::back_inserter( listOfPoints ) );
+    DualTreeComputation::ComputeMST(listOfPoints,mst[i]);
+    }
+
+
+    //! We will test to replace this thing
+   // GenerateMST(subcloud,mst,vertex_map);
     double vv = ComputeValue(mst,parameters.mcsf);
     AllocateComponents ( mst, vv);
-     RepairMapping(vertex_map,  vertexIntervals, cloud);
+
+    //! And also this thing:
+    //RepairMapping(vertex_map,  vertexIntervals, cloud);
 
     // debug:
   //  std::string folder = "/home/yury/Dropbox/MicelleProject/Micelle/output/Mapper/debug/";
