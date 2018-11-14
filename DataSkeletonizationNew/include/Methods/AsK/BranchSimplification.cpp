@@ -84,7 +84,7 @@ void BranchSimplification::PathToGraph(MyGraphType & G, std::list<std::list<Poin
     std::map<Point, vertex_descriptor> PointToVertex;
     for(auto it = in.begin(); it != in.end(); it++)
     {
-        std::cout << (*it).front() << " - " << (*it).back() << std::endl;
+    //    std::cout << (*it).front() << " - " << (*it).back() << std::endl;
         vertex_descriptor down =  FindPointOperation((*it).front(), PointToVertex,G);
         vertex_descriptor up   =  FindPointOperation((*it).back(),  PointToVertex,G);
         double dd = ComputeDistance(*it);

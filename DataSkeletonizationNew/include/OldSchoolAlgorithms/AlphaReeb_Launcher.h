@@ -7,6 +7,7 @@
 #include "AlphaReebComputation.h"
 #include "Computation.h"
 #include "AbstractAlgorithm.h"
+#include "DualTreeComputation.h"
 
 class AlphaReeb_Launcher:public AbstractAlgorithm
 {
@@ -16,8 +17,9 @@ public:
     void Run(std::list<Point> & cloudlist, MyGraphType & out)
     {
         MyGraphType G;
-        Computation::ComputeDeluanayTriangulation(G, cloudlist);
-        Computation::EpsilonSimplification(G, epsilon);
+      //  Computation::ComputeDeluanayTriangulation(G, cloudlist);
+     //   Computation::EpsilonSimplification(G, epsilon);
+        DualTreeComputation::ComputeEpsilonNeighborhoodGraph(cloudlist,G,this->epsilon);
         MyGraphType Intermediate;
         AlphaReebComputation::Compute(G, param, out, Intermediate);
 

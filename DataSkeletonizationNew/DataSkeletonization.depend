@@ -718,7 +718,7 @@
 1535439849 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/NaiveMethods.cpp
 	"NaiveMethods.h"
 
-1542200945 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
+1542203494 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<iomanip>
 	<math.h>
@@ -1139,13 +1139,14 @@
 	"Definitions.h"
 	"Graph.h"
 
-1541940903 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb_Launcher.h
+1542203485 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb_Launcher.h
 	"Graph.h"
 	"Definitions.h"
 	"AlphaReeb_Parameters.h"
 	"AlphaReebComputation.h"
 	"Computation.h"
 	"AbstractAlgorithm.h"
+	"DualTreeComputation.h"
 
 1541587074 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper_Launcher.h
 	"Graph.h"
@@ -1506,7 +1507,7 @@
 	"SimpleMeasurerCore.h"
 	"AbstractCloudType.h"
 
-1542028061 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/BranchSimplification.cpp
+1542202470 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/BranchSimplification.cpp
 	"BranchSimplification.h"
 	"StraighteningMethods.h"
 	"PointTools.h"
@@ -1525,7 +1526,7 @@
 1542012580 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/GraphSimplification.h
 	"Graph.h"
 
-1542194624 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
+1542202455 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
 	"AsKLauncher.h"
 	"Computation.h"
 	"BranchSimplification.h"
@@ -1535,7 +1536,7 @@
 1542014745 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.h
 	"AbstractAlgorithm.h"
 
-1542015007 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
+1542202188 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
 	"StraighteningMethods.h"
 	"Computation.h"
 
@@ -1555,15 +1556,17 @@
 	"AbstractCloudType.h"
 	"generatable.h"
 
-1542201715 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.cpp
+1542203575 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.cpp
 	"DualTreeComputation.h"
 	"GeneralConvertor.h"
+	<mlpack/methods/range_search/range_search.hpp>
 
-1542192008 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.h
+1542202892 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.h
 	<mlpack/methods/emst/dtb.hpp>
 	"Graph.h"
 	"Definitions.h"
 	<mlpack/core.hpp>
+	<mlpack/methods/neighbor_search/neighbor_search.hpp>
 
 1542192658 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/FastMSTLauncher.cpp
 	"FastMSTLauncher.h"

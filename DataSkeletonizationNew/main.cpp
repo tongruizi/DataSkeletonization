@@ -361,7 +361,7 @@ void ControllerTest()
 {
 std::string qq = "/home/yury/LocalTests/FirstTest/data2.csv";
 std::string folder = "/home/yury/LocalTests/FirstTest/Outputs2/";
-double mappercluster = 1.75;
+double mappercluster = 3.0; // 1.75
 double alpha = 20;
 //! We initilize a star:
 SingleStar star1(M_PI/3,3,1500,5,100,5,"Star3");
@@ -387,14 +387,21 @@ AskAlgorithm.addPostRunner(&printer);
 thelaunch.addPostRunner(&printer);
 alphaLaunch.addPostRunner(&printer);
 
+//! Add MST
+
+FastMSTLauncher mstComputator;
+mstComputator.setTimePrecision(2);
+mstComputator.addPostRunner(&printer);
+
 //! We initilize controller:
 controller control(qq);
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
  //   void addCloud(generatable* k);
 control.addAlgorithm(&thelaunch);
-//control.addAlgorithm(&alphaLaunch);
+control.addAlgorithm(&alphaLaunch);
 control.addAlgorithm(&AskAlgorithm);
+control.addAlgorithm(&mstComputator);
 //control.addCloud(&star1);
 //control.addCloud(&star2);
 control.addCloud(&star8);
@@ -437,7 +444,7 @@ std::vector<boost::filesystem::directory_entry> v; // To save the file names in 
 void ControllerTestRealDataSimple()
 {
 //! Defining main algorithm parameters:
-double mappercluster = 1.75;
+double mappercluster = 3.0; // 1.75
 double alpha = 20;
 
 //! Defining all required file paths:
