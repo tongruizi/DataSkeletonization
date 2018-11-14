@@ -24,7 +24,7 @@ public:
 
     virtual void Run(std::list<Point> & cloudlist, MyGraphType & out) = 0;
 
-    void ExplicitRun(std::list<Point> & cloudlist, MyGraphType & out, generatable* gen)
+    void ExplicitRun(std::list<Point> & cloudlist, MyGraphType & out, AbstractCloudType* gen)
     {
         //! Something will be add here soon.
         auto start = std::chrono::system_clock::now();
@@ -62,12 +62,11 @@ public:
     {
         return measurers[k];
     }
-    void CycleOverMeasurers(MyGraphType & G, generatable* cloud, std::list<Point>* generatedCloud)
+    void CycleOverMeasurers(MyGraphType & G, AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit)
     {
         for (int k = 0; k < measurers.size(); k++)
         {
-            (*measurers[k]).run(G,cloud,generatedCloud);
-
+            (*measurers[k]).run(G,cloud,generatedCloud,cloudit);
         }
     }
     void ResetAllMeasurers()
@@ -100,6 +99,11 @@ public:
     void addPostRunner(PostRunInterface* postRunner)
     {
         postRunners.push_back(postRunner);
+    }
+
+    void setTimePrecision(int p)
+    {
+    TimeMeasure.setPrecision(p);
     }
 
 

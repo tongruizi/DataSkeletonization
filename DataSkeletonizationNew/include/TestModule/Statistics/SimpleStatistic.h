@@ -41,7 +41,7 @@ public:
     }
     double returnAvg()
     {
-    return success/caseNumber;
+    return (double) success/ (double) caseNumber;
     }
 
 

@@ -5,6 +5,7 @@
 #include "generatable.h"
 #include "AbstractMeasurer.h"
 #include "ExplicitMeasurer.h"
+#include "AbstractCloudType.h"
 
 //void controller::InsideCloudListLoop(int i, int clit)
 
@@ -23,7 +24,7 @@ public:
     void BeginTestRun();
 
     void addAlgorithm(AbstractAlgorithm* k);
-    void addCloud(generatable* k);
+    void addCloud(AbstractCloudType* k);
     void addMeasurer(ExplicitMeasurer & q);
 protected:
 
@@ -31,7 +32,7 @@ private:
     int msize;
     std::string filename;
     //! Vector for cloudtypes:
-    std::vector<generatable*> ACT;
+    std::vector<AbstractCloudType*> ACT;
     //! Vector for algorithmtypes:
     std::vector<AbstractAlgorithm*> algorithms;
 

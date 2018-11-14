@@ -5,6 +5,10 @@
 struct VertexData;
 struct EdgeData;
 
+//! This is graph with no extra information (can be used to compute connected components for example)
+typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::undirectedS> AbstractGraphType;
+
+//! This is the customized graph type for R^3
 typedef boost::adjacency_list<boost::hash_setS, boost::vecS,
         boost::undirectedS,
         VertexData,

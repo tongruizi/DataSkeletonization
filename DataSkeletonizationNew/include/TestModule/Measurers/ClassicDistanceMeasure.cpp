@@ -9,14 +9,18 @@ ClassicDistanceMeasure::ClassicDistanceMeasure(int precision):
     //ctor
 }
 
-double ClassicDistanceMeasure::CompleteMeasurments(MyGraphType & G,generatable* cloud, std::list<Point>* generatedCloud)
+double ClassicDistanceMeasure::CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit)
 {
-    return Computation::AABBError(G,*generatedCloud);
+    double Error = Computation::AABBError(G,*generatedCloud);
+    std::cout << "Computed error: " << Error << std::endl;
+    return Error;
 }
 
 std::string ClassicDistanceMeasure::returnStatisticString()
 {
     double avg = mystatistic.returnAvg();
+    std::cout << "Returned: " << avg << std::endl;
+    std::cout << "Data contained: " << mystatistic.returnNumber() << std::endl;
     std::stringstream stream;
     stream << std::fixed << std::setprecision(precision) << avg;
     std::string s = stream.str();

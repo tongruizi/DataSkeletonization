@@ -34,7 +34,7 @@ void controller::WriteDownToLatexTable()
     }
 //! Just to make everything work, this is done in non-clean way.
 
-    GeneralConvertor::DataToLatex(results,runTimeStorage,cloudNames,algorithmNames,measurerNames,filename);
+    GeneralConvertor::DataToCSV(results,runTimeStorage,cloudNames,algorithmNames,measurerNames,filename);
 
 }
 
@@ -42,17 +42,22 @@ void controller::WriteDownToLatexTable()
 void controller::InsideCloudListLoop(int i, int clit)
 {
     std::list<Point> points;
-    ACT[i]->GenerateCloud(points);
+    ACT[i]->GenerateCloud(points,clit);
 
     for (int j = 0; j < algorithms.size(); j++)
     {
+        //! Print where are we right now:
+        std::cout << "Dealing with: ";
+        std::cout << " CloudType: ";
+        std::cout << std::to_string(i);
+        std::cout << " Algorithm: " << std::to_string(j) << " IterationNumber: " << std::to_string(clit) << std::endl;
         //! Step 2: Run Algorithm
         MyGraphType out;
         algorithms[j]->ExplicitRun(points,out,ACT[i]);
 
         //! Step 3: Do measurments:
 
-        algorithms[j]->CycleOverMeasurers(out,ACT[i], &points);
+        algorithms[j]->CycleOverMeasurers(out,ACT[i], &points,clit);
     }
 
 }
@@ -106,7 +111,7 @@ void controller::addAlgorithm(AbstractAlgorithm* k)
 {
     algorithms.push_back(k);
 }
-void controller::addCloud(generatable* k)
+void controller::addCloud(AbstractCloudType* k)
 {
     ACT.push_back(k);
 }
@@ -115,8 +120,9 @@ void controller::addMeasurer(ExplicitMeasurer & q)
     for (int i = 0; i < algorithms.size(); i++)
     {
         algorithms[i] ->addMeasurer(q.Clone());
-        measurerNames.push_back(q.returnName());
     }
+    measurerNames.push_back(q.returnName());
+
 }
 
 

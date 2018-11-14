@@ -12,10 +12,9 @@ class AlphaReeb_Launcher:public AbstractAlgorithm
 {
 public:
     AlphaReeb_Launcher(AlphaReeb_Parameters & param,double epsilon):
-    param(param),epsilon(epsilon),AbstractAlgorithm("\alpha-Reeb") {}
+    param(param),epsilon(epsilon),AbstractAlgorithm("alphaReeb") {}
     void Run(std::list<Point> & cloudlist, MyGraphType & out)
     {
-
         MyGraphType G;
         Computation::ComputeDeluanayTriangulation(G, cloudlist);
         Computation::EpsilonSimplification(G, epsilon);

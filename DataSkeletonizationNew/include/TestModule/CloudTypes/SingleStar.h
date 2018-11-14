@@ -8,9 +8,9 @@
 class SingleStar:public generatable
 {
 public:
-    SingleStar(double angle, int number_of_branches, double scaler, int number_of_cloudpoints, double epsilon, double scale,int number_of_runs,
-    std::string name = "SingleStar"):
-        generatable(number_of_cloudpoints,epsilon,number_of_runs,name),angle(angle), number_of_branches(number_of_branches),scale(scaler)
+    SingleStar(double angle, int number_of_branches, int number_of_cloudpoints, double epsilon, double scale,int number_of_runs,
+               std::string name = "SingleStar"):
+        generatable(number_of_cloudpoints,epsilon,number_of_runs,name),angle(angle), number_of_branches(number_of_branches),scale(scale)
     {
 
     }
@@ -19,7 +19,7 @@ public:
         GraphGeneration::RandomGraph1(number_of_branches,angle,scale,G);
     }
 
-    bool IsGraphCorrect(MyGraphType & G)
+    bool IsGraphCorrect(MyGraphType & G, int iterationnumber)
     {
         int n = number_of_branches;
         auto vpair = boost::vertices(G);
@@ -45,10 +45,9 @@ public:
 
     }
 
-    bool DoesGraphHaveCorrectForm(MyGraphType & G)
+    bool DoesGraphHaveCorrectForm(MyGraphType & G,int iterationnumber)
     {
-    return this->CorrectNumberOfEndPoints(G,number_of_branches);
-
+        return this->CorrectNumberOfEndPoints(G,number_of_branches);
     }
 
 

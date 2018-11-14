@@ -241,13 +241,16 @@ public:
             CleanupHelper(tree);
     }
 
+    //! We updated the Graph from MyGraphType to AbstractGraphType
+    //! (because we dont need the extra information provided by the MyGraphType parameters
+
     int CompleteClusterizaiton()
     {
         //! Add all the elements to the graph
-        MyGraphType G;
+        AbstractGraphType G;
         for (int i = 0; i < data.n_cols; i++)
         {
-            Graph::add_vertex(G,Point(data(0,i),data(1,i),data(2,i)));
+            boost::add_vertex(G);
         }
         int componentsFormed = 0;
 
@@ -261,7 +264,7 @@ public:
         for (int i = 0; i < clusterCorrespondance.size(); i++)
         {
             int j = clusterCorrespondance[i];
-            Graph::add_edge(G,i,j);
+            boost::add_edge(i,j,G);
             localRoot[j] = 1;
             localRootSize[j]++;
             if(i == j)

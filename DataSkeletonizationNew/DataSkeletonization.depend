@@ -493,7 +493,7 @@
 
 1529929351 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Clustering/ClusterElement.h
 
-1537274505 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.h
+1541759322 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.h
 	"Definitions.h"
 
 1537274550 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Definitions/Definitions.h
@@ -546,16 +546,17 @@
 	"Graph.h"
 	"ClusterElement.h"
 
-1541694165 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
+1542192829 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
 	"GeneralConvertor.h"
 	<fstream>
 	"Graph.h"
 
-1541684939 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.h
+1542192773 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.h
 	<string>
 	<mlpack/core.hpp>
 	<vector>
 	"Graph.h"
+	"Definitions.h"
 
 1539337725 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/DataGeneration/CloudGenerator.cpp
 	"CloudGenerator.h"
@@ -569,7 +570,7 @@
 	<mlpack/core.hpp>
 	<vector>
 
-1541589783 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/Computation.h
+1542191474 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/Computation.h
 	<cstdlib>
 	"Definitions.h"
 	"Graph.h"
@@ -703,7 +704,7 @@
 	"Graph.h"
 	"Definitions.h"
 
-1527852554 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.cpp
+1541759474 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.cpp
 	"Graph.h"
 	"Definitions.h"
 	"Computation.h"
@@ -717,7 +718,7 @@
 1535439849 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/NaiveMethods.cpp
 	"NaiveMethods.h"
 
-1541694021 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
+1542193060 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<iomanip>
 	<math.h>
@@ -740,7 +741,6 @@
 	<cstdlib>
 	"GradientDescendTester.h"
 	"AlphaReeb_Launcher.h"
-	"Mapper_Launcher.h"
 	"CorrectEndTypeMeasure.h"
 	"ExplicitMeasurer.h"
 	"AbstractMeasurer.h"
@@ -749,13 +749,20 @@
 	"ClassicDistanceMeasure.h"
 	"controller.h"
 	"PrintToFile.h"
+	"NumberOfVertexMeasure.h"
+	"CorrectTypeMeasure.h"
+	"AsKLauncher.h"
+	"DoubleStar.h"
+	<boost/filesystem.hpp>
+	"RealCloudCollection.h"
+	"FastMSTLauncher.h"
 
 1539357812 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GradientDescend/GradientDescendTester.h
 	"SingleEdgeOptimizer.h"
 	"CloudGenerator.h"
 	"SingleEdgeOptimizer.h"
 
-1540545735 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EngineClusterMST.h
+1541759783 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Amst/EpsilonClusterMST/EngineClusterMST.h
 	"AmstStat.h"
 	<mlpack/methods/emst/edge_pair.hpp>
 	<mlpack/methods/emst/union_find.hpp>
@@ -1090,7 +1097,7 @@
 1529240575 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/Mapper/Mapper_Parameters.h
 	<string>
 
-1540459530 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb/AlphaReebComputation.cpp
+1541940736 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb/AlphaReebComputation.cpp
 	"AlphaReebComputation.h"
 	"Dijkstra.h"
 	"Data_Pt.h"
@@ -1106,7 +1113,7 @@
 	"AlphaReeb_Parameters.h"
 	"Graph.h"
 
-1529762871 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb/Dijkstra.h
+1541939487 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb/Dijkstra.h
 	<boost/graph/dijkstra_shortest_paths.hpp>
 	<iostream>
 	<map>
@@ -1127,12 +1134,12 @@
 1528970414 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb/Combine_Comps.h
 	"Graph.h"
 
-1541510202 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/Computation.cpp
+1542015055 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/Computation.cpp
 	"Computation.h"
 	"Definitions.h"
 	"Graph.h"
 
-1541512580 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb_Launcher.h
+1541940903 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/OldSchoolAlgorithms/AlphaReeb_Launcher.h
 	"Graph.h"
 	"Definitions.h"
 	"AlphaReeb_Parameters.h"
@@ -1289,20 +1296,21 @@
 	"ClusterElement.h"
 	"ClusteringMethods.h"
 
-1541693794 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/controller.cpp
+1542110895 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/controller.cpp
 	"controller.h"
 	"generatable.h"
 	<thread>
 	"Definitions.h"
 	"GeneralConvertor.h"
 
-1541691248 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/controller.h
+1542030450 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/controller.h
 	"AbstractAlgorithm.h"
 	"generatable.h"
 	"AbstractMeasurer.h"
 	"ExplicitMeasurer.h"
+	"AbstractCloudType.h"
 
-1541690646 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/AbstractAlgorithm.h
+1542110879 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/AbstractAlgorithm.h
 	"Definitions.h"
 	"Graph.h"
 	"ExplicitMeasurer.h"
@@ -1310,33 +1318,37 @@
 	"PostRunInterface.h"
 	"ManualMeasure.h"
 
-1541677594 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/generatable.h
+1542111147 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/generatable.h
 	"CloudGenerator.h"
 	"GraphGeneration.h"
+	"AbstractCloudType.h"
 
-1541692420 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/AbstractMeasurer.h
+1542110702 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/AbstractMeasurer.h
 	"StatisticInfo.h"
 	"ExplicitMeasurer.h"
+	"AbstractCloudType.h"
 
 1541500874 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/StatisticInfo.h
 	<limits>
 	"AbstractMeasurer.h"
 
-1541692407 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/ExplicitMeasurer.h
+1542110627 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/ExplicitMeasurer.h
 	"Graph.h"
 	"generatable.h"
+	"AbstractCloudType.h"
 
-1541599436 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/CorrectEndTypeMeasure.cpp
+1542110790 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/CorrectEndTypeMeasure.cpp
 	"CorrectEndTypeMeasure.h"
 	"Graph.h"
 
-1541692359 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/CorrectEndTypeMeasure.h
+1542110738 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/CorrectEndTypeMeasure.h
 	"Graph.h"
 	"ExplicitMeasurer.h"
 	"SimpleStatistic.h"
 	"SimpleMeasurerCore.h"
+	"AbstractCloudType.h"
 
-1541590059 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Statistics/StatisticInfo.h
+1541943734 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Statistics/StatisticInfo.h
 	<string>
 	<limits>
 	"AbstractMeasurer.h"
@@ -1344,7 +1356,7 @@
 1541501621 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/DoubleStar.cpp
 	"DoubleStar.h"
 
-1541677669 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/DoubleStar.h
+1542111629 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/DoubleStar.h
 	"CloudGenerator.h"
 	"GraphGeneration.h"
 	"generatable.h"
@@ -1353,33 +1365,37 @@
 1541501614 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/SingleStar.cpp
 	"SingleStar.h"
 
-1541677714 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/SingleStar.h
+1542111690 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/SingleStar.h
 	"CloudGenerator.h"
 	"GraphGeneration.h"
 	"generatable.h"
 
-1541686731 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Statistics/SimpleStatistic.h
+1541936512 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Statistics/SimpleStatistic.h
 
-1541600599 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/ClassicDistanceMeasure.cpp
+1542110780 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/ClassicDistanceMeasure.cpp
 	"ClassicDistanceMeasure.h"
 	"Computation.h"
 	<iostream>
 	<iomanip>
 
-1541692439 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/ClassicDistanceMeasure.h
+1542110731 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/ClassicDistanceMeasure.h
 	"AbstractMeasurer.h"
+	"AbstractCloudType.h"
 
-1541692331 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/SimpleMeasurerCore.h
+1542110990 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/SimpleMeasurerCore.h
 	"SimpleStatistic.h"
+	"ExplicitMeasurer.h"
 
-1541693413 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/PostRunners/PostRunInterface.h
+1542030572 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/PostRunners/PostRunInterface.h
 	"Graph.h"
 	"Definitions.h"
+	"AbstractCloudType.h"
 
-1541692439 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/ManualMeasure.h
+1542110753 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/ManualMeasure.h
 	"AbstractMeasurer.h"
+	"AbstractCloudType.h"
 
-1541693343 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/PostRunners/PrintToFile.h
+1542030781 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/PostRunners/PrintToFile.h
 	"PostRunInterface.h"
 	"GeneralConvertor.h"
 
@@ -1472,4 +1488,85 @@
 1541758956 /home/liudi/gitHub/DataSkeletonization/DataSkeletonizationNew/include/TestModule/PostRunners/PrintToFile.h
 	"PostRunInterface.h"
 	"GeneralConvertor.h"
+
+1542111013 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/NumberOfVertexMeasure.cpp
+	"NumberOfVertexMeasure.h"
+
+1542110759 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/NumberOfVertexMeasure.h
+	"Graph.h"
+	"AbstractMeasurer.h"
+	"AbstractCloudType.h"
+
+1542110802 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/CorrectTypeMeasure.cpp
+	"CorrectTypeMeasure.h"
+
+1542110744 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Measurers/CorrectTypeMeasure.h
+	"Graph.h"
+	"SimpleMeasurerCore.h"
+	"AbstractCloudType.h"
+
+1542028061 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/BranchSimplification.cpp
+	"BranchSimplification.h"
+	"StraighteningMethods.h"
+	"PointTools.h"
+
+1531413163 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/BranchSimplification.h
+	"Graph.h"
+	"BranchDetection.h"
+
+1527234704 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.h
+	"Definitions.h"
+	"Graph.h"
+
+1542012632 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/GraphSimplification.cpp
+	"GraphSimplification.h"
+
+1542012580 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/GraphSimplification.h
+	"Graph.h"
+
+1542029095 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
+	"AsKLauncher.h"
+	"Computation.h"
+	"BranchSimplification.h"
+	"StraighteningMethods.h"
+
+1542014745 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.h
+	"AbstractAlgorithm.h"
+
+1542015007 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
+	"StraighteningMethods.h"
+	"Computation.h"
+
+1542111223 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/AbstractCloudType.h
+	"Graph.h"
+	"Definitions.h"
+
+1542190804 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/RealCloudCollection.cpp
+	"RealCloudCollection.h"
+	"AbstractCloudType.h"
+	"GeneralConvertor.h"
+	"SingleStar.h"
+	"DoubleStar.h"
+
+1542120326 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/RealCloudCollection.h
+	<boost/filesystem.hpp>
+	"AbstractCloudType.h"
+	"generatable.h"
+
+1542192085 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.cpp
+	"DualTreeComputation.h"
+	"GeneralConvertor.h"
+
+1542192008 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.h
+	<mlpack/methods/emst/dtb.hpp>
+	"Graph.h"
+	"Definitions.h"
+	<mlpack/core.hpp>
+
+1542192658 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/FastMSTLauncher.cpp
+	"FastMSTLauncher.h"
+
+1542192348 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/FastMSTLauncher.h
+	"DualTreeComputation.h"
+	"AbstractAlgorithm.h"
 
