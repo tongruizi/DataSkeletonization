@@ -242,8 +242,8 @@ double StraighteningMethods::ClassicStraightening(MyGraphType & G, std::list<Poi
     std::vector<std::vector<PointPlus>> paths;
     StraighteningMethods::GraphToPaths(paths,  G);
     double ddd = ComputeOriginalDistance(cloud,paths);
-    std::cout << "Original error: " << ddd << std::endl;
-    std::cout << "e factor: "<< e << std::endl;
+ //   std::cout << "Original error: " << ddd << std::endl;
+  // std::cout << "e factor: "<< e << std::endl;
     StraighteningMethods::Allocate(paths, G, cloud);
     StraighteningMethods::Optimize(out, paths, ddd * e);
     return ddd;

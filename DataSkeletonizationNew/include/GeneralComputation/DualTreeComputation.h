@@ -5,6 +5,8 @@
 #include "Graph.h"
 #include "Definitions.h"
 #include <mlpack/core.hpp>
+#include <mlpack/methods/neighbor_search/neighbor_search.hpp>
+
 
 class DualTreeComputation
 {
@@ -12,6 +14,7 @@ class DualTreeComputation
         DualTreeComputation();
        // virtual ~DualTreeComputation();
         static void ComputeMST(std::list<Point> & p, MyGraphType & G);
+        static void ComputeEpsilonNeighborhoodGraph(std::list<Point> & p , MyGraphType & G, double epsilon);
 
     protected:
 

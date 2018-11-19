@@ -16,9 +16,6 @@ bool cmpedge(const edgePair &a, const edgePair &b)
 
 void SingleMSTAllocator(MyGraphType & mst, double param)
 {
-
-
-
     std::vector<ClusterElement<edge_descriptor>> edges;
     boost::property_map<MyGraphType, boost::edge_weight_t>::type weightmap = get(boost::edge_weight, mst);
 
@@ -46,9 +43,7 @@ void AllocateComponents ( std::vector<MyGraphType>& msts, double param)
 {
     for (int i = 0; i < msts.size(); i++)
     {
-
         SingleMSTAllocator(msts[i],param);
-
     }
 
 
