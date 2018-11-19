@@ -50,3 +50,13 @@ void DualTreeComputation::ComputeMST(std::list<Point> & p,MyGraphType & G)
     GeneralConvertor::ArmaMatToGraph(G,results,cordata);
 //   std::cout << "No fail 5" << std::endl;
 }
+//using namespace mlpack::neighbor;
+void DualTreeComputation::NearestNeighborForTwoKDTrees(arma::Mat<size_t> & results,arma::mat & referenceData, arma::mat & queryData)
+{
+
+    mlpack::neighbor::KNN a(referenceData);
+    arma::mat resultingDistances;
+    a.Search(queryData, 1, results, resultingDistances);
+
+}
+

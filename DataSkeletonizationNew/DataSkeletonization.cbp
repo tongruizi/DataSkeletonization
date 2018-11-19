@@ -38,6 +38,7 @@
 					<Add directory="include/TestModule/CloudTypes" />
 					<Add directory="include/TestModule/PostRunners" />
 					<Add directory="include/Methods/AsK" />
+					<Add directory="include/GeneralComputation/SegmentTools" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -75,6 +76,7 @@
 					<Add directory="include/TestModule/Statistics" />
 					<Add directory="include/TestModule/PostRunners" />
 					<Add directory="include/Methods/AsK" />
+					<Add directory="include/GeneralComputation/SegmentTools" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -118,6 +120,7 @@
 		<Unit filename="include/GeneralComputation/DualTreeComputation.h" />
 		<Unit filename="include/GeneralComputation/PointTools.cpp" />
 		<Unit filename="include/GeneralComputation/PointTools.h" />
+		<Unit filename="include/GeneralComputation/SegmentTools/SegmentDistance.h" />
 		<Unit filename="include/GradientDescend/GradientDescendTester.h" />
 		<Unit filename="include/GradientDescend/SingleEdgeOptimizer.cpp" />
 		<Unit filename="include/GradientDescend/SingleEdgeOptimizer.h" />

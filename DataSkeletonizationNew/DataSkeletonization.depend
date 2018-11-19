@@ -546,7 +546,7 @@
 	"Graph.h"
 	"ClusterElement.h"
 
-1542201698 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
+1542623991 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
 	"GeneralConvertor.h"
 	<fstream>
 	"Graph.h"
@@ -709,7 +709,7 @@
 	"Definitions.h"
 	"Computation.h"
 
-1530184849 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/BranchDetection.cpp
+1542205275 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/BranchDetection.cpp
 	"BranchDetection.h"
 	"PointTools.h"
 	"ClusterElement.h"
@@ -718,7 +718,7 @@
 1535439849 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/NaiveMethods.cpp
 	"NaiveMethods.h"
 
-1542203494 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
+1542627300 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<iomanip>
 	<math.h>
@@ -1507,7 +1507,7 @@
 	"SimpleMeasurerCore.h"
 	"AbstractCloudType.h"
 
-1542202470 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/BranchSimplification.cpp
+1542627129 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/BranchSimplification.cpp
 	"BranchSimplification.h"
 	"StraighteningMethods.h"
 	"PointTools.h"
@@ -1516,9 +1516,10 @@
 	"Graph.h"
 	"BranchDetection.h"
 
-1527234704 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.h
+1542633226 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.h
 	"Definitions.h"
 	"Graph.h"
+	"DualTreeComputation.h"
 
 1542012632 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/GraphSimplification.cpp
 	"GraphSimplification.h"
@@ -1526,7 +1527,7 @@
 1542012580 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/GraphSimplification.h
 	"Graph.h"
 
-1542202455 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
+1542632954 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
 	"AsKLauncher.h"
 	"Computation.h"
 	"BranchSimplification.h"
@@ -1536,7 +1537,7 @@
 1542014745 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.h
 	"AbstractAlgorithm.h"
 
-1542202188 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
+1542627272 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
 	"StraighteningMethods.h"
 	"Computation.h"
 
@@ -1556,12 +1557,12 @@
 	"AbstractCloudType.h"
 	"generatable.h"
 
-1542203575 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.cpp
+1542622885 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.cpp
 	"DualTreeComputation.h"
 	"GeneralConvertor.h"
 	<mlpack/methods/range_search/range_search.hpp>
 
-1542202892 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.h
+1542622651 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/DualTreeComputation.h
 	<mlpack/methods/emst/dtb.hpp>
 	"Graph.h"
 	"Definitions.h"

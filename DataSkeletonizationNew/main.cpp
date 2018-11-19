@@ -359,74 +359,74 @@ void MlPackTimerTest()
 
 void ControllerTest()
 {
-std::string qq = "/home/yury/LocalTests/FirstTest/data2.csv";
-std::string folder = "/home/yury/LocalTests/FirstTest/Outputs2/";
-double mappercluster = 3.0; // 1.75
-double alpha = 20;
+    std::string qq = "/home/yury/LocalTests/SecondTest/data.csv";
+    std::string folder = "/home/yury/LocalTests/SecondTest/Outputs/";
+    double mappercluster = 3.0; // 1.75
+    double alpha = 20;
 //! We initilize a star:
-SingleStar star1(M_PI/3,3,1500,5,100,5,"Star3");
-SingleStar star2(M_PI/3,4,2000,5,100,5,"Star4");
-SingleStar star8(M_PI/3,8,4000,5,100,10,"Star8");
-DoubleStar dstar(M_PI/3,4,4,4000,5,100,10,"DoubleStar");
+    SingleStar star1(M_PI/3,3,1500,5,100,5,"Star3");
+    SingleStar star2(M_PI/3,4,2000,5,100,5,"Star4");
+    SingleStar star8(M_PI/3,8,4000,5,100,10,"Star8");
+    DoubleStar dstar(M_PI/3,4,4,4000,5,100,10,"DoubleStar");
 //RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
 //SingleStar star2(M_PI/3,4,100,1500,5,100,10,"Star4");
 //! We initilize filewriter:
-PrintToFile printer(folder);
+    PrintToFile printer(folder);
 //! We initilize mapper:
-Mapper_Parameters param(15, 0.5, "Distance", mappercluster,mappercluster);
-Mapper_Launcher thelaunch(param);
-AlphaReeb_Parameters AlphaParam(alpha, 1);
-AlphaReeb_Launcher alphaLaunch(AlphaParam,10);
-thelaunch.setTimePrecision(2);
-alphaLaunch.setTimePrecision(2);
-std::string setting = "pure";
-AsKLauncher AskAlgorithm(50.12,1.05,1.5,setting,"AsK");
-AskAlgorithm.setTimePrecision(2);
+    Mapper_Parameters param(15, 0.5, "Distance", mappercluster,mappercluster);
+    Mapper_Launcher thelaunch(param);
+    AlphaReeb_Parameters AlphaParam(alpha, 1);
+    AlphaReeb_Launcher alphaLaunch(AlphaParam,10);
+    thelaunch.setTimePrecision(2);
+    alphaLaunch.setTimePrecision(2);
+    std::string setting = "pure";
+    AsKLauncher AskAlgorithm(50.12,1.05,1.5,setting,"AsK");
+    AskAlgorithm.setTimePrecision(2);
 
-AskAlgorithm.addPostRunner(&printer);
-thelaunch.addPostRunner(&printer);
-alphaLaunch.addPostRunner(&printer);
+    AskAlgorithm.addPostRunner(&printer);
+    thelaunch.addPostRunner(&printer);
+    alphaLaunch.addPostRunner(&printer);
 
 //! Add MST
 
-FastMSTLauncher mstComputator;
-mstComputator.setTimePrecision(2);
-mstComputator.addPostRunner(&printer);
+    FastMSTLauncher mstComputator;
+    mstComputator.setTimePrecision(2);
+    mstComputator.addPostRunner(&printer);
 
 //! We initilize controller:
-controller control(qq);
+    controller control(qq);
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
- //   void addCloud(generatable* k);
-control.addAlgorithm(&thelaunch);
-control.addAlgorithm(&alphaLaunch);
-control.addAlgorithm(&AskAlgorithm);
-control.addAlgorithm(&mstComputator);
+//   void addCloud(generatable* k);
+    control.addAlgorithm(&thelaunch);
+    control.addAlgorithm(&alphaLaunch);
+    control.addAlgorithm(&AskAlgorithm);
+    control.addAlgorithm(&mstComputator);
 //control.addCloud(&star1);
 //control.addCloud(&star2);
-control.addCloud(&star8);
+    control.addCloud(&star8);
 //control.addCloud(&dstar);
 //control.addCloud(&star2);
 //control.addCloud(&theRealClouds);
 //! Initilize distance error measure:
-ClassicDistanceMeasure distanceMeasure(2);
-CorrectEndTypeMeasure endTypeMeasure(2);
-NumberOfVertexMeasure vertexMeasure(2);
-CorrectTypeMeasure TypeMeasure(2);
+    ClassicDistanceMeasure distanceMeasure(2);
+    CorrectEndTypeMeasure endTypeMeasure(2);
+    NumberOfVertexMeasure vertexMeasure(2);
+    CorrectTypeMeasure TypeMeasure(2);
 
-control.addMeasurer(distanceMeasure);
-control.addMeasurer(endTypeMeasure);
-control.addMeasurer(vertexMeasure);
-control.addMeasurer(TypeMeasure);
-control.BeginTestRun();
+    control.addMeasurer(distanceMeasure);
+    control.addMeasurer(endTypeMeasure);
+    control.addMeasurer(vertexMeasure);
+    control.addMeasurer(TypeMeasure);
+    control.BeginTestRun();
 
 }
 
 void FileSystemTest()
 {
 //std::string p = "/home/yury/Dropbox/UnileverData/VTK_First_Files/";
-boost::filesystem::path p("/home/yury/Dropbox/UnileverData/XYZ_Files/");
-std::vector<boost::filesystem::directory_entry> v; // To save the file names in a vector.
+    boost::filesystem::path p("/home/yury/Dropbox/UnileverData/XYZ_Files/");
+    std::vector<boost::filesystem::directory_entry> v; // To save the file names in a vector.
 
     if(boost::filesystem::is_directory(p))
     {
@@ -444,65 +444,72 @@ std::vector<boost::filesystem::directory_entry> v; // To save the file names in 
 void ControllerTestRealDataSimple()
 {
 //! Defining main algorithm parameters:
-double mappercluster = 3.0; // 1.75
-double alpha = 20;
+    double mappercluster = 3.0; // 1.75
+    double alpha = 20;
 
 //! Defining all required file paths:
-std::string CSVFile = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/data.csv";
-std::string Outputfolder = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/Outputs/";
-std::string Inputfolder = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/FirstClusers/";
-std::string ManualGraphInfoFile = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/StarInfo.txt";
+    std::string CSVFile = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/data.csv";
+    std::string Outputfolder = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/Outputs/";
+    std::string Inputfolder = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/FirstClusers/";
+    std::string ManualGraphInfoFile = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/StarInfo.txt";
 
 
 //! Initilizing RealCloudCollection
-RealCloudCollection theRealClouds("Real",Inputfolder);
-std::cout << "Initilized RealCloudCollection" << std::endl;
-theRealClouds.SetCorrectnessOfGraphs(ManualGraphInfoFile);
-std::cout << "Succesfully imputed file " << std::endl;
+    RealCloudCollection theRealClouds("Real",Inputfolder);
+    std::cout << "Initilized RealCloudCollection" << std::endl;
+    theRealClouds.SetCorrectnessOfGraphs(ManualGraphInfoFile);
+    std::cout << "Succesfully imputed file " << std::endl;
 
-std::cout << "Initilization of RealCloudCollection succeful" << std::endl;
+    std::cout << "Initilization of RealCloudCollection succeful" << std::endl;
 
 //! Initilizing printer:
-PrintToFile printer(Outputfolder);
+    PrintToFile printer(Outputfolder);
+
 
 //! Initilizing Mapper Algorithm
-Mapper_Parameters param(15, 0.5, "Distance", mappercluster,mappercluster);
-Mapper_Launcher MapperAlgorithm(param);
-MapperAlgorithm.setTimePrecision(2);
-MapperAlgorithm.addPostRunner(&printer);
+    Mapper_Parameters param(15, 0.5, "Distance", mappercluster,mappercluster);
+    Mapper_Launcher MapperAlgorithm(param);
+    MapperAlgorithm.setTimePrecision(2);
+    MapperAlgorithm.addPostRunner(&printer);
 
 //! Initilize MST
-FastMSTLauncher mstComputator;
-mstComputator.setTimePrecision(2);
-mstComputator.addPostRunner(&printer);
+    FastMSTLauncher mstComputator;
+    mstComputator.setTimePrecision(2);
+    mstComputator.addPostRunner(&printer);
 
 //! Initilizing the controller:
 
-controller control(CSVFile);
-control.addCloud(&theRealClouds);
-control.addAlgorithm(&MapperAlgorithm);
-control.addAlgorithm(&mstComputator);
+    controller control(CSVFile);
+    control.addCloud(&theRealClouds);
+    control.addAlgorithm(&MapperAlgorithm);
+    control.addAlgorithm(&mstComputator);
 
 
 //! Initilizing measurers:
 
-ClassicDistanceMeasure distanceMeasure(2);
-CorrectEndTypeMeasure endTypeMeasure(2);
-NumberOfVertexMeasure vertexMeasure(2);
-CorrectTypeMeasure TypeMeasure(2);
+    ClassicDistanceMeasure distanceMeasure(2);
+    CorrectEndTypeMeasure endTypeMeasure(2);
+    NumberOfVertexMeasure vertexMeasure(2);
+    CorrectTypeMeasure TypeMeasure(2);
 
 //! Adding measurers
 
-control.addMeasurer(distanceMeasure);
-control.addMeasurer(endTypeMeasure);
-control.addMeasurer(vertexMeasure);
-control.addMeasurer(TypeMeasure);
+    control.addMeasurer(distanceMeasure);
+    control.addMeasurer(endTypeMeasure);
+    control.addMeasurer(vertexMeasure);
+    control.addMeasurer(TypeMeasure);
 
 //! Run the boy
-control.BeginTestRun();
+    control.BeginTestRun();
 
 }
 
+void DistanceBetweenLineSegments()
+{
+    Segment l(Point(0,0,0), Point(1,0,0));
+    Segment q(Point(0,1,0), Point(1,1,0));
+    std::cout << CGAL::squared_distance(l, q) << std::endl;
+}
 
 //void Run(std::list<Point> & p, MyGraphType & G)
 
@@ -515,7 +522,8 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-srand( time( NULL ) );
+    srand( time( NULL ) );
+
 ///! We use this number sequence to debug the code:
 //srand(20);
 //std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
@@ -529,16 +537,17 @@ srand( time( NULL ) );
 //    TestAbstractThings();
 //MapperWorkingTest();
 //PrecisionTest();
- //   MlPackTimerTest();
- //ControllerTest();
- //ControllerTest();
-   // std::cout << "Compilation succeful" << std::endl;
-   // std::cout << "one more thing" << std::endl;
+//   MlPackTimerTest();
+//ControllerTest();
+//ControllerTest();
+    // std::cout << "Compilation succeful" << std::endl;
+    // std::cout << "one more thing" << std::endl;
     //  std::cout << "Bug fixed, actually" << std::endl;
-  //  FileSystemTest();
- // ControllerTestRealDataSimple();
+    //  FileSystemTest();
+// ControllerTestRealDataSimple();
 //  ControllerTest();
-std::cout << "Succeful compilation xD" << std::endl;
+    std::cout << "Succeful compilation xD" << std::endl;
 //ControllerTestRealDataSimple();
-ControllerTest();
+//ControllerTest();
+    DistanceBetweenLineSegments();
 }

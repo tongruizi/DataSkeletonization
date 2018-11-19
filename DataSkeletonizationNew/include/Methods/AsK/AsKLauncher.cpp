@@ -17,7 +17,8 @@ void AsKLauncher::Run(std::list<Point> & cloudlist, MyGraphType & out)
     BranchDetection::SimplifyIt(mst,optiout,this->branch_detection,"",this->settings);
     std::list<std::list<Point>> optipath;
     std::list<std::list<Point>> branchsimplified;
-    double CurrentError = StraighteningMethods::ClassicStraightening(optiout, cloudlist, optipath, this->approxError);
+    //double CurrentError = StraighteningMethods::ClassicStraightening(optiout, cloudlist, optipath, this->approxError);
+    double CurrentError = StraighteningMethods::UpgradedStraightening(optiout,cloudlist,optipath,this->approxError);
     double valuev = CurrentError*(this->simplificationError);
     BranchSimplification::SimplifyIt(optipath, branchsimplified,valuev);
     //  BranchSimplification::PathToGraphProper(out, branchsimplified);
