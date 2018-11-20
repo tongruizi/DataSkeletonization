@@ -91,6 +91,47 @@ void GeneralConvertor::VectorToFile(std::string out, std::vector<int> & s)
     mystream.close();
 
 }
+void GeneralConvertor::pathPrintToVtkPointlist(std::list<std::list<Point>> & paths, std::string directory)
+{
+
+    int size = 0;
+    for (auto iter = paths.begin(); iter != paths.end(); iter++)
+    {
+        size = size + (*iter).size();
+    }
+    std::ofstream mystream;
+    mystream.open(directory);
+    mystream << "# vtk DataFile Version 1.0\n";
+    mystream << "3D triangulation data\n";
+    mystream << "ASCII\n";
+    mystream << std::endl;
+    mystream << "DATASET POLYDATA\n";
+    mystream << "POINTS " << size << " float\n";
+
+    for(auto globalit = paths.begin(); globalit != paths.end(); globalit++)
+    {
+        std::list<Point> path = *globalit;
+        for (auto pathit = path.begin(); pathit != path.end(); pathit++)
+        {
+            mystream << (*pathit) << std::endl;
+        }
+    }
+
+    mystream << "LINES " << (size-paths.size()) << " " << (size-paths.size())*3 << std::endl;
+
+    int location = 0;
+    for(auto globalit = paths.begin(); globalit != paths.end(); globalit++)
+    {
+        int cursize = (*globalit).size();
+        for (int i = location; i < location + cursize-1; i++)
+        {
+            mystream << "2 " << i << " " << i+1 << std::endl;
+        }
+        location = location + cursize;
+
+    }
+}
+
 
 void GeneralConvertor::MatToMyGraphType(arma::mat & originalData, arma::mat & edges, MyGraphType & G)
 {

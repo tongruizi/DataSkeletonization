@@ -448,10 +448,10 @@ void ControllerTestRealDataSimple()
     double alpha = 20;
 
 //! Defining all required file paths:
-    std::string CSVFile = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/data.csv";
-    std::string Outputfolder = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/Outputs/";
-    std::string Inputfolder = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/FirstClusers/";
-    std::string ManualGraphInfoFile = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/StarInfo.txt";
+    std::string CSVFile = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/data2.csv";
+    std::string Outputfolder = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/Outputs2/";
+    std::string Inputfolder = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/SecondClusters/";
+    std::string ManualGraphInfoFile = "/home/yury/Dropbox/UnileverData/FirstTestOfInterface/StarInfo2.txt";
 
 
 //! Initilizing RealCloudCollection
@@ -472,6 +472,12 @@ void ControllerTestRealDataSimple()
     MapperAlgorithm.setTimePrecision(2);
     MapperAlgorithm.addPostRunner(&printer);
 
+//! Initilizing AsK Algorithm
+    std::string setting = "pure";
+    AsKLauncher AskAlgorithm(12.0,1.05,1.5,setting,"AsK");
+    AskAlgorithm.setTimePrecision(2);
+    AskAlgorithm.addPostRunner(&printer);
+
 //! Initilize MST
     FastMSTLauncher mstComputator;
     mstComputator.setTimePrecision(2);
@@ -481,8 +487,9 @@ void ControllerTestRealDataSimple()
 
     controller control(CSVFile);
     control.addCloud(&theRealClouds);
-    control.addAlgorithm(&MapperAlgorithm);
+//    control.addAlgorithm(&MapperAlgorithm);
     control.addAlgorithm(&mstComputator);
+    control.addAlgorithm(&AskAlgorithm);
 
 
 //! Initilizing measurers:
@@ -548,6 +555,7 @@ int main()
 //  ControllerTest();
     std::cout << "Succeful compilation xD" << std::endl;
 //ControllerTestRealDataSimple();
-//ControllerTest();
-    DistanceBetweenLineSegments();
+ControllerTest();
+   // DistanceBetweenLineSegments();
+ //  ControllerTestRealDataSimple();
 }

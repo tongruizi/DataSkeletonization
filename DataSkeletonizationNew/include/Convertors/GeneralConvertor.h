@@ -22,7 +22,7 @@ public:
     static void ListToMatTransposed(std::list<Point> & points, arma::mat & data);
     static void ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData);
     static void MatToMyGraphType(arma::mat & originalData, arma::mat & edges, MyGraphType & G);
-
+    static void pathPrintToVtkPointlist(std::list<std::list<Point>> & paths, std::string directory);
 
 
     //! Method to print data from measurers directly into latex table.

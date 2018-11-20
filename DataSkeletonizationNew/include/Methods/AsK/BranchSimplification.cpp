@@ -115,10 +115,10 @@ void BranchSimplification::PathToGraphProper(MyGraphType & G, std::list<std::lis
                 core = FindPointOperation(*git, PointToVertex,G);
             }
         }
-        vertex_descriptor down =  FindPointOperation((*it).front(), PointToVertex,G);
-        vertex_descriptor up   =  FindPointOperation((*it).back(),  PointToVertex,G);
-        double dd = ComputeDistance(*it);
-        Graph::add_custom_edge(G,down,up,dd);
+     //   vertex_descriptor down =  FindPointOperation((*it).front(), PointToVertex,G);
+     //   vertex_descriptor up   =  FindPointOperation((*it).back(),  PointToVertex,G);
+     //   double dd = ComputeDistance(*it);
+     //   Graph::add_custom_edge(G,down,up,dd);
     }
 
 }

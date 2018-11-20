@@ -275,10 +275,10 @@ void StraighteningMethods::DualTreeAllocation(MyGraphType & G, std::list<Point> 
     StraighteningMethods::ConvertGraphToArmaMat(referenceSet,G);
     querySet.set_size(3,cloud.size());
     GeneralConvertor::ListToMatTransposed(cloud,querySet);
-  //  arma::mat crf = referenceSet.t();
+    //  arma::mat crf = referenceSet.t();
 //    arma::mat qrf = querySet.t();
     DualTreeComputation::NearestNeighborForTwoKDTrees(theNeighbors,referenceSet,querySet);
-  //  DualTreeComputation::NearestNeighborForTwoKDTrees(theNeighbors,crf,qrf);
+    //  DualTreeComputation::NearestNeighborForTwoKDTrees(theNeighbors,crf,qrf);
 //DualTreeComputation::NearestNeighborForTwoKcurDistanaceDTrees(arma::Mat<size_t> & results,arma::mat & referenceData, arma::mat & queryData)
 }       // minvalue = minvalueFinder(std::get<0>(data), scale, settings);
 
@@ -415,8 +415,16 @@ double StraighteningMethods::UpgradedStraightening(MyGraphType & G, std::list<Po
         }
     }
     double ddd = ComputeOriginalDistance(cloud,paths);
-
+  //  std::cout << "Parameter ddd: " << ddd << std::endl;
     StraighteningMethods::Optimize(out, paths, ddd * e);
+//    std::cout << "Parameter ddd*e: " << ddd * e << std::endl;
+
+//    int ctr= 0;
+//    for (auto it = out.begin(); it != out.end(); it++)
+//    {
+//        std::cout << "(Upgraded straightening) Path: " << ctr << " size: " << (*it).size() << std::endl;
+//        ctr++;
+//    }
 
     return ddd;
 
@@ -434,10 +442,12 @@ double StraighteningMethods::ClassicStraightening(MyGraphType & G, std::list<Poi
 
     //! This one might require modifications:
     double ddd = ComputeOriginalDistance(cloud,paths);
+
 //   std::cout << "Original error: " << ddd << std::endl;
     // std::cout << "e factor: "<< e << std::endl;
     StraighteningMethods::Allocate(paths, G, cloud);
     StraighteningMethods::Optimize(out, paths, ddd * e);
+
     return ddd;
 
 }
