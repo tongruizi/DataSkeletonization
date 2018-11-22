@@ -359,8 +359,8 @@ void MlPackTimerTest()
 
 void ControllerTest()
 {
-    std::string qq = "/home/yury/LocalTests/SecondTest/data.csv";
-    std::string folder = "/home/yury/LocalTests/SecondTest/Outputs/";
+    std::string qq = "/home/yury/LocalTests/FourthTest/data.csv";
+    std::string folder = "/home/yury/LocalTests/FourthTest/Outputs/";
     double mappercluster = 3.0; // 1.75
     double alpha = 20;
 //! We initilize a star:

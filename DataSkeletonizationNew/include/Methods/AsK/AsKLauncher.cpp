@@ -12,10 +12,10 @@ AsKLauncher::AsKLauncher(double a, double b, double c, std::string settings, std
 void AsKLauncher::Run(std::list<Point> & cloudlist, MyGraphType & out)
 {
     //! DebugPrinting
-
+    arma::Mat<size_t> theNeighbors;
     MyGraphType mst;
     MyGraphType optiout;
-
+   // std::string tmpfolder = "/home/yury/LocalTests/FourthTest/ColoredPoints/";
     // Computation::computeMST(cloudlist,mst);
     DualTreeComputation::ComputeMST(cloudlist,mst);
     BranchDetection::SimplifyIt(mst,optiout,this->branch_detection,"",this->settings);
@@ -23,10 +23,14 @@ void AsKLauncher::Run(std::list<Point> & cloudlist, MyGraphType & out)
     std::list<std::list<Point>> branchsimplified;
 
     //double CurrentError = StraighteningMethods::ClassicStraightening(optiout, cloudlist, optipath, this->approxError);
-    double CurrentError = StraighteningMethods::UpgradedStraightening(optiout,cloudlist,optipath,this->approxError);
+    double CurrentError = StraighteningMethods::UpgradedStraightening(optiout,cloudlist,optipath,this->approxError,theNeighbors);
 
     double valuev = CurrentError*(this->simplificationError);
     BranchSimplification::SimplifyIt(optipath, branchsimplified,valuev);
+
+    //std::string fn  = tmpfolder + "BranchedColoring" + std::to_string(this->numberOfRuns) + ".csv";
+    //GeneralConvertor::ClusteringInfoToFile(cloudlist,theNeighbors, fn,boost::num_vertices(optiout));
+
     //  BranchSimplification::PathToGraphProper(out, branchsimplified);
     BranchSimplification::PathToGraphProper(out, branchsimplified);
     this->numberOfRuns++;

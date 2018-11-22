@@ -26,6 +26,10 @@ public:
     static void EpsilonSimplification(MyGraphType & G, double epsilon);
     static double AABBError(MyGraphType & G, std::list<Point> & cloud);
     static double AABBDistance(std::list<std::list<Point>> & paths, std::list<Point> & cloud);
+    static double MeanSquareErrorAABB(MyGraphType & G, std::list<Point> & cloud);
+    static double ConvertPathsToSegments(std::list<std::list<Point>> & paths, std::list<Segment> & segments);
+
+
 
 
 

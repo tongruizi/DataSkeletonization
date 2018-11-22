@@ -196,6 +196,8 @@
 		<Unit filename="include/TestModule/Measurers/CorrectTypeMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/CorrectTypeMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/ManualMeasure.h" />
+		<Unit filename="include/TestModule/Measurers/MeanSquareDistanceMeasure.cpp" />
+		<Unit filename="include/TestModule/Measurers/MeanSquareDistanceMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/NumberOfVertexMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/NumberOfVertexMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/TimerCountMeasure.h" />

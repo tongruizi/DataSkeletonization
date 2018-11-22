@@ -22,7 +22,7 @@ public:
     static void DualTreeAllocatorPostProcessor(MyGraphType & G, arma::Mat<size_t> & theNeighbors, std::list<Point> & clouds, std::vector<std::list<Point>> & pAllocation);
     static void addToPathNew(std::vector<PointPlus> & path, MyGraphType & G, vertex_descriptor v,std::vector<std::list<Point>> & pAllocation);
     static void GraphToPathsNew(std::vector<std::vector<PointPlus>> & paths, MyGraphType & G, std::vector<std::list<Point>> & pAllocation);
-    static double UpgradedStraightening(MyGraphType & G, std::list<Point> & cloud, std::list<std::list<Point>> & out, double e);
+    static double UpgradedStraightening(MyGraphType & G, std::list<Point> & cloud, std::list<std::list<Point>> & out, double e,arma::Mat<size_t> & theNeighbors);
 
 
 

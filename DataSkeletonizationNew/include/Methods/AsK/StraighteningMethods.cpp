@@ -394,9 +394,8 @@ void StraighteningMethods::GraphToPathsNew(std::vector<std::vector<PointPlus>> &
 }
 
 
-double StraighteningMethods::UpgradedStraightening(MyGraphType & G, std::list<Point> & cloud, std::list<std::list<Point>> & out, double e)
+double StraighteningMethods::UpgradedStraightening(MyGraphType & G, std::list<Point> & cloud, std::list<std::list<Point>> & out, double e, arma::Mat<size_t> & theNeighbors)
 {
-    arma::Mat<size_t> theNeighbors;
     std::vector<std::vector<PointPlus>> paths;
     std::vector<std::pair<bool,bool>> status;
     std::vector<std::list<Point>> pAllocation(boost::num_vertices(G), std::list<Point>());

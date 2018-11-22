@@ -546,12 +546,12 @@
 	"Graph.h"
 	"ClusterElement.h"
 
-1542711950 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
+1542729381 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
 	"GeneralConvertor.h"
 	<fstream>
 	"Graph.h"
 
-1542712098 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.h
+1542729396 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.h
 	<string>
 	<mlpack/core.hpp>
 	<vector>
@@ -718,7 +718,7 @@
 1535439849 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/NaiveMethods.cpp
 	"NaiveMethods.h"
 
-1542710325 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
+1542726029 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<iomanip>
 	<math.h>
@@ -1516,7 +1516,7 @@
 	"Graph.h"
 	"BranchDetection.h"
 
-1542633226 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.h
+1542724708 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.h
 	"Definitions.h"
 	"Graph.h"
 	"DualTreeComputation.h"
@@ -1527,7 +1527,7 @@
 1542012580 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/GraphSimplification.h
 	"Graph.h"
 
-1542712686 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
+1542727348 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
 	"AsKLauncher.h"
 	"Computation.h"
 	"BranchSimplification.h"
@@ -1538,7 +1538,7 @@
 1542709650 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.h
 	"AbstractAlgorithm.h"
 
-1542712659 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
+1542724683 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
 	"StraighteningMethods.h"
 	"Computation.h"
 	"GeneralConvertor.h"

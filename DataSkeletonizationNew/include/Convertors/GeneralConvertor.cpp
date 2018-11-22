@@ -79,6 +79,29 @@ void GeneralConvertor::MatInfoToFile(std::string out, arma::mat & data, std::vec
     mystream.close();
 }
 
+void GeneralConvertor::ClusteringInfoToFile(std::list<Point> & cloud, arma::Mat<size_t> & theNeighbors, std::string out, int graphsize)
+{
+    std::vector<int> shuffleFunction;
+    for (int i = 0; i < graphsize; i++)
+    {
+    shuffleFunction.push_back(i);
+    }
+    std::random_shuffle(shuffleFunction.begin(),shuffleFunction.end());
+    std::ofstream mystream;
+    mystream.open(out);
+    mystream << "x coord, y coord, z coord, scalar" << std::endl;
+    size_t number = 0;
+    for (auto it = cloud.begin(); it != cloud.end(); it++)
+    {
+        double cl = (double) shuffleFunction[theNeighbors(0,number)]/(double) graphsize;
+        mystream << (*it).x() << ", " << (*it).y() << ", " << (*it).z() << ", " << cl << std::endl;
+        number++;
+    }
+
+    mystream.close();
+
+}
+
 void GeneralConvertor::VectorToFile(std::string out, std::vector<int> & s)
 {
 
