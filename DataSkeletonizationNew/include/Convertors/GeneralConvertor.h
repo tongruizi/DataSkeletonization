@@ -22,6 +22,8 @@ public:
     static void ListToMatTransposed(std::list<Point> & points, arma::mat & data);
     static void ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData);
     static void MatToMyGraphType(arma::mat & originalData, arma::mat & edges, MyGraphType & G);
+    static void pathPrintToVtkPointlist(std::list<std::list<Point>> & paths, std::string directory);
+    static void ClusteringInfoToFile(std::list<Point> & cloud, arma::Mat<size_t> & theNeighbors, std::string k,int graphsize);
 
 
 

@@ -18,6 +18,7 @@ class AsKLauncher : public AbstractAlgorithm
     double branchd;
     double approxError;
     double simplificationError;
+    int numberOfRuns;
     std::string settings;
 };
 

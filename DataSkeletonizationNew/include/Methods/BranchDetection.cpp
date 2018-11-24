@@ -240,7 +240,7 @@ double minvalueFinder(MyGraphType & G, double scale, std::string settings)
     }
     ClusteringMethods<vertex_descriptor> engine;
     int indexx = engine.DownwardClusterization(examElements,scale,settings) + 1;
-    engine.debugSet(examElements, "/home/yury/Dropbox/MicelleProject/Micelle/output/Test5/0/debug.txt");
+    engine.debugSet(examElements, "");
     if (indexx == -1)
     {
         return 2*examElements[0].returnValue();
@@ -264,7 +264,7 @@ void BranchDetection::SimplifyIt(MyGraphType & G, MyGraphType & K, double scale,
     else
     {
         minvalue = minvalueFinder(std::get<0>(data), scale, settings);
-        std::cout << "minvalue: " << minvalue << std::endl;
+      //  std::cout << "minvalue: " << minvalue << std::endl;
 
     }
     for (auto it = (*(std::get<2>(data))).begin(); it != (*(std::get<2>(data))).end(); it++)

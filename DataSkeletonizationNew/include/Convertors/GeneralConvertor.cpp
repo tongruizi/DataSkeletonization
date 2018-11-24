@@ -79,6 +79,29 @@ void GeneralConvertor::MatInfoToFile(std::string out, arma::mat & data, std::vec
     mystream.close();
 }
 
+void GeneralConvertor::ClusteringInfoToFile(std::list<Point> & cloud, arma::Mat<size_t> & theNeighbors, std::string out, int graphsize)
+{
+    std::vector<int> shuffleFunction;
+    for (int i = 0; i < graphsize; i++)
+    {
+    shuffleFunction.push_back(i);
+    }
+    std::random_shuffle(shuffleFunction.begin(),shuffleFunction.end());
+    std::ofstream mystream;
+    mystream.open(out);
+    mystream << "x coord, y coord, z coord, scalar" << std::endl;
+    size_t number = 0;
+    for (auto it = cloud.begin(); it != cloud.end(); it++)
+    {
+        double cl = (double) shuffleFunction[theNeighbors(0,number)]/(double) graphsize;
+        mystream << (*it).x() << ", " << (*it).y() << ", " << (*it).z() << ", " << cl << std::endl;
+        number++;
+    }
+
+    mystream.close();
+
+}
+
 void GeneralConvertor::VectorToFile(std::string out, std::vector<int> & s)
 {
 
@@ -91,6 +114,47 @@ void GeneralConvertor::VectorToFile(std::string out, std::vector<int> & s)
     mystream.close();
 
 }
+void GeneralConvertor::pathPrintToVtkPointlist(std::list<std::list<Point>> & paths, std::string directory)
+{
+
+    int size = 0;
+    for (auto iter = paths.begin(); iter != paths.end(); iter++)
+    {
+        size = size + (*iter).size();
+    }
+    std::ofstream mystream;
+    mystream.open(directory);
+    mystream << "# vtk DataFile Version 1.0\n";
+    mystream << "3D triangulation data\n";
+    mystream << "ASCII\n";
+    mystream << std::endl;
+    mystream << "DATASET POLYDATA\n";
+    mystream << "POINTS " << size << " float\n";
+
+    for(auto globalit = paths.begin(); globalit != paths.end(); globalit++)
+    {
+        std::list<Point> path = *globalit;
+        for (auto pathit = path.begin(); pathit != path.end(); pathit++)
+        {
+            mystream << (*pathit) << std::endl;
+        }
+    }
+
+    mystream << "LINES " << (size-paths.size()) << " " << (size-paths.size())*3 << std::endl;
+
+    int location = 0;
+    for(auto globalit = paths.begin(); globalit != paths.end(); globalit++)
+    {
+        int cursize = (*globalit).size();
+        for (int i = location; i < location + cursize-1; i++)
+        {
+            mystream << "2 " << i << " " << i+1 << std::endl;
+        }
+        location = location + cursize;
+
+    }
+}
+
 
 void GeneralConvertor::MatToMyGraphType(arma::mat & originalData, arma::mat & edges, MyGraphType & G)
 {

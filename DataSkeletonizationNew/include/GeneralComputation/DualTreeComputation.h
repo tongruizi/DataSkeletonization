@@ -8,6 +8,7 @@
 #include <mlpack/methods/neighbor_search/neighbor_search.hpp>
 
 
+
 class DualTreeComputation
 {
     public:
@@ -15,6 +16,7 @@ class DualTreeComputation
        // virtual ~DualTreeComputation();
         static void ComputeMST(std::list<Point> & p, MyGraphType & G);
         static void ComputeEpsilonNeighborhoodGraph(std::list<Point> & p , MyGraphType & G, double epsilon);
+        static void NearestNeighborForTwoKDTrees(arma::Mat<size_t> & results,arma::mat & referenceset, arma::mat & queryset);
 
     protected:
 

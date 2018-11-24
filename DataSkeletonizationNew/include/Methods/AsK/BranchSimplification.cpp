@@ -84,7 +84,7 @@ void BranchSimplification::PathToGraph(MyGraphType & G, std::list<std::list<Poin
     std::map<Point, vertex_descriptor> PointToVertex;
     for(auto it = in.begin(); it != in.end(); it++)
     {
-    //    std::cout << (*it).front() << " - " << (*it).back() << std::endl;
+        //    std::cout << (*it).front() << " - " << (*it).back() << std::endl;
         vertex_descriptor down =  FindPointOperation((*it).front(), PointToVertex,G);
         vertex_descriptor up   =  FindPointOperation((*it).back(),  PointToVertex,G);
         double dd = ComputeDistance(*it);
@@ -115,10 +115,10 @@ void BranchSimplification::PathToGraphProper(MyGraphType & G, std::list<std::lis
                 core = FindPointOperation(*git, PointToVertex,G);
             }
         }
-        vertex_descriptor down =  FindPointOperation((*it).front(), PointToVertex,G);
-        vertex_descriptor up   =  FindPointOperation((*it).back(),  PointToVertex,G);
-        double dd = ComputeDistance(*it);
-        Graph::add_custom_edge(G,down,up,dd);
+     //   vertex_descriptor down =  FindPointOperation((*it).front(), PointToVertex,G);
+     //   vertex_descriptor up   =  FindPointOperation((*it).back(),  PointToVertex,G);
+     //   double dd = ComputeDistance(*it);
+     //   Graph::add_custom_edge(G,down,up,dd);
     }
 
 }
@@ -159,10 +159,10 @@ void BranchSimplification::SimplifyIt(std::list<std::list<Point>> & in, std::lis
 
         }
     }
-   // std::cout << "IN INFORMATION: " << std::endl;
+    // std::cout << "IN INFORMATION: " << std::endl;
     for(auto it = in.begin(); it != in.end(); it++)
     {
-     //   std::cout << "Size: " << (*it).size() << std::endl;
+        //   std::cout << "Size: " << (*it).size() << std::endl;
         Point p1 = G[PointToVertex[(*it).front()]].p;
         Point p2 = G[PointToVertex[(*it).back()]].p;
         if (p1 != p2)
@@ -175,15 +175,16 @@ void BranchSimplification::SimplifyIt(std::list<std::list<Point>> & in, std::lis
 
         }
     }
- //   std::cout << "OUT INFORMATION: " << std::endl;
+//   std::cout << "OUT INFORMATION: " << std::endl;
     for (auto it = out.begin(); it != out.end(); it++)
     {
 
-     //   std::cout << "Size: " << (*it).size() << std::endl;
+        //   std::cout << "Size: " << (*it).size() << std::endl;
 
 
     }
 
+//    data(0,j) = it->x();
 
 }
 
@@ -199,6 +200,7 @@ vertex_descriptor pickTheOtherOne(MyGraphType & G, vertex_descriptor k, edge_des
     {
         return one;
     }
+
 
 }
 
