@@ -49,6 +49,10 @@ public:
     {
         return this->CorrectNumberOfEndPoints(G,number_of_branches);
     }
+    int returnNumberOfBranches()
+    {
+    return number_of_branches;
+    }
 
 
 

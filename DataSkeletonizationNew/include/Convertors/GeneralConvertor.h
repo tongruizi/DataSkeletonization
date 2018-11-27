@@ -24,6 +24,8 @@ public:
     static void MatToMyGraphType(arma::mat & originalData, arma::mat & edges, MyGraphType & G);
     static void pathPrintToVtkPointlist(std::list<std::list<Point>> & paths, std::string directory);
     static void ClusteringInfoToFile(std::list<Point> & cloud, arma::Mat<size_t> & theNeighbors, std::string k,int graphsize);
+    static void GraphToPaths(MyGraphType & G, std::vector<Segment> & segments);
+
 
 
 
@@ -38,6 +40,9 @@ public:
                                      std::vector<std::string> & MeasureNames, std::string filename);
     static void RetriveGraphInformation(std::string filename, std::vector<int> & iterationanumber,
    std::vector<std::string> & graphType, std::vector<std::vector<int>> & parameters);
+
+    static void CloudToXYZ(std::list<Point> & p, std::string fp, int i);
+    static void FinalizeDeal(std::string fp, int sz, int k);
 
 
 

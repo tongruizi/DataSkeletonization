@@ -38,6 +38,11 @@
 #include <boost/filesystem.hpp>
 #include "RealCloudCollection.h"
 #include "FastMSTLauncher.h"
+#include "DualTreeDistanceMeasure.h"
+#include "MeanSquareDistanceMeasure.h"
+#include "DumbAlgorithm.h"
+#include "CloudTypePrinterAlgorithm.h"
+#include "SophisticatedPrinter.h"
 
 // Convenience.
 using namespace mlpack;
@@ -356,18 +361,20 @@ void MlPackTimerTest()
     std::cout << duration << std::endl;
 
 }
-
 void ControllerTest()
 {
-    std::string qq = "/home/yury/LocalTests/FourthTest/data.csv";
-    std::string folder = "/home/yury/LocalTests/FourthTest/Outputs/";
+    std::string qq = "/home/yury/LocalTests/FivthTest/data.csv";
+    std::string folder = "/home/yury/LocalTests/FivthTest/Outputs/";
     double mappercluster = 3.0; // 1.75
     double alpha = 20;
 //! We initilize a star:
     SingleStar star1(M_PI/3,3,1500,5,100,5,"Star3");
     SingleStar star2(M_PI/3,4,2000,5,100,5,"Star4");
-    SingleStar star8(M_PI/3,8,4000,5,100,10,"Star8");
+    SingleStar star8(M_PI/3,8,4000,5,100,1,"Star8");
     DoubleStar dstar(M_PI/3,4,4,4000,5,100,10,"DoubleStar");
+
+    RealCloudCollection theRealClouds("Real","/home/yury/LocalTests/TestOnSynthetical/Star8Collection/");
+    theRealClouds.SetCorrectnessOfGraphs("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star8Info.txt");
 //RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
 //SingleStar star2(M_PI/3,4,100,1500,5,100,10,"Star4");
 //! We initilize filewriter:
@@ -379,8 +386,8 @@ void ControllerTest()
     AlphaReeb_Launcher alphaLaunch(AlphaParam,10);
     thelaunch.setTimePrecision(2);
     alphaLaunch.setTimePrecision(2);
-    std::string setting = "pure";
-    AsKLauncher AskAlgorithm(50.12,1.05,1.5,setting,"AsK");
+    std::string setting = "sd";
+    AsKLauncher AskAlgorithm(2.0,1.25,1.5,setting,"AsK");
     AskAlgorithm.setTimePrecision(2);
 
     AskAlgorithm.addPostRunner(&printer);
@@ -398,13 +405,14 @@ void ControllerTest()
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
 //   void addCloud(generatable* k);
-    control.addAlgorithm(&thelaunch);
-    control.addAlgorithm(&alphaLaunch);
+//   control.addAlgorithm(&thelaunch);
+//    control.addAlgorithm(&alphaLaunch);
     control.addAlgorithm(&AskAlgorithm);
-    control.addAlgorithm(&mstComputator);
+//   control.addAlgorithm(&mstComputator);
 //control.addCloud(&star1);
 //control.addCloud(&star2);
-    control.addCloud(&star8);
+  //  control.addCloud(&star8);
+  control.addCloud(&theRealClouds);
 //control.addCloud(&dstar);
 //control.addCloud(&star2);
 //control.addCloud(&theRealClouds);
@@ -413,11 +421,15 @@ void ControllerTest()
     CorrectEndTypeMeasure endTypeMeasure(2);
     NumberOfVertexMeasure vertexMeasure(2);
     CorrectTypeMeasure TypeMeasure(2);
+    DualTreeDistanceMeasure newDistanceMeasure(2);
+    MeanSquareDistanceMeasure ndm(2);
 
     control.addMeasurer(distanceMeasure);
     control.addMeasurer(endTypeMeasure);
     control.addMeasurer(vertexMeasure);
     control.addMeasurer(TypeMeasure);
+    control.addMeasurer(ndm);
+    control.addMeasurer(newDistanceMeasure);
     control.BeginTestRun();
 
 }
@@ -474,7 +486,7 @@ void ControllerTestRealDataSimple()
 
 //! Initilizing AsK Algorithm
     std::string setting = "pure";
-    AsKLauncher AskAlgorithm(12.0,1.05,1.5,setting,"AsK");
+    AsKLauncher AskAlgorithm(50.0,1.05,1.5,setting,"AsK");
     AskAlgorithm.setTimePrecision(2);
     AskAlgorithm.addPostRunner(&printer);
 
@@ -513,11 +525,32 @@ void ControllerTestRealDataSimple()
 
 void DistanceBetweenLineSegments()
 {
-    Segment l(Point(0,0,0), Point(1,0,0));
-    Segment q(Point(0,1,0), Point(1,1,0));
+    Segment l(Point(0,0,10), Point(1,0,10));
+    Segment q(Point(0,1,0), Point(0,1,0));
     std::cout << CGAL::squared_distance(l, q) << std::endl;
+
 }
 
+void PrintingStarCloudsTest()
+{
+DumbAlgorithm pwee;
+SophisticatedPrinter p("/home/yury/LocalTests/TestOnSynthetical/Star8Collection/");
+pwee.addPostRunner(&p);
+SingleStar star8(M_PI/3,8,4000,5,100,10,"Star8");
+std::vector<CloudTypePrinterAlgorithm*> q;
+CloudTypePrinterAlgorithm n1("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star8Info.txt");
+q.push_back(&n1);
+controller control("/home/yury/LocalTests/TestOnSynthetical/dummyfile.txt");
+control.addAlgorithm(&pwee);
+control.addCloud(&star8);
+control.BeginTestRun();
+control.FlushClouds(q);
+
+//#include "CloudTypePrinterAlgorithm.h"
+
+
+
+}
 //void Run(std::list<Point> & p, MyGraphType & G)
 
 int main()
@@ -555,7 +588,8 @@ int main()
 //  ControllerTest();
     std::cout << "Succeful compilation xD" << std::endl;
 //ControllerTestRealDataSimple();
-ControllerTest();
-   // DistanceBetweenLineSegments();
- //  ControllerTestRealDataSimple();
+   ControllerTest();
+ //  PrintingStarCloudsTest();
+    //  DistanceBetweenLineSegments();
+//  ControllerTestRealDataSimple();
 }

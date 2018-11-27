@@ -6,6 +6,7 @@
 #include "AbstractMeasurer.h"
 #include "ExplicitMeasurer.h"
 #include "AbstractCloudType.h"
+#include "CloudTypePrinterAlgorithm.h"
 
 //void controller::InsideCloudListLoop(int i, int clit)
 
@@ -26,6 +27,9 @@ public:
     void addAlgorithm(AbstractAlgorithm* k);
     void addCloud(AbstractCloudType* k);
     void addMeasurer(ExplicitMeasurer & q);
+
+    void FlushClouds(std::vector<CloudTypePrinterAlgorithm*> & p);
+    //void
 protected:
 
 private:

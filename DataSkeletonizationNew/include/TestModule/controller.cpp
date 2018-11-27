@@ -42,7 +42,14 @@ void controller::WriteDownToLatexTable()
 void controller::InsideCloudListLoop(int i, int clit)
 {
     std::list<Point> points;
+    //! Measure the time!
+    auto start = std::chrono::system_clock::now();
+    //! Algorithm itself:
     ACT[i]->GenerateCloud(points,clit);
+    //! Time counting methods:
+    auto endd = std::chrono::system_clock::now();
+    std::chrono::duration<double> diff = endd-start;
+    std::cout << "Time on generating the cloud: " << diff.count() << std::endl;
 
     for (int j = 0; j < algorithms.size(); j++)
     {
@@ -122,6 +129,17 @@ void controller::addMeasurer(ExplicitMeasurer & q)
         algorithms[i] ->addMeasurer(q.Clone());
     }
     measurerNames.push_back(q.returnName());
+
+}
+
+void controller::FlushClouds(std::vector<CloudTypePrinterAlgorithm*> & p)
+{
+    for (int i = 0; i < this->ACT.size(); i++)
+    {
+        p[i] ->CompleteOperation(ACT[i]);
+    }
+
+
 
 }
 

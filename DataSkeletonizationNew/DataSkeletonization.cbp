@@ -39,6 +39,7 @@
 					<Add directory="include/TestModule/PostRunners" />
 					<Add directory="include/Methods/AsK" />
 					<Add directory="include/GeneralComputation/SegmentTools" />
+					<Add directory="include/TestModule/Extra" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -77,6 +78,7 @@
 					<Add directory="include/TestModule/PostRunners" />
 					<Add directory="include/Methods/AsK" />
 					<Add directory="include/GeneralComputation/SegmentTools" />
+					<Add directory="include/TestModule/Extra" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -189,12 +191,16 @@
 		<Unit filename="include/TestModule/CloudTypes/SingleStar.cpp" />
 		<Unit filename="include/TestModule/CloudTypes/SingleStar.h" />
 		<Unit filename="include/TestModule/ExplicitMeasurer.h" />
+		<Unit filename="include/TestModule/Extra/CloudTypePrinterAlgorithm.h" />
+		<Unit filename="include/TestModule/Extra/DumbAlgorithm.h" />
 		<Unit filename="include/TestModule/Measurers/ClassicDistanceMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/ClassicDistanceMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/CorrectEndTypeMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/CorrectEndTypeMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/CorrectTypeMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/CorrectTypeMeasure.h" />
+		<Unit filename="include/TestModule/Measurers/DualTreeDistanceMeasure.cpp" />
+		<Unit filename="include/TestModule/Measurers/DualTreeDistanceMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/ManualMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/MeanSquareDistanceMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/MeanSquareDistanceMeasure.h" />
@@ -203,6 +209,7 @@
 		<Unit filename="include/TestModule/Measurers/TimerCountMeasure.h" />
 		<Unit filename="include/TestModule/PostRunners/PostRunInterface.h" />
 		<Unit filename="include/TestModule/PostRunners/PrintToFile.h" />
+		<Unit filename="include/TestModule/PostRunners/SophisticatedPrinter.h" />
 		<Unit filename="include/TestModule/SimpleMeasurerCore.h" />
 		<Unit filename="include/TestModule/Statistics/SimpleStatistic.h" />
 		<Unit filename="include/TestModule/Statistics/StatisticInfo.h" />

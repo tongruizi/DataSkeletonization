@@ -34,6 +34,7 @@ void GraphGeneration::RandomGraph1(int n, double minangle, double scale, MyGraph
 
     bool stillrun = true;
     double minangler;
+    int counter = 0;
     while(stillrun)
     {
         bool rerun = false;
@@ -59,6 +60,7 @@ void GraphGeneration::RandomGraph1(int n, double minangle, double scale, MyGraph
             vertex_descriptor boundary = Graph::add_vertex(G,newP);
             Graph::add_edge(G,center, boundary);
         }
+        counter++;
         if (rerun)
         {
             G.clear();
@@ -68,20 +70,22 @@ void GraphGeneration::RandomGraph1(int n, double minangle, double scale, MyGraph
         {
             break;
         }
+
     }
+    std::cout << "In total generation tries: " << counter << std::endl;
 }
 
- void GraphGeneration::SimpleEdgeGraph(MyGraphType & G, double scale)
- {
-         Point origin = Point(0,0,0);
-         Point secondPoint = Point(scale,0,0);
-         vertex_descriptor first = Graph::add_vertex(G, origin);
-         vertex_descriptor second = Graph::add_vertex(G, secondPoint);
-         Graph::add_edge(G, first, second);
- }
+void GraphGeneration::SimpleEdgeGraph(MyGraphType & G, double scale)
+{
+    Point origin = Point(0,0,0);
+    Point secondPoint = Point(scale,0,0);
+    vertex_descriptor first = Graph::add_vertex(G, origin);
+    vertex_descriptor second = Graph::add_vertex(G, secondPoint);
+    Graph::add_edge(G, first, second);
+}
 
 vertex_descriptor GraphGeneration::TemplateFunction(Point extra, double xshift, double yshift, double zshift, MyGraphType & G,
-int n, double minangle, double scale)
+        int n, double minangle, double scale)
 {
     bool stillrun = true;
     double minangler;
@@ -108,8 +112,8 @@ int n, double minangle, double scale)
                 break;
             }
             points.push_back(newP);
-          //  vertex_descriptor boundary = Graph::add_vertex(G,newP);
-          //  Graph::add_edge(G,center, boundary);
+            //  vertex_descriptor boundary = Graph::add_vertex(G,newP);
+            //  Graph::add_edge(G,center, boundary);
         }
         if (rerun)
         {
@@ -125,8 +129,8 @@ int n, double minangle, double scale)
     vertex_descriptor central = Graph::add_vertex(G,neworigin);
     for (auto it = points.begin(); it != points.end(); it++)
     {
-    vertex_descriptor boundary = Graph::add_vertex(G,Point((*it).x() + xshift, (*it).y() + yshift, (*it).z() + zshift ));
-    Graph::add_edge(G, central, boundary);
+        vertex_descriptor boundary = Graph::add_vertex(G,Point((*it).x() + xshift, (*it).y() + yshift, (*it).z() + zshift ));
+        Graph::add_edge(G, central, boundary);
     }
 
     return central;
@@ -135,19 +139,19 @@ int n, double minangle, double scale)
 
 void GraphGeneration::RandomGraph2(int n, int n2, double minangle, double scale, MyGraphType & G)
 {
-vertex_descriptor first = GraphGeneration::TemplateFunction(Point(scale,0,0),0,0,0,G,n,minangle,scale);
-vertex_descriptor second = GraphGeneration::TemplateFunction(Point(-scale,0,0),2*scale,0,0,G,n2,minangle,scale);
-Graph::add_edge(G,first,second);
+    vertex_descriptor first = GraphGeneration::TemplateFunction(Point(scale,0,0),0,0,0,G,n,minangle,scale);
+    vertex_descriptor second = GraphGeneration::TemplateFunction(Point(-scale,0,0),2*scale,0,0,G,n2,minangle,scale);
+    Graph::add_edge(G,first,second);
 
 }
 void GraphGeneration::TriangleGraph(MyGraphType & G, double scale)
 {
-vertex_descriptor first = Graph::add_vertex(G, Point(0,0,0));
-vertex_descriptor second = Graph::add_vertex(G,Point(0,0,scale));
-vertex_descriptor third = Graph::add_vertex(G,Point(0,scale/2,scale/2));
-Graph::add_edge(G,first,second);
-Graph::add_edge(G, first, third);
-Graph::add_edge(G,second, third);
+    vertex_descriptor first = Graph::add_vertex(G, Point(0,0,0));
+    vertex_descriptor second = Graph::add_vertex(G,Point(0,0,scale));
+    vertex_descriptor third = Graph::add_vertex(G,Point(0,scale/2,scale/2));
+    Graph::add_edge(G,first,second);
+    Graph::add_edge(G, first, third);
+    Graph::add_edge(G,second, third);
 }
 
 
