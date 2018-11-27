@@ -9,7 +9,7 @@ class PostRunInterface
 {
     public:
         PostRunInterface() {}
-        virtual void run(MyGraphType & G, AbstractCloudType* gen, int RunNumber, std::string AlgorithmName) = 0;
+        virtual void run(MyGraphType & G, std::list<Point> & cloud, AbstractCloudType* gen, int RunNumber, std::string AlgorithmName) = 0;
 
     protected:
 

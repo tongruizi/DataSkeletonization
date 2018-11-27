@@ -239,7 +239,7 @@ double Computation::AABBDistance(std::list<std::list<Point>> & paths, std::list<
 {
 
     std::list<Segment> segments;
-    Compputation::ConvertPathsToSegments(paths,segments);
+    Computation::ConvertPathsToSegments(paths,segments);
     SegmentTree AABB(segments.begin(), segments.end());
     AABB.accelerate_distance_queries();
     double maxx = 0;

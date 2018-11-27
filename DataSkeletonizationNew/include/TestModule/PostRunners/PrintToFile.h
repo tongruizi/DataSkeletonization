@@ -8,7 +8,8 @@ class PrintToFile : public PostRunInterface
 {
     public:
         PrintToFile(std::string folder):folder(folder) {}
-        void run(MyGraphType & G, AbstractCloudType* gen, int RunNumber, std::string AlgorithmName)
+
+        void run(MyGraphType & G, std::list<Point> & cloud, AbstractCloudType* gen, int RunNumber, std::string AlgorithmName) override
         {
         std::string finalpath = folder + gen->returnName() + AlgorithmName + std::to_string(RunNumber) + ".vtk";
         GeneralConvertor::GraphToVtk(finalpath,G);

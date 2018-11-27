@@ -9,9 +9,9 @@ public:
     MeanSquareDistanceMeasure(int precision);
     double CompleteMeasurments(MyGraphType & G,AbstractCloudType* cloud, std::list<Point>* generatedCloud, int cloudit);
     std::string returnStatisticString();
-    ClassicDistanceMeasure* Clone() override
+    MeanSquareDistanceMeasure* Clone() override
     {
-        return new ClassicDistanceMeasure(*this);
+        return new MeanSquareDistanceMeasure(*this);
     }
 
 

@@ -84,7 +84,7 @@ void GeneralConvertor::ClusteringInfoToFile(std::list<Point> & cloud, arma::Mat<
     std::vector<int> shuffleFunction;
     for (int i = 0; i < graphsize; i++)
     {
-    shuffleFunction.push_back(i);
+        shuffleFunction.push_back(i);
     }
     std::random_shuffle(shuffleFunction.begin(),shuffleFunction.end());
     std::ofstream mystream;
@@ -127,6 +127,7 @@ void GeneralConvertor::pathPrintToVtkPointlist(std::list<std::list<Point>> & pat
     mystream << "# vtk DataFile Version 1.0\n";
     mystream << "3D triangulation data\n";
     mystream << "ASCII\n";
+
     mystream << std::endl;
     mystream << "DATASET POLYDATA\n";
     mystream << "POINTS " << size << " float\n";
@@ -220,6 +221,17 @@ void GeneralConvertor::GraphToVtk(std::string path, MyGraphType &G)
         mystream  << "2 " << source(*iter, G) << " " << target(*iter, G) <<std::endl;
     }
     mystream.close();
+}
+
+void GeneralConvertor::GraphToPaths(MyGraphType & G, std::vector<Segment> & segments)
+{
+    auto epair = boost::edges(G);
+    for (auto it = epair.first ; it != epair.second ; it++)
+    {
+        segments.push_back(Segment(G[source(*it,G)].p, G[target(*it,G)].p));
+    }
+
+
 }
 
 
@@ -404,6 +416,36 @@ void GeneralConvertor::DataToCSV(std::vector<std::vector<std::vector<std::string
         }
     }
     mystream.close();
+}
+
+void GeneralConvertor::CloudToXYZ(std::list<Point> & p, std::string fp, int i)
+{
+    std::ofstream mystream;
+    mystream.open(fp);
+    std::string tmp1 = std::to_string(p.size());
+    mystream << tmp1 << std::endl;
+    mystream << std::to_string(i) << std::endl;
+    int j = 0;
+    for (auto it = p.begin(); it != p.end(); it++)
+    {
+        mystream << std::to_string(j) << " " << (*it).x() << " " << (*it).y() << " " << (*it).z() << std::endl;
+        j++;
+    }
+    mystream.close();
+}
+
+void GeneralConvertor::FinalizeDeal(std::string fp, int sz, int k)
+{
+    std::ofstream mystream;
+    mystream.open(fp);
+    for (int i = 0; i < sz-1; i++)
+    {
+        mystream << i << " SingleStar " << k << std::endl;
+    }
+    int kam = sz-1;
+    mystream << kam << " SingleStar " << k;
+    mystream.close();
+
 }
 
 

@@ -38,7 +38,7 @@ public:
         for (int j = 0; j < postRunners.size(); j++)
         {
             //run(MyGraphType & G, generatable* gen, int RunNumber, std::string AlgorithmName);
-            postRunners[j] -> run(out,gen,RunNumber,name);
+            postRunners[j] -> run(out,cloudlist,gen,RunNumber,name);
         }
         //! Update Run number:
         RunNumber++;
