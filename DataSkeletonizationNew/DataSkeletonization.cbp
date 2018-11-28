@@ -40,6 +40,7 @@
 					<Add directory="include/Methods/AsK" />
 					<Add directory="include/GeneralComputation/SegmentTools" />
 					<Add directory="include/TestModule/Extra" />
+					<Add directory="include/Methods/Amst" />
 				</Compiler>
 				<Linker>
 					<Add library="boost_serialization" />
@@ -79,6 +80,7 @@
 					<Add directory="include/Methods/AsK" />
 					<Add directory="include/GeneralComputation/SegmentTools" />
 					<Add directory="include/TestModule/Extra" />
+					<Add directory="include/Methods/Amst" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -112,6 +114,7 @@
 		<Unit filename="include/DataGeneration/GraphGeneration.cpp" />
 		<Unit filename="include/DataGeneration/GraphGeneration.h" />
 		<Unit filename="include/Definitions/Definitions.h" />
+		<Unit filename="include/DensityFunctions/CleverExpDensity.h" />
 		<Unit filename="include/DensityFunctions/ExponentialDensity.cpp" />
 		<Unit filename="include/DensityFunctions/ExponentialDensity.h" />
 		<Unit filename="include/DensityFunctions/LinearDensity.cpp" />
@@ -129,6 +132,7 @@
 		<Unit filename="include/Graph/Graph.cpp" />
 		<Unit filename="include/Graph/Graph.h" />
 		<Unit filename="include/Methods/AMSTComputator.h" />
+		<Unit filename="include/Methods/Amst/AmstLauncher.h" />
 		<Unit filename="include/Methods/AmstAlgorithm.h" />
 		<Unit filename="include/Methods/AsK/AsKLauncher.cpp" />
 		<Unit filename="include/Methods/AsK/AsKLauncher.h" />

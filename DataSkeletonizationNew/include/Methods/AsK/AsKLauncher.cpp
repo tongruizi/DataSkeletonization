@@ -18,21 +18,28 @@ void AsKLauncher::Run(std::list<Point> & cloudlist, MyGraphType & out)
    // std::string tmpfolder = "/home/yury/LocalTests/FourthTest/ColoredPoints/";
     // Computation::computeMST(cloudlist,mst);
     DualTreeComputation::ComputeMST(cloudlist,mst);
+   // std::cout << " MST computed succefully " << std::endl;
     BranchDetection::SimplifyIt(mst,optiout,this->branch_detection,"",this->settings);
+   // std::cout << "Simplification comptued succefully" << std::endl;
     std::list<std::list<Point>> optipath;
     std::list<std::list<Point>> branchsimplified;
 
     //double CurrentError = StraighteningMethods::ClassicStraightening(optiout, cloudlist, optipath, this->approxError);
     double CurrentError = StraighteningMethods::UpgradedStraightening(optiout,cloudlist,optipath,this->approxError,theNeighbors);
 
+  //  std::cout << "Straightening succeful" << std::endl;
+
     double valuev = CurrentError*(this->simplificationError);
     BranchSimplification::SimplifyIt(optipath, branchsimplified,valuev);
 
+   // std::cout << "Simplification still not crash" << std::endl;
     //std::string fn  = tmpfolder + "BranchedColoring" + std::to_string(this->numberOfRuns) + ".csv";
     //GeneralConvertor::ClusteringInfoToFile(cloudlist,theNeighbors, fn,boost::num_vertices(optiout));
 
     //  BranchSimplification::PathToGraphProper(out, branchsimplified);
+
     BranchSimplification::PathToGraphProper(out, branchsimplified);
+  //  std::cout << "Final convertion succeful!!!!" << std::endl;
     this->numberOfRuns++;
 }
 

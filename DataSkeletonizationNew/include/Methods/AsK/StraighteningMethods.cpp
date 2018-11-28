@@ -40,6 +40,8 @@ bool StraighteningMethods::OptimizeSingle(std::vector<PointPlus> & path,  std::l
         bool firsttest = maximalDistance(b, b+1, path) <= e;
         if (firsttest == false)
         {
+            std::cout << "STRAIGHTENING UNSUCCESFUL!!!!!!!!!!!!!!!!" << std::endl;
+           // throw std::exception("You win, but you lose, game over");
             return false;
         }
         l = l + 1; //! Is this required?

@@ -583,10 +583,10 @@
 	"GraphGeneration.h"
 	"Computation.h"
 
-1535096271 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/DensityFunctions/ExponentialDensity.cpp
+1543325653 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/DensityFunctions/ExponentialDensity.cpp
 	"ExponentialDensity.h"
 
-1535101221 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/DensityFunctions/ExponentialDensity.h
+1543325627 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/DensityFunctions/ExponentialDensity.h
 	<Includes.h>
 
 1535544449 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Includes.h
@@ -667,7 +667,7 @@
 	<mlpack/prereqs.hpp>
 	<mlpack/core/tree/cover_tree.hpp>
 
-1539685801 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AMSTComputator.h
+1543326841 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AMSTComputator.h
 	"DualTreeAMST.h"
 	"DensityComputator.h"
 	"EpsilonClusterMST/EngineClusterMST.h"
@@ -718,7 +718,7 @@
 1535439849 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/NaiveMethods.cpp
 	"NaiveMethods.h"
 
-1543320684 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
+1543406486 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<iomanip>
 	<math.h>
@@ -761,6 +761,7 @@
 	"DumbAlgorithm.h"
 	"CloudTypePrinterAlgorithm.h"
 	"SophisticatedPrinter.h"
+	"AmstLauncher.h"
 
 1539357812 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GradientDescend/GradientDescendTester.h
 	"SingleEdgeOptimizer.h"
@@ -1318,7 +1319,7 @@
 	"AbstractCloudType.h"
 	"CloudTypePrinterAlgorithm.h"
 
-1543318741 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/AbstractAlgorithm.h
+1543406537 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/AbstractAlgorithm.h
 	"Definitions.h"
 	"Graph.h"
 	"ExplicitMeasurer.h"
@@ -1373,7 +1374,7 @@
 1541501614 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/SingleStar.cpp
 	"SingleStar.h"
 
-1543318027 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/SingleStar.h
+1543407354 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/CloudTypes/SingleStar.h
 	"CloudGenerator.h"
 	"GraphGeneration.h"
 	"generatable.h"
@@ -1533,7 +1534,7 @@
 1542012580 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/GraphSimplification.h
 	"Graph.h"
 
-1542794989 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
+1543407000 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.cpp
 	"AsKLauncher.h"
 	"Computation.h"
 	"BranchSimplification.h"
@@ -1544,7 +1545,7 @@
 1542709650 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/AsKLauncher.h
 	"AbstractAlgorithm.h"
 
-1542724683 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
+1543405802 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/AsK/StraighteningMethods.cpp
 	"StraighteningMethods.h"
 	"Computation.h"
 	"GeneralConvertor.h"
@@ -1618,7 +1619,17 @@
 1543317720 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/Extra/DumbAlgorithm.h
 	"AbstractAlgorithm.h"
 
-1543320103 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/PostRunners/SophisticatedPrinter.h
+1543321484 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/PostRunners/SophisticatedPrinter.h
 	"PostRunInterface.h"
 	"GeneralConvertor.h"
+	"SingleStar.h"
+
+1543331312 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/Amst/AmstLauncher.h
+	"AbstractAlgorithm.h"
+	"GeneralConvertor.h"
+	"CleverExpDensity.h"
+	"TestPerformer.h"
+
+1543328427 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/DensityFunctions/CleverExpDensity.h
+	<Includes.h>
 

@@ -67,6 +67,7 @@ public:
         for (int k = 0; k < measurers.size(); k++)
         {
             (*measurers[k]).run(G,cloud,generatedCloud,cloudit);
+          //  std::cout << "Measurment "<< k << " Completed succefully!!!" << std::endl;
         }
     }
     void ResetAllMeasurers()
