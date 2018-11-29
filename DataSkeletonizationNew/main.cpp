@@ -364,14 +364,14 @@ void MlPackTimerTest()
 }
 void ControllerTest()
 {
-    std::string qq = "/home/yury/LocalTests/RealCloudDebug/data.csv";
-    std::string folder = "/home/yury/LocalTests/RealCloudDebug/Outputs/";
+    std::string qq = "/home/yury/LocalTests/RealCloudDebug2/data.csv";
+    std::string folder = "/home/yury/LocalTests/RealCloudDebug2/Outputs/";
     double mappercluster = 1.75; // 1.75
     double alpha = 20;
 //! We initilize a star:
     SingleStar star1(M_PI/3,3,1500,5,100,5,"Star3");
     SingleStar star2(M_PI/3,4,2000,5,100,5,"Star4");
-    SingleStar star8(M_PI/8,8,4000,10,100,20,"Star8");
+    SingleStar star8(M_PI/6,8,4000,5,100,20,"Star8");
     DoubleStar dstar(M_PI/3,4,4,4000,5,100,10,"DoubleStar");
 
     RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
@@ -388,7 +388,7 @@ void ControllerTest()
     thelaunch.setTimePrecision(2);
     alphaLaunch.setTimePrecision(2);
     std::string setting = "sd";
-    AsKLauncher AskAlgorithm(2.0,1.25,1.25,setting,"AsK");
+    AsKLauncher AskAlgorithm(2.0,1.3,1.3,setting,"AsK");
     AskAlgorithm.setTimePrecision(3);
 
     AskAlgorithm.addPostRunner(&printer);
@@ -412,15 +412,15 @@ void ControllerTest()
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
 //   void addCloud(generatable* k);
- //   control.addAlgorithm(&thelaunch);
+  //  control.addAlgorithm(&thelaunch);
 //   control.addAlgorithm(&alphaLaunch);
     control.addAlgorithm(&AskAlgorithm);
- //   control.addAlgorithm(&mstComputator);
+    control.addAlgorithm(&mstComputator);
 // control.addAlgorithm(&lwp);
 //control.addCloud(&star1);
 //control.addCloud(&star2);
-   // control.addCloud(&star8);
-control.addCloud(&theRealClouds);
+    control.addCloud(&star8);
+//control.addCloud(&theRealClouds);
 //control.addCloud(&dstar);
 //control.addCloud(&star2);
 //control.addCloud(&theRealClouds);
@@ -437,7 +437,7 @@ control.addCloud(&theRealClouds);
     control.addMeasurer(vertexMeasure);
     control.addMeasurer(TypeMeasure);
     // control.addMeasurer(ndm);
-   // control.addMeasurer(newDistanceMeasure);
+    // control.addMeasurer(newDistanceMeasure);
     control.BeginTestRun();
 
 }
@@ -590,10 +590,10 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-    srand( time( NULL ) );
+ //  srand( time( NULL ) );
 
 ///! We use this number sequence to debug the code:
-//srand(20);
+srand(128);
 //std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
 //! Here we test:ControllerTest()
 //runGradientDescendTester();
@@ -614,9 +614,11 @@ int main()
     //  FileSystemTest();
 // ControllerTestRealDataSimple();
 //  ControllerTest();
-    std::cout << "Succeful compilation xD" << std::endl;
+    // std::cout << "Succeful compilation xD" << std::endl;
 //ControllerTestRealDataSimple();
+
     ControllerTest();
+
 //  PrintingStarCloudsTest();
 //  PrintingStarCloudsTest();
     //  DistanceBetweenLineSegments();

@@ -449,6 +449,26 @@ void GeneralConvertor::FinalizeDeal(std::string fp, int sz, int k)
 }
 
 
+void GeneralConvertor::StraighteningDebugPrint(std::string filename,  std::vector<std::vector<Point>> & debuglist)
+{
+
+    std::ofstream mystream;
+    mystream.open(filename);
+    mystream << "x coord, y coord, z coord, scalar" << std::endl;
+
+    for (int i = 0; i < debuglist.size(); i++)
+    {
+        int sizem = debuglist[i].size();
+        for (int j = 0; j < sizem; j++)
+        {
+        double valuev = (double) j / (double) sizem;
+        mystream << debuglist[i][j].x() << ", " <<  debuglist[i][j].y() << ", " <<  debuglist[i][j].z() << ", " << valuev << std::endl;
+        }
+    }
+    mystream.close();
+}
+
+
 
 
 

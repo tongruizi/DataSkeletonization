@@ -111,6 +111,7 @@ void controller::BeginTestRun()
     }
     //! We will write everything into files
     this->WriteDownToLatexTable();
+    std::cout << "Write succeful" << std::endl;
 
 }
 

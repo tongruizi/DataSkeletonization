@@ -138,12 +138,15 @@
 		<Unit filename="include/Methods/AsK/AsKLauncher.h" />
 		<Unit filename="include/Methods/AsK/BranchSimplification.cpp" />
 		<Unit filename="include/Methods/AsK/BranchSimplification.h" />
+		<Unit filename="include/Methods/AsK/CorrectStraightening.h" />
 		<Unit filename="include/Methods/AsK/FastMSTLauncher.cpp" />
 		<Unit filename="include/Methods/AsK/FastMSTLauncher.h" />
 		<Unit filename="include/Methods/AsK/GraphSimplification.cpp" />
 		<Unit filename="include/Methods/AsK/GraphSimplification.h" />
+		<Unit filename="include/Methods/AsK/SegmentCompare.h" />
 		<Unit filename="include/Methods/AsK/StraighteningMethods.cpp" />
 		<Unit filename="include/Methods/AsK/StraighteningMethods.h" />
+		<Unit filename="include/Methods/AsK/SuperSort.h" />
 		<Unit filename="include/Methods/BranchDetection.cpp" />
 		<Unit filename="include/Methods/BranchDetection.h" />
 		<Unit filename="include/Methods/NaiveMethods.cpp" />

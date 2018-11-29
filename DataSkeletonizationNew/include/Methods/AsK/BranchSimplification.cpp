@@ -107,7 +107,12 @@ void BranchSimplification::PathToGraphProper(MyGraphType & G, std::list<std::lis
             if (git != (*it).begin())
             {
                 vertex_descriptor cur = FindPointOperation(*git, PointToVertex,G);
+                if (cur != core)
+                {
                 Graph::add_edge(G, core, cur);
+
+
+                }
                 core = cur;
             }
             else
