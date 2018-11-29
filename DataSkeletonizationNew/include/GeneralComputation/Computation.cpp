@@ -272,8 +272,14 @@ double Computation::AABBError(MyGraphType & G, std::list<Point> & cloud)
     AABB.accelerate_distance_queries();
     for (auto it = cloud.begin(); it != cloud.end(); it++)
     {
-        Point qq = AABB.closest_point(*it);
+       Point qq = AABB.closest_point(*it);
+     //   auto pp = AABB.closest_point_and_primitive(*it);
+//        std::cout << (pp.second).id() << std::endl;
+       // std::cout << (*(pp.second)).source() << std::endl;
+     //   std::cout << *(pp.second) << std::endl;
+    //    maxdistance = std::max(maxdistance, sqrt(CGAL::squared_distance(*it,pp.second)));
         maxdistance = std::max(maxdistance, sqrt(CGAL::squared_distance(*it,qq)));
+
     }
     return maxdistance;
 

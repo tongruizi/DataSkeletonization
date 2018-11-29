@@ -43,6 +43,7 @@
 #include "DumbAlgorithm.h"
 #include "CloudTypePrinterAlgorithm.h"
 #include "SophisticatedPrinter.h"
+#include "AmstLauncher.h"
 
 // Convenience.
 using namespace mlpack;
@@ -363,18 +364,18 @@ void MlPackTimerTest()
 }
 void ControllerTest()
 {
-    std::string qq = "/home/yury/LocalTests/FivthTest/data.csv";
-    std::string folder = "/home/yury/LocalTests/FivthTest/Outputs/";
-    double mappercluster = 3.0; // 1.75
+    std::string qq = "/home/yury/LocalTests/RealCloudDebug2/data.csv";
+    std::string folder = "/home/yury/LocalTests/RealCloudDebug2/Outputs/";
+    double mappercluster = 1.75; // 1.75
     double alpha = 20;
 //! We initilize a star:
     SingleStar star1(M_PI/3,3,1500,5,100,5,"Star3");
     SingleStar star2(M_PI/3,4,2000,5,100,5,"Star4");
-    SingleStar star8(M_PI/3,8,4000,5,100,1,"Star8");
+    SingleStar star8(M_PI/6,8,4000,5,100,20,"Star8");
     DoubleStar dstar(M_PI/3,4,4,4000,5,100,10,"DoubleStar");
 
-    RealCloudCollection theRealClouds("Real","/home/yury/LocalTests/TestOnSynthetical/Star8Collection/");
-    theRealClouds.SetCorrectnessOfGraphs("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star8Info.txt");
+    RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
+    theRealClouds.SetCorrectnessOfGraphs("/home/yury/Dropbox/UnileverData/titles.txt");
 //RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
 //SingleStar star2(M_PI/3,4,100,1500,5,100,10,"Star4");
 //! We initilize filewriter:
@@ -387,17 +388,23 @@ void ControllerTest()
     thelaunch.setTimePrecision(2);
     alphaLaunch.setTimePrecision(2);
     std::string setting = "sd";
-    AsKLauncher AskAlgorithm(2.0,1.25,1.5,setting,"AsK");
-    AskAlgorithm.setTimePrecision(2);
+    AsKLauncher AskAlgorithm(2.0,1.3,1.3,setting,"AsK");
+    AskAlgorithm.setTimePrecision(3);
 
     AskAlgorithm.addPostRunner(&printer);
     thelaunch.addPostRunner(&printer);
     alphaLaunch.addPostRunner(&printer);
 
+    //! Add AMST:
+
+    AmstLauncher lwp(0.01,1,4,15.0);
+    lwp.setTimePrecision(3);
+    lwp.addPostRunner(&printer);
+
 //! Add MST
 
     FastMSTLauncher mstComputator;
-    mstComputator.setTimePrecision(2);
+    mstComputator.setTimePrecision(3);
     mstComputator.addPostRunner(&printer);
 
 //! We initilize controller:
@@ -405,14 +412,15 @@ void ControllerTest()
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
 //   void addCloud(generatable* k);
-//   control.addAlgorithm(&thelaunch);
-//    control.addAlgorithm(&alphaLaunch);
+  //  control.addAlgorithm(&thelaunch);
+//   control.addAlgorithm(&alphaLaunch);
     control.addAlgorithm(&AskAlgorithm);
-//   control.addAlgorithm(&mstComputator);
+    control.addAlgorithm(&mstComputator);
+// control.addAlgorithm(&lwp);
 //control.addCloud(&star1);
 //control.addCloud(&star2);
-  //  control.addCloud(&star8);
-  control.addCloud(&theRealClouds);
+    control.addCloud(&star8);
+//control.addCloud(&theRealClouds);
 //control.addCloud(&dstar);
 //control.addCloud(&star2);
 //control.addCloud(&theRealClouds);
@@ -428,8 +436,8 @@ void ControllerTest()
     control.addMeasurer(endTypeMeasure);
     control.addMeasurer(vertexMeasure);
     control.addMeasurer(TypeMeasure);
-    control.addMeasurer(ndm);
-    control.addMeasurer(newDistanceMeasure);
+    // control.addMeasurer(ndm);
+    // control.addMeasurer(newDistanceMeasure);
     control.BeginTestRun();
 
 }
@@ -533,18 +541,38 @@ void DistanceBetweenLineSegments()
 
 void PrintingStarCloudsTest()
 {
-DumbAlgorithm pwee;
-SophisticatedPrinter p("/home/yury/LocalTests/TestOnSynthetical/Star8Collection/");
-pwee.addPostRunner(&p);
-SingleStar star8(M_PI/3,8,4000,5,100,10,"Star8");
-std::vector<CloudTypePrinterAlgorithm*> q;
-CloudTypePrinterAlgorithm n1("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star8Info.txt");
-q.push_back(&n1);
-controller control("/home/yury/LocalTests/TestOnSynthetical/dummyfile.txt");
-control.addAlgorithm(&pwee);
-control.addCloud(&star8);
-control.BeginTestRun();
-control.FlushClouds(q);
+    DumbAlgorithm pwee;
+    SophisticatedPrinter p("/home/yury/LocalTests/TestOnSynthetical/");
+    pwee.addPostRunner(&p);
+    SingleStar star3(M_PI/3,3,1500,5,100,100,"Star3");
+    SingleStar star4(M_PI/3,4,2000,5,100,100,"Star4");
+    SingleStar star5(M_PI/3,5,2500,5,100,100,"Star5");
+    SingleStar star6(M_PI/6,6,3000,5,100,100,"Star6");
+    SingleStar star7(M_PI/3,7,3500,5,100,100,"Star7");
+    SingleStar star8(M_PI/3,8,4000,5,100,100,"Star8");
+    std::vector<CloudTypePrinterAlgorithm*> q;
+    CloudTypePrinterAlgorithm n3("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star3Info.txt");
+    CloudTypePrinterAlgorithm n4("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star4Info.txt");
+    CloudTypePrinterAlgorithm n5("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star5Info.txt");
+    CloudTypePrinterAlgorithm n6("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star6Info.txt");
+    CloudTypePrinterAlgorithm n7("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star7Info.txt");
+    CloudTypePrinterAlgorithm n8("/home/yury/LocalTests/TestOnSynthetical/TheBosses/Star8Info.txt");
+    q.push_back(&n3);
+    q.push_back(&n4);
+    q.push_back(&n5);
+    q.push_back(&n6);
+    q.push_back(&n7);
+    q.push_back(&n8);
+    controller control("/home/yury/LocalTests/TestOnSynthetical/dummyfile.txt");
+    control.addAlgorithm(&pwee);
+    control.addCloud(&star3);
+    control.addCloud(&star4);
+    control.addCloud(&star5);
+    control.addCloud(&star6);
+    control.addCloud(&star7);
+    control.addCloud(&star8);
+    control.BeginTestRun();
+    control.FlushClouds(q);
 
 //#include "CloudTypePrinterAlgorithm.h"
 
@@ -562,10 +590,10 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-    srand( time( NULL ) );
+ //  srand( time( NULL ) );
 
 ///! We use this number sequence to debug the code:
-//srand(20);
+srand(128);
 //std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
 //! Here we test:ControllerTest()
 //runGradientDescendTester();
@@ -586,10 +614,13 @@ int main()
     //  FileSystemTest();
 // ControllerTestRealDataSimple();
 //  ControllerTest();
-    std::cout << "Succeful compilation xD" << std::endl;
+    // std::cout << "Succeful compilation xD" << std::endl;
 //ControllerTestRealDataSimple();
-   ControllerTest();
- //  PrintingStarCloudsTest();
+
+    ControllerTest();
+
+//  PrintingStarCloudsTest();
+//  PrintingStarCloudsTest();
     //  DistanceBetweenLineSegments();
 //  ControllerTestRealDataSimple();
 }

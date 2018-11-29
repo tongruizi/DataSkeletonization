@@ -43,6 +43,8 @@ public:
 
     static void CloudToXYZ(std::list<Point> & p, std::string fp, int i);
     static void FinalizeDeal(std::string fp, int sz, int k);
+    static void StraighteningDebugPrint(std::string filename,  std::vector<std::vector<Point>> & debuglist);
+
 
 
 

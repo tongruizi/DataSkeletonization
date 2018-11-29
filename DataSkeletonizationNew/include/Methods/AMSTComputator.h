@@ -118,7 +118,7 @@ public:
         std::vector<int> vn(in.n_cols);
         DensityComputator<MetricType, MatType, DensityType, TreeType> calcf(kTree);
         calcf.ComputeDensity(f, vn, epsilon);
-        arma::mat dg = in.t();
+       // arma::mat dg = in.t();
         //! 2b) Rescaling
         Rescale(f, t);
         //! 3) We compute new MST

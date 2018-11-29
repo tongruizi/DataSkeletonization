@@ -66,7 +66,9 @@ public:
     {
         for (int k = 0; k < measurers.size(); k++)
         {
+          //  std::cout << "Measurment "<< k << " initilized succefully...." << std::endl;
             (*measurers[k]).run(G,cloud,generatedCloud,cloudit);
+          //  std::cout << "Measurment "<< k << " Completed succefully!!!" << std::endl;
         }
     }
     void ResetAllMeasurers()
@@ -103,7 +105,7 @@ public:
 
     void setTimePrecision(int p)
     {
-    TimeMeasure.setPrecision(p);
+        TimeMeasure.setPrecision(p);
     }
 
 

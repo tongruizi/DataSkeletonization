@@ -55,8 +55,17 @@ typedef CGAL::AABB_tree<AABB_triangle_traits> Tree;
 
 typedef std::list<Segment>::iterator IteratorSegment;
 typedef CGAL::AABB_segment_primitive<Kernel, IteratorSegment> PrimitiveSegment;
+//CGAL::AABB_segm
+//CGAL::AABB_Pr
 typedef CGAL::AABB_traits<Kernel, PrimitiveSegment> TraitsSegment;
 typedef CGAL::AABB_tree<TraitsSegment> SegmentTree;
+
+typedef std::vector<Segment>::iterator VectorIteratorSegment;
+typedef CGAL::AABB_segment_primitive<Kernel, VectorIteratorSegment> VectorPrimitiveSegment;
+typedef CGAL::AABB_traits<Kernel, VectorPrimitiveSegment> VectorTraitsSegment;
+typedef CGAL::AABB_tree<VectorTraitsSegment> VectorSegmentTree;
+
+
 
 //struct MyOptions : Gudhi::Simplex_tree_options_full_featured {
 //  // Not doing persistence, so we don't need those

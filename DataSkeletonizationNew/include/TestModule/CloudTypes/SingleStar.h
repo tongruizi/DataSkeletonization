@@ -38,20 +38,34 @@ public:
             }
             else if ((tmpD != 2) && (tmpD != n) && (tmpD != 1))
             {
+                // std::cout << "We exited the method because we encountered degree: " << tmpD << std::endl;
                 return false;
             }
         }
-        return (starn == 1) && (degree1 == number_of_branches);
+        //   std::cout << "Count of the star vertices " << starn << " | " << "count of degree 1 vertices: " << degree1 << std::endl;
+        if (n == 2)
+        {
+            return (degree1 == number_of_branches);
 
+        }
+        else
+        {
+            return (starn == 1) && (degree1 == number_of_branches);
+        }
     }
 
     bool DoesGraphHaveCorrectForm(MyGraphType & G,int iterationnumber)
     {
-        return this->CorrectNumberOfEndPoints(G,number_of_branches);
+        bool test = this->CorrectNumberOfEndPoints(G,number_of_branches);
+        if (test == false)
+        {
+            std::cout << "INCORRECT NUMBER OF ENDPOINTS!!!!!!!" << std::endl;
+        }
+        return test;
     }
     int returnNumberOfBranches()
     {
-    return number_of_branches;
+        return number_of_branches;
     }
 
 
