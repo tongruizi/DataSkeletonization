@@ -20,7 +20,7 @@ public:
     static void GraphToVtk(std::string path, MyGraphType &G);
     static void ListToMat(std::list<Point> & lp, arma::mat & mtx);
     static void ListToMatTransposed(std::list<Point> & points, arma::mat & data);
-    static void ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData);
+    static double ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData);
     static void MatToMyGraphType(arma::mat & originalData, arma::mat & edges, MyGraphType & G);
     static void pathPrintToVtkPointlist(std::list<std::list<Point>> & paths, std::string directory);
     static void ClusteringInfoToFile(std::list<Point> & cloud, arma::Mat<size_t> & theNeighbors, std::string k,int graphsize);
@@ -44,6 +44,7 @@ public:
     static void CloudToXYZ(std::list<Point> & p, std::string fp, int i);
     static void FinalizeDeal(std::string fp, int sz, int k);
     static void StraighteningDebugPrint(std::string filename,  std::vector<std::vector<Point>> & debuglist);
+    // :ArmaMatToGraph
 
 
 

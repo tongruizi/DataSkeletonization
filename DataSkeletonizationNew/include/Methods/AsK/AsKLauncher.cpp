@@ -18,10 +18,18 @@ void AsKLauncher::Run(std::list<Point> & cloudlist, MyGraphType & out)
     MyGraphType optiout;
     // std::string tmpfolder = "/home/yury/LocalTests/FourthTest/ColoredPoints/";
     // Computation::computeMST(cloudlist,mst);
-    DualTreeComputation::ComputeMST(cloudlist,mst);
+    double avgMstLength = DualTreeComputation::ComputeMST(cloudlist,mst);
+    std::cout << "avgMstLength: " << avgMstLength << std::endl;
+    double branchingParameter = this->branch_detection;
+    std::string actualSettings = this->settings;
+    if (this->settings == "MSTAVG")
+    {
+        branchingParameter = avgMstLength * this->branch_detection;
+        actualSettings = "pure";
+    }
     //std::cout << " MST computed succefully " << std::endl;
-    BranchDetection::SimplifyIt(mst,optiout,this->branch_detection,"",this->settings);
-   // std::cout << "Simplification comptued succefully" << std::endl;
+    BranchDetection::SimplifyIt(mst,optiout,branchingParameter,"",actualSettings);
+    // std::cout << "Simplification comptued succefully" << std::endl;
     std::list<std::list<Point>> optipath;
     std::list<std::list<Point>> branchsimplified;
 
@@ -44,7 +52,7 @@ void AsKLauncher::Run(std::list<Point> & cloudlist, MyGraphType & out)
     //! Remember to reactive:
     BranchSimplification::PathToGraphProper(out, branchsimplified);
     //  std::cout << "Final convertion succeful!!!!" << std::endl;
-   // std::cout << "Run succeful!!!! "<< std::endl;
+    // std::cout << "Run succeful!!!! "<< std::endl;
     this->numberOfRuns++;
 }
 

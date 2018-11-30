@@ -263,7 +263,7 @@ void GeneralConvertor::ListToMatTransposed(std::list<Point> & points, arma::mat 
     }
 
 }
-void GeneralConvertor::ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData)
+double GeneralConvertor::ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::mat & originalData)
 {
     int vSize = originalData.n_cols;
     for (int i = 0; i < vSize; i++)
@@ -273,14 +273,16 @@ void GeneralConvertor::ArmaMatToGraph(MyGraphType & G, arma::mat & edges, arma::
     }
 
     int edgeSize = edges.n_cols;
+    double sum = 0;
 
     for (int i = 0; i < edgeSize; i++)
     {
         int one = (int) edges(0,i);
         int two = (int) edges(1,i);
         Graph::add_edge(G,one,two);
-
+        sum = sum + edges(2,i);
     }
+    return sum / (double) edgeSize;
 
 }
 

@@ -364,8 +364,8 @@ void MlPackTimerTest()
 }
 void ControllerTest()
 {
-    std::string qq = "/home/yury/LocalTests/RealCloudDebug2/data.csv";
-    std::string folder = "/home/yury/LocalTests/RealCloudDebug2/Outputs/";
+    std::string qq = "/home/yury/LocalTests/RealCloudDebug3/data.csv";
+    std::string folder = "/home/yury/LocalTests/RealCloudDebug3/Outputs/";
     double mappercluster = 1.75; // 1.75
     double alpha = 20;
 //! We initilize a star:
@@ -388,12 +388,13 @@ void ControllerTest()
     thelaunch.setTimePrecision(2);
     alphaLaunch.setTimePrecision(2);
     std::string setting = "sd";
-    AsKLauncher AskAlgorithm(2.0,1.3,1.3,setting,"AsK");
+  //  AsKLauncher AskAlgorithm(2.0,1.3,1.3,setting,"AsK");
+    AsKLauncher AskAlgorithm(20.0,1.3,1.3,"MSTAVG","AsKMsTAvG");
     AskAlgorithm.setTimePrecision(3);
 
-    AskAlgorithm.addPostRunner(&printer);
-    thelaunch.addPostRunner(&printer);
-    alphaLaunch.addPostRunner(&printer);
+  //  AskAlgorithm.addPostRunner(&printer);
+ //  thelaunch.addPostRunner(&printer);
+  //  alphaLaunch.addPostRunner(&printer);
 
     //! Add AMST:
 
@@ -405,15 +406,15 @@ void ControllerTest()
 
     FastMSTLauncher mstComputator;
     mstComputator.setTimePrecision(3);
-    mstComputator.addPostRunner(&printer);
+ //   mstComputator.addPostRunner(&printer);
 
 //! We initilize controller:
     controller control(qq);
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
 //   void addCloud(generatable* k);
-  //  control.addAlgorithm(&thelaunch);
-//   control.addAlgorithm(&alphaLaunch);
+   control.addAlgorithm(&thelaunch);
+  control.addAlgorithm(&alphaLaunch);
     control.addAlgorithm(&AskAlgorithm);
     control.addAlgorithm(&mstComputator);
 // control.addAlgorithm(&lwp);
@@ -590,10 +591,10 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
- //  srand( time( NULL ) );
+   srand( time( NULL ) );
 
 ///! We use this number sequence to debug the code:
-srand(128);
+//srand(128);
 //std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
 //! Here we test:ControllerTest()
 //runGradientDescendTester();
