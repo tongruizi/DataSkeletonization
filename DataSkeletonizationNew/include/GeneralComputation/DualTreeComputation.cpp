@@ -37,8 +37,23 @@ void DualTreeComputation::ComputeEpsilonNeighborhoodGraph(std::list<Point> & p, 
     }
 }
 
+double DualTreeComputation::ComputeSmallestValueForConnectedComponent(std::list<Point> & p)
+{
+    arma::mat cordata;
+    GeneralConvertor::ListToMatTransposed(p,cordata);
+    mlpack::emst::DualTreeBoruvka<> MSTOP(cordata);
+    arma::mat results;
+    MSTOP.ComputeMST(results);
+    int edgeSize = results.n_cols;
+    double maxv;
+    for (int i = 0; i < edgeSize; i++)
+    {
+        maxv = std::max(maxv, results(2,i));
+    }
+    return maxv;
+}
 
-void DualTreeComputation::ComputeMST(std::list<Point> & p,MyGraphType & G)
+double DualTreeComputation::ComputeMST(std::list<Point> & p,MyGraphType & G)
 {
     arma::mat cordata;
 //    std::cout << "No fail 0" << std::endl;
@@ -50,7 +65,8 @@ void DualTreeComputation::ComputeMST(std::list<Point> & p,MyGraphType & G)
 //   std::cout << "No fail 3" << std::endl;
     MSTOP.ComputeMST(results);
 //   std::cout << "No fail 4" << std::endl;
-    GeneralConvertor::ArmaMatToGraph(G,results,cordata);
+    double avg = GeneralConvertor::ArmaMatToGraph(G,results,cordata);
+    return avg;
 //   std::cout << "No fail 5" << std::endl;
 }
 //using namespace mlpack::neighbor;
@@ -110,7 +126,7 @@ void DualTreeComputation::NearestNeighborsForLineSegments(std::vector<Segment> &
     a.Search(querydata, 1, results, resultingDistances);
     //std::cout << resultingDistances << std::endl;
     //std::cout << "Col size:" << resultingDistances.n_cols << std::endl;
-   // std::cout << "Row size:" << resultingDistances.n_rows << std::endl;
+    // std::cout << "Row size:" << resultingDistances.n_rows << std::endl;
 
 
 }

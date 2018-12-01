@@ -19,7 +19,9 @@ public:
         MyGraphType G;
       //  Computation::ComputeDeluanayTriangulation(G, cloudlist);
      //   Computation::EpsilonSimplification(G, epsilon);
-        DualTreeComputation::ComputeEpsilonNeighborhoodGraph(cloudlist,G,this->epsilon);
+        double minvalueRequired = DualTreeComputation::ComputeSmallestValueForConnectedComponent(cloudlist) + 0.1;
+        double realparameter = std::max(this->epsilon,minvalueRequired);
+        DualTreeComputation::ComputeEpsilonNeighborhoodGraph(cloudlist,G,realparameter);
         MyGraphType Intermediate;
         AlphaReebComputation::Compute(G, param, out, Intermediate);
 
