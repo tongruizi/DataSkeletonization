@@ -25,6 +25,7 @@ public:
     static void pathPrintToVtkPointlist(std::list<std::list<Point>> & paths, std::string directory);
     static void ClusteringInfoToFile(std::list<Point> & cloud, arma::Mat<size_t> & theNeighbors, std::string k,int graphsize);
     static void GraphToPaths(MyGraphType & G, std::vector<Segment> & segments);
+    static void SegmentsToMat(std::vector<Segment> & segments, arma::mat & segmentmat);
 
 
 

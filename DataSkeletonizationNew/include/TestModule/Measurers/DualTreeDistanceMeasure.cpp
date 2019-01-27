@@ -14,14 +14,24 @@ double DualTreeDistanceMeasure::CompleteMeasurments(MyGraphType & G,AbstractClou
     std::vector<Segment> segments;
     GeneralConvertor::GraphToPaths(G,segments);
     arma::Mat<size_t> results;
-    DualTreeComputation::NearestNeighborsForLineSegments(segments,*generatedCloud,results);
+    arma::mat distances;
+    DualTreeComputation::NearestNeighborsForLineSegments(segments,*generatedCloud,results,distances);
     double maxD = 0;
-    int counter = 0;
-    for (auto it = (*generatedCloud).begin(); it != (*generatedCloud).end(); it++)
+//    int counter = 0;
+//    for (auto it = (*generatedCloud).begin(); it != (*generatedCloud).end(); it++)
+//    {
+//        double tmpD = sqrt(CGAL::squared_distance(*it,segments[results(0,counter)]));
+//        counter++;
+//        maxD = std::max(maxD, tmpD);
+//    }
+
+    for (int i = 0; i < distances.n_elem; i++)
     {
-        double tmpD = sqrt(CGAL::squared_distance(*it,segments[results(0,counter)]));
-        counter++;
-        maxD = std::max(maxD, tmpD);
+     //   if (distances[i] != 0)
+      //  {
+      //  std::cout << i << ": " << distances[i] << std::endl;
+      //  }
+        maxD = std::max(maxD, distances[i]);
     }
     return maxD;
 }

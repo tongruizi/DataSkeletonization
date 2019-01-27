@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add option="-fopenmp" />
 					<Add directory="include/DensityFunctions" />
 					<Add directory="include" />
 					<Add directory="include/TestClasses" />

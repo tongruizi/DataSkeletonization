@@ -79,7 +79,7 @@ void DualTreeComputation::NearestNeighborForTwoKDTrees(arma::Mat<size_t> & resul
 
 }
 
-void DualTreeComputation::NearestNeighborsForLineSegments(std::vector<Segment> & segments, std::list<Point> & pointcloud,arma::Mat<size_t> & results)
+void DualTreeComputation::NearestNeighborsForLineSegments(std::vector<Segment> & segments, std::list<Point> & pointcloud,arma::Mat<size_t> & results,arma::mat & resultingDistances)
 {
 //! We convert segments into tree.
     arma::mat referencedata(6,segments.size());
@@ -114,16 +114,62 @@ void DualTreeComputation::NearestNeighborsForLineSegments(std::vector<Segment> &
     }
     //  GeneralConvertor::ListToMatTransposed(pointcloud,querydata);
 
+//! SaveFiles
+    // referencedata.save("/home/yury/LocalTests/Test1/reference.txt");
+    // querydata.save("/home/yury/LocalTests/Test1/query.txt");
 //! We define two cover trees...
-
-
     typedef mlpack::neighbor::NearestNeighborSort WWW;
-    typedef mlpack::neighbor::NeighborSearchStat<WWW> NST;
+    //  typedef mlpack::neighbor::NeighborSearchStat<WWW> NST;
 
     mlpack::neighbor::NeighborSearch<WWW,SegmentDistance,arma::mat,mlpack::tree::StandardCoverTree > a(referencedata);
 //    mlpack::neighbor::Neighbo
-    arma::mat resultingDistances;
     a.Search(querydata, 1, results, resultingDistances);
+
+    std::ofstream mystream;
+    std::ofstream mystreamtwo;
+
+    mystream.open("/home/yury/LocalTests/Test1/debug.txt");
+    for (int i = 0; i < results.n_elem; i++)
+    {
+        mystream << "Query: ";
+        for (int j = 0; j < 3; j++)
+        {
+            mystream << querydata(j,i) << " ";
+        }
+        mystream << "Reference: ";
+        for (int j = 0; j < 3; j++)
+        {
+            mystream << referencedata(j,results[i]) << " ";
+
+        }
+        mystream << "- ";
+        for (int j = 3; j < 6; j++)
+        {
+            mystream << referencedata(j,results[i]) << " ";
+        }
+        mystream << "Distance: " << resultingDistances[i];
+        mystream << std::endl;
+    }
+    mystream.close();
+    mystreamtwo.open("/home/yury/LocalTests/Test1/EdgeDebug.txt");
+    for (int i = 0; i < std::max(referencedata.n_cols,referencedata.n_rows); i++)
+    {
+        mystreamtwo << i << ": ";
+        for (int j = 0; j < 3; j++)
+        {
+            mystreamtwo << referencedata(j,i) << " ";
+
+        }
+        mystreamtwo << "- ";
+        for (int j = 3; j < 6; j++)
+        {
+            mystreamtwo << referencedata(j,i) << " ";
+        }
+        mystreamtwo << std::endl;
+
+
+    }
+    mystreamtwo.close();
     //std::cout << resultingDistances << std::endl;
     //std::cout << "Col size:" << resultingDistances.n_cols << std::endl;
     // std::cout << "Row size:" << resultingDistances.n_rows << std::endl;
