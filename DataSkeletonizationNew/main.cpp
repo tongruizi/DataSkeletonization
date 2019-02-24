@@ -44,6 +44,7 @@
 #include "CloudTypePrinterAlgorithm.h"
 #include "SophisticatedPrinter.h"
 #include "AmstLauncher.h"
+#include "SegmentDistance.h"
 
 // Convenience.
 using namespace mlpack;
@@ -364,18 +365,18 @@ void MlPackTimerTest()
 }
 void ControllerTest()
 {
-    std::string qq = "/home/yury/LocalTests/RealCloudDebug3/data.csv";
-    std::string folder = "/home/yury/LocalTests/RealCloudDebug3/Outputs/";
+    std::string qq = "/home/yury/LocalTests/Test1/data.csv";
+    std::string folder = "/home/yury/LocalTests/Test1/Outputs/";
     double mappercluster = 1.75; // 1.75
     double alpha = 20;
 //! We initilize a star:
     SingleStar star1(M_PI/3,3,1500,5,100,5,"Star3");
     SingleStar star2(M_PI/3,4,2000,5,100,5,"Star4");
-    SingleStar star8(M_PI/6,8,4000,5,100,20,"Star8");
+    SingleStar star8(M_PI/6,8,4000,5,100,1,"Star8");
     DoubleStar dstar(M_PI/3,4,4,4000,5,100,10,"DoubleStar");
 
-    RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
-    theRealClouds.SetCorrectnessOfGraphs("/home/yury/Dropbox/UnileverData/titles.txt");
+    // RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
+    //theRealClouds.SetCorrectnessOfGraphs("/home/yury/Dropbox/UnileverData/titles.txt");
 //RealCloudCollection theRealClouds("Real","/home/yury/Dropbox/UnileverData/XYZ_Files/");
 //SingleStar star2(M_PI/3,4,100,1500,5,100,10,"Star4");
 //! We initilize filewriter:
@@ -388,13 +389,13 @@ void ControllerTest()
     thelaunch.setTimePrecision(2);
     alphaLaunch.setTimePrecision(2);
     std::string setting = "sd";
-  //  AsKLauncher AskAlgorithm(2.0,1.3,1.3,setting,"AsK");
+    //  AsKLauncher AskAlgorithm(2.0,1.3,1.3,setting,"AsK");
     AsKLauncher AskAlgorithm(20.0,1.3,1.3,"MSTAVG","AsKMsTAvG");
     AskAlgorithm.setTimePrecision(3);
 
-  //  AskAlgorithm.addPostRunner(&printer);
- //  thelaunch.addPostRunner(&printer);
-  //  alphaLaunch.addPostRunner(&printer);
+    //  AskAlgorithm.addPostRunner(&printer);
+//  thelaunch.addPostRunner(&printer);
+    //  alphaLaunch.addPostRunner(&printer);
 
     //! Add AMST:
 
@@ -406,16 +407,16 @@ void ControllerTest()
 
     FastMSTLauncher mstComputator;
     mstComputator.setTimePrecision(3);
- //   mstComputator.addPostRunner(&printer);
+    mstComputator.addPostRunner(&printer);
 
 //! We initilize controller:
     controller control(qq);
 //! We add algorithm, star to controller
 //   void addAlgorithm(AbstractAlgorithm* k);
 //   void addCloud(generatable* k);
-   control.addAlgorithm(&thelaunch);
-  control.addAlgorithm(&alphaLaunch);
-    control.addAlgorithm(&AskAlgorithm);
+    //control.addAlgorithm(&thelaunch);
+   // control.addAlgorithm(&alphaLaunch);
+   // control.addAlgorithm(&AskAlgorithm);
     control.addAlgorithm(&mstComputator);
 // control.addAlgorithm(&lwp);
 //control.addCloud(&star1);
@@ -437,6 +438,7 @@ void ControllerTest()
     control.addMeasurer(endTypeMeasure);
     control.addMeasurer(vertexMeasure);
     control.addMeasurer(TypeMeasure);
+    control.addMeasurer(newDistanceMeasure);
     // control.addMeasurer(ndm);
     // control.addMeasurer(newDistanceMeasure);
     control.BeginTestRun();
@@ -580,6 +582,58 @@ void PrintingStarCloudsTest()
 
 
 }
+//
+void NewCoverTreeTree()
+{
+    using namespace mlpack;
+    using namespace mlpack::neighbor; // NeighborSearch and NearestNeighborSort
+    using namespace mlpack::metric;
+    // Load the data from data.csv (hard-coded).  Use CLI for simple command-line
+    // parameter handling.
+    arma::mat referencedata;
+    std::vector<Segment> segments;
+    for (int i = 0; i < 10000; i++)
+    {
+    segments.push_back(Segment(Point(0,0,i),Point(0,0,i+1)));
+    }
+
+    GeneralConvertor::SegmentsToMat(segments,referencedata);
+    arma::mat querydata;
+    std::vector<Segment> segmentPoints;
+    for (int j = 0; j < 10001; j++)
+    {
+    segmentPoints.push_back(Segment(Point(0,0,j),Point(0,0,j)));
+    }
+
+    GeneralConvertor::SegmentsToMat(segmentPoints,querydata);
+//   data::Load("data.csv", data, true);
+    // Use templates to specify that we want a NeighborSearch object which uses
+    // the Manhattan distance.
+    //  NeighborSearch<NearestNeighborSort, ManhattanDistance> nn(data);
+    mlpack::neighbor::NeighborSearch<NearestNeighborSort,SegmentDistance,arma::mat,mlpack::tree::StandardCoverTree > nn(referencedata);
+
+    // Create the object we will store the nearest neighbors in.
+    arma::Mat<size_t> neighbors;
+    arma::mat distances; // We need to store the distance too.
+    // Compute the neighbors.
+    nn.Search(querydata,1, neighbors, distances);
+    // Write each neighbor and distance using Log.
+    for (size_t i = 0; i < neighbors.n_elem; ++i)
+    {
+        if (distances[i] != 0)
+        {
+        std::cout << "Nearest neighbor of point " << i << " is segment"
+                  << neighbors[i] << " and the distance is " << distances[i] << ".\n";
+        }
+    }
+    //  std::cout << "Distancedebug: " << sqrt(CGAL::squared_distance(Segment[2],Point(0,10,10))) << std::endl;
+ //   double d = sqrt(CGAL::squared_distance(segments[2],Point(0,10,10))) ;
+ //   std::cout << d << std::endl;
+//  std::cout << "Extra point" << std::endl;
+}
+
+
+//}
 //void Run(std::list<Point> & p, MyGraphType & G)
 
 int main()
@@ -591,8 +645,9 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-   srand( time( NULL ) );
-
+    srand( time( NULL ) );
+    ControllerTest();
+//NewCoverTreeTree();
 ///! We use this number sequence to debug the code:
 //srand(128);
 //std::cout <<rand()::numeric_limit<unit>::min(); << std::endl;ComputeDeluanayTriangulation(MyGraphType & G, std::list<Point> & Vector)
@@ -618,8 +673,10 @@ int main()
     // std::cout << "Succeful compilation xD" << std::endl;
 //ControllerTestRealDataSimple();
 
-    ControllerTest();
-
+    // ControllerTest();
+    std::cout << "Mlpackversion: " << mlpack::util::GetVersion() << std::endl;
+    std::cout << "Compilation succeful" << std::endl;
+    //  std::cout << "Compilation succeful" << std::endl;
 //  PrintingStarCloudsTest();
 //  PrintingStarCloudsTest();
     //  DistanceBetweenLineSegments();

@@ -463,12 +463,33 @@ void GeneralConvertor::StraighteningDebugPrint(std::string filename,  std::vecto
         int sizem = debuglist[i].size();
         for (int j = 0; j < sizem; j++)
         {
-        double valuev = (double) j / (double) sizem;
-        mystream << debuglist[i][j].x() << ", " <<  debuglist[i][j].y() << ", " <<  debuglist[i][j].z() << ", " << valuev << std::endl;
+            double valuev = (double) j / (double) sizem;
+            mystream << debuglist[i][j].x() << ", " <<  debuglist[i][j].y() << ", " <<  debuglist[i][j].z() << ", " << valuev << std::endl;
         }
     }
     mystream.close();
 }
+
+void GeneralConvertor::SegmentsToMat(std::vector<Segment> & segments, arma::mat & segmentmat)
+{
+
+    segmentmat.set_size(6,segments.size());
+    int indx = 0;
+    for (int i = 0; i < segments.size(); i++)
+    {
+        Point p = (segments[i]).source();
+        Point q = (segments[i]).target();
+        segmentmat(0,i) = p.x();
+        segmentmat(1,i) = p.y();
+        segmentmat(2,i) = p.z();
+        segmentmat(3,i) = q.x();
+        segmentmat(4,i) = q.y();
+        segmentmat(5,i) = q.z();
+    }
+
+
+}
+
 
 
 

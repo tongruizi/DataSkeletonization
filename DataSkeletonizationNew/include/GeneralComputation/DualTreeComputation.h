@@ -30,7 +30,7 @@ public:
     static double ComputeMST(std::list<Point> & p, MyGraphType & G);
     static void ComputeEpsilonNeighborhoodGraph(std::list<Point> & p, MyGraphType & G, double epsilon);
     static void NearestNeighborForTwoKDTrees(arma::Mat<size_t> & results,arma::mat & referenceset, arma::mat & queryset);
-    static void NearestNeighborsForLineSegments(std::vector<Segment> & segments, std::list<Point> & pointcloud,arma::Mat<size_t> & results);
+    static void NearestNeighborsForLineSegments(std::vector<Segment> & segments, std::list<Point> & pointcloud,arma::Mat<size_t> & results,arma::mat & distances);
     static double ComputeSmallestValueForConnectedComponent(std::list<Point> & p);
 
 protected:
