@@ -1,5 +1,5 @@
 #include "DualTreeComputation.h"
-#include "GeneralConvertor.h"
+    #include "GeneralConvertor.h"
 #include <mlpack/methods/range_search/range_search.hpp>
 #include "SegmentDistance.h"
 #include <mlpack/core/tree/cover_tree.hpp>
@@ -25,16 +25,16 @@ void DualTreeComputation::ComputeEpsilonNeighborhoodGraph(std::list<Point> & p, 
     {
         Graph::add_vertex(G,*it);
     }
-    for (int i = 0; i < resultingNeighbors.size(); i++)
-    {
-        for (int j = 0; j < resultingNeighbors[i].size(); j++)
+        for (int i = 0; i < resultingNeighbors.size(); i++)
         {
-            if (i != resultingNeighbors[i][j])
+            for (int j = 0; j < resultingNeighbors[i].size(); j++)
             {
-                Graph::add_edge(G,i,resultingNeighbors[i][j]);
+                if (i != resultingNeighbors[i][j])
+                {
+                    Graph::add_edge(G,i,resultingNeighbors[i][j]);
+                }
             }
         }
-    }
 }
 
 double DualTreeComputation::ComputeSmallestValueForConnectedComponent(std::list<Point> & p)

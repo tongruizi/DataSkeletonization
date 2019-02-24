@@ -1,75 +1,135 @@
 #include MetriRec.hpp
+#include <mlpack/methods/range_search/range_search.hpp>
+using namespace mlpack::range;
 
-
-void run(std::list<Point> & cloudlist, double r, MyGraphType & out)
+void run(std::vector<Point> & cloudlist, double r, MyGraphType & out)
 {
 
 }
 
-void Labeling(std::list<Point> & cloudlist, std::list<Point> & s, double r)
+void Labeling(MyGraphType & G, std::vector<Point> & cloudlist, double r)
 {
-    int degre = 0;
-    double toDistance = 0;
-    Point prelimBranch;
-    for (auto it = s.begin(); it != s.end(); it++)
+
+    arma::mat cordata;
+    GeneralConvertor::ListToMatTransposed(cloudlist,cordata);
+    mlpack::range::RangeSearch<> a(cordata);
+// The vector-of-vector objects we will store output in.
+    std::vector<std::vector<size_t> > resultingNeighbors;
+    std::vector<std::vector<double> > resultingDistances;
+// The range we will use.
+    math::Range t(r, 5r/3);
+    a.Search(t, resultingNeighbors, resultingDistances);
+    for (int i = 0; i < resultingNeighbors.size(); i++)
     {
-        std::list<Point> tempraCollect;
-        for (auto him = s.begin(); him != s.end(); him++)
+        std::set<Point> branchPoint1;
+        arma::mat cordata1;
+        GeneralConvertor::ListToMatTransposed(resultingNeighbors[i],cordata1);
+        mlpack::range::RangeSearch<> a(cordata1);
+// The vector-of-vector objects we will store output in.
+        std::vector<std::vector<size_t> > resultingNeighbors1;
+        std::vector<std::vector<double> > resultingDistances1;
+// The range we will use.
+        math::Range p(0, 4/3r);
+        a.Search(p, resultingNeighbors1, resultingDistances1);
+
+        for (auto it = resultingNeighbors1[i].begin(); it != resultingNeighbors1[i].end(); it++)
         {
-            if (him != it)
+            Graph::add_vertex(G,*it);
+
+            std::vector<int> componentMap(num_vertices(G));
+            int num = boost::connected_components(G, componentMap.data());
+
+            if(num = 2)
             {
-                toDistance =  sqrt(CGAL::squared_distance(*him,*it));
-                if(toDistance<=5r/3 && toDistance>=r)
-                {
-                    tempraCollect.push_back(it);
-                }
+                edgePoint.insert(it);
+
+            }
+            else
+            {
+                branchPoint1.insert(it);
             }
         }
-        //let's pretend there is a method for Number of connected components of Rips-Vietoris grap
-        degre = Rips-Vietoris(tempraCollect, 4r/3).degre();
-        if(degr = 2)
-        {
-            edgePoint.insert(it);
-        }
-        else
-        {
-            branchPoint.insert(it);
-             prelimBranch = it;
-        }
-
     }
-    for (it=cloudlist.begin(); it!=cloudlist.end(); ++it)
+    arma::mat cordata2;
+    GeneralConvertor::ListToMatTransposed(branchPoint1,cordata2);
+    mlpack::range::RangeSearch<> a(cordata2);
+// The vector-of-vector objects we will store output in.
+    std::vector<std::vector<size_t> > resultingNeighbors2;
+    std::vector<std::vector<double> > resultingDistances2;
+// The range we will use.
+    math::Range q(0, 2r);
+    a.Search(q, resultingNeighbors2, resultingDistances2);
+    for (int i = 0; i < resultingNeighbors2.size(); i++)
     {
-        if(*it != prelimBranch)
+        for (int j = 0; j < resultingNeighbors2[i].size(); j++)
         {
-            toDistance =  sqrt(CGAL::squared_distance(prelimBranch,*it));
-            if(toDistance<=2r)
+            if (i != resultingNeighbors[i][j])
             {
-                branchPoint.insert(it);
-
+                branchPoint.insert(resultingNeighbors[i][j]);
             }
         }
-
     }
 }
 
-void ReconstructGraph( MyGraphType & G, std::set<Point> edgePoint, std::set<Point> branchPoint, double r)
+void ReconstructGraph( MyGraphType & X, MyGraphType & H, std::set<Point> edgePoint, std::set<Point> branchPoint, double r)
 {
-    //let's pretend we can caculate vertices of  Rips-Vietoris graphsR2r(E)andR2r(V).
-    std::list<Point> EdgeE = Rips-Vietoris(edgePoint, 2r);
-    std::list<Point> BranchV = Rips-Vietoris(branchPoint, 2r);
-    double toDistance = 0;
-    for (it=BranchV.begin(); it!=BranchV.end(); ++it)
+    std::set<Point> edgePoint1;
+    std::set<Point> branchPoint2;
+    arma::mat cordata;
+    GeneralConvertor::ListToMatTransposed(edgePoint,cordata);
+    mlpack::range::RangeSearch<> a(cordata);
+// The vector-of-vector objects we will store output in.
+    std::vector<std::vector<size_t> > resultingNeighbors;
+    std::vector<std::vector<double> > resultingDistances;
+// The range we will use.
+    math::Range t(0,2r);
+    a.Search(t, resultingNeighbors, resultingDistances);
+       for (int i = 0; i < resultingNeighbors.size(); i++)
     {
-       Graph::add_vertex(G,it);
-       for (him=BranchV.begin(); him!=BranchV.end(); ++him){
-       toDistance =  sqrt(CGAL::squared_distance(*him,*it));
-       if(toDistance<2r){
-       Graph::add_custom_edge(G,*him,*it,toDistance+4r);
-       }
-       }
+        for (int j = 0; j < resultingNeighbors[i].size(); j++)
+        {
+            if (i != resultingNeighbors[i][j])
+            {
+              edgePoint1.insert(resultingNeighbors[i][j]);
+              Graph::add_edge(H,i,resultingNeighbors[i][j],resultingDistances[i][j]+4r);
+            }
+        }
     }
+    arma::mat cordata1;
+    GeneralConvertor::ListToMatTransposed(branchPoint,cordata1);
+    mlpack::range::RangeSearch<> a(cordata1);
+// The vector-of-vector objects we will store output in.
+    std::vector<std::vector<size_t> > resultingNeighbors1;
+    std::vector<std::vector<double> > resultingDistances1;
+// The range we will use.
+    math::Range q(0,2r);
+    a.Search(q, resultingNeighbors1, resultingDistances1);
+        for (int i = 0; i < resultingNeighbors1.size(); i++)
+    {
+        for (int j = 0; j < resultingNeighbors1[i].size(); j++)
+        {
+            if (i != resultingNeighbors1[i][j])
+            {
+               Graph::add_vertex(X,resultingNeighbors1[i][j]);
+               double todistance = 0;
+               for(it = edgePoint1.begin; it != edgePoint1.end; ++it){
+               toDistance =  sqrt(CGAL::squared_distance(resultingNeighbors1[i][j],*it));
+               if(todistance<2r){
+               branchPoint2.insert(resultingNeighbors1[i][j]);
 
+               }
+               }
+
+            }
+        }
+    }
+    for (int i = 0; i < branchPoint2.size(); i++)
+    {
+        for (int j = i+1; j < branchPoint2.size(); j++)
+        {
+        Graph::add_edge(X,branchPoint2[i],branchPoint2[j]);
+        }
+        }
 }
 
 
