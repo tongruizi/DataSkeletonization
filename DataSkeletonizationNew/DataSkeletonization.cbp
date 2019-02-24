@@ -215,6 +215,8 @@
 		<Unit filename="include/TestModule/Measurers/NumberOfVertexMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/NumberOfVertexMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/TimerCountMeasure.h" />
+		<Unit filename="include/TestModule/MetricGraphRec/MetricRec.cpp" />
+		<Unit filename="include/TestModule/MetricGraphRec/MetricRec.hpp" />
 		<Unit filename="include/TestModule/PostRunners/PostRunInterface.h" />
 		<Unit filename="include/TestModule/PostRunners/PrintToFile.h" />
 		<Unit filename="include/TestModule/PostRunners/SophisticatedPrinter.h" />
