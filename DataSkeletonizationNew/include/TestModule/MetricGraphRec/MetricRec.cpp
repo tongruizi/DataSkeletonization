@@ -21,31 +21,30 @@ void Labeling(std::vector<Point> & cloudlist, double r)
     a.Search(t, resultingNeighbors, resultingDistances);
     for (int i = 0; i < resultingNeighbors.size(); i++)
     {
-        MyGraphType & G;
+        MyGraphType G;
         for (int k = 0; k<resultingNeighbors[i].size; k++)
         {
             Graph::add_vertex(G, resultingNeighbors[i]);
 
         }
         //connected components of Rips-Vietoris graphR4r/3(Sy)
-        std::set<Point> branchPoint1;
+        std::set<int> branchPoint1;
         arma::mat cordata1;
         GeneralConvertor::ListToMatTransposed(resultingNeighbors[i],cordata1);
-        mlpack::range::RangeSearch<> a(cordata1);
+        mlpack::range::RangeSearch<> b(cordata1);
 
         std::vector<std::vector<size_t> > resultingNeighbors1;
         std::vector<std::vector<double> > resultingDistances1;
         math::Range p(0, 4/3r);
-        a.Search(p, resultingNeighbors1, resultingDistances1);
+        b.Search(p, resultingNeighbors1, resultingDistances1);
         //degr(y)←Number of connected components
         for (int k = 0; k<resultingNeighbors1.size; k++)
         {
-            for (int q = 0; q<resultingDistances1[k].size; q++)
+            for (int q = 0; q<resultingNeighbors1[k].size; q++)
             {
-                if ( k!= resultingNeighbors1[k][q])
-                {
-                    Graph::add_edge(G, k,resultingNeighbors1[k][q]);
-                }
+
+                Graph::add_edge(G, k,resultingNeighbors1[k][q]);
+
 
             }
         }
@@ -54,133 +53,130 @@ void Labeling(std::vector<Point> & cloudlist, double r)
         //first label points by dgr(y)
         if(num = 2)
         {
-            edgePoint.insert(resultingNeighbors[i][0]);
+            edgePoint.insert(i);
         }
         else
         {
-            branchPoint1.insert(resultingNeighbors[i][0]);
+            branchPoint1.insert(i);
         }
     }
     //Label all points within distance 2rfrom a preliminary branch point as branch points
+
     arma::mat ReferenceData;
-    GeneralConvertor::ListToMatTransposed(branchPoint1,ReferenceData);
-    mlpack::range::RangeSearch<> a(ReferenceData);
+    GeneralConvertor::ListToMatTransposed(cloudlist,coredata2);
+    mlpack::range::RangeSearch<> c(coredata2);
     std::vector<std::vector<size_t> > resultingNeighbors2;
     std::vector<std::vector<double> > resultingDistances2;
     math::Range q(0,2r);
-    a.Search(cloudlist, q, resultingNeighbors2, resultingDistances2);
+    c.Search(q, resultingNeighbors2, resultingDistances2);
 
-    for (int i = 0; i < resultingNeighbors2.size(); i++)
+    for (auto it = branchPoint1.begin(); it != branchPoint1.end(); it++)
     {
-        for (int j = 0; j < resultingNeighbors2[i].size(); j++)
+        for (int q = 0; q<resultingNeighbors2[*it].size; q++)
         {
+            if (branchPoint.find(q) != branchPoint.end())
+            {
 
-            branchPoint.insert(resultingNeighbors[i][j]);
-
+                branchPoint.insert(q);
+            }
         }
     }
 }
 
-void ReconstructGraph(std::unordered_set<Point> edgePoint, std::unordered_set<Point> branchPoint, double r)
+void ReconstructGraph(std::vector<std::vector<size_t> > &resultingNeighbors2, std::vector<Point> & cloudlist,  std::unordered_set<Point> branchPoint, double r)
 {
-//connected components of the Rips-Vietoris graphsR2r(E)
-    std::unordered_set<Point> edgePoint1;
-    std::unordered_set<Point> branchPoint2;
-    arma::mat cordata;
-    GeneralConvertor::ListToMatTransposed(edgePoint,cordata);
-    mlpack::range::RangeSearch<> a(cordata);
-    std::vector<std::vector<size_t> > resultingNeighbors;
-    std::vector<std::vector<double> > resultingDistances;
-    math::Range t(0,2r);
-    a.Search(t, resultingNeighbors, resultingDistances);
-
-    //get R2r(E)
-    for (int i = 0; i < resultingNeighbors.size(); i++)
+//connected components of the Rips-Vietoris graphsR2r(V) and R2r(E)
+    MyGraphType output;
+    std::unordered_set<int> branchComponent;
+    std::unordered_set<int> edgeComponent;
+    for (auto it = branchPoint.begin(); it != branchPoint.end(); it++)
     {
-        for (int j = 0; j < resultingNeighbors[i].size(); j++)
+        for (int q = 0; q<resultingNeighbors2[*it].size; q++)
         {
-            edgePoint1.insert(resultingNeighbors[i][j]);
-        }
-    }
-
-    //new graph
-    MyGraphType & X;
-////connected components of the Rips-Vietoris graphsR2r(V)
-    arma::mat cordata1;
-    GeneralConvertor::ListToMatTransposed(branchPoint,cordata1);
-    mlpack::range::RangeSearch<> a(cordata1);
-    std::vector<std::vector<size_t> > resultingNeighbors1;
-    std::vector<std::vector<double> > resultingDistances1;
-    math::Range q(0,2r);
-    a.Search(q, resultingNeighbors1, resultingDistances1);
-//get R2r(V)
-    for (int i = 0; i < resultingNeighbors1.size(); i++)
-    {
-        for (int j = 0; j < resultingNeighbors1[i].size(); j++)
-        {
-            branchPoint2.insert(resultingNeighbors1[i][j]);
-        }
-    }
-
-    for(it=branchPoint2.begin(); it<branchPoint2.end(); it++)
-    {
-        Graph::add_vertex(X, *it);
-    }
-    //step line17 :Let there be an edge between vertices ofˆXif their corresponding connected components inR2r(V)containpoints at distance less than 2rfrom the same connected component ofR2r(E)
-
-    //this part codes are stupid, but i don't know the fast way to find the minimum distance between two sets of points
-
-    for (int p = 0; p < resultingNeighbors.size(); p++)
-    {
-        std::unordered_set<int> componentsOrder;
-        double mindistance = 1000r;
-        double maxdistance = 0;
-        for (int i = 0; i < resultingNeighbors1.size(); i++)
-        {
-            for (int q = 0; q < resultingNeighbors[p].size(); q++)
+            if (branchPoint.find(q) != branchPoint.end())
             {
-                for (int j = 0; j < resultingNeighbors1[i].size(); j++)
-                {
-                    int distance = sqrt(CGAL::squared_distance(resultingNeighbors[p][q],resultingNeighbors1[i][j]));
-                    if(distance<mindistance)
-                    {
-                        mindistance = distance;
-                    }
-                }
-                if(mindistace<2r)
-                {
-                    //we can know which components in V is less 2r distance from same component in E
-                    componentsOrder.insert(i);
-                }
-            }
-        }
-        //find the diameter of the corresponding connected component in E
-        for (int q = 0; q < resultingNeighbors[p].size(); q++)
-        {
-            for (int f = q+1; f < resultingNeighbors[p].size(); f++)
-            {
-                int distance = sqrt(CGAL::squared_distance(resultingNeighbors[p][q],resultingNeighbors[p][f]));
-                if(distance>maxdistance)
-                {
-                    maxdistance = distance;
-                }
-            }
-            //connect these components in V with length
-            for(it=componentsOrder.begin(); it<componentsOrder.end(); it++)
-            {
-                for(she = componentsOrder.begin()+it; she<compnentsOrder.end(); she++)
-                {
-                    for(Point1 =resulting1[it].begin(); Point1 =resulting1[it].end(); Point1++)
-                    {
-                        for(Point2 = resulting[she].begin(); Point2 = resulting[she].end(); Point2++)
-                        {
-                            Graph::add_edge(X, Point1, Point2, Weight(maxdistance+4r));
-                        }
-                    }
-                }
+
+                branchComponent.insert(q);
             }
         }
     }
+    for (int p = 0; p<resultingNeighbors2.size; p++)
+    {
+        edgeComponent.insert(p);
+    }
+    for (auto it = branchComponent.begin(); it != branchComponent.end(); it++)
+    {
+
+        edgeComponent.erase(edgeComponent.find(*it));
+
+    }
+
+    std::unordered_map<int, Point> pair1;
+
+    for (auto it = branchComponent.begin(); it != branchComponent.end(); it++)
+    {
+        double x=0;
+        double y=0;
+        double z=0;
+        for(int q = 0; q<resultingNeighbors2[*it].size; q++)
+        {
+            x = x + resultingNeighbors2[*it][q].x;
+            y = y + resultingNeighbors2[*it][q].y;
+            z = z + resultingNeighbors2[*it][q].z;
+
+        }
+        x=x/resultingNeighbors2[*it].size;
+        y=y/resultingNeighbors2[*it].size;
+        z=z/resultingNeighbors2[*it].size;
+
+        pair1.insert(*it, (x,y,z));
+
+    }
+    std::unordered_map<int, Point> pair2;
+    for (auto it = edgeComponent.begin(); it != edgeComponent.end(); it++)
+    {
+        double x=0;
+        double y=0;
+        double z=0;
+        for(int q = 0; q<resultingNeighbors2[*it].size; q++)
+        {
+            x = x + resultingNeighbors2[*it][q].x;
+            y = y + resultingNeighbors2[*it][q].y;
+            z = z + resultingNeighbors2[*it][q].z;
+
+        }
+        x=x/resultingNeighbors2[*it].size;
+        y=y/resultingNeighbors2[*it].size;
+        z=z/resultingNeighbors2[*it].size;
+
+        pair2.insert(*it, (x,y,z));
+
+    }
+
+    for (auto it = edgeComponent.begin(); it != edgeComponent.end(); it++)
+    {
+        std::vector<int> tempralVertex;
+        for (auto him = branchComponent.begin(); him != branchComponent.end(); him++)
+        {
+            double Distance = sqrt(CGAL::squared_distance(pair2[*it],pair1[*him]);
+        if (Distance<2r)
+        {
+            tempralVertex.push_back(*him);
+            }
+        }
+        for (int t =0 ; t<tempralVertex.size()-1; t++)
+        {
+            for (int p =t+1; p<tempralVertex.size(); p++)
+            {
+                Graph::add_edge(output, Cloudlist[tempralVertex[t]], Cloudlist[tempralVertex[p]]);
+            }
+        }
+    }
+
+
+
+
+}
 
 
 

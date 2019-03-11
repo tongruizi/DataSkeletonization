@@ -15,8 +15,8 @@ class MetricRec
     double r;
     MyGraphType G;
     std::vector<Point> cloudlist;
-    std::unordered_set<Point> edgePoint;
-    std::unordered_set<Point> branchPoint;
+    std::unordered_set<int> edgePoint;
+    std::unordered_set<int> branchPoint;
 
 };
 
