@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="2 2" />
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
@@ -42,16 +43,24 @@
 					<Add directory="include/GeneralComputation/SegmentTools" />
 					<Add directory="include/TestModule/Extra" />
 					<Add directory="include/Methods/Amst" />
+					<Add directory="include/CycleDetectionTools" />
+					<Add directory="include/HopsTest" />
+					<Add directory="include/HopsTest/GudhiSettings" />
+					<Add directory="include/Methods/MorseReconstruction" />
+					<Add directory="include/Methods/MorseReconstruction/spt_cpp" />
+					<Add directory="include/Methods/MorseReconstruction/spt_cpp/phat/include" />
 				</Compiler>
 				<Linker>
+					<Add library="boost_system" />
 					<Add library="boost_serialization" />
 					<Add library="armadillo" />
 					<Add library="mlpack" />
 					<Add library="CGAL" />
-					<Add library="boost_system" />
 					<Add library="gmp" />
 					<Add library="libboost_filesystem" />
+					<Add library="gomp" />
 					<Add directory="include/DensityFunctions" />
+					<Add directory="../../../Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -82,6 +91,9 @@
 					<Add directory="include/GeneralComputation/SegmentTools" />
 					<Add directory="include/TestModule/Extra" />
 					<Add directory="include/Methods/Amst" />
+					<Add directory="include/HopsTest/GudhiSettings" />
+					<Add directory="include/HopsTest" />
+					<Add directory="include/Methods/MorseReconstruction" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -110,6 +122,7 @@
 		<Unit filename="include/Convertors/ComplicatedConvertor.h" />
 		<Unit filename="include/Convertors/GeneralConvertor.cpp" />
 		<Unit filename="include/Convertors/GeneralConvertor.h" />
+		<Unit filename="include/CycleDetectionTools/CleverSkeletonization.h" />
 		<Unit filename="include/DataGeneration/CloudGenerator.cpp" />
 		<Unit filename="include/DataGeneration/CloudGenerator.h" />
 		<Unit filename="include/DataGeneration/GraphGeneration.cpp" />
@@ -150,6 +163,37 @@
 		<Unit filename="include/Methods/AsK/SuperSort.h" />
 		<Unit filename="include/Methods/BranchDetection.cpp" />
 		<Unit filename="include/Methods/BranchDetection.h" />
+		<Unit filename="include/Methods/MorseReconstruction/DiMoSCLauncher.h" />
+		<Unit filename="include/Methods/MorseReconstruction/MorseLauncher.h" />
+		<Unit filename="include/Methods/MorseReconstruction/MorseReconstructionComputator.h" />
+		<Unit filename="include/Methods/MorseReconstruction/ToSptTransformer.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/DiscreteVField.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/Simplex.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/Simplicial2Complex.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/graph_spt.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/graph_spt_list.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/persistence.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/chunk_reduction.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/row_reduction.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/spectral_sequence_reduction.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/standard_reduction.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/twist_reduction.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/boundary_matrix.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/compute_persistence_pairs.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/helpers/dualize.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/helpers/misc.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/helpers/thread_local_storage.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/persistence_pairs.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/abstract_pivot_column.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/bit_tree_pivot_column.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/full_pivot_column.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/heap_pivot_column.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/sparse_pivot_column.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/vector_heap.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/vector_list.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/vector_set.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/vector_vector.h" />
+		<Unit filename="include/Methods/MorseReconstruction/spt_cpp/spt.h" />
 		<Unit filename="include/Methods/NaiveMethods.cpp" />
 		<Unit filename="include/Methods/NaiveMethods.h" />
 		<Unit filename="include/Methods/TestPerformer.h" />
@@ -215,6 +259,8 @@
 		<Unit filename="include/TestModule/Measurers/NumberOfVertexMeasure.cpp" />
 		<Unit filename="include/TestModule/Measurers/NumberOfVertexMeasure.h" />
 		<Unit filename="include/TestModule/Measurers/TimerCountMeasure.h" />
+		<Unit filename="include/TestModule/MetricGraphRec/MetricRec.cpp" />
+		<Unit filename="include/TestModule/MetricGraphRec/MetricRec.hpp" />
 		<Unit filename="include/TestModule/PostRunners/PostRunInterface.h" />
 		<Unit filename="include/TestModule/PostRunners/PrintToFile.h" />
 		<Unit filename="include/TestModule/PostRunners/SophisticatedPrinter.h" />

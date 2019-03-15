@@ -8,7 +8,7 @@
 1541759322 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.h
 	"Definitions.h"
 
-1543419583 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Definitions/Definitions.h
+1552468871 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Definitions/Definitions.h
 	<queue>
 	<list>
 	<CGAL/Exact_predicates_inexact_constructions_kernel.h>
@@ -125,7 +125,7 @@
 	"mlpack/core/metrics/lmetric.hpp"
 	"Definitions.h"
 
-1546951235 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.h
+1551267890 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.h
 	<string>
 	<mlpack/core.hpp>
 	<vector>
@@ -167,7 +167,7 @@
 1535107470 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestClasses/FunctionEvaluator.h
 	"ExponentialDensity.h"
 
-1539684439 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Rules/DensityComputator.h
+1552382651 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Rules/DensityComputator.h
 	<mlpack/prereqs.hpp>
 	<mlpack/core.hpp>
 	<mlpack/core/metrics/lmetric.hpp>
@@ -545,7 +545,7 @@
 	"AbstractMeasurer.h"
 	"AbstractCloudType.h"
 
-1547031637 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
+1552574459 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<iomanip>
 	<math.h>
@@ -590,8 +590,10 @@
 	"SophisticatedPrinter.h"
 	"AmstLauncher.h"
 	"SegmentDistance.h"
+	"MorseLauncher.h"
+	"MetricGraphRec/MetricRec.hpp"
 
-1539357812 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GradientDescend/GradientDescendTester.h
+1550488735 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GradientDescend/GradientDescendTester.h
 	"SingleEdgeOptimizer.h"
 	"CloudGenerator.h"
 	"SingleEdgeOptimizer.h"
@@ -650,7 +652,7 @@
 	"GeneralConvertor.h"
 	"SingleStar.h"
 
-1543331312 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/Amst/AmstLauncher.h
+1550498107 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/Amst/AmstLauncher.h
 	"AbstractAlgorithm.h"
 	"GeneralConvertor.h"
 	"CleverExpDensity.h"
@@ -659,8 +661,321 @@
 1543328427 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/DensityFunctions/CleverExpDensity.h
 	<Includes.h>
 
-1546954495 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
+1551688799 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Convertors/GeneralConvertor.cpp
 	"GeneralConvertor.h"
 	<fstream>
 	"Graph.h"
+
+1551958180 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/HopsTest/ClusterPersistence.h
+	"CleverSkeletonization.h"
+	"DensityComputator.h"
+	"GeneralConvertor.h"
+	"AmstStat.h"
+	"GudhiSettings.h"
+
+1551279732 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/CycleDetectionTools/CleverSkeletonization.h
+	"AmstStat.h"
+	<mlpack/methods/emst/edge_pair.hpp>
+	<mlpack/methods/emst/union_find.hpp>
+	<mlpack/methods/emst/dtb.hpp>
+	<mlpack/methods/emst/dtb_rules.hpp>
+	"EpsilonClusterMST/EpsilonClusteringRules.h"
+	"unordered_map"
+	"GeneralConvertor.h"
+	"Graph.h"
+
+1536064372 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Simplex_tree.h
+	<gudhi/Simplex_tree/Simplex_tree_node_explicit_storage.h>
+	<gudhi/Simplex_tree/Simplex_tree_siblings.h>
+	<gudhi/Simplex_tree/Simplex_tree_iterators.h>
+	<gudhi/Simplex_tree/indexing_tag.h>
+	<gudhi/reader_utils.h>
+	<gudhi/graph_simplicial_complex.h>
+	<gudhi/Debug_utils.h>
+	<boost/container/flat_map.hpp>
+	<boost/iterator/transform_iterator.hpp>
+	<boost/graph/adjacency_list.hpp>
+	<boost/range/adaptor/reversed.hpp>
+	<tbb/parallel_sort.h>
+	<utility>
+	<vector>
+	<functional>
+	<stdexcept>
+	<limits>
+	<initializer_list>
+	<algorithm>
+	<cstdint>
+	<iterator>
+
+1536064372 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Simplex_tree/Simplex_tree_node_explicit_storage.h
+	<vector>
+
+1536064372 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Simplex_tree/Simplex_tree_siblings.h
+	<gudhi/Simplex_tree/Simplex_tree_node_explicit_storage.h>
+	<boost/container/flat_map.hpp>
+	<utility>
+	<vector>
+
+1536064372 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Simplex_tree/Simplex_tree_iterators.h
+	<gudhi/Debug_utils.h>
+	<boost/iterator/iterator_facade.hpp>
+	<boost/version.hpp>
+	<boost/container/static_vector.hpp>
+	<vector>
+
+1536064370 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Debug_utils.h
+	<iostream>
+
+1536064372 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Simplex_tree/indexing_tag.h
+
+1536064370 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/reader_utils.h
+	<gudhi/graph_simplicial_complex.h>
+	<gudhi/Debug_utils.h>
+	<boost/function_output_iterator.hpp>
+	<boost/graph/adjacency_list.hpp>
+	<iostream>
+	<fstream>
+	<map>
+	<limits>
+	<string>
+	<vector>
+	<utility>
+	<tuple>
+
+1536064370 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/graph_simplicial_complex.h
+	<boost/graph/adjacency_list.hpp>
+	<utility>
+	<vector>
+	<map>
+	<tuple>
+
+1551953403 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/HopsTest/GudhiSettings.h
+	<gudhi/graph_simplicial_complex.h>
+	<gudhi/Simplex_tree.h>
+	<gudhi/Persistent_cohomology.h>
+	<iostream>
+	<ctime>
+	<utility>
+	<vector>
+
+1536064372 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Persistent_cohomology.h
+	<gudhi/Persistent_cohomology/Persistent_cohomology_column.h>
+	<gudhi/Persistent_cohomology/Field_Zp.h>
+	<gudhi/Simple_object_pool.h>
+	<boost/intrusive/set.hpp>
+	<boost/pending/disjoint_sets.hpp>
+	<boost/intrusive/list.hpp>
+	<map>
+	<utility>
+	<list>
+	<vector>
+	<set>
+	<fstream>
+	<limits>
+	<tuple>
+	<algorithm>
+	<string>
+	<stdexcept>
+
+1536064372 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Persistent_cohomology/Persistent_cohomology_column.h
+	<boost/intrusive/set.hpp>
+	<boost/intrusive/list.hpp>
+	<list>
+
+1536064372 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Persistent_cohomology/Field_Zp.h
+	<utility>
+	<vector>
+
+1536064370 /home/yury/Downloads/2018-09-04-14-25-00_GUDHI_2.3.0/include/gudhi/Simple_object_pool.h
+	<boost/pool/pool.hpp>
+	<utility>
+
+1551956669 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/HopsTest/HomologyComputator.h
+	<gudhi/graph_simplicial_complex.h>
+	<gudhi/Simplex_tree.h>
+	<gudhi/Persistent_cohomology.h>
+	<iostream>
+	<ctime>
+	<utility>
+	<vector>
+
+1552475107 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/MorseLauncher.h
+	"AbstractAlgorithm.h"
+	"MorseReconstructionComputator.h"
+
+1552475129 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/MorseReconstructionComputator.h
+	<mlpack/core.hpp>
+	"ExponentialDensity.h"
+	"DensityComputator.h"
+	"GeneralConvertor.h"
+	"ToSptTransformer.h"
+	"DiMoSCLauncher.h"
+
+1551871397 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/ToSptTransformer.h
+	<mlpack/core.hpp>
+
+1552474704 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/DiMoSCLauncher.h
+	<ctime>
+	<fstream>
+	<iostream>
+	<vector>
+	<unordered_map>
+	"Simplex.h"
+	"persistence.h"
+	"DiscreteVField.h"
+	"Simplicial2Complex.h"
+	"Graph.h"
+
+1552472724 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/Simplex.h
+	<cmath>
+	<set>
+
+1551451255 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/persistence.h
+	<algorithm>
+	<list>
+	<stack>
+	"phat/compute_persistence_pairs.h"
+	<phat/representations/vector_vector.h>
+	<phat/representations/vector_heap.h>
+	<phat/representations/vector_set.h>
+	<phat/representations/vector_list.h>
+	<phat/representations/sparse_pivot_column.h>
+	<phat/representations/heap_pivot_column.h>
+	<phat/representations/full_pivot_column.h>
+	<phat/representations/bit_tree_pivot_column.h>
+	<phat/algorithms/twist_reduction.h>
+	<phat/algorithms/standard_reduction.h>
+	<phat/algorithms/row_reduction.h>
+	<phat/algorithms/chunk_reduction.h>
+	<phat/algorithms/spectral_sequence_reduction.h>
+	<phat/helpers/dualize.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/compute_persistence_pairs.h
+	<phat/persistence_pairs.h>
+	<phat/boundary_matrix.h>
+	<phat/helpers/dualize.h>
+	<phat/algorithms/twist_reduction.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/persistence_pairs.h
+	<phat/helpers/misc.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/helpers/misc.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<set>
+	<list>
+	<map>
+	<algorithm>
+	<queue>
+	<cassert>
+	<sstream>
+	<algorithm>
+	<iomanip>
+	<cmath>
+	<cstdlib>
+	<iterator>
+	<stdint.h>
+	<omp.h>
+	<time.h>
+	<phat/helpers/thread_local_storage.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/helpers/thread_local_storage.h
+	<phat/helpers/misc.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/boundary_matrix.h
+	<phat/helpers/misc.h>
+	<phat/representations/bit_tree_pivot_column.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/bit_tree_pivot_column.h
+	<phat/helpers/misc.h>
+	<phat/representations/abstract_pivot_column.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/abstract_pivot_column.h
+	<phat/helpers/misc.h>
+	<phat/representations/vector_vector.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/vector_vector.h
+	<phat/helpers/misc.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/helpers/dualize.h
+	<phat/helpers/misc.h>
+	<phat/boundary_matrix.h>
+	<phat/persistence_pairs.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/twist_reduction.h
+	<phat/helpers/misc.h>
+	<phat/boundary_matrix.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/vector_heap.h
+	<phat/helpers/misc.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/vector_set.h
+	<phat/helpers/misc.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/vector_list.h
+	<phat/helpers/misc.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/sparse_pivot_column.h
+	<phat/helpers/misc.h>
+	<phat/representations/abstract_pivot_column.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/heap_pivot_column.h
+	<phat/helpers/misc.h>
+	<phat/representations/abstract_pivot_column.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/representations/full_pivot_column.h
+	<phat/helpers/misc.h>
+	<phat/representations/abstract_pivot_column.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/standard_reduction.h
+	<phat/helpers/misc.h>
+	<phat/boundary_matrix.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/row_reduction.h
+	<phat/helpers/misc.h>
+	<phat/boundary_matrix.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/chunk_reduction.h
+	<phat/helpers/misc.h>
+	<phat/boundary_matrix.h>
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/phat/include/phat/algorithms/spectral_sequence_reduction.h
+	<phat/helpers/misc.h>
+	<phat/boundary_matrix.h>
+
+1551451206 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/DiscreteVField.h
+
+1552474620 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/Simplicial2Complex.h
+	<unordered_set>
+	<set>
+	<stack>
+	<map>
+	<queue>
+	<algorithm>
+	<fstream>
+	<iomanip>
+	<stack>
+	<mlpack/core.hpp>
+	"Graph.h"
+	"graph_spt.h"
+
+1538021899 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/MorseReconstruction/spt_cpp/graph_spt.h
+	<iostream>
+	<vector>
+	<map>
+	<set>
+	<queue>
+
+1552574185 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/MetricGraphRec/MetricRec.cpp
+	"MetricGraphRec/MetricRec.hpp"
+	<mlpack/methods/range_search/range_search.hpp>
+	"GeneralConvertor.h"
+
+1552559872 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/MetricGraphRec/MetricRec.hpp
+	"Definitions.h"
+	"Graph.h"
+	<mlpack/methods/range_search/range_search.hpp>
+	<unordered_set>
 

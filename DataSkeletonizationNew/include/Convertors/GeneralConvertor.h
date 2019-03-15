@@ -7,6 +7,8 @@
 #include "Graph.h"
 #include "Definitions.h"
 
+//! Matinfo to file:
+
 
 class GeneralConvertor
 {
@@ -14,7 +16,7 @@ public:
     GeneralConvertor();
     static void XYZtoMAT(std::string fl, arma::mat & data);
     static void XYZtoPoint(std::string fl, std::list<Point> & points);
-    static void MatInfoToFile(std::string out, arma::mat & data, std::vector<double> scalar);
+    static void MatInfoToFile(std::string out, arma::mat & data, std::vector<double> & scalar);
     static void VectorToFile(std::string out, std::vector<int> & s);
     static void MSTToVTK(arma::mat & originalData, arma::mat & edges, std::string out);
     static void GraphToVtk(std::string path, MyGraphType &G);
@@ -46,6 +48,7 @@ public:
     static void FinalizeDeal(std::string fp, int sz, int k);
     static void StraighteningDebugPrint(std::string filename,  std::vector<std::vector<Point>> & debuglist);
     // :ArmaMatToGraph
+    static void VectorToMatTransposed(std::vector<Point> & points, arma::mat & data);
 
 
 

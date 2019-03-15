@@ -56,6 +56,12 @@ public:
         scores(0)
     {
     }
+    ~DensityComputator()
+    {
+        if (treeOwner && referenceTree)
+            delete referenceTree;
+
+    }
 
     void ComputeDensity(std::vector<double> & values, std::vector<int> & visitNumber, double epsilon)
     {
@@ -100,11 +106,121 @@ public:
 
         //    }
         mlpack::Timer::Stop("KDE/Computation");
-        valuesPtr = NULL;
         delete valuesPtr;
-        visitNumberPtr = NULL;
+        valuesPtr = NULL;
         delete visitNumberPtr;
+        visitNumberPtr = NULL;
+
     }
+    //! We have disabled timer for now (to avoid extra struggle)
+
+    void ComputeDensity(std::vector<double> & values, std::vector<int> & visitNumber, double epsilon, Tree* queryTree)
+    {
+        //    mlpack::Timer::Start("KDE/Computation");
+        const MatType& querySet = queryTree->Dataset();
+        std::vector<double>* valuesPtr = & values;
+        std::vector<int>* visitNumberPtr = & visitNumber;
+
+        if(mlpack::tree::TreeTraits<Tree>::RearrangesDataset && treeOwner)
+        {
+            valuesPtr = new std::vector<double>(querySet->n_cols);
+            visitNumberPtr = new std::vector<int>(querySet->n_cols);
+        }
+
+        typedef DensityEstimationRules<MetricType,MatType,FunctionType,Tree> RuleType;
+        RuleType rules(*referenceSet, queryTree->Dataset(), *valuesPtr,*visitNumberPtr, epsilon);
+
+        typename Tree::template DualTreeTraverser<RuleType> traverser(rules);
+        traverser.Traverse(*queryTree, *referenceTree);
+        //     baseCases = rules.returnBaseCases();
+        //    scores = rules.returnScores();
+
+        if(mlpack::tree::TreeTraits<Tree>::RearrangesDataset && treeOwner)
+        {
+            values.clear();
+            values.resize(valuesPtr->size());
+            visitNumber.clear();
+            visitNumber.resize(visitNumberPtr->size());
+            for (int i = 0; i < values.size(); i++)
+            {
+                const size_t nindex = oldFromNewReferences[i];
+                values[nindex] = (*valuesPtr)[i];
+                visitNumber[nindex] = (*visitNumberPtr)[i];
+            }
+        }
+        //  else
+        //   {
+        //      for (int i = 0; i < values.size(); i++)
+        //      {
+        //          values[i] = (*valuesPtr)[i];
+        //         visitNumber[i] = (*visitNumberPtr)[i];
+        //      }
+
+        //    }
+        //  mlpack::Timer::Stop("KDE/Computation");
+        delete valuesPtr;
+        valuesPtr = NULL;
+        delete visitNumberPtr;
+        visitNumberPtr = NULL;
+    }
+
+    void ComputeDensity(std::vector<double> & values, std::vector<int> & visitNumber, double epsilon, const MatType& querySet)
+    {
+        //    mlpack::Timer::Start("KDE/Computation");
+        std::vector<double>* valuesPtr = & values;
+        std::vector<int>* visitNumberPtr = & visitNumber;
+
+        //! This is important vector
+        std::vector<size_t> oldFromNewQueries;
+
+        if(mlpack::tree::TreeTraits<Tree>::RearrangesDataset && treeOwner)
+        {
+            valuesPtr = new std::vector<double>(querySet.n_cols);
+            visitNumberPtr = new std::vector<int>(querySet.n_cols);
+        }
+
+        typedef DensityEstimationRules<MetricType,MatType,FunctionType,Tree> RuleType;
+
+        Tree* queryTree = TreeCreator::BuildTree<Tree>(querySet, oldFromNewQueries);
+
+        RuleType rules(*referenceSet, queryTree->Dataset(), *valuesPtr,*visitNumberPtr, epsilon);
+
+
+        typename Tree::template DualTreeTraverser<RuleType> traverser(rules);
+        traverser.Traverse(*queryTree, *referenceTree);
+        //     baseCases = rules.returnBaseCases();
+        //    scores = rules.returnScores();
+
+        if(mlpack::tree::TreeTraits<Tree>::RearrangesDataset && treeOwner)
+        {
+            values.clear();
+            values.resize(valuesPtr->size());
+            visitNumber.clear();
+            visitNumber.resize(visitNumberPtr->size());
+            for (int i = 0; i < values.size(); i++)
+            {
+                const size_t nindex = oldFromNewQueries[i];
+                values[nindex] = (*valuesPtr)[i];
+                visitNumber[nindex] = (*visitNumberPtr)[i];
+            }
+        }
+        //  else
+        //   {
+        //      for (int i = 0; i < values.size(); i++)
+        //      {
+        //          values[i] = (*valuesPtr)[i];
+        //         visitNumber[i] = (*visitNumberPtr)[i];
+        //      }
+
+        //    }
+        //  mlpack::Timer::Stop("KDE/Computation");
+        delete valuesPtr;
+        valuesPtr = NULL;
+        delete visitNumberPtr;
+        visitNumberPtr = NULL;
+
+    }
+
 
 
 

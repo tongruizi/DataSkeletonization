@@ -39,7 +39,7 @@ typedef Kernel::Point_3 Point;
 typedef Kernel::Segment_3 Segment;
 typedef Kernel::Vector_3 Vector;
 typedef Kernel::Plane_3 Plane;
-typedef Kernel::Triangle_3 Triangle;
+//typedef Kernel::Triangle_3 Triangle;
 
 typedef CGAL::Alpha_shape_vertex_base_3<Kernel>          Vb;
 typedef CGAL::Alpha_shape_cell_base_3<Kernel>            Fb;
@@ -48,10 +48,10 @@ typedef CGAL::Delaunay_triangulation_3<Kernel,Tds>       Triangulation_3;
 typedef CGAL::Alpha_shape_3<Triangulation_3>             Alpha_shape_3;
 typedef Alpha_shape_3::Alpha_iterator                    Alpha_iterator;
 
-typedef std::list<Triangle>::iterator Iterator;
-typedef CGAL::AABB_triangle_primitive<Kernel, Iterator> Primitive;
-typedef CGAL::AABB_traits<Kernel, Primitive> AABB_triangle_traits;
-typedef CGAL::AABB_tree<AABB_triangle_traits> Tree;
+//typedef std::list<Triangle>::iterator Iterator;
+//typedef CGAL::AABB_triangle_primitive<Kernel, Iterator> Primitive;
+//typedef CGAL::AABB_traits<Kernel, Primitive> AABB_triangle_traits;
+//typedef CGAL::AABB_tree<AABB_triangle_traits> Tree;
 
 typedef std::list<Segment>::iterator IteratorSegment;
 typedef CGAL::AABB_segment_primitive<Kernel, IteratorSegment> PrimitiveSegment;

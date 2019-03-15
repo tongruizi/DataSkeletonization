@@ -50,6 +50,8 @@
 		</Compiler>
 		<Unit filename="include/core/binary_space_segment_tree.hpp" />
 		<Unit filename="include/core/binary_space_segment_tree_impl.hpp" />
+		<Unit filename="include/core/dual_segment_tree_traverser.hpp" />
+		<Unit filename="include/core/dual_segment_tree_traverser_impl.hpp" />
 		<Unit filename="include/core/midpoint_segment_split.hpp" />
 		<Unit filename="include/core/midpoint_segment_split_extension.h" />
 		<Unit filename="include/core/midpoint_segment_split_impl.hpp" />

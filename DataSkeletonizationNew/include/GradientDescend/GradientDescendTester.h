@@ -39,7 +39,7 @@ public:
         Graph::add_edge(EdgeGraph,uedge, vedge);
         GeneralConvertor::GraphToVtk(edgepath,EdgeGraph);
 
-        //! Here wer just compute classical minimum spanning tree so it would be easier to plot the point cloud
+        //! Here we just compute classical minimum spanning tree so it would be easier to plot the point cloud
 
         mlpack::emst::DualTreeBoruvka<> MSTOP(data);
         arma::mat results;

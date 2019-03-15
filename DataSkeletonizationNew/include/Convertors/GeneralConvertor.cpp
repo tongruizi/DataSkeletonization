@@ -56,12 +56,12 @@ void GeneralConvertor::XYZtoPoint(std::string fl, std::list<Point> & points)
 
 
 
-void GeneralConvertor::MatInfoToFile(std::string out, arma::mat & data, std::vector<double> scalar)
+void GeneralConvertor::MatInfoToFile(std::string out, arma::mat & data, std::vector<double> & scalar)
 {
     std::ofstream mystream;
     mystream.open(out);
     mystream << "x coord, y coord, z coord, scalar" << std::endl;
-    for (int i = 0; i < scalar.size(); i++)
+    for (int i = 0; i < data.n_rows; i++)
     {
         double v1 = data(i,0);
         double v2 = data(i,1);
@@ -154,6 +154,7 @@ void GeneralConvertor::pathPrintToVtkPointlist(std::list<std::list<Point>> & pat
         location = location + cursize;
 
     }
+    mystream.close();
 }
 
 
@@ -486,7 +487,20 @@ void GeneralConvertor::SegmentsToMat(std::vector<Segment> & segments, arma::mat 
         segmentmat(4,i) = q.y();
         segmentmat(5,i) = q.z();
     }
+}
 
+void GeneralConvertor::VectorToMatTransposed(std::vector<Point> & points, arma::mat & data)
+{
+    int k = points.size();
+    data.set_size(3,k);
+    int j = 0;
+    for (auto it = points.begin(); it != points.end(); it++)
+    {
+        data(0,j) = it->x();
+        data(1,j) = it->y();
+        data(2,j) = it->z();
+        j++;
+    }
 
 }
 

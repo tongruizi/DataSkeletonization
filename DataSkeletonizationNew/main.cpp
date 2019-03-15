@@ -1,3 +1,5 @@
+double EPS_compare = 0.0000001;
+
 #include <iostream>
 #include <iomanip>
 #include <math.h>
@@ -45,6 +47,12 @@
 #include "SophisticatedPrinter.h"
 #include "AmstLauncher.h"
 #include "SegmentDistance.h"
+
+#include "MorseLauncher.h"
+#include "MetricGraphRec/MetricRec.hpp"
+
+
+
 
 // Convenience.
 using namespace mlpack;
@@ -415,8 +423,8 @@ void ControllerTest()
 //   void addAlgorithm(AbstractAlgorithm* k);
 //   void addCloud(generatable* k);
     //control.addAlgorithm(&thelaunch);
-   // control.addAlgorithm(&alphaLaunch);
-   // control.addAlgorithm(&AskAlgorithm);
+    // control.addAlgorithm(&alphaLaunch);
+    // control.addAlgorithm(&AskAlgorithm);
     control.addAlgorithm(&mstComputator);
 // control.addAlgorithm(&lwp);
 //control.addCloud(&star1);
@@ -583,6 +591,70 @@ void PrintingStarCloudsTest()
 
 }
 //
+
+void ControllerTest1337()
+{
+    std::string qq = "/home/yury/LocalTests/ControllerTest0/data.csv";
+    std::string folder = "/home/yury/LocalTests/ControllerTest0/Outputs/";
+//! We initilize a star:
+    SingleStar star8(M_PI/6,8,4000,5,100,1,"Star8");
+
+
+//! We initilize filewriter:
+    PrintToFile printer(folder);
+
+// int proportion, double densityE, double parC
+    MorseLauncher morseAlgorithm(10,0.01, 0.10);
+    morseAlgorithm.setTimePrecision(3);
+    morseAlgorithm.addPostRunner(&printer);
+
+
+
+//! Add MST
+//! Initilize MST
+    FastMSTLauncher mstComputator;
+    mstComputator.setTimePrecision(2);
+    mstComputator.addPostRunner(&printer);
+
+//! We initilize controller:
+    controller control(qq);
+//! We add algorithm, star to controller
+//   void addAlgorithm(AbstractAlgorithm* k);
+//   void addCloud(generatable* k);
+    //control.addAlgorithm(&thelaunch);
+    // control.addAlgorithm(&alphaLaunch);
+    // control.addAlgorithm(&AskAlgorithm);
+    control.addAlgorithm(&morseAlgorithm);
+    control.addAlgorithm(&mstComputator);
+// control.addAlgorithm(&lwp);
+//control.addCloud(&star1);
+//control.addCloud(&star2);
+    control.addCloud(&star8);
+//control.addCloud(&theRealClouds);
+//control.addCloud(&dstar);
+//control.addCloud(&star2);
+//control.addCloud(&theRealClouds);
+//! Initilize distance error measure:
+    ClassicDistanceMeasure distanceMeasure(2);
+    CorrectEndTypeMeasure endTypeMeasure(2);
+    NumberOfVertexMeasure vertexMeasure(2);
+    CorrectTypeMeasure TypeMeasure(2);
+    DualTreeDistanceMeasure newDistanceMeasure(2);
+    MeanSquareDistanceMeasure ndm(2);
+
+    control.addMeasurer(distanceMeasure);
+    control.addMeasurer(endTypeMeasure);
+    control.addMeasurer(vertexMeasure);
+    control.addMeasurer(TypeMeasure);
+    // control.addMeasurer(ndm);
+    // control.addMeasurer(newDistanceMeasure);
+    control.BeginTestRun();
+
+
+
+
+}
+
 void NewCoverTreeTree()
 {
     using namespace mlpack;
@@ -594,7 +666,7 @@ void NewCoverTreeTree()
     std::vector<Segment> segments;
     for (int i = 0; i < 10000; i++)
     {
-    segments.push_back(Segment(Point(0,0,i),Point(0,0,i+1)));
+        segments.push_back(Segment(Point(0,0,i),Point(0,0,i+1)));
     }
 
     GeneralConvertor::SegmentsToMat(segments,referencedata);
@@ -602,7 +674,7 @@ void NewCoverTreeTree()
     std::vector<Segment> segmentPoints;
     for (int j = 0; j < 10001; j++)
     {
-    segmentPoints.push_back(Segment(Point(0,0,j),Point(0,0,j)));
+        segmentPoints.push_back(Segment(Point(0,0,j),Point(0,0,j)));
     }
 
     GeneralConvertor::SegmentsToMat(segmentPoints,querydata);
@@ -622,16 +694,77 @@ void NewCoverTreeTree()
     {
         if (distances[i] != 0)
         {
-        std::cout << "Nearest neighbor of point " << i << " is segment"
-                  << neighbors[i] << " and the distance is " << distances[i] << ".\n";
+            std::cout << "Nearest neighbor of point " << i << " is segment"
+                      << neighbors[i] << " and the distance is " << distances[i] << ".\n";
         }
     }
     //  std::cout << "Distancedebug: " << sqrt(CGAL::squared_distance(Segment[2],Point(0,10,10))) << std::endl;
- //   double d = sqrt(CGAL::squared_distance(segments[2],Point(0,10,10))) ;
- //   std::cout << d << std::endl;
+//   double d = sqrt(CGAL::squared_distance(segments[2],Point(0,10,10))) ;
+//   std::cout << d << std::endl;
 //  std::cout << "Extra point" << std::endl;
 }
 
+
+void DebugMetricRec()
+{
+    std::string pathin = "/home/yury/Dropbox/Skeletonization Project/OldFolders/UnileverData/XYZ_Files/Cluster_Frame00000000.xyz";
+    std::list<Point> points;
+    GeneralConvertor::XYZtoPoint(pathin,points);
+    MetricRec rec(8);
+    MyGraphType G;
+    rec.Run(points,G);
+    std::string pathout = "/home/yury/LocalTests/OutputMetricGraphRec/out.vtk";
+    GeneralConvertor::GraphToVtk(pathout,G);
+
+
+
+
+
+}
+
+////! Try out Deluanay triangulation:
+//
+//void TryOutDeluanay()
+//{
+//Gudhi::Simplex_tree<> st;
+//std::string in = "/home/yury/Dropbox/Skeletonization Project/OldFolders/UnileverData/XYZ_Files/Cluster_Frame00000001.xyz";
+//std::string out = "/home/yury/LocalTests/Test2Deluanay/product.vtk";
+//std::string coloringout = "/home/yury/LocalTests/Test2Deluanay/productColoring2.csv";
+//std::list<Point> listpoints;
+//GeneralConvertor::XYZtoPoint(in,listpoints);
+//std::cout << "Size of listpoints: " << listpoints.size() << std::endl;
+//std::vector<Point>  points(listpoints.begin(),listpoints.end());
+//double clusterEpsilon = 2;
+//double fepsilon = 0.001;
+//MyGraphType G;
+//ClusterPersistence<ExponentialDensity> UltimateComputator;
+////     void Run(std::vector<Point> & points, double fEpsilon, double clusterEpsilon, MyGraphType & G, std::string colorout)
+//
+//UltimateComputator.Run(points,fepsilon,clusterEpsilon, G,coloringout,st);
+//
+//HomologyComputator::ComputeOriginal(st,2);
+////! Add this if you want printing on
+////GeneralConvertor::GraphToVtk(out,G);
+//}
+//
+//void TryOutDeluanayCyclicTriangle()
+//{
+//std::string coloringout = "/home/yury/LocalTests/Test2Deluanay/productColoring1337.csv";
+//Gudhi::Simplex_tree<> st;
+//MyGraphType T;
+//GraphGeneration::TriangleGraph(T, 100);
+//std::list<Point> listpoints;
+//CloudGenerator::generatePoints(10000,T,5.0,listpoints);
+//std::vector<Point>  points(listpoints.begin(),listpoints.end());
+//double clusterEpsilon = 7;
+//double fepsilon = 0.001;
+//MyGraphType G;
+//ClusterPersistence<ExponentialDensity> UltimateComputator;
+//UltimateComputator.Run(points,fepsilon,clusterEpsilon, G,coloringout,st);
+//HomologyComputator::ComputeOriginal(st,2);
+//
+
+//}
 
 //}
 //void Run(std::list<Point> & p, MyGraphType & G)
@@ -645,8 +778,9 @@ int main()
 //AMSTTest();
 
 //! This is required, to get proper random number sequence
-    srand( time( NULL ) );
-    ControllerTest();
+//   srand( time( NULL ) );
+    //  ControllerTest();
+
 //NewCoverTreeTree();
 ///! We use this number sequence to debug the code:
 //srand(128);
@@ -674,6 +808,10 @@ int main()
 //ControllerTestRealDataSimple();
 
     // ControllerTest();
+//   TryOutDeluanay();
+    //  TryOutDeluanayCyclicTriangle();
+// ControllerTest1337();
+    DebugMetricRec();
     std::cout << "Mlpackversion: " << mlpack::util::GetVersion() << std::endl;
     std::cout << "Compilation succeful" << std::endl;
     //  std::cout << "Compilation succeful" << std::endl;
