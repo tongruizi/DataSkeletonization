@@ -707,7 +707,7 @@ void NewCoverTreeTree()
 
 void DebugMetricRec()
 {
-    std::string pathin = "/home/yury/Dropbox/Skeletonization Project/OldFolders/UnileverData/XYZ_Files/Cluster_Frame00000000.xyz";
+    std::string pathin = "/home/yury/Dropbox/Skeletonization Project/OldFolders/unileverdata/XYZ_Files/Cluster_Frame00000000.xyz";
     std::list<Point> points;
     GeneralConvertor::XYZtoPoint(pathin,points);
     MetricRec rec(8);

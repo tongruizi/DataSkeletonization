@@ -70,7 +70,7 @@
 	<mlpack/core.hpp>
 	<vector>
 
-1546950487 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/Computation.h
+1542795891 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/GeneralComputation/Computation.h
 	<cstdlib>
 	"Definitions.h"
 	"Graph.h"
@@ -253,7 +253,7 @@
 	"Graph.h"
 	"Definitions.h"
 
-1527852554 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.cpp
+1541759474 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/Graph/Graph.cpp
 	"Graph.h"
 	"Definitions.h"
 	"Computation.h"
@@ -545,7 +545,7 @@
 	"AbstractMeasurer.h"
 	"AbstractCloudType.h"
 
-1552574459 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
+1552651368 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/main.cpp
 	<iostream>
 	<iomanip>
 	<math.h>
@@ -652,7 +652,7 @@
 	"GeneralConvertor.h"
 	"SingleStar.h"
 
-1550498107 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/Amst/AmstLauncher.h
+1543331312 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/Methods/Amst/AmstLauncher.h
 	"AbstractAlgorithm.h"
 	"GeneralConvertor.h"
 	"CleverExpDensity.h"
@@ -968,10 +968,11 @@
 	<set>
 	<queue>
 
-1552574185 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/MetricGraphRec/MetricRec.cpp
+1552651229 source:/home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/MetricGraphRec/MetricRec.cpp
 	"MetricGraphRec/MetricRec.hpp"
 	<mlpack/methods/range_search/range_search.hpp>
 	"GeneralConvertor.h"
+	<unordered_map>
 
 1552559872 /home/yury/Dropbox/Github/DataSkeletonizationNew/include/TestModule/MetricGraphRec/MetricRec.hpp
 	"Definitions.h"

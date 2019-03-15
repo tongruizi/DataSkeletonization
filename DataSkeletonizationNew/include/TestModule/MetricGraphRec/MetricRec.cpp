@@ -1,6 +1,7 @@
 #include "MetricGraphRec/MetricRec.hpp"
 #include <mlpack/methods/range_search/range_search.hpp>
 #include "GeneralConvertor.h"
+#include <unordered_map>
 
 
 using namespace mlpack::range;
@@ -63,6 +64,8 @@ void MetricRec::Labeling(std::list<Point> & cloudlist, MyGraphType & out)
     double lowbound = this->r;
     double highbound = 5*this->r/3;
     mlpack::math::Range t(lowbound, highbound);
+    std::cout << "Lowbound: " << lowbound << std::endl;
+    std::cout << "Highbound: " << highbound << std::endl;
     a.Search(t, resultingNeighbors, resultingDistances);
 
     for (int i = 0; i < resultingNeighbors.size(); i++)
@@ -104,7 +107,7 @@ void MetricRec::Labeling(std::list<Point> & cloudlist, MyGraphType & out)
     }
     //Label all points within distance 2rfrom a preliminary branch point as branch points
 
-
+    std::unordered_map<int,double> debugmap;
     std::vector<std::vector<size_t> > resultingNeighbors2;
     std::vector<std::vector<double> > resultingDistances2;
     mlpack::math::Range q(0,2*r);
@@ -116,16 +119,42 @@ void MetricRec::Labeling(std::list<Point> & cloudlist, MyGraphType & out)
         {
             for (int q = 0; q<resultingNeighbors2[i].size(); q++)
             {
-                branchPoint.insert(q);
+                branchPoint.insert(resultingNeighbors2[i][q]);
+
+                if (debugmap.find(resultingNeighbors2[i][q]) == debugmap.end())
+                {
+                    debugmap[resultingNeighbors2[i][q]] = resultingDistances2[i][q];
+                }
+                else
+                {
+                    double dd = debugmap[i];
+                    if (resultingDistances2[i][q] < dd)
+                    {
+                        debugmap[resultingNeighbors2[i][q]] = resultingDistances2[i][q];
+
+                    }
+                }
             }
         }
     }
 
+    for (int i = 0; i < cloudlist.size(); i++)
+    {
+        if (debugmap.find(i) == debugmap.end())
+        {
+            std::cout << "information for " << i << " not found " << std::endl;
 
+        }
+        std::cout << "Point: " << i << " : " << debugmap[i] << std::endl;
+    }
+
+
+    std::cout << "Cloudlist size: " << cloudlist.size() << std::endl;
+    std::cout << "Branchpoint size: " << branchPoint.size() << std::endl;
 
     for (int i = 0;  i < cloudlist.size(); i++)
     {
-        if (branchPoint.find(i) == branchPoint1.end())
+        if (branchPoint.find(i) == branchPoint.end())
         {
             edgePoint.insert(i);
         }
@@ -144,11 +173,11 @@ void MetricRec::Labeling(std::list<Point> & cloudlist, MyGraphType & out)
     {
         if (branchPoint1.find(i) == branchPoint1.end())
         {
-        coloring[i] = 0;
+            coloring[i] = 0;
         }
         else
         {
-        coloring[i] = 1;
+            coloring[i] = 1;
         }
 
     }
@@ -163,11 +192,11 @@ void MetricRec::Labeling(std::list<Point> & cloudlist, MyGraphType & out)
     {
         if (branchPoint.find(i) == branchPoint.end())
         {
-        coloring[i] = 0;
+            coloring2[i] = 0;
         }
         else
         {
-        coloring[i] = 1;
+            coloring2[i] = 1;
         }
 
     }
